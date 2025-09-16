@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36429.23 d17.14
+VisualStudioVersion = 17.14.36429.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChargerAstronomyEngine", "ChargerAstronomyEngine\ChargerAstronomyEngine.csproj", "{175A9C13-252E-41D0-ADC0-EA19CB11F0F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChargerAstronomyShared", "..\ChargerAstronomyShared\src\ChargerAstronomyShared\ChargerAstronomyShared.csproj", "{88A17045-D106-2861-7EBB-1F4F809805FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{175A9C13-252E-41D0-ADC0-EA19CB11F0F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{175A9C13-252E-41D0-ADC0-EA19CB11F0F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{175A9C13-252E-41D0-ADC0-EA19CB11F0F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88A17045-D106-2861-7EBB-1F4F809805FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A17045-D106-2861-7EBB-1F4F809805FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88A17045-D106-2861-7EBB-1F4F809805FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88A17045-D106-2861-7EBB-1F4F809805FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
