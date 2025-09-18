@@ -1,0 +1,26 @@
+name: .NET CI
+on:
+  push: { branches: [ release, dev ] }
+  pull_request: { branches: [ release, dev ] }
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ChargerAstronomyEngine
+
+      # I cant figure out a better way to do this... this just checks out shared repo into ./ChargerAstronomyShared 
+      - uses: actions/checkout@v4
+        with:
+          repository: CoperniSync/ChargerAstronomyShared
+          path: ChargerAstronomyShared
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - run: dotnet restore ChargerAstronomyEngine/ChargerAstronomyEngine.sln
+      - run: dotnet build ChargerAstronomyEngine/ChargerAstronomyEngine.sln --configuration Release --no-restore
+      - run: dotnet test  ChargerAstronomyEngine/ChargerAstronomyEngine.sln --configuration Release --no-build
