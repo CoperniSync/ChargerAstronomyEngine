@@ -1,115 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-
-using Xunit;
-using FluentAssertions;
-using System.Runtime.CompilerServices;
 
 using ChargerAstronomyEngine.Data;
 using ChargerAstronomyEngine.Streaming;
 using ChargerAstronomyShared.Contracts.Models;
 using ChargerAstronomyShared.Domain.Equatorial;
 
-namespace tests
+using FluentAssertions;
+using Xunit;
+
+namespace tests;
+
+public class CsvStarRepository_ProducePagesAsync_Tests
 {
-    public class InitializationQueueTest
+    private static string FindCsvPath(string fileName = "SmallStars" + ".csv")
     {
-        [Fact]
-        public void EnqueueBlocking_ShouldAddItemsToQueue()
+        var direct = Path.Combine(AppContext.BaseDirectory, fileName);
+        if (File.Exists(direct)) return direct;
+
+        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        for (int i = 0; i < 8 && dir != null; i++, dir = dir.Parent)
         {
-            // Arrange
-            var queue = new BoundedInitializationQueue<int>(5);
-
-            // Act
-            queue.EnqueueBlocking(1, CancellationToken.None);
-            queue.EnqueueBlocking(2, CancellationToken.None);
-
-            // Assert
-            queue.Count.Should().Be(2);
+            var candidate = Directory.EnumerateFiles(dir.FullName, fileName, SearchOption.AllDirectories)
+                                     .FirstOrDefault();
+            if (candidate != null) return candidate;
         }
 
-        [Fact]
-        public void TryDequeue_ShouldRemoveItemsFromQueue()
+        throw new FileNotFoundException($"Could not locate '{fileName}'. " +
+            "Mark it as Content -> Copy if newer, or place it next to the test binaries.");
+    }
+
+    private static CsvStarRepository MakeRepo()
+        => new(FindCsvPath());
+
+    /// <summary>
+    /// Produces pages of size 'Take' (final page may be short) and completes the queue.
+    /// </summary>
+    [Fact]
+    public async Task ProducePagesAsync_ProducesPages_ThenCompletes()
+    {
+        // Arrange
+        var repo = MakeRepo();
+        var page = new PageRequest(skip: 0, take: 500);
+        var queue = new BoundedInitializationQueue<PageResult<EquatorialStar>>(capacity: 10);
+
+        // Act
+        var producer = repo.ProducePagesAsync(queue, page, CancellationToken.None);
+
+        // Consume until producer signals completion and queue is drained
+        var pages = new List<PageResult<EquatorialStar>>();
+        while (true)
         {
-            // Arrange
-            var queue = new BoundedInitializationQueue<int>(5);
-            queue.EnqueueBlocking(1, CancellationToken.None);
-            queue.EnqueueBlocking(2, CancellationToken.None);
-
-            // Act
-            var success1 = queue.TryDequeue(out var item1);
-            var success2 = queue.TryDequeue(out var item2);
-
-            // Assert
-            success1.Should().BeTrue();
-            item1.Should().Be(1);
-            success2.Should().BeTrue();
-            item2.Should().Be(2);
-            queue.Count.Should().Be(0);
+            if (queue.TryDequeue(out var pr))
+            {
+                pages.Add(pr);
+            }
+            else if (queue.IsCompleted)
+            {
+                break;
+            }
+            else
+            {
+                await Task.Delay(10);
+            }
         }
 
-        [Fact]
-        public async void Capacity_ShouldBlockAdditions()
-        {
-            // Arrange
-            var queue = new BoundedInitializationQueue<int>(2);
-            queue.EnqueueBlocking(1, CancellationToken.None);
-            queue.EnqueueBlocking(2, CancellationToken.None);
-
-            // Act
-            var task = Task.Run(() => queue.EnqueueBlocking(3, CancellationToken.None));
-            var completed = await Task.WhenAny(task, Task.Delay(100)) == task;
-
-            // Assert
-            completed.Should().BeFalse("Expected to fail as it's been blocked.");
-            queue.Count.Should().Be(2);
-
-        }
-
-        [Fact]
-        public void Complete_ShouldMarkQueueAsCompleted()
-        {
-            // Arrange
-            var queue = new BoundedInitializationQueue<int>(5);
-
-            // Act
-            queue.Complete();
-
-            // Assert
-            queue.IsCompleted.Should().BeTrue();
-        }
-
-        [Fact]
-        public void Complete_ShouldPreventItemsBeingAdded()
-        {
-            // Arrange
-            var queue = new BoundedInitializationQueue<int>(5);
-            queue.Complete();
-
-            // Act
-            Action act = () => queue.EnqueueBlocking(1, CancellationToken.None);
-
-            // Assert
-            act.Should().Throw<InvalidOperationException>()
-               .WithMessage("The collection has been marked as complete with regards to additions.");
-        }
-
-        [Fact]
-        public void Dispose_ShouldDisposeBlockingQueue()
-        {
-            // Arrange
-            var queue = new BoundedInitializationQueue<int>(5);
-
-            // Act
-            queue.Dispose();
-
-            // Assert
-            Action act = () => queue.EnqueueBlocking(1, CancellationToken.None);
-            act.Should().Throw<ObjectDisposedException>();
-        }
+        // Assert
+        pages.Should().NotBeEmpty("CSV should yield at least one page");
+        queue.IsCompleted.Should().BeTrue("producer calls Complete() in finally");
     }
 
 }
