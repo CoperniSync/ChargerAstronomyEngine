@@ -13,7 +13,7 @@ using ChargerAstronomyShared.Domain.Equatorial;
 using FluentAssertions;
 using Xunit;
 
-namespace tests;
+namespace ChargerAstronomyEngine.Tests;
 public class CsvStarRepository_ProducePagesAsync_Tests
 {
 
@@ -47,11 +47,11 @@ public class CsvStarRepository_ProducePagesAsync_Tests
     {
         // Arrange
         var repo = MakeRepo();
-        var page = new PageRequest(skip: 0, take: 500);
-        var queue = new BoundedInitializationQueue<PageResult<EquatorialStar>>(capacity: 10);
+        var page = new PageRequest(skip: 0, take: 10);
+        var queue = new BoundedInitializationQueue<PageResult<EquatorialStar>>(capacity: 5);
 
         // Act
-        var producer = repo.ProducePagesAsync(queue, page, CancellationToken.None);
+        _ = Task.Run(() => repo.ProducePagesAsync(queue, page, CancellationToken.None));
 
         // Consume until producer signals completion and queue is drained
         var pages = new List<PageResult<EquatorialStar>>();
@@ -67,7 +67,7 @@ public class CsvStarRepository_ProducePagesAsync_Tests
             }
             else
             {
-                await Task.Delay(10);
+                await Task.Delay(1);
             }
         }
 
