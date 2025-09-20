@@ -13,7 +13,7 @@ using ChargerAstronomyShared.Domain.Equatorial;
 using FluentAssertions;
 using Xunit;
 
-namespace tests;
+namespace ChargerAstronomyEngine.Tests;
 public class CsvStarRepository_ProducePagesAsync_Tests
 {
 
