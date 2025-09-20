@@ -96,6 +96,20 @@ namespace tests
             act.Should().Throw<InvalidOperationException>()
                .WithMessage("The collection has been marked as complete with regards to additions.");
         }
+
+        [Fact]
+        public void Dispose_ShouldDisposeBlockingQueue()
+        {
+            // Arrange
+            var queue = new BoundedInitializationQueue<int>(5);
+
+            // Act
+            queue.Dispose();
+
+            // Assert
+            Action act = () => queue.EnqueueBlocking(1, CancellationToken.None);
+            act.Should().Throw<ObjectDisposedException>();
+        }
     }
 
 }
