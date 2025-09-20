@@ -14,10 +14,12 @@ using FluentAssertions;
 using Xunit;
 
 namespace tests;
-
 public class CsvStarRepository_ProducePagesAsync_Tests
 {
-    private static string FindCsvPath(string fileName = "SmallStars" + ".csv")
+
+    // AllStars contains all of the stars. Over 30k stars.
+    // SmallStars is very small, only 2k stars.
+    private static string FindCsvPath(string fileName = "AllStars" + ".csv")
     {
         var direct = Path.Combine(AppContext.BaseDirectory, fileName);
         if (File.Exists(direct)) return direct;
