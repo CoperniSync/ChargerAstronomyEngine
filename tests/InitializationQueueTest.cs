@@ -52,6 +52,24 @@ namespace tests
         }
 
         [Fact]
+        public async void Capacity_ShouldBlockAdditions()
+        {
+            // Arrange
+            var queue = new BoundedInitializationQueue<int>(2);
+            queue.EnqueueBlocking(1, CancellationToken.None);
+            queue.EnqueueBlocking(2, CancellationToken.None);
+
+            // Act
+            var task = Task.Run(() => queue.EnqueueBlocking(3, CancellationToken.None));
+            var completed = await Task.WhenAny(task, Task.Delay(100)) == task;
+
+            // Assert
+            completed.Should().BeFalse("Expected to fail as it's been blocked.");
+            queue.Count.Should().Be(2);
+
+        }
+
+        [Fact]
         public void Complete_ShouldMarkQueueAsCompleted()
         {
             // Arrange
@@ -78,8 +96,6 @@ namespace tests
             act.Should().Throw<InvalidOperationException>()
                .WithMessage("The collection has been marked as complete with regards to additions.");
         }
-
-           
-
     }
+
 }
