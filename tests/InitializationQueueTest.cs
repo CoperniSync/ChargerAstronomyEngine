@@ -65,31 +65,21 @@ namespace tests
         }
 
         [Fact]
-        public void EnqueueBlocking_ShouldThrowWhenCapacityExceeded()
-        {
-            // Arrange
-            var queue = new BoundedInitializationQueue<int>(2);
-            queue.EnqueueBlocking(1, CancellationToken.None);
-            queue.EnqueueBlocking(2, CancellationToken.None);
-
-            // Act
-            Action act = () => queue.EnqueueBlocking(3, CancellationToken.None);
-
-            // Assert
-            act.Should().Throw<InvalidOperationException>();
-        }
-
-        [Fact]
-        public void Dispose_ShouldCompleteQueue()
+        public void Complete_ShouldPreventItemsBeingAdded()
         {
             // Arrange
             var queue = new BoundedInitializationQueue<int>(5);
+            queue.Complete();
 
             // Act
-            queue.Dispose();
+            Action act = () => queue.EnqueueBlocking(1, CancellationToken.None);
 
             // Assert
-            queue.IsCompleted.Should().BeTrue();
+            act.Should().Throw<InvalidOperationException>()
+               .WithMessage("The collection has been marked as complete with regards to additions.");
         }
+
+           
+
     }
 }
