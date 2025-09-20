@@ -13,6 +13,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace ChargerAstronomyEngine.Data
 {
@@ -82,6 +83,10 @@ namespace ChargerAstronomyEngine.Data
 
                 if (buffer.Count > 0)
                     EnqueuePage(queue, buffer, 0, firstPage.Skip + skipped, firstPage.Take, cancellationToken);  
+            }
+            catch
+            {
+                Debug.Print("Exception in ProducePagesAsync, completing queue");
             }
             finally
             {

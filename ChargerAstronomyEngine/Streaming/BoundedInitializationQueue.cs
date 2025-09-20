@@ -26,13 +26,13 @@ namespace ChargerAstronomyEngine.Streaming
 
         public int Capacity { get; }
 
-        public int Count => inner.Count;
+        public int Count => blocking.Count;
 
         public bool TryEnqueue(T item) => blocking.TryAdd(item, 0);
 
         public void EnqueueBlocking(T item, CancellationToken ct) => blocking.Add(item, ct);
 
-        public bool TryDequeue(out T item) => inner.TryDequeue(out item);
+        public bool TryDequeue(out T item) => blocking.TryTake(out item, 0);
 
         public void Complete()
         {
@@ -40,7 +40,7 @@ namespace ChargerAstronomyEngine.Streaming
                 blocking.CompleteAdding();
         }
 
-        public bool IsCompleted => blocking.IsAddingCompleted && inner.IsEmpty;
+        public bool IsCompleted => blocking.IsAddingCompleted && inner.IsEmpty || blocking.IsCompleted;
 
         public void Dispose()
         {
