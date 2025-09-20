@@ -40,7 +40,7 @@ namespace ChargerAstronomyEngine.Streaming
                 blocking.CompleteAdding();
         }
 
-        public bool IsCompleted => blocking.IsCompleted && inner.IsEmpty;
+        public bool IsCompleted => blocking.IsAddingCompleted && inner.IsEmpty;
 
         public void Dispose()
         {
