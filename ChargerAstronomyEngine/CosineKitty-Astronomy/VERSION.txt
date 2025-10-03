@@ -1,0 +1,10 @@
+CosineKitty Astronomy Library
+Version: 2.1.19
+Source: https://github.com/cosinekitty/astronomy/tree/v2.1.19
+Vendored into: Astronomy.cs
+Date imported: 2025-10-03
+Imported by: Joseph Thallas
+Notes: 
+- Copied directly from upstream, no modifications made at import.
+- Do not alter unless absolutely necessary.
+- To update: fetch latest source from GitHub releases and overwrite Astronomy.cs.
