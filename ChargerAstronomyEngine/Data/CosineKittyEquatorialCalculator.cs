@@ -87,7 +87,7 @@ namespace ChargerAstronomyShared.Contracts.Repositories
         /// <inheritdoc/>
         public IEnumerable<HorizontalPlanet> CreatePlanets()
         {
-            List<HorizontalPlanet> planetList = new();
+            List<HorizontalPlanet> planetList = new List<HorizontalPlanet>();
 
             // Loop through the dictionary created in the constructor and create a HorizontalPlanet object for each of them.
             foreach (var body in planets)
