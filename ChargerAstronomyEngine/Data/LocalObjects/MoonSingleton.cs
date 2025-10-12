@@ -35,6 +35,9 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
         public HorizontalMoon CreateMoon()
         {
             Equatorial equ = Astronomy.Equator(Body.Moon, astroTime, observer, EquatorEpoch.OfDate, Aberration.Corrected);
+            Topocentric hor = Astronomy.Horizon(astroTime, observer, equ.ra, equ.dec, Refraction.Normal);
+            var illumination = Astronomy.Illumination(Body.Moon, astroTime);
+            var phase = Astronomy.MoonPhase(astroTime);
 
             // Update inherited properties from EquatorialCelestialBody
             RightAscension = equ.ra;
