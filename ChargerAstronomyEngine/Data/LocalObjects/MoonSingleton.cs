@@ -43,7 +43,7 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
             RightAscension = equ.ra;
             Declination = equ.dec;
             Distance = equ.dist;
-            Magnitude = Astronomy.Illumination(Body.Moon, astroTime).mag;
+            Magnitude = illumination.mag;
 
             return new HorizontalMoon(new EquatorialStar
             {
