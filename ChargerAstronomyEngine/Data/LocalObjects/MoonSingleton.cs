@@ -3,7 +3,7 @@ using ChargerAstronomyShared.Domain.Horizontal;
 using CosineKitty;
 using System;
 
-namespace ChargerAstronomyEngine.Data.Nonlocal
+namespace ChargerAstronomyEngine.Data.LocalObjects
 {
     public sealed class MoonSingleton : EquatorialCelestialBody
     {
