@@ -141,5 +141,16 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
         internal const double MOON_GM = EARTH_GM / EARTH_MOON_MASS_RATIO;
 
+        internal const double DAYS_PER_MILLENNIUM = 365250.0;
+        internal const double RISE_SET_DT = 0.42;    // 10.08 hours: Nyquist-safe for 22-hour period.
+        internal const double MoonNodeStepDays = +10.0; // a safe number of days to step without missing a Moon node
+        internal const int PLUTO_NUM_STATES = 51;
+        internal const int PLUTO_TIME_STEP = 29200;
+        internal const int PLUTO_DT = 146;
+        internal const int PLUTO_NSTEPS = 201;
+
+        // Inclination angle
+        internal const double I = Constants.DEG2RAD * 1.543;
+
     }
 }

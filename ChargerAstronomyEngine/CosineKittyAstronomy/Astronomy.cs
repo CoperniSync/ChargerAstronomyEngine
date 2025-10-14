@@ -1295,11 +1295,10 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             );
         }
 
-        private const double DAYS_PER_MILLENNIUM = 365250.0;
 
         private static AstroVector CalcVsop(vsop_model_t model, AstroTime time)
         {
-            double t = time.tt / DAYS_PER_MILLENNIUM;    // millennia since 2000
+            double t = time.tt / Constants.DAYS_PER_MILLENNIUM;    // millennia since 2000
 
             // Calculate the VSOP "B" trigonometric series to obtain ecliptic spherical coordinates.
             double lon = VsopFormulaCalc(model.lon, t, true);
@@ -1367,7 +1366,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
         private static body_state_t CalcVsopPosVel(vsop_model_t model, double tt)
         {
-            double t = tt / DAYS_PER_MILLENNIUM;    // millennia since 2000
+            double t = tt / Constants.DAYS_PER_MILLENNIUM;    // millennia since 2000
 
             // Calculate the VSOP "B" trigonometric series to obtain ecliptic spherical coordinates.
             double lon = VsopFormulaCalc(model.lon, t, true);
@@ -1404,9 +1403,9 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             // Convert speed units from [AU/millennium] to [AU/day].
             var eclip_vel = new TerseVector(
-                vx / DAYS_PER_MILLENNIUM,
-                vy / DAYS_PER_MILLENNIUM,
-                vz / DAYS_PER_MILLENNIUM);
+                vx / Constants.DAYS_PER_MILLENNIUM,
+                vy / Constants.DAYS_PER_MILLENNIUM,
+                vz / Constants.DAYS_PER_MILLENNIUM);
 
             // Rotate the vectors from ecliptic to equatorial coordinates.
             TerseVector equ_pos = VsopRotate(eclip_pos);
@@ -1416,10 +1415,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
         #region Pluto
 
-        private const int PLUTO_NUM_STATES = 51;
-        private const int PLUTO_TIME_STEP = 29200;
-        private const int PLUTO_DT = 146;
-        private const int PLUTO_NSTEPS = 201;
+
 
         private static readonly body_state_t[] PlutoStateTable = new body_state_t[]
         {
@@ -1552,7 +1548,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             return new body_grav_calc_t(tt2, pos, vel, acc);
         }
 
-        private static readonly body_grav_calc_t[][] pluto_cache = new body_grav_calc_t[PLUTO_NUM_STATES - 1][];
+        private static readonly body_grav_calc_t[][] pluto_cache = new body_grav_calc_t[Constants.PLUTO_NUM_STATES - 1][];
 
         private static int ClampIndex(double frac, int nsteps)
         {
@@ -1575,38 +1571,38 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
         private static body_grav_calc_t[] GetSegment(body_grav_calc_t[][] cache, double tt)
         {
-            if (tt < PlutoStateTable[0].tt || tt > PlutoStateTable[PLUTO_NUM_STATES - 1].tt)
+            if (tt < PlutoStateTable[0].tt || tt > PlutoStateTable[Constants.PLUTO_NUM_STATES - 1].tt)
                 return null;  // Don't bother calculating a segment. Let the caller crawl backward/forward to this time.
 
-            int seg_index = ClampIndex((tt - PlutoStateTable[0].tt) / PLUTO_TIME_STEP, PLUTO_NUM_STATES - 1);
+            int seg_index = ClampIndex((tt - PlutoStateTable[0].tt) / Constants.PLUTO_TIME_STEP, Constants.PLUTO_NUM_STATES - 1);
             lock (cache)
             {
                 if (cache[seg_index] == null)
                 {
-                    var seg = cache[seg_index] = new body_grav_calc_t[PLUTO_NSTEPS];
+                    var seg = cache[seg_index] = new body_grav_calc_t[Constants.PLUTO_NSTEPS];
 
                     // Each endpoint is exact.
                     major_bodies_t bary;
                     seg[0] = GravFromState(out bary, PlutoStateTable[seg_index]);
-                    seg[PLUTO_NSTEPS - 1] = GravFromState(out bary, PlutoStateTable[seg_index + 1]);
+                    seg[Constants.PLUTO_NSTEPS - 1] = GravFromState(out bary, PlutoStateTable[seg_index + 1]);
 
                     // Simulate forwards from the lower time bound.
                     int i;
                     double step_tt = seg[0].tt;
-                    for (i = 1; i < PLUTO_NSTEPS - 1; ++i)
-                        seg[i] = GravSim(out bary, step_tt += PLUTO_DT, seg[i - 1]);
+                    for (i = 1; i < Constants.PLUTO_NSTEPS - 1; ++i)
+                        seg[i] = GravSim(out bary, step_tt += Constants.PLUTO_DT, seg[i - 1]);
 
                     // Simulate backwards from the upper time bound.
-                    step_tt = seg[PLUTO_NSTEPS - 1].tt;
-                    var reverse = new body_grav_calc_t[PLUTO_NSTEPS];
-                    reverse[PLUTO_NSTEPS - 1] = seg[PLUTO_NSTEPS - 1];
-                    for (i = PLUTO_NSTEPS - 2; i > 0; --i)
-                        reverse[i] = GravSim(out bary, step_tt -= PLUTO_DT, reverse[i + 1]);
+                    step_tt = seg[Constants.PLUTO_NSTEPS - 1].tt;
+                    var reverse = new body_grav_calc_t[Constants.PLUTO_NSTEPS];
+                    reverse[Constants.PLUTO_NSTEPS - 1] = seg[Constants.PLUTO_NSTEPS - 1];
+                    for (i = Constants.PLUTO_NSTEPS - 2; i > 0; --i)
+                        reverse[i] = GravSim(out bary, step_tt -= Constants.PLUTO_DT, reverse[i + 1]);
 
                     // Fade-mix the two series so that there are no discontinuities.
-                    for (i = PLUTO_NSTEPS - 2; i > 0; --i)
+                    for (i = Constants.PLUTO_NSTEPS - 2; i > 0; --i)
                     {
-                        double ramp = (double)i / (PLUTO_NSTEPS - 1);
+                        double ramp = (double)i / (Constants.PLUTO_NSTEPS - 1);
                         seg[i].r = (1 - ramp) * seg[i].r + ramp * reverse[i].r;
                         seg[i].v = (1 - ramp) * seg[i].v + ramp * reverse[i].v;
                         seg[i].a = (1 - ramp) * seg[i].a + ramp * reverse[i].a;
@@ -1640,13 +1636,13 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 // Calculate it by crawling backward from 0000 or forward from 4000.
                 // FIXFIXFIX - This is super slow. Could optimize this with extra caching if needed.
                 if (time.tt < PlutoStateTable[0].tt)
-                    calc = CalcPlutoOneWay(out bary, PlutoStateTable[0], time.tt, -PLUTO_DT);
+                    calc = CalcPlutoOneWay(out bary, PlutoStateTable[0], time.tt, -Constants.PLUTO_DT);
                 else
-                    calc = CalcPlutoOneWay(out bary, PlutoStateTable[PLUTO_NUM_STATES - 1], time.tt, +PLUTO_DT);
+                    calc = CalcPlutoOneWay(out bary, PlutoStateTable[Constants.PLUTO_NUM_STATES - 1], time.tt, +Constants.PLUTO_DT);
             }
             else
             {
-                int left = ClampIndex((time.tt - seg[0].tt) / PLUTO_DT, PLUTO_NSTEPS - 1);
+                int left = ClampIndex((time.tt - seg[0].tt) / Constants.PLUTO_DT, Constants.PLUTO_NSTEPS - 1);
                 body_grav_calc_t s1 = seg[left];
                 body_grav_calc_t s2 = seg[left + 1];
 
@@ -1662,7 +1658,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 TerseVector vb = UpdateVelocity(time.tt - s2.tt, s2.v, acc);
 
                 // Use fade in/out idea to blend the two position estimates.
-                double ramp = (time.tt - s1.tt) / PLUTO_DT;
+                double ramp = (time.tt - s1.tt) / Constants.PLUTO_DT;
                 calc.r = (1 - ramp) * ra + ramp * rb;
                 calc.v = (1 - ramp) * va + ramp * vb;
                 if (helio)
@@ -2641,8 +2637,6 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             lib.dist_km = moon.distance_au * Constants.KM_PER_AU;
             lib.diam_deg = (2.0 * Constants.RAD2DEG) * Math.Atan(Constants.MOON_MEAN_RADIUS_KM / Math.Sqrt(lib.dist_km * lib.dist_km - Constants.MOON_MEAN_RADIUS_KM * Constants.MOON_MEAN_RADIUS_KM));
 
-            // Inclination angle
-            const double I = Constants.DEG2RAD * 1.543;
 
             // Moon's argument of latitude in radians.
             double f = Constants.DEG2RAD * NormalizeLongitude(93.2720950 + 483202.0175233 * t - 0.0036539 * t2 - t3 / 3526000 + t4 / 863310000);
@@ -2664,9 +2658,9 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             // Optical librations
             double w = moon.geo_eclip_lon - omega;
-            double a = Math.Atan2(Math.Sin(w) * Math.Cos(moon.geo_eclip_lat) * Math.Cos(I) - Math.Sin(moon.geo_eclip_lat) * Math.Sin(I), Math.Cos(w) * Math.Cos(moon.geo_eclip_lat));
+            double a = Math.Atan2(Math.Sin(w) * Math.Cos(moon.geo_eclip_lat) * Math.Cos(Constants.I) - Math.Sin(moon.geo_eclip_lat) * Math.Sin(Constants.I), Math.Cos(w) * Math.Cos(moon.geo_eclip_lat));
             double ldash = LongitudeOffset(Constants.RAD2DEG * (a - f));
-            double bdash = Math.Asin(-Math.Sin(w) * Math.Cos(moon.geo_eclip_lat) * Math.Sin(I) - Math.Sin(moon.geo_eclip_lat) * Math.Cos(I));
+            double bdash = Math.Asin(-Math.Sin(w) * Math.Cos(moon.geo_eclip_lat) * Math.Sin(Constants.I) - Math.Sin(moon.geo_eclip_lat) * Math.Cos(Constants.I));
 
             // Physical librations
             double k1 = Constants.DEG2RAD * (119.75 + 131.849 * t);
@@ -2854,7 +2848,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 case Body.Saturn:
                 case Body.Uranus:
                 case Body.Neptune:
-                    return VsopFormulaCalc(vsop[(int)body].rad, time.tt / DAYS_PER_MILLENNIUM, false);
+                    return VsopFormulaCalc(vsop[(int)body].rad, time.tt / Constants.DAYS_PER_MILLENNIUM, false);
 
                 default:
                     if (UserDefinedStar(body) is StarDef star)
@@ -4568,7 +4562,6 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             return Math.Abs(((360.0 / Constants.SOLAR_DAYS_PER_SIDEREAL_DAY) - deriv_ra) * Math.Cos(latrad)) + Math.Abs(deriv_dec * Math.Sin(latrad));
         }
 
-        private const double RISE_SET_DT = 0.42;    // 10.08 hours: Nyquist-safe for 22-hour period.
 
         private AstroTime InternalSearchAltitude(
             Body body,
@@ -4593,12 +4586,12 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             {
                 if (limitDays < 0.0)
                 {
-                    t1 = t2.AddDays(-RISE_SET_DT);
+                    t1 = t2.AddDays(-Constants.RISE_SET_DT);
                     a1 = context.Eval(this,t1);
                 }
                 else
                 {
-                    t2 = t1.AddDays(+RISE_SET_DT);
+                    t2 = t1.AddDays(+Constants.RISE_SET_DT);
                     a2 = context.Eval(this,t2);
                 }
 
@@ -6706,7 +6699,6 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         }
 
 
-        private const double MoonNodeStepDays = +10.0; // a safe number of days to step without missing a Moon node
 
         /// <summary>
         /// Searches for a time when the Moon's center crosses through the ecliptic plane.
@@ -6736,7 +6728,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             for (; ; )
             {
-                AstroTime time2 = time1.AddDays(MoonNodeStepDays);
+                AstroTime time2 = time1.AddDays(Constants.MoonNodeStepDays);
                 Spherical eclip2 = EclipticGeoMoon(time2);
                 if (eclip1.lat * eclip2.lat <= 0.0)
                 {
@@ -6777,7 +6769,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         /// </param>
         public NodeEventInfo NextMoonNode(NodeEventInfo prevNode)
         {
-            AstroTime time = prevNode.time.AddDays(MoonNodeStepDays);
+            AstroTime time = prevNode.time.AddDays(Constants.MoonNodeStepDays);
             NodeEventInfo node = SearchMoonNode(time);
             switch (prevNode.kind)
             {
