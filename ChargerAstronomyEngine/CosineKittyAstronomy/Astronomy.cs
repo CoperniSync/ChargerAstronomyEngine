@@ -25,6 +25,9 @@
     SOFTWARE.
 */
 
+using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
+using ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions;
+using ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -32,44 +35,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace CosineKitty
-{
-    /// <summary>
-    /// This exception is thrown by certain Astronomy Engine functions
-    /// when an invalid attempt is made to use the Earth as the observed
-    /// celestial body. Usually this happens for cases where the Earth itself
-    /// is the location of the observer.
-    /// </summary>
-    public class EarthNotAllowedException : ArgumentException
-    {
-        internal EarthNotAllowedException() :
-            base("The Earth is not allowed as the body parameter.")
-        { }
-    }
-
-    /// <summary>
-    /// This exception is thrown by certain Astronomy Engine functions
-    /// when a body is specified that is not appropriate for the given operation.
-    /// </summary>
-    public class InvalidBodyException : ArgumentException
-    {
-        internal InvalidBodyException(Body body) :
-            base("Invalid body: " + body)
-        { }
-    }
-
-    /// <summary>
-    /// This exception indicates an unexpected error occurred inside Astronomy Engine.
-    /// Please report any such errors by creating an issue at:
-    /// https://github.com/cosinekitty/astronomy/issues
-    /// </summary>
-    public class InternalError : Exception
-    {
-        internal InternalError(string message) :
-            base("Internal error. Please report an issue at: https://github.com/cosinekitty/astronomy/issues. Diagnostic: " + message)
-        { }
-    }
-
+namespace ChargerAstronomyEngine.CosineKittyAstronomy
+{ 
     /// <summary>Defines a function type for calculating Delta T.</summary>
     /// <remarks>
     /// Delta T is the discrepancy between times measured using an atomic clock
@@ -83,2894 +50,12 @@ namespace CosineKitty
     /// </remarks>
     public delegate double DeltaTimeFunc(double ut);
 
-    /// <summary>
-    /// The enumeration of celestial bodies supported by Astronomy Engine.
-    /// </summary>
-    public enum Body
-    {
-        /// <summary>
-        /// A placeholder value representing an invalid or unknown celestial body.
-        /// </summary>
-        Invalid = -1,
 
-        /// <summary>
-        /// The planet Mercury.
-        /// </summary>
-        Mercury,
-
-        /// <summary>
-        /// The planet Venus.
-        /// </summary>
-        Venus,
-
-        /// <summary>
-        /// The planet Earth.
-        /// Some functions that accept a `Body` parameter will fail if passed this value
-        /// because they assume that an observation is being made from the Earth,
-        /// and therefore the Earth is not a target of observation.
-        /// </summary>
-        Earth,
-
-        /// <summary>
-        /// The planet Mars.
-        /// </summary>
-        Mars,
-
-        /// <summary>
-        /// The planet Jupiter.
-        /// </summary>
-        Jupiter,
-
-        /// <summary>
-        /// The planet Saturn.
-        /// </summary>
-        Saturn,
-
-        /// <summary>
-        /// The planet Uranus.
-        /// </summary>
-        Uranus,
-
-        /// <summary>
-        /// The planet Neptune.
-        /// </summary>
-        Neptune,
-
-        /// <summary>
-        /// The planet Pluto.
-        /// </summary>
-        Pluto,
-
-        /// <summary>
-        /// The Sun.
-        /// </summary>
-        Sun,
-
-        /// <summary>
-        /// The Earth's natural satellite, the Moon.
-        /// </summary>
-        Moon,
-
-        /// <summary>
-        /// The Earth/Moon Barycenter.
-        /// </summary>
-        EMB,
-
-        /// <summary>
-        /// The Solar System Barycenter.
-        /// </summary>
-        SSB,
-
-        /// <summary>
-        /// User-defined star #1.
-        /// </summary>
-        Star1 = 101,
-
-        /// <summary>
-        /// User-defined star #2.
-        /// </summary>
-        Star2,
-
-        /// <summary>
-        /// User-defined star #3.
-        /// </summary>
-        Star3,
-
-        /// <summary>
-        /// User-defined star #4.
-        /// </summary>
-        Star4,
-
-        /// <summary>
-        /// User-defined star #5.
-        /// </summary>
-        Star5,
-
-        /// <summary>
-        /// User-defined star #6.
-        /// </summary>
-        Star6,
-
-        /// <summary>
-        /// User-defined star #7.
-        /// </summary>
-        Star7,
-
-        /// <summary>
-        /// User-defined star #8.
-        /// </summary>
-        Star8,
-    }
-
-    /// <summary>
-    /// A date and time used for astronomical calculations.
-    /// </summary>
-    public class AstroTime
-    {
-        private static readonly DateTime Origin = new DateTime(2000, 1, 1, 12, 0, 0, DateTimeKind.Utc);
-
-        /// <summary>
-        /// UT1/UTC number of days since noon on January 1, 2000.
-        /// </summary>
-        /// <remarks>
-        /// The floating point number of days of Universal Time since noon UTC January 1, 2000.
-        /// Astronomy Engine approximates UTC and UT1 as being the same thing, although they are
-        /// not exactly equivalent; UTC and UT1 can disagree by up to plus or minus 0.9 seconds.
-        /// This approximation is sufficient for the accuracy requirements of Astronomy Engine.
-        ///
-        /// Universal Time Coordinate (UTC) is the international standard for legal and civil
-        /// timekeeping and replaces the older Greenwich Mean Time (GMT) standard.
-        /// UTC is kept in sync with unpredictable observed changes in the Earth's rotation
-        /// by occasionally adding leap seconds as needed.
-        ///
-        /// UT1 is an idealized time scale based on observed rotation of the Earth, which
-        /// gradually slows down in an unpredictable way over time, due to tidal drag by the Moon and Sun,
-        /// large scale weather events like hurricanes, and internal seismic and convection effects.
-        /// Conceptually, UT1 drifts from atomic time continuously and erratically, whereas UTC
-        /// is adjusted by a scheduled whole number of leap seconds as needed.
-        ///
-        /// The value in `ut` is appropriate for any calculation involving the Earth's rotation,
-        /// such as calculating rise/set times, culumination, and anything involving apparent
-        /// sidereal time.
-        ///
-        /// Before the era of atomic timekeeping, days based on the Earth's rotation
-        /// were often known as *mean solar days*.
-        /// </remarks>
-        public readonly double ut;
-
-        /// <summary>
-        /// Terrestrial Time days since noon on January 1, 2000.
-        /// </summary>
-        /// <remarks>
-        /// Terrestrial Time is an atomic time scale defined as a number of days since noon on January 1, 2000.
-        /// In this system, days are not based on Earth rotations, but instead by
-        /// the number of elapsed [SI seconds](https://physics.nist.gov/cuu/Units/second.html)
-        /// divided by 86400. Unlike `ut`, `tt` increases uniformly without adjustments
-        /// for changes in the Earth's rotation.
-        ///
-        /// The value in `tt` is used for calculations of movements not involving the Earth's rotation,
-        /// such as the orbits of planets around the Sun, or the Moon around the Earth.
-        ///
-        /// Historically, Terrestrial Time has also been known by the term *Ephemeris Time* (ET).
-        /// </remarks>
-        public readonly double tt;
-
-        internal double psi = double.NaN;    // For internal use only. Used to optimize Earth tilt calculations.
-        internal double eps = double.NaN;    // For internal use only. Used to optimize Earth tilt calculations.
-        internal double st = double.NaN;     // For internal use only.  Lazy-caches sidereal time (Earth rotation).
-
-        private AstroTime(double ut, double tt)
-        {
-            this.ut = ut;
-            this.tt = tt;
-        }
-
-        /// <summary>
-        /// Creates an `AstroTime` object from a Universal Time day value.
-        /// </summary>
-        /// <param name="ut">The number of days after the J2000 epoch.</param>
-        public AstroTime(double ut)
-            : this(ut, Astronomy.TerrestrialTime(ut))
-        {
-        }
-
-        /// <summary>
-        /// Creates an `AstroTime` object from a .NET `DateTime` object.
-        /// </summary>
-        /// <param name="d">The date and time to be converted to AstroTime format.</param>
-        public AstroTime(DateTime d)
-            : this((d.ToUniversalTime() - Origin).TotalDays)
-        {
-        }
-
-        /// <summary>
-        /// Creates an `AstroTime` object from a UTC year, month, day, hour, minute and second.
-        /// </summary>
-        /// <param name="year">The UTC year value.</param>
-        /// <param name="month">The UTC month value 1..12.</param>
-        /// <param name="day">The UTC day of the month 1..31.</param>
-        /// <param name="hour">The UTC hour value 0..23.</param>
-        /// <param name="minute">The UTC minute value 0..59.</param>
-        /// <param name="second">The UTC second value [0, 60).</param>
-        public AstroTime(int year, int month, int day, int hour, int minute, double second)
-            : this(UniversalTimeFromCalendar(year, month, day, hour, minute, second))
-        {
-        }
-
-        /// <summary>
-        /// Creates an `AstroTime` object from a Terrestrial Time day value.
-        /// </summary>
-        /// <remarks>
-        /// This function can be used in rare cases where a time must be based
-        /// on Terrestrial Time (TT) rather than Universal Time (UT).
-        /// Most developers will want to invoke `new AstroTime(ut)` with a universal time
-        /// instead of this function, because usually time is based on civil time adjusted
-        /// by leap seconds to match the Earth's rotation, rather than the uniformly
-        /// flowing TT used to calculate solar system dynamics. In rare cases
-        /// where the caller already knows TT, this function is provided to create
-        /// an `AstroTime` value that can be passed to Astronomy Engine functions.
-        /// </remarks>
-        /// <param name="tt">The number of days after the J2000 epoch.</param>
-        public static AstroTime FromTerrestrialTime(double tt)
-        {
-            return new AstroTime(Astronomy.UniversalTime(tt), tt);
-        }
-
-        /// <summary>
-        /// Converts this object to .NET `DateTime` format.
-        /// </summary>
-        /// <returns>a UTC `DateTime` object for this `AstroTime` value.</returns>
-        public DateTime ToUtcDateTime()
-        {
-            return Origin.AddDays(ut).ToUniversalTime();
-        }
-
-        /// <summary>
-        /// Converts this object to our custom type #CalendarDateTime.
-        /// </summary>
-        /// <remarks>
-        /// The .NET type `DateTime` can only represent years in the range 0000..9999.
-        /// However, the Astronomy Engine type #CalendarDateTime can represent
-        /// years in the range -999999..+999999. This is a time span of nearly 2 million years.
-        /// This function converts this `AstroTime` object to an equivalent Gregorian calendar representation.
-        /// </remarks>
-        public CalendarDateTime ToCalendarDateTime() => new CalendarDateTime(ut);
-
-        /// <summary>
-        /// Converts this `AstroTime` to ISO 8601 format, expressed in UTC with millisecond resolution.
-        /// </summary>
-        /// <returns>Example: "2019-08-30T17:45:22.763Z".</returns>
-        public override string ToString() => ToCalendarDateTime().ToString();
-
-        private static Regex re = new Regex(
-            @"^
-            ([\+\-]?[0-9]{4,6})     # 1 : year  : should be 4-digit, or 6-digit with +/- prefix, but be flexible
-            -(0[0-9]|1[012])        # 2 : month
-            -([012][0-9]|3[01])     # 3 : day
-            T([01][0-9]|2[0-3])     # 4 : hour
-            :([0-5][0-9])           # 5 : minute
-            (                       # 6
-                :
-                (                   # 7
-                    [0-5][0-9]      # optional seconds
-                    (\.[0-9]+)?     # optional fraction of a second
-                )
-            )?
-            Z$                      # terminator",
-            RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace
-        );
-
-        /// <summary>
-        /// Converts a string of the format returned by #AstroTime.ToString back into an `AstroTime`.
-        /// </summary>
-        /// <remarks>
-        /// This function attempts to parse an ISO 8601 formatted date and time string
-        /// into an `AstroTime` object.
-        /// If the string is valid, sets `time` to a new object and returns `true`.
-        /// If the string is not valid, sets `time` to `null` and returns `false`.
-        /// </remarks>
-        /// <param name="text">The string from which to parse a date and time.</param>
-        /// <param name="time">On success, receives the date and time value. On failure, receives `null`.</param>
-        public static bool TryParse(string text, out AstroTime time)
-        {
-            time = null;
-
-            if (text == null)
-                return false;
-
-            Match m = re.Match(text);
-            if (!m.Success)
-                return false;
-
-            if (!int.TryParse(m.Groups[1].Value, out int year))
-                return false;
-
-            if (!int.TryParse(m.Groups[2].Value, out int month))
-                return false;
-
-            if (!int.TryParse(m.Groups[3].Value, out int day))
-                return false;
-
-            if (!int.TryParse(m.Groups[4].Value, out int hour))
-                return false;
-
-            if (!int.TryParse(m.Groups[5].Value, out int minute))
-                return false;
-
-            double second = 0.0;
-            string stext = m.Groups[7].Value;
-            if (!string.IsNullOrEmpty(stext))
-            {
-                var styles = NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint | NumberStyles.AllowExponent;
-                if (!double.TryParse(stext, styles, CultureInfo.InvariantCulture, out second))
-                    return false;
-            }
-
-            time = new AstroTime(year, month, day, hour, minute, second);
-            return true;
-        }
-
-        /// <summary>
-        /// Calculates the sum or difference of an #AstroTime with a specified floating point number of days.
-        /// </summary>
-        /// <remarks>
-        /// Sometimes we need to adjust a given #AstroTime value by a certain amount of time.
-        /// This function adds the given real number of days in `days` to the date and time in this object.
-        ///
-        /// More precisely, the result's Universal Time field `ut` is exactly adjusted by `days` and
-        /// the Terrestrial Time field `tt` is adjusted for the resulting UTC date and time,
-        /// using a best-fit piecewise polynomial model devised by
-        /// [Espenak and Meeus](https://eclipse.gsfc.nasa.gov/SEhelp/deltatpoly2004.html).
-        /// </remarks>
-        /// <param name="days">A floating point number of days by which to adjust `time`. May be negative, 0, or positive.</param>
-        /// <returns>A date and time that is conceptually equal to `time + days`.</returns>
-        public AstroTime AddDays(double days)
-        {
-            return new AstroTime(this.ut + days);
-        }
-
-        /// <summary>
-        /// Nutation angle `psi`. Intended for unit testing only.
-        /// </summary>
-        public double Psi => psi;
-
-        /// <summary>
-        /// Nutation angle `eps`. Intended for unit testing only.
-        /// </summary>
-        public double Eps => eps;
-
-        private static double UniversalTimeFromCalendar(int year, int month, int day, int hour, int minute, double second)
-        {
-            // This formula is adapted from NOVAS C 3.1 function julian_date(),
-            // which in turn comes from Henry F. Fliegel & Thomas C. Van Flendern:
-            // Communications of the ACM, Vol 11, No 10, October 1968, p. 657.
-            // See: https://dl.acm.org/doi/pdf/10.1145/364096.364097
-            //
-            // [Don Cross - 2023-02-25] I modified the formula so that it will
-            // work correctly with years as far back as -999999.
-
-            long y = (long)year;
-            long m = (long)month;
-            long d = (long)day;
-            long f = (14 - m) / 12;
-
-            long y2000 = (
-                (d - 365972956)
-                + (1461 * (y + 1000000 - f)) / 4
-                + (367 * (m - 2 + 12 * f)) / 12
-                - (3 * ((y + 1000100 - f) / 100)) / 4
-            );
-
-            double ut = (y2000 - 0.5) + (hour / 24.0) + (minute / 1440.0) + (second / 86400.0);
-            return ut;
-        }
-    }
-
-    /// <summary>
-    /// Represents a Gregorian calendar date and time within plus or minus 1 million years from the year 0.
-    /// </summary>
-    /// <remarks>
-    /// The C# standard type `System.DateTime` only allows years from 0001 to 9999.
-    /// However, the #AstroTime class can represent years in the range -999999 to +999999.
-    /// In order to support formatting dates with extreme year values in an extrapolated
-    /// Gregorian calendar, the `CalendarDateTime` class breaks out the components of
-    /// a date into separate fields.
-    /// </remarks>
-    public struct CalendarDateTime
-    {
-        /// <summary>The year value in the range -999999 to +999999.</summary>
-        public int year;
-
-        /// <summary>The calendar month in the range 1..12.</summary>
-        public int month;
-
-        /// <summary>The day of the month in the reange 1..31.</summary>
-        public int day;
-
-        /// <summary>The hour in the range 0..23.</summary>
-        public int hour;
-
-        /// <summary>The minute in the range 0..59.</summary>
-        public int minute;
-
-        /// <summary>The real-valued second in the half-open range [0, 60).</summary>
-        public double second;
-
-        /// <summary>Convert a J2000 day value to a Gregorian calendar date.</summary>
-        /// <param name="ut">The real-valued number of days since the J2000 epoch.</param>
-        public CalendarDateTime(double ut)
-        {
-            // Adapted from the NOVAS C 3.1 function cal_date().
-            // Convert fractional days since J2000 into Gregorian calendar date/time.
-
-            double djd = ut + 2451545.5;
-            long jd = (long)Math.Floor(djd);
-            double x = 24.0 * (djd % 1.0);
-            if (x < 0.0)
-                x += 24.0;
-            hour = (int)x;
-            x = 60.0 * (x % 1.0);
-            minute = (int)x;
-            second = 60.0 * (x % 1.0);
-
-            // This is my own adjustment to the NOVAS cal_date logic
-            // so that it can handle dates much farther back in the past.
-            // I add c*400 years worth of days at the front,
-            // then subtract c*400 years at the back,
-            // which avoids negative values in the formulas that mess up
-            // the calendar date calculations.
-            // Any multiple of 400 years has the same number of days,
-            // because it eliminates all the special cases for leap years.
-            const long c = 2500;
-
-            long k = jd + (68569 + c * 146097);
-            long n = (4 * k) / 146097;
-            k = k - (146097 * n + 3) / 4;
-            long m = (4000 * (k + 1)) / 1461001;
-            k = k - (1461 * m) / 4 + 31;
-
-            month = (int)((80 * k) / 2447);
-            day = (int)(k - (2447 * month) / 80);
-            k = month / 11;
-
-            month = (int)(month + 2 - 12 * k);
-            year = (int)(100 * (n - 49) + m + k - 400 * c);
-
-            if (year < -999999 || year > +999999)
-                throw new ArgumentOutOfRangeException("The supplied time is too far from the year 2000 to be represented.");
-
-            if (month < 1 || month > 12 || day < 1 || day > 31)
-                throw new InternalError($"Invalid calendar date calculated: month={month}, day={day}.");
-        }
-
-        /// <summary>
-        /// Converts this `CalendarDateTime` to ISO 8601 format, expressed in UTC with millisecond resolution.
-        /// </summary>
-        /// <returns>Example: "2019-08-30T17:45:22.763Z".</returns>
-        public override string ToString()
-        {
-            int millis = Math.Max(0, Math.Min(59999, (int)Math.Round(second * 1000.0)));
-            string y;
-            if (year < 0)
-                y = "-" + (-year).ToString("000000");
-            else if (year <= 9999)
-                y = year.ToString("0000");
-            else
-                y = "+" + year.ToString("000000");
-            return $"{y}-{month:00}-{day:00}T{hour:00}:{minute:00}:{millis / 1000:00}.{millis % 1000:000}Z";
-        }
-    }
-
-    internal struct TerseVector
-    {
-        public double x;
-        public double y;
-        public double z;
-
-        public TerseVector(double x, double y, double z)
-        {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-        }
-
-        public static readonly TerseVector Zero = new TerseVector(0.0, 0.0, 0.0);
-
-        public AstroVector ToAstroVector(AstroTime time)
-        {
-            return new AstroVector(x, y, z, time);
-        }
-
-        public static TerseVector operator +(TerseVector a, TerseVector b)
-        {
-            return new TerseVector(a.x + b.x, a.y + b.y, a.z + b.z);
-        }
-
-        public static TerseVector operator -(TerseVector a, TerseVector b)
-        {
-            return new TerseVector(a.x - b.x, a.y - b.y, a.z - b.z);
-        }
-
-        public static TerseVector operator -(TerseVector a)
-        {
-            return new TerseVector(-a.x, -a.y, -a.z);
-        }
-
-        public static TerseVector operator *(double s, TerseVector v)
-        {
-            return new TerseVector(s * v.x, s * v.y, s * v.z);
-        }
-
-        public static TerseVector operator /(TerseVector v, double s)
-        {
-            return new TerseVector(v.x / s, v.y / s, v.z / s);
-        }
-
-        public double Quadrature()
-        {
-            return x * x + y * y + z * z;
-        }
-
-        public double Magnitude()
-        {
-            return Math.Sqrt(Quadrature());
-        }
-    }
-
-    /// <summary>
-    /// A 3D Cartesian vector whose components are expressed in Astronomical Units (AU).
-    /// </summary>
-    public struct AstroVector
-    {
-        /// <summary>
-        /// The Cartesian x-coordinate of the vector in AU.
-        /// </summary>
-        public double x;
-
-        /// <summary>
-        /// The Cartesian y-coordinate of the vector in AU.
-        /// </summary>
-        public double y;
-
-        /// <summary>
-        /// The Cartesian z-coordinate of the vector in AU.
-        /// </summary>
-        public double z;
-
-        /// <summary>
-        /// The date and time at which this vector is valid.
-        /// </summary>
-        public AstroTime t;
-
-        /// <summary>
-        /// Creates an AstroVector.
-        /// </summary>
-        /// <param name="x">A Cartesian x-coordinate expressed in AU.</param>
-        /// <param name="y">A Cartesian y-coordinate expressed in AU.</param>
-        /// <param name="z">A Cartesian z-coordinate expressed in AU.</param>
-        /// <param name="t">The date and time at which this vector is valid.</param>
-        public AstroVector(double x, double y, double z, AstroTime t)
-        {
-            if (t == null)
-                throw new NullReferenceException("AstroTime parameter is not allowed to be null.");
-
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            this.t = t;
-        }
-
-        /// <summary>
-        /// Converts the vector to a string of the format (x, y, z, t).
-        /// </summary>
-        public override string ToString()
-        {
-            return $"({x:G16}, {y:G16}, {z:G16}, {t})";
-        }
-
-        // (0.1428571428571428, 1.333333333333333, 3.846153846153846E-07, 2023-02-14T09:45:30.000Z)
-        private static Regex re = new Regex(
-            @"^\s*\(\s*                 # (
-            ([^\s,]+) \s* , \s*         # x ,
-            ([^\s,]+) \s* , \s*         # y ,
-            ([^\s,]+) \s* , \s*         # z ,
-            ([^\s\)]+) \s* \) \s* $     # t )",
-            RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace
-        );
-
-        /// <summary>
-        /// Parses a vector from a string as formatted by #AstroVector.ToString.
-        /// On success, `vector` receives the vector and the function returns `true`.
-        /// Otherwise, `vector` receives the value (0, 0, 0, null) and the function returns `false`.
-        /// </summary>
-        /// <param name="text">A string of the form "(x, y, z, t)".</param>
-        /// <param name="vector">Receives the output vector.</param>
-        public static bool TryParse(string text, out AstroVector vector)
-        {
-            vector = new AstroVector();
-            if (text != null)
-            {
-                Match m = re.Match(text);
-                if (m.Success)
-                {
-                    var styles = NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint | NumberStyles.AllowExponent;
-                    return (
-                        double.TryParse(m.Groups[1].Value, styles, CultureInfo.InvariantCulture, out vector.x) &&
-                        double.TryParse(m.Groups[2].Value, styles, CultureInfo.InvariantCulture, out vector.y) &&
-                        double.TryParse(m.Groups[3].Value, styles, CultureInfo.InvariantCulture, out vector.z) &&
-                        AstroTime.TryParse(m.Groups[4].Value, out vector.t)
-                    );
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Calculates the total distance in AU represented by this vector.
-        /// </summary>
-        /// <returns>The nonnegative length of the Cartisian vector in AU.</returns>
-        public double Length()
-        {
-            return Astronomy.hypot(x, y, z);
-        }
-
-#pragma warning disable 1591        // we don't need XML documentation for these operator overloads
-        public static AstroVector operator -(AstroVector a)
-        {
-            return new AstroVector(-a.x, -a.y, -a.z, a.t);
-        }
-
-        public static AstroVector operator -(AstroVector a, AstroVector b)
-        {
-            return new AstroVector(
-                a.x - b.x,
-                a.y - b.y,
-                a.z - b.z,
-                VerifyIdenticalTimes(a.t, b.t)
-            );
-        }
-
-        public static AstroVector operator +(AstroVector a, AstroVector b)
-        {
-            return new AstroVector(
-                a.x + b.x,
-                a.y + b.y,
-                a.z + b.z,
-                VerifyIdenticalTimes(a.t, b.t)
-            );
-        }
-
-        public static double operator *(AstroVector a, AstroVector b)
-        {
-            // the scalar dot product of two vectors
-            VerifyIdenticalTimes(a.t, b.t);
-            return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
-        }
-
-        public static AstroVector operator *(double factor, AstroVector a)
-        {
-            return new AstroVector(
-                factor * a.x,
-                factor * a.y,
-                factor * a.z,
-                a.t
-            );
-        }
-
-        public static AstroVector operator /(AstroVector a, double denom)
-        {
-            if (denom == 0.0)
-                throw new ArgumentException("Attempt to divide a vector by zero.");
-
-            return new AstroVector(
-                a.x / denom,
-                a.y / denom,
-                a.z / denom,
-                a.t
-            );
-        }
-#pragma warning restore 1591
-
-        private static AstroTime VerifyIdenticalTimes(AstroTime a, AstroTime b)
-        {
-            if (a.tt != b.tt)
-                throw new ArgumentException("Attempt to operate on two vectors from different times.");
-
-            // If either time has already had its nutation calculated, retain that work.
-            return !double.IsNaN(a.psi) ? a : b;
-        }
-    }
-
-    /// <summary>
-    /// A combination of a position vector and a velocity vector at a given moment in time.
-    /// </summary>
-    /// <remarks>
-    /// A state vector represents the dynamic state of a point at a given moment.
-    /// It includes the position vector of the point, expressed in Astronomical Units (AU)
-    /// along with the velocity vector of the point, expressed in AU/day.
-    /// </remarks>
-    public struct StateVector
-    {
-        /// <summary>
-        /// The position x-coordinate in AU.
-        /// </summary>
-        public double x;
-
-        /// <summary>
-        /// The position y-coordinate in AU.
-        /// </summary>
-        public double y;
-
-        /// <summary>
-        /// The position z-coordinate in AU.
-        /// </summary>
-        public double z;
-
-        /// <summary>
-        /// The velocity x-component in AU/day.
-        /// </summary>
-        public double vx;
-
-        /// <summary>
-        /// The velocity y-component in AU/day.
-        /// </summary>
-        public double vy;
-
-        /// <summary>
-        /// The velocity z-component in AU/day.
-        /// </summary>
-        public double vz;
-
-        /// <summary>
-        /// The date and time at which this vector is valid.
-        /// </summary>
-        public AstroTime t;
-
-        /// <summary>
-        /// Creates an AstroVector.
-        /// </summary>
-        /// <param name="x">A position x-coordinate expressed in AU.</param>
-        /// <param name="y">A position y-coordinate expressed in AU.</param>
-        /// <param name="z">A position z-coordinate expressed in AU.</param>
-        /// <param name="vx">A velocity x-component expressed in AU/day.</param>
-        /// <param name="vy">A velocity y-component expressed in AU/day.</param>
-        /// <param name="vz">A velocity z-component expressed in AU/day.</param>
-        /// <param name="t">The date and time at which this state vector is valid.</param>
-        public StateVector(double x, double y, double z, double vx, double vy, double vz, AstroTime t)
-        {
-            if (t == null)
-                throw new NullReferenceException("AstroTime parameter is not allowed to be null.");
-
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            this.vx = vx;
-            this.vy = vy;
-            this.vz = vz;
-            this.t = t;
-        }
-
-        /// <summary>
-        /// Combines a position vector and a velocity vector into a single state vector.
-        /// </summary>
-        /// <param name="pos">A position vector.</param>
-        /// <param name="vel">A velocity vector.</param>
-        /// <param name="time">The common time that represents the given position and velocity.</param>
-        public StateVector(AstroVector pos, AstroVector vel, AstroTime time)
-        {
-            if (time == null)
-                throw new NullReferenceException("AstroTime parameter is not allowed to be null.");
-
-            this.x = pos.x;
-            this.y = pos.y;
-            this.z = pos.z;
-            this.vx = vel.x;
-            this.vy = vel.y;
-            this.vz = vel.z;
-            this.t = time;
-        }
-
-        /// <summary>
-        /// Converts the state vector to a string of the format (x, y, z, vx, vy, vz, t).
-        /// </summary>
-        public override string ToString()
-        {
-            return $"({x:G16}, {y:G16}, {z:G16}, {vx:G16}, {vy:G16}, {vz:G16}, {t})";
-        }
-
-        /// <summary>
-        /// Returns the position vector associated with this state vector.
-        /// </summary>
-        public AstroVector Position()
-        {
-            return new AstroVector(x, y, z, t);
-        }
-
-        /// <summary>
-        /// Returns the velocity vector associated with this state vector.
-        /// </summary>
-        public AstroVector Velocity()
-        {
-            return new AstroVector(vx, vy, vz, t);
-        }
-    }
-
-    /// <summary>
-    /// Holds the positions and velocities of Jupiter's major 4 moons.
-    /// </summary>
-    /// <remarks>
-    /// The #Astronomy.JupiterMoons function returns an object of this type
-    /// to report position and velocity vectors for Jupiter's largest 4 moons
-    /// Io, Europa, Ganymede, and Callisto. Each position vector is relative
-    /// to the center of Jupiter. Both position and velocity are oriented in
-    /// the EQJ system (that is, using Earth's equator at the J2000 epoch).
-    /// The positions are expressed in astronomical units (AU),
-    /// and the velocities in AU/day.
-    /// </remarks>
-    public struct JupiterMoonsInfo
-    {
-        /// <summary>The position and velocity of Jupiter's moon Io.</summary>
-        public StateVector io;
-
-        /// <summary>The position and velocity of Jupiter's moon Europa.</summary>
-        public StateVector europa;
-
-        /// <summary>The position and velocity of Jupiter's moon Ganymede.</summary>
-        public StateVector ganymede;
-
-        /// <summary>The position and velocity of Jupiter's moon Callisto.</summary>
-        public StateVector callisto;
-    }
-
-    /// <summary>
-    /// A rotation matrix that can be used to transform one coordinate system to another.
-    /// </summary>
-    public struct RotationMatrix
-    {
-        /// <summary>A normalized 3x3 rotation matrix.</summary>
-        public readonly double[,] rot;
-
-        /// <summary>Creates a rotation matrix.</summary>
-        /// <param name="rot">A 3x3 array of floating point numbers defining the rotation matrix.</param>
-        public RotationMatrix(double[,] rot)
-        {
-            if (rot == null || rot.GetLength(0) != 3 || rot.GetLength(1) != 3)
-                throw new ArgumentException("Rotation matrix must be given a 3x3 array.");
-
-            this.rot = rot;
-        }
-    }
-
-    /// <summary>
-    /// Spherical coordinates: latitude, longitude, distance.
-    /// </summary>
-    public struct Spherical
-    {
-        /// <summary>The latitude angle: -90..+90 degrees.</summary>
-        public readonly double lat;
-
-        /// <summary>The longitude angle: 0..360 degrees.</summary>
-        public readonly double lon;
-
-        /// <summary>Distance in AU.</summary>
-        public readonly double dist;
-
-        /// <summary>
-        /// Creates a set of spherical coordinates.
-        /// </summary>
-        /// <param name="lat">The latitude angle: -90..+90 degrees.</param>
-        /// <param name="lon">The longitude angle: 0..360 degrees.</param>
-        /// <param name="dist">Distance in AU.</param>
-        public Spherical(double lat, double lon, double dist)
-        {
-            this.lat = lat;
-            this.lon = lon;
-            this.dist = dist;
-        }
-    }
-
-    /// <summary>
-    /// The location of an observer on (or near) the surface of the Earth.
-    /// </summary>
-    /// <remarks>
-    /// This structure is passed to functions that calculate phenomena as observed
-    /// from a particular place on the Earth.
-    /// </remarks>
-    public struct Observer
-    {
-        /// <summary>
-        /// Geographic latitude in degrees north (positive) or south (negative) of the equator.
-        /// </summary>
-        public readonly double latitude;
-
-        /// <summary>
-        /// Geographic longitude in degrees east (positive) or west (negative) of the prime meridian at Greenwich, England.
-        /// </summary>
-        public readonly double longitude;
-
-        /// <summary>
-        /// The height above (positive) or below (negative) sea level, expressed in meters.
-        /// </summary>
-        public readonly double height;
-
-        /// <summary>
-        /// Creates an Observer object.
-        /// </summary>
-        /// <param name="latitude">Geographic latitude in degrees north (positive) or south (negative) of the equator.</param>
-        /// <param name="longitude">Geographic longitude in degrees east (positive) or west (negative) of the prime meridian at Greenwich, England.</param>
-        /// <param name="height">The height above (positive) or below (negative) sea level, expressed in meters.</param>
-        public Observer(double latitude, double longitude, double height)
-        {
-            this.latitude = latitude;
-            this.longitude = longitude;
-            this.height = height;
-        }
-
-        /// <summary>
-        /// Converts an `Observer` to a string representation like `(N 26.728965, W 093.157562, 1234.567 m)`.
-        /// </summary>
-        public override string ToString()
-        {
-            var sb = new StringBuilder();
-            sb.Append("(");
-            sb.Append(latitude < 0.0 ? "S " : "N ");
-            sb.Append(Math.Abs(latitude).ToString("00.000000"));
-            sb.Append(", ");
-            sb.Append(longitude < 0.0 ? "W " : "E ");
-            sb.Append(Math.Abs(longitude).ToString("000.000000"));
-            sb.Append(", ");
-            sb.Append(height.ToString("0.000"));
-            sb.Append(" m)");
-            return sb.ToString();
-        }
-    }
-
-    /// <summary>
-    /// Selects the date for which the Earth's equator is to be used for representing equatorial coordinates.
-    /// </summary>
-    /// <remarks>
-    /// The Earth's equator is not always in the same plane due to precession and nutation.
-    ///
-    /// Sometimes it is useful to have a fixed plane of reference for equatorial coordinates
-    /// across different calendar dates.  In these cases, a fixed *epoch*, or reference time,
-    /// is helpful. Astronomy Engine provides the J2000 epoch for such cases.  This refers
-    /// to the plane of the Earth's orbit as it was on noon UTC on 1 January 2000.
-    ///
-    /// For some other purposes, it is more helpful to represent coordinates using the Earth's
-    /// equator exactly as it is on that date. For example, when calculating rise/set times
-    /// or horizontal coordinates, it is most accurate to use the orientation of the Earth's
-    /// equator at that same date and time. For these uses, Astronomy Engine allows *of-date*
-    /// calculations.
-    /// </remarks>
-    public enum EquatorEpoch
-    {
-        /// <summary>
-        /// Represent equatorial coordinates in the J2000 epoch.
-        /// </summary>
-        J2000,
-
-        /// <summary>
-        /// Represent equatorial coordinates using the Earth's equator at the given date and time.
-        /// </summary>
-        OfDate,
-    }
-
-    /// <summary>
-    /// Aberration calculation options.
-    /// </summary>
-    /// <remarks>
-    /// [Aberration](https://en.wikipedia.org/wiki/Aberration_of_light) is an effect
-    /// causing the apparent direction of an observed body to be shifted due to transverse
-    /// movement of the Earth with respect to the rays of light coming from that body.
-    /// This angular correction can be anywhere from 0 to about 20 arcseconds,
-    /// depending on the position of the observed body relative to the instantaneous
-    /// velocity vector of the Earth.
-    ///
-    /// Some Astronomy Engine functions allow optional correction for aberration by
-    /// passing in a value of this enumerated type.
-    ///
-    /// Aberration correction is useful to improve accuracy of coordinates of
-    /// apparent locations of bodies seen from the Earth.
-    /// However, because aberration affects not only the observed body (such as a planet)
-    /// but the surrounding stars, aberration may be unhelpful (for example)
-    /// for determining exactly when a planet crosses from one constellation to another.
-    /// </remarks>
-    public enum Aberration
-    {
-        /// <summary>
-        /// Request correction for aberration.
-        /// </summary>
-        Corrected,
-
-        /// <summary>
-        /// Do not correct for aberration.
-        /// </summary>
-        None,
-    }
-
-    /// <summary>
-    /// Selects whether to correct for atmospheric refraction, and if so, how.
-    /// </summary>
-    public enum Refraction
-    {
-        /// <summary>
-        /// No atmospheric refraction correction (airless).
-        /// </summary>
-        None,
-
-        /// <summary>
-        /// Recommended correction for standard atmospheric refraction.
-        /// </summary>
-        Normal,
-
-        /// <summary>
-        /// Used only for compatibility testing with JPL Horizons online tool.
-        /// </summary>
-        JplHor,
-    }
-
-    /// <summary>
-    /// Selects whether to search for a rising event or a setting event for a celestial body.
-    /// </summary>
-    public enum Direction
-    {
-        /// <summary>
-        /// Indicates a rising event: a celestial body is observed to rise above the horizon by an observer on the Earth.
-        /// </summary>
-        Rise = +1,
-
-        /// <summary>
-        /// Indicates a setting event: a celestial body is observed to sink below the horizon by an observer on the Earth.
-        /// </summary>
-        Set = -1,
-    }
-
-    /// <summary>
-    /// Indicates whether a body (especially Mercury or Venus) is best seen in the morning or evening.
-    /// </summary>
-    public enum Visibility
-    {
-        /// <summary>
-        /// The body is best visible in the morning, before sunrise.
-        /// </summary>
-        Morning,
-
-        /// <summary>
-        /// The body is best visible in the evening, after sunset.
-        /// </summary>
-        Evening,
-    }
-
-    /// <summary>
-    /// Equatorial angular and cartesian coordinates.
-    /// </summary>
-    /// <remarks>
-    /// Coordinates of a celestial body as seen from the Earth
-    /// (geocentric or topocentric, depending on context),
-    /// oriented with respect to the projection of the Earth's equator onto the sky.
-    /// </remarks>
-    public struct Equatorial
-    {
-        /// <summary>
-        /// Right ascension in sidereal hours.
-        /// </summary>
-        public readonly double ra;
-
-        /// <summary>
-        /// Declination in degrees.
-        /// </summary>
-        public readonly double dec;
-
-        /// <summary>
-        /// Distance to the celestial body in AU.
-        /// </summary>
-        public readonly double dist;
-
-        /// <summary>
-        /// Equatorial coordinates in cartesian vector form: x = March equinox, y = June solstice, z = north.
-        /// </summary>
-        public readonly AstroVector vec;
-
-        internal Equatorial(double ra, double dec, double dist, AstroVector vec)
-        {
-            this.ra = ra;
-            this.dec = dec;
-            this.dist = dist;
-            this.vec = vec;
-        }
-    }
-
-    /// <summary>
-    /// Ecliptic angular and Cartesian coordinates.
-    /// </summary>
-    /// <remarks>
-    /// Coordinates of a celestial body as seen from the center of the Sun (heliocentric),
-    /// oriented with respect to the plane of the Earth's orbit around the Sun (the ecliptic).
-    /// </remarks>
-    public struct Ecliptic
-    {
-        /// <summary>
-        /// Cartesian ecliptic vector, with components as follows:
-        /// x: the direction of the equinox along the ecliptic plane.
-        /// y: in the ecliptic plane 90 degrees prograde from the equinox.
-        /// z: perpendicular to the ecliptic plane. Positive is north.
-        /// </summary>
-        public readonly AstroVector vec;
-
-        /// <summary>
-        /// Latitude in degrees north (positive) or south (negative) of the ecliptic plane.
-        /// </summary>
-        public readonly double elat;
-
-        /// <summary>
-        /// Longitude in degrees around the ecliptic plane prograde from the equinox.
-        /// </summary>
-        public readonly double elon;
-
-        internal Ecliptic(AstroVector vec, double elat, double elon)
-        {
-            this.vec = vec;
-            this.elat = elat;
-            this.elon = elon;
-        }
-    }
-
-    /// <summary>
-    /// Coordinates of a celestial body as seen by a topocentric observer.
-    /// </summary>
-    /// <remarks>
-    /// Contains horizontal and equatorial coordinates seen by an observer on or near
-    /// the surface of the Earth (a topocentric observer).
-    /// Optionally corrected for atmospheric refraction.
-    /// </remarks>
-    public struct Topocentric
-    {
-        /// <summary>
-        /// Compass direction around the horizon in degrees. 0=North, 90=East, 180=South, 270=West.
-        /// </summary>
-        public readonly double azimuth;
-
-        /// <summary>
-        /// Angle in degrees above (positive) or below (negative) the observer's horizon.
-        /// </summary>
-        public readonly double altitude;
-
-        /// <summary>
-        /// Right ascension in sidereal hours.
-        /// </summary>
-        public readonly double ra;
-
-        /// <summary>
-        /// Declination in degrees.
-        /// </summary>
-        public readonly double dec;
-
-        internal Topocentric(double azimuth, double altitude, double ra, double dec)
-        {
-            this.azimuth = azimuth;
-            this.altitude = altitude;
-            this.ra = ra;
-            this.dec = dec;
-        }
-    }
-
-    /// <summary>
-    /// The dates and times of changes of season for a given calendar year.
-    /// Call #Astronomy.Seasons to calculate this data structure for a given year.
-    /// </summary>
-    public struct SeasonsInfo
-    {
-        /// <summary>
-        /// The date and time of the March equinox for the specified year.
-        /// </summary>
-        public readonly AstroTime mar_equinox;
-
-        /// <summary>
-        /// The date and time of the June soltice for the specified year.
-        /// </summary>
-        public readonly AstroTime jun_solstice;
-
-        /// <summary>
-        /// The date and time of the September equinox for the specified year.
-        /// </summary>
-        public readonly AstroTime sep_equinox;
-
-        /// <summary>
-        /// The date and time of the December solstice for the specified year.
-        /// </summary>
-        public readonly AstroTime dec_solstice;
-
-        internal SeasonsInfo(AstroTime mar_equinox, AstroTime jun_solstice, AstroTime sep_equinox, AstroTime dec_solstice)
-        {
-            this.mar_equinox = mar_equinox;
-            this.jun_solstice = jun_solstice;
-            this.sep_equinox = sep_equinox;
-            this.dec_solstice = dec_solstice;
-        }
-    }
-
-    /// <summary>
-    /// Information about idealized atmospheric variables at a given elevation.
-    /// </summary>
-    public struct AtmosphereInfo
-    {
-        /// <summary>
-        /// Atmospheric pressure in pascals.
-        /// </summary>
-        public double pressure;
-
-        /// <summary>
-        /// Atmospheric temperature in kelvins.
-        /// </summary>
-        public double temperature;
-
-        /// <summary>
-        /// Atmospheric density relative to sea level.
-        /// </summary>
-        public double density;
-    }
-
-    /// <summary>
-    /// A lunar quarter event (new moon, first quarter, full moon, or third quarter) along with its date and time.
-    /// </summary>
-    public struct MoonQuarterInfo
-    {
-        /// <summary>
-        /// 0=new moon, 1=first quarter, 2=full moon, 3=third quarter.
-        /// </summary>
-        public readonly int quarter;
-
-        /// <summary>
-        /// The date and time of the lunar quarter.
-        /// </summary>
-        public readonly AstroTime time;
-
-        internal MoonQuarterInfo(int quarter, AstroTime time)
-        {
-            this.quarter = quarter;
-            this.time = time;
-        }
-    }
-
-    /// <summary>
-    /// Lunar libration angles, returned by #Astronomy.Libration.
-    /// </summary>
-    public struct LibrationInfo
-    {
-        /// <summary>Sub-Earth libration ecliptic latitude angle, in degrees.</summary>
-        public double elat;
-
-        /// <summary>Sub-Earth libration ecliptic longitude angle, in degrees.</summary>
-        public double elon;
-
-        /// <summary>Moon's geocentric ecliptic latitude in degrees.</summary>
-        public double mlat;
-
-        /// <summary>Moon's geocentric ecliptic longitude in degrees.</summary>
-        public double mlon;
-
-        /// <summary>Distance between the centers of the Earth and Moon in kilometers.</summary>
-        public double dist_km;
-
-        /// <summary>The apparent angular diameter of the Moon, in degrees, as seen from the center of the Earth.</summary>
-        public double diam_deg;
-    }
-
-    /// <summary>
-    /// Information about a celestial body crossing a specific hour angle.
-    /// </summary>
-    /// <remarks>
-    /// Returned by the function #Astronomy.SearchHourAngle to report information about
-    /// a celestial body crossing a certain hour angle as seen by a specified topocentric observer.
-    /// </remarks>
-    public struct HourAngleInfo
-    {
-        /// <summary>The date and time when the body crosses the specified hour angle.</summary>
-        public readonly AstroTime time;
-
-        /// <summary>Apparent coordinates of the body at the time it crosses the specified hour angle.</summary>
-        public readonly Topocentric hor;
-
-        internal HourAngleInfo(AstroTime time, Topocentric hor)
-        {
-            this.time = time;
-            this.hor = hor;
-        }
-    }
-
-    /// <summary>
-    /// Contains information about the visibility of a celestial body at a given date and time.
-    /// See #Astronomy.Elongation for more detailed information about the members of this structure.
-    /// See also #Astronomy.SearchMaxElongation for how to search for maximum elongation events.
-    /// </summary>
-    public struct ElongationInfo
-    {
-        /// <summary>The date and time of the observation.</summary>
-        public readonly AstroTime time;
-
-        /// <summary>Whether the body is best seen in the morning or the evening.</summary>
-        public readonly Visibility visibility;
-
-        /// <summary>The angle in degrees between the body and the Sun, as seen from the Earth.</summary>
-        public readonly double elongation;
-
-        /// <summary>The difference between the ecliptic longitudes of the body and the Sun, as seen from the Earth.</summary>
-        public readonly double ecliptic_separation;
-
-        internal ElongationInfo(AstroTime time, Visibility visibility, double elongation, double ecliptic_separation)
-        {
-            this.time = time;
-            this.visibility = visibility;
-            this.elongation = elongation;
-            this.ecliptic_separation = ecliptic_separation;
-        }
-    }
-
-    /// <summary>
-    /// The type of apsis: pericenter (closest approach) or apocenter (farthest distance).
-    /// </summary>
-    public enum ApsisKind
-    {
-        /// <summary>The body is at its closest approach to the object it orbits.</summary>
-        Pericenter,
-
-        /// <summary>The body is at its farthest distance from the object it orbits.</summary>
-        Apocenter,
-    }
-
-    /// <summary>
-    /// An apsis event: pericenter (closest approach) or apocenter (farthest distance).
-    /// </summary>
-    /// <remarks>
-    /// For the Moon orbiting the Earth, or a planet orbiting the Sun, an *apsis* is an
-    /// event where the orbiting body reaches its closest or farthest point from the primary body.
-    /// The closest approach is called *pericenter* and the farthest point is *apocenter*.
-    ///
-    /// More specific terminology is common for particular orbiting bodies.
-    /// The Moon's closest approach to the Earth is called *perigee* and its farthest
-    /// point is called *apogee*. The closest approach of a planet to the Sun is called
-    /// *perihelion* and the furthest point is called *aphelion*.
-    ///
-    /// This data structure is returned by #Astronomy.SearchLunarApsis and #Astronomy.NextLunarApsis
-    /// to iterate through consecutive alternating perigees and apogees.
-    /// </remarks>
-    public struct ApsisInfo
-    {
-        /// <summary>The date and time of the apsis.</summary>
-        public readonly AstroTime time;
-
-        /// <summary>Whether this is a pericenter or apocenter event.</summary>
-        public readonly ApsisKind kind;
-
-        /// <summary>The distance between the centers of the bodies in astronomical units.</summary>
-        public readonly double dist_au;
-
-        /// <summary>The distance between the centers of the bodies in kilometers.</summary>
-        public readonly double dist_km;
-
-        internal ApsisInfo(AstroTime time, ApsisKind kind, double dist_au)
-        {
-            this.time = time;
-            this.kind = kind;
-            this.dist_au = dist_au;
-            this.dist_km = dist_au * Astronomy.KM_PER_AU;
-        }
-    }
-
-    /// <summary>The different kinds of lunar/solar eclipses.</summary>
-    public enum EclipseKind
-    {
-        /// <summary>No eclipse found.</summary>
-        None,
-
-        /// <summary>A penumbral lunar eclipse. (Never used for a solar eclipse.)</summary>
-        Penumbral,
-
-        /// <summary>A partial lunar/solar eclipse.</summary>
-        Partial,
-
-        /// <summary>An annular solar eclipse. (Never used for a lunar eclipse.)</summary>
-        Annular,
-
-        /// <summary>A total lunar/solar eclipse.</summary>
-        Total,
-    }
-
-    /// <summary>
-    /// Information about a lunar eclipse.
-    /// </summary>
-    /// <remarks>
-    /// Returned by #Astronomy.SearchLunarEclipse or #Astronomy.NextLunarEclipse
-    /// to report information about a lunar eclipse event.
-    /// When a lunar eclipse is found, it is classified as penumbral, partial, or total.
-    /// Penumbral eclipses are difficult to observe, because the Moon is only slightly dimmed
-    /// by the Earth's penumbra; no part of the Moon touches the Earth's umbra.
-    /// Partial eclipses occur when part, but not all, of the Moon touches the Earth's umbra.
-    /// Total eclipses occur when the entire Moon passes into the Earth's umbra.
-    ///
-    /// The `kind` field thus holds `EclipseKind.Penumbral`, `EclipseKind.Partial`,
-    /// or `EclipseKind.Total`, depending on the kind of lunar eclipse found.
-    ///
-    /// The `obscuration` field holds a value in the range [0, 1] that indicates what fraction
-    /// of the Moon's apparent disc area is covered by the Earth's umbra at the eclipse's peak.
-    /// This indicates how dark the peak eclipse appears. For penumbral eclipses, the obscuration
-    /// is 0, because the Moon does not pass through the Earth's umbra. For partial eclipses,
-    /// the obscuration is somewhere between 0 and 1. For total lunar eclipses, the obscuration is 1.
-    ///
-    /// Field `peak` holds the date and time of the center of the eclipse, when it is at its peak.
-    ///
-    /// Fields `sd_penum`, `sd_partial`, and `sd_total` hold the semi-duration of each phase
-    /// of the eclipse, which is half of the amount of time the eclipse spends in each
-    /// phase (expressed in minutes), or 0 if the eclipse never reaches that phase.
-    /// By converting from minutes to days, and subtracting/adding with `peak`, the caller
-    /// may determine the date and time of the beginning/end of each eclipse phase.
-    /// </remarks>
-    public struct LunarEclipseInfo
-    {
-        /// <summary>The type of lunar eclipse found.</summary>
-        public EclipseKind kind;
-
-        /// <summary>The peak fraction of the Moon's apparent disc that is covered by the Earth's umbra.</summary>
-        public double obscuration;
-
-        /// <summary>The time of the eclipse at its peak.</summary>
-        public AstroTime peak;
-
-        /// <summary>The semi-duration of the penumbral phase in minutes.</summary>
-        public double sd_penum;
-
-        /// <summary>The semi-duration of the partial phase in minutes, or 0.0 if none.</summary>
-        public double sd_partial;
-
-        /// <summary>The semi-duration of the total phase in minutes, or 0.0 if none.</summary>
-        public double sd_total;
-
-        internal LunarEclipseInfo(EclipseKind kind, double obscuration, AstroTime peak, double sd_penum, double sd_partial, double sd_total)
-        {
-            this.kind = kind;
-            this.obscuration = obscuration;
-            this.peak = peak;
-            this.sd_penum = sd_penum;
-            this.sd_partial = sd_partial;
-            this.sd_total = sd_total;
-        }
-    }
-
-
-    /// <summary>
-    /// Reports the time and geographic location of the peak of a solar eclipse.
-    /// </summary>
-    /// <remarks>
-    /// Returned by #Astronomy.SearchGlobalSolarEclipse or #Astronomy.NextGlobalSolarEclipse
-    /// to report information about a solar eclipse event.
-    ///
-    /// The eclipse is classified as partial, annular, or total, depending on the
-    /// maximum amount of the Sun's disc obscured, as seen at the peak location
-    /// on the surface of the Earth.
-    ///
-    /// The `kind` field thus holds `EclipseKind.Partial`, `EclipseKind.Annular`, or `EclipseKind.Total`.
-    /// A total eclipse is when the peak observer sees the Sun completely blocked by the Moon.
-    /// An annular eclipse is like a total eclipse, but the Moon is too far from the Earth's surface
-    /// to completely block the Sun; instead, the Sun takes on a ring-shaped appearance.
-    /// A partial eclipse is when the Moon blocks part of the Sun's disc, but nobody on the Earth
-    /// observes either a total or annular eclipse.
-    ///
-    /// If `kind` is `EclipseKind.Total` or `EclipseKind.Annular`, the `latitude` and `longitude`
-    /// fields give the geographic coordinates of the center of the Moon's shadow projected
-    /// onto the daytime side of the Earth at the instant of the eclipse's peak.
-    /// If `kind` has any other value, `latitude` and `longitude` are undefined and should
-    /// not be used.
-    ///
-    /// For total or annular eclipses, the `obscuration` field holds the fraction (0, 1]
-    /// of the Sun's apparent disc area that is blocked from view by the Moon's silhouette,
-    /// as seen by an observer located at the geographic coordinates `latitude`, `longitude`
-    /// at the darkest time `peak`. The value will always be 1 for total eclipses, and less than
-    /// 1 for annular eclipses.
-    /// For partial eclipses, `obscuration` is undefined and should not be used.
-    /// This is because there is little practical use for an obscuration value of
-    /// a partial eclipse without supplying a particular observation location.
-    /// Developers who wish to find an obscuration value for partial solar eclipses should therefore use
-    /// #Astronomy.SearchLocalSolarEclipse and provide the geographic coordinates of an observer.
-    /// </remarks>
-    public struct GlobalSolarEclipseInfo
-    {
-        /// <summary>The type of solar eclipse: `EclipseKind.Partial`, `EclipseKind.Annular`, or `EclipseKind.Total`.</summary>
-        public EclipseKind kind;
-
-        /// <summary>The peak fraction of the Sun's apparent disc area obscured by the Moon (total and annular eclipses only).</summary>
-        public double obscuration;
-
-        /// <summary>
-        /// The date and time when the solar eclipse is at its darkest.
-        /// This is the instant when the axis of the Moon's shadow cone passes closest to the Earth's center.
-        /// </summary>
-        public AstroTime peak;
-
-        /// <summary>The distance between the Sun/Moon shadow axis and the center of the Earth, in kilometers.</summary>
-        public double distance;
-
-        /// <summary>The geographic latitude at the center of the peak eclipse shadow.</summary>
-        public double latitude;
-
-        /// <summary>The geographic longitude at the center of the peak eclipse shadow.</summary>
-        public double longitude;
-    }
-
-
-    /// <summary>
-    /// Holds a time and the observed altitude of the Sun at that time.
-    /// </summary>
-    /// <remarks>
-    /// When reporting a solar eclipse observed at a specific location on the Earth
-    /// (a "local" solar eclipse), a series of events occur. In addition
-    /// to the time of each event, it is important to know the altitude of the Sun,
-    /// because each event may be invisible to the observer if the Sun is below
-    /// the horizon.
-    ///
-    /// If `altitude` is negative, the event is theoretical only; it would be
-    /// visible if the Earth were transparent, but the observer cannot actually see it.
-    /// If `altitude` is positive but less than a few degrees, visibility will be impaired by
-    /// atmospheric interference (sunrise or sunset conditions).
-    /// </remarks>
-    public struct EclipseEvent
-    {
-        /// <summary>The date and time of the event.</summary>
-        public AstroTime time;
-
-        /// <summary>
-        /// The angular altitude of the center of the Sun above/below the horizon, at `time`,
-        /// corrected for atmospheric refraction and expressed in degrees.
-        /// </summary>
-        public double altitude;
-    }
-
-
-    /// <summary>
-    /// Information about a solar eclipse as seen by an observer at a given time and geographic location.
-    /// </summary>
-    /// <remarks>
-    /// Returned by #Astronomy.SearchLocalSolarEclipse or #Astronomy.NextLocalSolarEclipse
-    /// to report information about a solar eclipse as seen at a given geographic location.
-    ///
-    /// When a solar eclipse is found, it is classified as partial, annular, or total.
-    /// The `kind` field thus holds `EclipseKind.Partial`, `EclipseKind.Annular`, or `EclipseKind.Total`.
-    /// A partial solar eclipse is when the Moon does not line up directly enough with the Sun
-    /// to completely block the Sun's light from reaching the observer.
-    /// An annular eclipse occurs when the Moon's disc is completely visible against the Sun
-    /// but the Moon is too far away to completely block the Sun's light; this leaves the
-    /// Sun with a ring-like appearance.
-    /// A total eclipse occurs when the Moon is close enough to the Earth and aligned with the
-    /// Sun just right to completely block all sunlight from reaching the observer.
-    ///
-    /// The `obscuration` field reports what fraction of the Sun's disc appears blocked
-    /// by the Moon when viewed by the observer at the peak eclipse time.
-    /// This is a value that ranges from 0 (no blockage) to 1 (total eclipse).
-    /// The obscuration value will be between 0 and 1 for partial eclipses and annular eclipses.
-    /// The value will be exactly 1 for total eclipses. Obscuration gives an indication
-    /// of how dark the eclipse appears.
-    ///
-    /// There are 5 "event" fields, each of which contains a time and a solar altitude.
-    /// Field `peak` holds the date and time of the center of the eclipse, when it is at its peak.
-    /// The fields `partial_begin` and `partial_end` are always set, and indicate when
-    /// the eclipse begins/ends. If the eclipse reaches totality or becomes annular,
-    /// `total_begin` and `total_end` indicate when the total/annular phase begins/ends.
-    /// When an event field is valid, the caller must also check its `altitude` field to
-    /// see whether the Sun is above the horizon at the time indicated by the `time` field.
-    /// See #EclipseEvent for more information.
-    /// </remarks>
-    public struct LocalSolarEclipseInfo
-    {
-        /// <summary>The type of solar eclipse: `EclipseKind.Partial`, `EclipseKind.Annular`, or `EclipseKind.Total`.</summary>
-        public EclipseKind kind;
-
-        /// <summary>The fraction of the Sun's apparent disc area obscured by the Moon at the eclipse peak.</summary>
-        public double obscuration;
-
-        /// <summary>The time and Sun altitude at the beginning of the eclipse.</summary>
-        public EclipseEvent partial_begin;
-
-        /// <summary>If this is an annular or a total eclipse, the time and Sun altitude when annular/total phase begins; otherwise invalid.</summary>
-        public EclipseEvent total_begin;
-
-        /// <summary>The time and Sun altitude when the eclipse reaches its peak.</summary>
-        public EclipseEvent peak;
-
-        /// <summary>If this is an annular or a total eclipse, the time and Sun altitude when annular/total phase ends; otherwise invalid.</summary>
-        public EclipseEvent total_end;
-
-        /// <summary>The time and Sun altitude at the end of the eclipse.</summary>
-        public EclipseEvent partial_end;
-    }
-
-
-    /// <summary>
-    /// Information about a transit of Mercury or Venus, as seen from the Earth.
-    /// </summary>
-    /// <remarks>
-    /// Returned by #Astronomy.SearchTransit or #Astronomy.NextTransit to report
-    /// information about a transit of Mercury or Venus.
-    /// A transit is when Mercury or Venus passes between the Sun and Earth so that
-    /// the other planet is seen in silhouette against the Sun.
-    ///
-    /// The `start` field reports the moment in time when the planet first becomes
-    /// visible against the Sun in its background.
-    /// The `peak` field reports when the planet is most aligned with the Sun,
-    /// as seen from the Earth.
-    /// The `finish` field reports the last moment when the planet is visible
-    /// against the Sun in its background.
-    ///
-    /// The calculations are performed from the point of view of a geocentric observer.
-    /// </remarks>
-    public struct TransitInfo
-    {
-        /// <summary>Date and time at the beginning of the transit.</summary>
-        public AstroTime start;
-
-        /// <summary>Date and time of the peak of the transit.</summary>
-        public AstroTime peak;
-
-        /// <summary>Date and time at the end of the transit.</summary>
-        public AstroTime finish;
-
-        /// <summary>Angular separation in arcminutes between the centers of the Sun and the planet at time `peak`.</summary>
-        public double separation;
-    }
-
-
-    internal struct ShadowInfo
-    {
-        public AstroTime time;
-        public double u;    // dot product of (heliocentric earth) and (geocentric moon): defines the shadow plane where the Moon is
-        public double r;    // km distance between center of Moon and the line passing through the centers of the Sun and Earth.
-        public double k;    // umbra radius in km, at the shadow plane
-        public double p;    // penumbra radius in km, at the shadow plane
-        public AstroVector target;      // coordinates of target body relative to shadow-casting body at 'time'
-        public AstroVector dir;         // heliocentric coordinates of shadow-casting body at 'time'
-
-        public ShadowInfo(AstroTime time, double u, double r, double k, double p, AstroVector target, AstroVector dir)
-        {
-            this.time = time;
-            this.u = u;
-            this.r = r;
-            this.k = k;
-            this.p = p;
-            this.target = target;
-            this.dir = dir;
-        }
-    }
-
-    /// <summary>
-    /// Information about the brightness and illuminated shape of a celestial body.
-    /// </summary>
-    /// <remarks>
-    /// Returned by the functions #Astronomy.Illumination and #Astronomy.SearchPeakMagnitude
-    /// to report the visual magnitude and illuminated fraction of a celestial body at a given date and time.
-    /// </remarks>
-    public struct IllumInfo
-    {
-        /// <summary>The date and time of the observation.</summary>
-        public readonly AstroTime time;
-
-        /// <summary>The visual magnitude of the body. Smaller values are brighter.</summary>
-        public readonly double mag;
-
-        /// <summary>The angle in degrees between the Sun and the Earth, as seen from the body. Indicates the body's phase as seen from the Earth.</summary>
-        public readonly double phase_angle;
-
-        /// <summary>A value in the range [0.0, 1.0] indicating what fraction of the body's apparent disc is illuminated, as seen from the Earth.</summary>
-        public readonly double phase_fraction;
-
-        /// <summary>The distance between the Sun and the body at the observation time.</summary>
-        public readonly double helio_dist;
-
-        /// <summary>For Saturn, the tilt angle in degrees of its rings as seen from Earth. For all other bodies, 0.</summary>
-        public readonly double ring_tilt;
-
-        internal IllumInfo(AstroTime time, double mag, double phase_angle, double helio_dist, double ring_tilt)
-        {
-            this.time = time;
-            this.mag = mag;
-            this.phase_angle = phase_angle;
-            this.phase_fraction = (1.0 + Math.Cos(Astronomy.DEG2RAD * phase_angle)) / 2.0;
-            this.helio_dist = helio_dist;
-            this.ring_tilt = ring_tilt;
-        }
-    }
-
-    /// <summary>
-    /// Information about a body's rotation axis at a given time.
-    /// </summary>
-    /// <remarks>
-    /// This structure is returned by #Astronomy.RotationAxis to report
-    /// the orientation of a body's rotation axis at a given moment in time.
-    /// The axis is specified by the direction in space that the body's north pole
-    /// points, using angular equatorial coordinates in the J2000 system (EQJ).
-    ///
-    /// Thus `ra` is the right ascension, and `dec` is the declination, of the
-    /// body's north pole vector at the given moment in time. The north pole
-    /// of a body is defined as the pole that lies on the north side of the
-    /// [Solar System's invariable plane](https://en.wikipedia.org/wiki/Invariable_plane),
-    /// regardless of the body's direction of rotation.
-    ///
-    /// The `spin` field indicates the angular position of a prime meridian
-    /// arbitrarily recommended for the body by the International Astronomical
-    /// Union (IAU).
-    ///
-    /// The fields `ra`, `dec`, and `spin` correspond to the variables
-    /// α0, δ0, and W, respectively, from
-    /// [Report of the IAU Working Group on Cartographic Coordinates and Rotational Elements: 2015](https://astropedia.astrogeology.usgs.gov/download/Docs/WGCCRE/WGCCRE2015reprint.pdf).
-    ///
-    /// The field `north` is a unit vector pointing in the direction of the body's north pole.
-    /// It is expressed in the J2000 mean equator system (EQJ).
-    /// </remarks>
-    public struct AxisInfo
-    {
-        /// <summary>The J2000 right ascension of the body's north pole direction, in sidereal hours.</summary>
-        public double ra;
-
-        /// <summary>The J2000 declination of the body's north pole direction, in degrees.</summary>
-        public double dec;
-
-        /// <summary>Rotation angle of the body's prime meridian, in degrees.</summary>
-        public double spin;
-
-        /// <summary>A J2000 dimensionless unit vector pointing in the direction of the body's north pole.</summary>
-        public AstroVector north;
-    }
-
-    /// <summary>
-    /// Indicates whether a crossing through the ecliptic plane is ascending or descending.
-    /// </summary>
-    public enum NodeEventKind
-    {
-        /// <summary>Placeholder value for a missing or invalid node.</summary>
-        Invalid = 0,
-
-        /// <summary>The body passes through the ecliptic plane from south to north.</summary>
-        Ascending = +1,
-
-        /// <summary>The body passes through the ecliptic plane from north to south.</summary>
-        Descending = -1,
-    }
-
-    /// <summary>
-    /// Information about an ascending or descending node of a body.
-    /// </summary>
-    /// <remarks>
-    /// This structure is returned by #Astronomy.SearchMoonNode and #Astronomy.NextMoonNode
-    /// to report information about the center of the Moon passing through the ecliptic plane.
-    /// </remarks>
-    public struct NodeEventInfo
-    {
-        /// <summary>The time when the body passes through the ecliptic plane.</summary>
-        public AstroTime time;
-
-        /// <summary>Whether the node is ascending (south to north) or descending (north to south).</summary>
-        public NodeEventKind kind;
-    }
-
-    /// <summary>
-    /// Represents a function whose ascending root is to be found.
-    /// See #Astronomy.Search.
-    /// </summary>
-    public abstract class SearchContext
-    {
-        /// <summary>
-        /// Evaluates the function at a given time
-        /// </summary>
-        /// <param name="time">The time at which to evaluate the function.</param>
-        /// <returns>The floating point value of the function at the specified time.</returns>
-        public abstract double Eval(AstroTime time);
-    }
-
-    internal class SearchContext_MagnitudeSlope : SearchContext
-    {
-        private readonly Body body;
-
-        public SearchContext_MagnitudeSlope(Body body)
-        {
-            this.body = body;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            // The Search() function finds a transition from negative to positive values.
-            // The derivative of magnitude y with respect to time t (dy/dt)
-            // is negative as an object gets brighter, because the magnitude numbers
-            // get smaller. At peak magnitude dy/dt = 0, then as the object gets dimmer,
-            // dy/dt > 0.
-            const double dt = 0.01;
-            AstroTime t1 = time.AddDays(-dt / 2);
-            AstroTime t2 = time.AddDays(+dt / 2);
-            IllumInfo y1 = Astronomy.Illumination(body, t1);
-            IllumInfo y2 = Astronomy.Illumination(body, t2);
-            return (y2.mag - y1.mag) / dt;
-        }
-    }
-
-    internal class SearchContext_NegElongSlope : SearchContext
-    {
-        private readonly Body body;
-
-        public SearchContext_NegElongSlope(Body body)
-        {
-            this.body = body;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            const double dt = 0.1;
-            AstroTime t1 = time.AddDays(-dt / 2.0);
-            AstroTime t2 = time.AddDays(+dt / 2.0);
-
-            double e1 = Astronomy.AngleFromSun(body, t1);
-            double e2 = Astronomy.AngleFromSun(body, t2);
-            return (e1 - e2) / dt;
-        }
-    }
-
-    internal class SearchContext_SunOffset : SearchContext
-    {
-        private readonly double targetLon;
-
-        public SearchContext_SunOffset(double targetLon)
-        {
-            this.targetLon = targetLon;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            Ecliptic ecl = Astronomy.SunPosition(time);
-            return Astronomy.LongitudeOffset(ecl.elon - targetLon);
-        }
-    }
-
-    internal class SearchContext_MoonOffset : SearchContext
-    {
-        private readonly double targetLon;
-
-        public SearchContext_MoonOffset(double targetLon)
-        {
-            this.targetLon = targetLon;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            double angle = Astronomy.MoonPhase(time);
-            return Astronomy.LongitudeOffset(angle - targetLon);
-        }
-    }
-
-    internal class SearchContext_MoonNode : SearchContext
-    {
-        public double Direction;
-
-        public override double Eval(AstroTime time)
-        {
-            Spherical moon = Astronomy.EclipticGeoMoon(time);
-            return Direction * moon.lat;
-        }
-    }
-
-    internal class SearchContext_Altitude : SearchContext
-    {
-        private readonly Body body;
-        private readonly int direction;
-        private readonly Observer observer;
-        private readonly double bodyRadiusAu;
-        private readonly double targetAltitude;
-
-        public SearchContext_Altitude(Body body, Direction direction, Observer observer, double bodyRadiusAu, double targetAltitude)
-        {
-            this.body = body;
-            this.direction = (int)direction;
-            this.observer = observer;
-            this.bodyRadiusAu = bodyRadiusAu;
-            this.targetAltitude = targetAltitude;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            Equatorial ofdate = Astronomy.Equator(body, time, observer, EquatorEpoch.OfDate, Aberration.Corrected);
-            Topocentric hor = Astronomy.Horizon(time, observer, ofdate.ra, ofdate.dec, Refraction.None);
-            double altitude = hor.altitude + Astronomy.RAD2DEG * Math.Asin(bodyRadiusAu / ofdate.dist);
-            return direction * (altitude - targetAltitude);
-        }
-    }
-
-    internal class SearchContext_MoonDistanceSlope : SearchContext
-    {
-        private readonly int direction;
-
-        public SearchContext_MoonDistanceSlope(int direction)
-        {
-            this.direction = direction;
-        }
-
-        public static double MoonDistance(AstroTime time)
-        {
-            var context = new MoonContext(time.tt / 36525.0);
-            MoonResult moon = context.CalcMoon();
-            return moon.distance_au;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            const double dt = 0.001;
-            AstroTime t1 = time.AddDays(-dt / 2.0);
-            AstroTime t2 = time.AddDays(+dt / 2.0);
-            double dist1 = MoonDistance(t1);
-            double dist2 = MoonDistance(t2);
-            return direction * (dist2 - dist1) / dt;
-        }
-    }
-
-    internal class SearchContext_PlanetDistanceSlope : SearchContext
-    {
-        private readonly double direction;
-        private readonly Body body;
-
-        public SearchContext_PlanetDistanceSlope(double direction, Body body)
-        {
-            this.direction = direction;
-            this.body = body;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            const double dt = 0.001;
-            AstroTime t1 = time.AddDays(-dt / 2.0);
-            AstroTime t2 = time.AddDays(+dt / 2.0);
-            double r1 = Astronomy.HelioDistance(body, t1);
-            double r2 = Astronomy.HelioDistance(body, t2);
-            return direction * (r2 - r1) / dt;
-        }
-    }
-
-    internal class SearchContext_EarthShadow : SearchContext
-    {
-        private readonly double radius_limit;
-        private readonly double direction;
-
-        public SearchContext_EarthShadow(double radius_limit, double direction)
-        {
-            this.radius_limit = radius_limit;
-            this.direction = direction;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            return direction * (Astronomy.EarthShadow(time).r - radius_limit);
-        }
-    }
-
-    internal class SearchContext_EarthShadowSlope : SearchContext
-    {
-        public override double Eval(AstroTime time)
-        {
-            const double dt = 1.0 / 86400.0;
-            AstroTime t1 = time.AddDays(-dt);
-            AstroTime t2 = time.AddDays(+dt);
-            ShadowInfo shadow1 = Astronomy.EarthShadow(t1);
-            ShadowInfo shadow2 = Astronomy.EarthShadow(t2);
-            return (shadow2.r - shadow1.r) / dt;
-        }
-    }
-
-    internal class SearchContext_MoonShadowSlope : SearchContext
-    {
-        public override double Eval(AstroTime time)
-        {
-            const double dt = 1.0 / 86400.0;
-            AstroTime t1 = time.AddDays(-dt);
-            AstroTime t2 = time.AddDays(+dt);
-            ShadowInfo shadow1 = Astronomy.MoonShadow(t1);
-            ShadowInfo shadow2 = Astronomy.MoonShadow(t2);
-            return (shadow2.r - shadow1.r) / dt;
-        }
-    }
-
-    internal class SearchContext_LocalMoonShadowSlope : SearchContext
-    {
-        private readonly Observer observer;
-
-        public SearchContext_LocalMoonShadowSlope(Observer observer)
-        {
-            this.observer = observer;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            const double dt = 1.0 / 86400.0;
-            AstroTime t1 = time.AddDays(-dt);
-            AstroTime t2 = time.AddDays(+dt);
-            ShadowInfo shadow1 = Astronomy.LocalMoonShadow(t1, observer);
-            ShadowInfo shadow2 = Astronomy.LocalMoonShadow(t2, observer);
-            return (shadow2.r - shadow1.r) / dt;
-        }
-    }
-
-    internal class SearchContext_PlanetShadowSlope : SearchContext
-    {
-        private Body body;
-        private double planet_radius_km;
-
-        public SearchContext_PlanetShadowSlope(Body body, double planet_radius_km)
-        {
-            this.body = body;
-            this.planet_radius_km = planet_radius_km;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            const double dt = 1.0 / 86400.0;
-            ShadowInfo shadow1 = Astronomy.PlanetShadow(body, planet_radius_km, time.AddDays(-dt));
-            ShadowInfo shadow2 = Astronomy.PlanetShadow(body, planet_radius_km, time.AddDays(+dt));
-            return (shadow2.r - shadow1.r) / dt;
-        }
-    }
-
-    internal class SearchContext_PlanetShadowBoundary : SearchContext
-    {
-        private Body body;
-        private double planet_radius_km;
-        private double direction;
-
-        public SearchContext_PlanetShadowBoundary(Body body, double planet_radius_km, double direction)
-        {
-            this.body = body;
-            this.planet_radius_km = planet_radius_km;
-            this.direction = direction;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            ShadowInfo shadow = Astronomy.PlanetShadow(body, planet_radius_km, time);
-            return direction * (shadow.r - shadow.p);
-        }
-    }
-
-    internal class SearchContext_LocalEclipseTransition : SearchContext
-    {
-        private readonly Func<ShadowInfo, double> func;
-        private readonly double direction;
-        private readonly Observer observer;
-
-        public SearchContext_LocalEclipseTransition(Func<ShadowInfo, double> func, double direction, Observer observer)
-        {
-            this.func = func;
-            this.direction = direction;
-            this.observer = observer;
-        }
-
-        public override double Eval(AstroTime time)
-        {
-            ShadowInfo shadow = Astronomy.LocalMoonShadow(time, observer);
-            return direction * func(shadow);
-        }
-    }
-
-
-    internal class PascalArray2<ElemType>
-    {
-        private readonly int xmin;
-        private readonly int xmax;
-        private readonly int ymin;
-        private readonly int ymax;
-        private readonly ElemType[,] array;
-
-        public PascalArray2(int xmin, int xmax, int ymin, int ymax)
-        {
-            this.xmin = xmin;
-            this.xmax = xmax;
-            this.ymin = ymin;
-            this.ymax = ymax;
-            this.array = new ElemType[(xmax - xmin) + 1, (ymax - ymin) + 1];
-        }
-
-        public ElemType this[int x, int y]
-        {
-            get { return array[x - xmin, y - ymin]; }
-            set { array[x - xmin, y - ymin] = value; }
-        }
-    }
-
-    internal class MoonContext
-    {
-        double T;
-        double DGAM;
-        double DLAM, N, GAM1C, SINPI;
-        double L0, L, LS, F, D, S;
-        double DL0, DL, DLS, DF, DD, DS;
-        PascalArray2<double> CO = new PascalArray2<double>(-6, 6, 1, 4);
-        PascalArray2<double> SI = new PascalArray2<double>(-6, 6, 1, 4);
-
-        static double Frac(double x)
-        {
-            return x - Math.Floor(x);
-        }
-
-        static void AddThe(
-            double c1, double s1, double c2, double s2,
-            out double c, out double s)
-        {
-            c = c1 * c2 - s1 * s2;
-            s = s1 * c2 + c1 * s2;
-        }
-
-        static double Sine(double phi)
-        {
-            // sine, of phi in revolutions, not radians
-            return Math.Sin(2.0 * Math.PI * phi);
-        }
-
-        void LongPeriodic()
-        {
-            double S1 = Sine(0.19833 + 0.05611 * T);
-            double S2 = Sine(0.27869 + 0.04508 * T);
-            double S3 = Sine(0.16827 - 0.36903 * T);
-            double S4 = Sine(0.34734 - 5.37261 * T);
-            double S5 = Sine(0.10498 - 5.37899 * T);
-            double S6 = Sine(0.42681 - 0.41855 * T);
-            double S7 = Sine(0.14943 - 5.37511 * T);
-
-            DL0 = 0.84 * S1 + 0.31 * S2 + 14.27 * S3 + 7.26 * S4 + 0.28 * S5 + 0.24 * S6;
-            DL = 2.94 * S1 + 0.31 * S2 + 14.27 * S3 + 9.34 * S4 + 1.12 * S5 + 0.83 * S6;
-            DLS = -6.40 * S1 - 1.89 * S6;
-            DF = 0.21 * S1 + 0.31 * S2 + 14.27 * S3 - 88.70 * S4 - 15.30 * S5 + 0.24 * S6 - 1.86 * S7;
-            DD = DL0 - DLS;
-            DGAM = -3332E-9 * Sine(0.59734 - 5.37261 * T)
-                    - 539E-9 * Sine(0.35498 - 5.37899 * T)
-                    - 64E-9 * Sine(0.39943 - 5.37511 * T);
-        }
-
-        void Term(int p, int q, int r, int s, out double x, out double y)
-        {
-            x = 1.0;
-            y = 0.0;
-            if (p != 0) AddThe(x, y, CO[p, 1], SI[p, 1], out x, out y);
-            if (q != 0) AddThe(x, y, CO[q, 2], SI[q, 2], out x, out y);
-            if (r != 0) AddThe(x, y, CO[r, 3], SI[r, 3], out x, out y);
-            if (s != 0) AddThe(x, y, CO[s, 4], SI[s, 4], out x, out y);
-        }
-
-        void AddSol(
-            double coeffl,
-            double coeffs,
-            double coeffg,
-            double coeffp,
-            int p,
-            int q,
-            int r,
-            int s)
-        {
-            double x, y;
-            Term(p, q, r, s, out x, out y);
-            DLAM += coeffl * y;
-            DS += coeffs * y;
-            GAM1C += coeffg * x;
-            SINPI += coeffp * x;
-        }
-
-        void ADDN(double coeffn, int p, int q, int r, int s)
-        {
-            double x, y;
-            Term(p, q, r, s, out x, out y);
-            N += coeffn * y;
-        }
-
-        void SolarN()
-        {
-            N = 0.0;
-            ADDN(-526.069, 0, 0, 1, -2);
-            ADDN(-3.352, 0, 0, 1, -4);
-            ADDN(+44.297, +1, 0, 1, -2);
-            ADDN(-6.000, +1, 0, 1, -4);
-            ADDN(+20.599, -1, 0, 1, 0);
-            ADDN(-30.598, -1, 0, 1, -2);
-            ADDN(-24.649, -2, 0, 1, 0);
-            ADDN(-2.000, -2, 0, 1, -2);
-            ADDN(-22.571, 0, +1, 1, -2);
-            ADDN(+10.985, 0, -1, 1, -2);
-        }
-
-        void Planetary()
-        {
-            DLAM +=
-                +0.82 * Sine(0.7736 - 62.5512 * T) + 0.31 * Sine(0.0466 - 125.1025 * T)
-                + 0.35 * Sine(0.5785 - 25.1042 * T) + 0.66 * Sine(0.4591 + 1335.8075 * T)
-                + 0.64 * Sine(0.3130 - 91.5680 * T) + 1.14 * Sine(0.1480 + 1331.2898 * T)
-                + 0.21 * Sine(0.5918 + 1056.5859 * T) + 0.44 * Sine(0.5784 + 1322.8595 * T)
-                + 0.24 * Sine(0.2275 - 5.7374 * T) + 0.28 * Sine(0.2965 + 2.6929 * T)
-                + 0.33 * Sine(0.3132 + 6.3368 * T);
-        }
-
-        internal MoonContext(double centuries_since_j2000)
-        {
-            int I, J, MAX;
-            double T2, ARG, FAC;
-            double c, s;
-
-            T = centuries_since_j2000;
-            T2 = T * T;
-            DLAM = 0;
-            DS = 0;
-            GAM1C = 0;
-            SINPI = 3422.7;
-            LongPeriodic();
-            L0 = Astronomy.PI2 * Frac(0.60643382 + 1336.85522467 * T - 0.00000313 * T2) + DL0 / Astronomy.ARC;
-            L = Astronomy.PI2 * Frac(0.37489701 + 1325.55240982 * T + 0.00002565 * T2) + DL / Astronomy.ARC;
-            LS = Astronomy.PI2 * Frac(0.99312619 + 99.99735956 * T - 0.00000044 * T2) + DLS / Astronomy.ARC;
-            F = Astronomy.PI2 * Frac(0.25909118 + 1342.22782980 * T - 0.00000892 * T2) + DF / Astronomy.ARC;
-            D = Astronomy.PI2 * Frac(0.82736186 + 1236.85308708 * T - 0.00000397 * T2) + DD / Astronomy.ARC;
-            for (I = 1; I <= 4; ++I)
-            {
-                switch (I)
-                {
-                    case 1: ARG = L; MAX = 4; FAC = 1.000002208; break;
-                    case 2: ARG = LS; MAX = 3; FAC = 0.997504612 - 0.002495388 * T; break;
-                    case 3: ARG = F; MAX = 4; FAC = 1.000002708 + 139.978 * DGAM; break;
-                    default: ARG = D; MAX = 6; FAC = 1.0; break;
-                }
-                CO[0, I] = 1.0;
-                CO[1, I] = Math.Cos(ARG) * FAC;
-                SI[0, I] = 0.0;
-                SI[1, I] = Math.Sin(ARG) * FAC;
-                for (J = 2; J <= MAX; ++J)
-                {
-                    AddThe(CO[J - 1, I], SI[J - 1, I], CO[1, I], SI[1, I], out c, out s);
-                    CO[J, I] = c;
-                    SI[J, I] = s;
-                }
-
-                for (J = 1; J <= MAX; ++J)
-                {
-                    CO[-J, I] = CO[J, I];
-                    SI[-J, I] = -SI[J, I];
-                }
-            }
-        }
-
-        internal MoonResult CalcMoon()
-        {
-            ++Astronomy.CalcMoonCount;
-
-            AddSol(13.9020, 14.0600, -0.0010, 0.2607, 0, 0, 0, 4);
-            AddSol(0.4030, -4.0100, 0.3940, 0.0023, 0, 0, 0, 3);
-            AddSol(2369.9120, 2373.3600, 0.6010, 28.2333, 0, 0, 0, 2);
-            AddSol(-125.1540, -112.7900, -0.7250, -0.9781, 0, 0, 0, 1);
-            AddSol(1.9790, 6.9800, -0.4450, 0.0433, 1, 0, 0, 4);
-            AddSol(191.9530, 192.7200, 0.0290, 3.0861, 1, 0, 0, 2);
-            AddSol(-8.4660, -13.5100, 0.4550, -0.1093, 1, 0, 0, 1);
-            AddSol(22639.5000, 22609.0700, 0.0790, 186.5398, 1, 0, 0, 0);
-            AddSol(18.6090, 3.5900, -0.0940, 0.0118, 1, 0, 0, -1);
-            AddSol(-4586.4650, -4578.1300, -0.0770, 34.3117, 1, 0, 0, -2);
-            AddSol(3.2150, 5.4400, 0.1920, -0.0386, 1, 0, 0, -3);
-            AddSol(-38.4280, -38.6400, 0.0010, 0.6008, 1, 0, 0, -4);
-            AddSol(-0.3930, -1.4300, -0.0920, 0.0086, 1, 0, 0, -6);
-            AddSol(-0.2890, -1.5900, 0.1230, -0.0053, 0, 1, 0, 4);
-            AddSol(-24.4200, -25.1000, 0.0400, -0.3000, 0, 1, 0, 2);
-            AddSol(18.0230, 17.9300, 0.0070, 0.1494, 0, 1, 0, 1);
-            AddSol(-668.1460, -126.9800, -1.3020, -0.3997, 0, 1, 0, 0);
-            AddSol(0.5600, 0.3200, -0.0010, -0.0037, 0, 1, 0, -1);
-            AddSol(-165.1450, -165.0600, 0.0540, 1.9178, 0, 1, 0, -2);
-            AddSol(-1.8770, -6.4600, -0.4160, 0.0339, 0, 1, 0, -4);
-            AddSol(0.2130, 1.0200, -0.0740, 0.0054, 2, 0, 0, 4);
-            AddSol(14.3870, 14.7800, -0.0170, 0.2833, 2, 0, 0, 2);
-            AddSol(-0.5860, -1.2000, 0.0540, -0.0100, 2, 0, 0, 1);
-            AddSol(769.0160, 767.9600, 0.1070, 10.1657, 2, 0, 0, 0);
-            AddSol(1.7500, 2.0100, -0.0180, 0.0155, 2, 0, 0, -1);
-            AddSol(-211.6560, -152.5300, 5.6790, -0.3039, 2, 0, 0, -2);
-            AddSol(1.2250, 0.9100, -0.0300, -0.0088, 2, 0, 0, -3);
-            AddSol(-30.7730, -34.0700, -0.3080, 0.3722, 2, 0, 0, -4);
-            AddSol(-0.5700, -1.4000, -0.0740, 0.0109, 2, 0, 0, -6);
-            AddSol(-2.9210, -11.7500, 0.7870, -0.0484, 1, 1, 0, 2);
-            AddSol(1.2670, 1.5200, -0.0220, 0.0164, 1, 1, 0, 1);
-            AddSol(-109.6730, -115.1800, 0.4610, -0.9490, 1, 1, 0, 0);
-            AddSol(-205.9620, -182.3600, 2.0560, 1.4437, 1, 1, 0, -2);
-            AddSol(0.2330, 0.3600, 0.0120, -0.0025, 1, 1, 0, -3);
-            AddSol(-4.3910, -9.6600, -0.4710, 0.0673, 1, 1, 0, -4);
-            AddSol(0.2830, 1.5300, -0.1110, 0.0060, 1, -1, 0, 4);
-            AddSol(14.5770, 31.7000, -1.5400, 0.2302, 1, -1, 0, 2);
-            AddSol(147.6870, 138.7600, 0.6790, 1.1528, 1, -1, 0, 0);
-            AddSol(-1.0890, 0.5500, 0.0210, 0.0000, 1, -1, 0, -1);
-            AddSol(28.4750, 23.5900, -0.4430, -0.2257, 1, -1, 0, -2);
-            AddSol(-0.2760, -0.3800, -0.0060, -0.0036, 1, -1, 0, -3);
-            AddSol(0.6360, 2.2700, 0.1460, -0.0102, 1, -1, 0, -4);
-            AddSol(-0.1890, -1.6800, 0.1310, -0.0028, 0, 2, 0, 2);
-            AddSol(-7.4860, -0.6600, -0.0370, -0.0086, 0, 2, 0, 0);
-            AddSol(-8.0960, -16.3500, -0.7400, 0.0918, 0, 2, 0, -2);
-            AddSol(-5.7410, -0.0400, 0.0000, -0.0009, 0, 0, 2, 2);
-            AddSol(0.2550, 0.0000, 0.0000, 0.0000, 0, 0, 2, 1);
-            AddSol(-411.6080, -0.2000, 0.0000, -0.0124, 0, 0, 2, 0);
-            AddSol(0.5840, 0.8400, 0.0000, 0.0071, 0, 0, 2, -1);
-            AddSol(-55.1730, -52.1400, 0.0000, -0.1052, 0, 0, 2, -2);
-            AddSol(0.2540, 0.2500, 0.0000, -0.0017, 0, 0, 2, -3);
-            AddSol(0.0250, -1.6700, 0.0000, 0.0031, 0, 0, 2, -4);
-            AddSol(1.0600, 2.9600, -0.1660, 0.0243, 3, 0, 0, 2);
-            AddSol(36.1240, 50.6400, -1.3000, 0.6215, 3, 0, 0, 0);
-            AddSol(-13.1930, -16.4000, 0.2580, -0.1187, 3, 0, 0, -2);
-            AddSol(-1.1870, -0.7400, 0.0420, 0.0074, 3, 0, 0, -4);
-            AddSol(-0.2930, -0.3100, -0.0020, 0.0046, 3, 0, 0, -6);
-            AddSol(-0.2900, -1.4500, 0.1160, -0.0051, 2, 1, 0, 2);
-            AddSol(-7.6490, -10.5600, 0.2590, -0.1038, 2, 1, 0, 0);
-            AddSol(-8.6270, -7.5900, 0.0780, -0.0192, 2, 1, 0, -2);
-            AddSol(-2.7400, -2.5400, 0.0220, 0.0324, 2, 1, 0, -4);
-            AddSol(1.1810, 3.3200, -0.2120, 0.0213, 2, -1, 0, 2);
-            AddSol(9.7030, 11.6700, -0.1510, 0.1268, 2, -1, 0, 0);
-            AddSol(-0.3520, -0.3700, 0.0010, -0.0028, 2, -1, 0, -1);
-            AddSol(-2.4940, -1.1700, -0.0030, -0.0017, 2, -1, 0, -2);
-            AddSol(0.3600, 0.2000, -0.0120, -0.0043, 2, -1, 0, -4);
-            AddSol(-1.1670, -1.2500, 0.0080, -0.0106, 1, 2, 0, 0);
-            AddSol(-7.4120, -6.1200, 0.1170, 0.0484, 1, 2, 0, -2);
-            AddSol(-0.3110, -0.6500, -0.0320, 0.0044, 1, 2, 0, -4);
-            AddSol(0.7570, 1.8200, -0.1050, 0.0112, 1, -2, 0, 2);
-            AddSol(2.5800, 2.3200, 0.0270, 0.0196, 1, -2, 0, 0);
-            AddSol(2.5330, 2.4000, -0.0140, -0.0212, 1, -2, 0, -2);
-            AddSol(-0.3440, -0.5700, -0.0250, 0.0036, 0, 3, 0, -2);
-            AddSol(-0.9920, -0.0200, 0.0000, 0.0000, 1, 0, 2, 2);
-            AddSol(-45.0990, -0.0200, 0.0000, -0.0010, 1, 0, 2, 0);
-            AddSol(-0.1790, -9.5200, 0.0000, -0.0833, 1, 0, 2, -2);
-            AddSol(-0.3010, -0.3300, 0.0000, 0.0014, 1, 0, 2, -4);
-            AddSol(-6.3820, -3.3700, 0.0000, -0.0481, 1, 0, -2, 2);
-            AddSol(39.5280, 85.1300, 0.0000, -0.7136, 1, 0, -2, 0);
-            AddSol(9.3660, 0.7100, 0.0000, -0.0112, 1, 0, -2, -2);
-            AddSol(0.2020, 0.0200, 0.0000, 0.0000, 1, 0, -2, -4);
-            AddSol(0.4150, 0.1000, 0.0000, 0.0013, 0, 1, 2, 0);
-            AddSol(-2.1520, -2.2600, 0.0000, -0.0066, 0, 1, 2, -2);
-            AddSol(-1.4400, -1.3000, 0.0000, 0.0014, 0, 1, -2, 2);
-            AddSol(0.3840, -0.0400, 0.0000, 0.0000, 0, 1, -2, -2);
-            AddSol(1.9380, 3.6000, -0.1450, 0.0401, 4, 0, 0, 0);
-            AddSol(-0.9520, -1.5800, 0.0520, -0.0130, 4, 0, 0, -2);
-            AddSol(-0.5510, -0.9400, 0.0320, -0.0097, 3, 1, 0, 0);
-            AddSol(-0.4820, -0.5700, 0.0050, -0.0045, 3, 1, 0, -2);
-            AddSol(0.6810, 0.9600, -0.0260, 0.0115, 3, -1, 0, 0);
-            AddSol(-0.2970, -0.2700, 0.0020, -0.0009, 2, 2, 0, -2);
-            AddSol(0.2540, 0.2100, -0.0030, 0.0000, 2, -2, 0, -2);
-            AddSol(-0.2500, -0.2200, 0.0040, 0.0014, 1, 3, 0, -2);
-            AddSol(-3.9960, 0.0000, 0.0000, 0.0004, 2, 0, 2, 0);
-            AddSol(0.5570, -0.7500, 0.0000, -0.0090, 2, 0, 2, -2);
-            AddSol(-0.4590, -0.3800, 0.0000, -0.0053, 2, 0, -2, 2);
-            AddSol(-1.2980, 0.7400, 0.0000, 0.0004, 2, 0, -2, 0);
-            AddSol(0.5380, 1.1400, 0.0000, -0.0141, 2, 0, -2, -2);
-            AddSol(0.2630, 0.0200, 0.0000, 0.0000, 1, 1, 2, 0);
-            AddSol(0.4260, 0.0700, 0.0000, -0.0006, 1, 1, -2, -2);
-            AddSol(-0.3040, 0.0300, 0.0000, 0.0003, 1, -1, 2, 0);
-            AddSol(-0.3720, -0.1900, 0.0000, -0.0027, 1, -1, -2, 2);
-            AddSol(0.4180, 0.0000, 0.0000, 0.0000, 0, 0, 4, 0);
-            AddSol(-0.3300, -0.0400, 0.0000, 0.0000, 3, 0, 2, 0);
-
-            SolarN();
-            Planetary();
-            S = F + DS / Astronomy.ARC;
-
-            double lat_seconds = (1.000002708 + 139.978 * DGAM) * (18518.511 + 1.189 + GAM1C) * Math.Sin(S) - 6.24 * Math.Sin(3 * S) + N;
-
-            return new MoonResult(
-                Astronomy.PI2 * Frac((L0 + DLAM / Astronomy.ARC) / Astronomy.PI2),
-                lat_seconds * (Astronomy.DEG2RAD / 3600.0),
-                (Astronomy.ARC * Astronomy.EARTH_EQUATORIAL_RADIUS_AU) / (0.999953253 * SINPI)
-            );
-        }
-    }
-
-    internal struct MoonResult
-    {
-        public readonly double geo_eclip_lon;
-        public readonly double geo_eclip_lat;
-        public readonly double distance_au;
-
-        public MoonResult(double lon, double lat, double dist)
-        {
-            this.geo_eclip_lon = lon;
-            this.geo_eclip_lat = lat;
-            this.distance_au = dist;
-        }
-    }
-
-    /// <summary>
-    /// Reports the constellation that a given celestial point lies within.
-    /// </summary>
-    /// <remarks>
-    /// The #Astronomy.Constellation function returns this struct
-    /// to report which constellation corresponds with a given point in the sky.
-    /// Constellations are defined with respect to the B1875 equatorial system
-    /// per IAU standard. Although `Astronomy.Constellation` requires J2000 equatorial
-    /// coordinates, the struct contains converted B1875 coordinates for reference.
-    /// </remarks>
-    public struct ConstellationInfo
-    {
-        /// <summary>
-        /// 3-character mnemonic symbol for the constellation, e.g. "Ori".
-        /// </summary>
-        public readonly string Symbol;
-
-        /// <summary>
-        /// Full name of constellation, e.g. "Orion".
-        /// </summary>
-        public readonly string Name;
-
-        /// <summary>
-        /// Right ascension expressed in B1875 coordinates.
-        /// </summary>
-        public readonly double Ra1875;
-
-        /// <summary>
-        /// Declination expressed in B1875 coordinates.
-        /// </summary>
-        public readonly double Dec1875;
-
-        internal ConstellationInfo(string symbol, string name, double ra1875, double dec1875)
-        {
-            this.Symbol = symbol;
-            this.Name = name;
-            this.Ra1875 = ra1875;
-            this.Dec1875 = dec1875;
-        }
-    }
-
-    /// <summary>
-    /// A simulation of zero or more small bodies moving through the Solar System.
-    /// </summary>
-    /// <remarks>
-    /// This class calculates the movement of arbitrary small bodies,
-    /// such as asteroids or comets, that move through the Solar System.
-    /// It does so by calculating the gravitational forces on the small bodies
-    /// from the Sun and planets. The user of this class supplies an enumeration
-    /// of initial positions and velocities for the small bodies.
-    /// Then the class can update the positions and velocities over small time steps.
-    /// </remarks>
-    public class GravitySimulator
-    {
-        /// <summary>
-        /// The origin of the reference frame. See constructor for more info.
-        /// </summary>
-        public readonly Body OriginBody;
-
-        private GravSimEndpoint prev;
-        private GravSimEndpoint curr;
-        private const int GravitatorArraySize = 1 + (int)Body.Sun;
-        private static readonly int[] PlanetIndexes = new int[] {
-            (int)Body.Mercury,
-            (int)Body.Venus,
-            (int)Body.Earth,
-            (int)Body.Mars,
-            (int)Body.Jupiter,
-            (int)Body.Saturn,
-            (int)Body.Uranus,
-            (int)Body.Neptune
-        };
-
-        /// <summary>Creates a gravity simulation object.</summary>
-        /// <param name="originBody">
-        /// Specifies the origin of the reference frame.
-        /// All position vectors and velocity vectors will use `originBody`
-        /// as the origin of the coordinate system.
-        /// This origin applies to all the input vectors provided in the
-        /// `bodyStates` parameter of this function, along with all
-        /// output vectors returned by #GravitySimulator.Update.
-        /// Most callers will want to provide one of the following:
-        /// `Body.Sun` for heliocentric coordinates,
-        /// `Body.SSB` for solar system barycentric coordinates,
-        /// or `Body.Earth` for geocentric coordinates. Note that the
-        /// gravity simulator does not correct for light travel time;
-        /// all state vectors are tied to a Newtonian "instantaneous" time.
-        /// </param>
-        /// <param name="time">
-        /// The initial time at which to start the simulation.
-        /// </param>
-        /// <param name="bodyStates">
-        /// An enumeration of zero or more initial state vectors (positions and velocities)
-        /// of the small bodies to be simulated.
-        /// The caller must know the positions and velocities of the small bodies at an initial moment in time.
-        /// Their positions and velocities are expressed with respect to `originBody`, using equatorial
-        /// J2000 orientation (EQJ).
-        /// Positions are expressed in astronomical units (AU).
-        /// Velocities are expressed in AU/day.
-        /// All the times embedded within the state vectors must be exactly equal to `time`,
-        /// or this constructor will throw an exception.
-        /// If `bodyStates` is null, the gravity simulator will contain zero small bodies.
-        /// </param>
-        public GravitySimulator(
-            Body originBody,
-            AstroTime time,
-            IEnumerable<StateVector> bodyStates)
-        {
-            OriginBody = originBody;
-
-            // Verify that all the state vectors have matching times.
-            StateVector[] bodyStateArray = (bodyStates == null) ? new StateVector[0] : bodyStates.ToArray();
-            foreach (StateVector b in bodyStateArray)
-                if (b.t.tt != time.tt)
-                    throw new ArgumentException("Inconsistent time(s) in bodyStates");
-
-            prev = new GravSimEndpoint
-            {
-                time = time,
-                gravitators = new body_state_t[GravitatorArraySize],
-                bodies = new body_grav_calc_t[bodyStateArray.Length],
-            };
-
-            curr = new GravSimEndpoint
-            {
-                time = time,
-                gravitators = new body_state_t[GravitatorArraySize],
-                bodies = bodyStateArray.Select(b =>
-                    new body_grav_calc_t(
-                        time.tt,
-                        new TerseVector(b.x, b.y, b.z),
-                        new TerseVector(b.vx, b.vy, b.vz),
-                        TerseVector.Zero
-                    )
-                ).ToArray(),
-            };
-
-            // Calculate the states of the Sun and planets.
-            CalcSolarSystem();
-
-            // We need to do all the physics calculations in barycentric coordinates.
-            // But the caller provides the input vectors with respect to `originBody`.
-            // Correct the input body state vectors for the specified origin.
-            if (originBody != Body.SSB)
-            {
-                // Determine the barycentric state of the origin body.
-                body_state_t ostate = InternalBodyState(originBody);
-
-                // Add barycentric origin to origin-centric bodies to obtain barycentric bodies.
-                for (int i = 0; i < curr.bodies.Length; ++i)
-                {
-                    curr.bodies[i].r += ostate.r;
-                    curr.bodies[i].v += ostate.v;
-                }
-            }
-
-            // Calculate the net acceleration experienced by the small bodies.
-            CalcBodyAccelerations();
-
-            // To prepare for a possible swap operation, duplicate the current state into the previous state.
-            Duplicate();
-        }
-
-        /// <summary>
-        /// The number of small bodies that are included in this gravity simulation.
-        /// </summary>
-        /// <remarks>
-        /// #GravitySimulator.Update requres the caller to pass in an array to
-        /// receive updated state vectors for the small bodies. This array must
-        /// have the same number of elements as the bodies that are being simulated.
-        /// `NumSmallBodies` returns this number as a convenience.
-        /// </remarks>
-        public int NumSmallBodies => curr.bodies.Length;
-
-        /// <summary>
-        /// The time represented by the current step of the gravity simulation.
-        /// </summary>
-        public AstroTime Time => curr.time;
-
-        /// <summary>
-        /// Advances a gravity simulation by a small time step.
-        /// </summary>
-        /// <remarks>
-        /// Updates the simulation of the user-supplied small bodies
-        /// to the time indicated by the `time` parameter.
-        /// Updates the supplied array `bodyStates` of state vectors for the small bodies.
-        /// This array must be the same size as the number of bodies supplied
-        /// to the constructor of this object.
-        /// The positions and velocities in the returned array are referenced
-        /// to the `originBody` that was used to construct this simulator.
-        /// </remarks>
-        /// <param name="time">
-        /// A time that is a small increment away from the current simulation time.
-        /// It is up to the developer to figure out an appropriate time increment.
-        /// Depending on the trajectories, a smaller or larger increment
-        /// may be needed for the desired accuracy. Some experimentation may be needed.
-        /// Generally, bodies that stay in the outer Solar System and move slowly can
-        /// use larger time steps.  Bodies that pass into the inner Solar System and
-        /// move faster will need a smaller time step to maintain accuracy.
-        /// The `time` value may be after or before the current simulation time
-        /// to move forward or backward in time.
-        /// </param>
-        /// <param name="bodyStates">
-        /// If this array is not null, it must contain exactly the same number
-        /// of elements as the number of small bodies that were added when this
-        /// simulator was created. The non-null array receives updated state vectors
-        /// for the simulated small bodies.
-        /// If `bodyStates` is null, the simulation is updated but without returning
-        /// the state vectors.
-        /// </param>
-        public void Update(AstroTime time, StateVector[] bodyStates)
-        {
-            int nbodies = NumSmallBodies;
-
-            if (bodyStates != null && bodyStates.Length != nbodies)
-                throw new ArgumentException($"This simulation contains {nbodies} small bodies, but the {nameof(bodyStates)} array has length {bodyStates.Length}. The array must either be null, or it must have the same number of elements.");
-
-            double dt = time.tt - curr.time.tt;
-            if (dt == 0.0)
-            {
-                // Special case: the time has not changed, so skip the usual physics calculations.
-                // This allows another way for the caller to query the current body states.
-                // It is also necessary to avoid dividing by `dt` if `dt` is zero.
-                // To prepare for a possible swap operation, duplicate the current state into the previous state.
-                Duplicate();
-            }
-            else
-            {
-                // Exchange the current state with the previous state. Then calculate the new current state.
-                Swap();
-
-                // Update the current time.
-                curr.time = time;
-
-                // Now that the time is set, it is safe to update the Solar System.
-                CalcSolarSystem();
-
-                // Estimate the positions of the small bodies as if their existing
-                // accelerations apply across the whole time interval.
-                for (int i = 0; i < nbodies; ++i)
-                    curr.bodies[i].r = Astronomy.UpdatePosition(dt, prev.bodies[i].r, prev.bodies[i].v, prev.bodies[i].a);
-
-                // Calculate the acceleration experienced by the small bodies at
-                // their respective approximate next locations.
-                CalcBodyAccelerations();
-
-                for (int i = 0; i < nbodies; ++i)
-                {
-                    // Calculate the average of the acceleration vectors
-                    // experienced by the previous body positions and
-                    // their estimated next positions.
-                    // These become estimates of the mean effective accelerations
-                    // over the whole interval.
-                    TerseVector acc = (curr.bodies[i].a + prev.bodies[i].a) / 2.0;
-
-                    // Refine the estimates of position and velocity at the next time step,
-                    // using the mean acceleration as a better approximation of the
-                    // continuously changing acceleration acting on each body.
-                    curr.bodies[i].tt = time.tt;
-                    curr.bodies[i].r = Astronomy.UpdatePosition(dt, prev.bodies[i].r, prev.bodies[i].v, acc);
-                    curr.bodies[i].v = Astronomy.UpdateVelocity(dt, prev.bodies[i].v, acc);
-                }
-
-                // Re-calculate accelerations experienced by each body.
-                // These will be needed for the next simulation step (if any).
-                // Also, they will be potentially useful if some day we add
-                // a function to query the acceleration vectors for the bodies.
-                CalcBodyAccelerations();
-            }
-
-            if (bodyStates != null)
-            {
-                // Translate our internal calculations of body positions and velocities
-                // into state vectors that the caller can understand.
-                // We have to convert the internal type body_grav_calc_t to the public
-                // type StateVector.
-                // Also convert from barycentric coordinates to coordinates based on the
-                // selected origin body.
-                body_state_t ostate = InternalBodyState(OriginBody);
-                for (int i = 0; i < nbodies; ++i)
-                {
-                    bodyStates[i] = new StateVector(
-                        curr.bodies[i].r.x - ostate.r.x,
-                        curr.bodies[i].r.y - ostate.r.y,
-                        curr.bodies[i].r.z - ostate.r.z,
-                        curr.bodies[i].v.x - ostate.v.x,
-                        curr.bodies[i].v.y - ostate.v.y,
-                        curr.bodies[i].v.z - ostate.v.z,
-                        time
-                    );
-                }
-            }
-        }
-
-        /// <summary>
-        /// Exchange the current time step with the previous time step.
-        /// </summary>
-        /// <remarks>
-        /// Sometimes it is helpful to "explore" various times near a given
-        /// simulation time step, while repeatedly returning to the original
-        /// time step. For example, when backdating a position for light travel
-        /// time, the caller may wish to repeatedly try different amounts of
-        /// backdating. When the backdating solver has converged, the caller
-        /// wants to leave the simulation in its original state.
-        ///
-        /// This function allows a single "undo" of a simulation, and does so
-        /// very efficiently.
-        ///
-        /// Usually this function will be called immediately after a matching
-        /// call to #GravitySimulator.Update. It has the effect of rolling
-        /// back the most recent update. If called twice in a row, it reverts
-        /// the swap and thus has no net effect.
-        ///
-        /// The constructor initializes the current state and previous
-        /// state to be identical. Both states represent the `time` parameter that was
-        /// passed into the constructor. Therefore, `Swap` will
-        /// have no effect from the caller's point of view when passed a simulator
-        /// that has not yet been updated by a call to #GravitySimulator.Update.
-        /// </remarks>
-        public void Swap()
-        {
-            var swap = curr;
-            curr = prev;
-            prev = swap;
-        }
-
-        /// <summary>
-        /// Get the position and velocity of a Solar System body included in the simulation.
-        /// </summary>
-        /// <remarks>
-        /// In order to simulate the movement of small bodies through the Solar System,
-        /// the simulator needs to calculate the state vectors for the Sun and planets.
-        ///
-        /// If an application wants to know the positions of one or more of the planets
-        /// in addition to the small bodies, this function provides a way to obtain
-        /// their state vectors. This is provided for the sake of efficiency, to avoid
-        /// redundant calculations.
-        ///
-        /// The state vector is returned relative to the position and velocity
-        /// of the `originBody` parameter that was passed to this object's constructor.
-        /// </remarks>
-        ///
-        /// <param name="body">
-        /// The Sun, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, or Neptune.
-        /// </param>
-        public StateVector SolarSystemBodyState(Body body)
-        {
-            body_state_t bstate = InternalBodyState(body);
-            body_state_t ostate = InternalBodyState(OriginBody);
-            return Astronomy.ExportState(bstate - ostate, curr.time);
-        }
-
-        private void CalcSolarSystem()
-        {
-            double tt = curr.time.tt;
-
-            // Initialize the Sun's position/velocity as zero vectors, then adjust from pulls of the planets.
-            var ssb = new body_state_t(tt, TerseVector.Zero, TerseVector.Zero);
-
-            curr.gravitators[(int)Body.Mercury] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Mercury, Astronomy.MERCURY_GM);
-            curr.gravitators[(int)Body.Venus] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Venus, Astronomy.VENUS_GM);
-            curr.gravitators[(int)Body.Earth] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Earth, Astronomy.EARTH_GM + Astronomy.MOON_GM);
-            curr.gravitators[(int)Body.Mars] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Mars, Astronomy.MARS_GM);
-            curr.gravitators[(int)Body.Jupiter] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Jupiter, Astronomy.JUPITER_GM);
-            curr.gravitators[(int)Body.Saturn] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Saturn, Astronomy.SATURN_GM);
-            curr.gravitators[(int)Body.Uranus] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Uranus, Astronomy.URANUS_GM);
-            curr.gravitators[(int)Body.Neptune] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Neptune, Astronomy.NEPTUNE_GM);
-
-            // Convert planets states from heliocentric to barycentric.
-            foreach (int bindex in PlanetIndexes)
-            {
-                curr.gravitators[bindex].r -= ssb.r;
-                curr.gravitators[bindex].v -= ssb.v;
-            }
-
-            // Convert heliocentric SSB to barycentric Sun.
-            curr.gravitators[(int)Body.Sun] = new body_state_t(tt, -ssb.r, -ssb.v);
-        }
-
-        private body_state_t InternalBodyState(Body body)
-        {
-            if (body == Body.Sun || (body >= Body.Mercury && body <= Body.Neptune))
-                return curr.gravitators[(int)body];
-
-            if (body == Body.SSB)
-                return new body_state_t(curr.time.tt, TerseVector.Zero, TerseVector.Zero);
-
-            throw new InvalidBodyException(body);
-        }
-
-        private void CalcBodyAccelerations()
-        {
-            // Calculate the gravitational acceleration experienced by the simulated bodies.
-            const double EMB_GM = Astronomy.EARTH_GM + Astronomy.MOON_GM;
-            for (int i = 0; i < curr.bodies.Length; ++i)
-            {
-                TerseVector a = TerseVector.Zero;
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Sun].r, Astronomy.SUN_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Mercury].r, Astronomy.MERCURY_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Venus].r, Astronomy.VENUS_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Earth].r, EMB_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Mars].r, Astronomy.MARS_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Jupiter].r, Astronomy.JUPITER_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Saturn].r, Astronomy.SATURN_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Uranus].r, Astronomy.URANUS_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Neptune].r, Astronomy.NEPTUNE_GM);
-                curr.bodies[i].a = a;
-            }
-        }
-
-        private static TerseVector Acceleration(TerseVector smallPos, TerseVector majorPos, double gm)
-        {
-            double dx = majorPos.x - smallPos.x;
-            double dy = majorPos.y - smallPos.y;
-            double dz = majorPos.z - smallPos.z;
-            double r2 = dx * dx + dy * dy + dz * dz;
-            double pull = gm / (r2 * Math.Sqrt(r2));
-            return new TerseVector(dx * pull, dy * pull, dz * pull);
-        }
-
-        private void Duplicate()
-        {
-            // Copy the current state into the previous state, so that both become the same moment in time.
-            prev.time = curr.time;
-
-            for (int i = 0; i < curr.gravitators.Length; ++i)
-                prev.gravitators[i] = curr.gravitators[i];
-
-            for (int i = 0; i < curr.bodies.Length; ++i)
-                prev.bodies[i] = curr.bodies[i];
-        }
-    }
-
-    internal class GravSimEndpoint
-    {
-        public AstroTime time;
-        public body_state_t[] gravitators;
-        public body_grav_calc_t[] bodies;
-    }
-
-    internal struct body_state_t
-    {
-        public double tt;       // Terrestrial Time in J2000 days
-        public TerseVector r;   // position [au]
-        public TerseVector v;   // velocity [au/day]
-
-        public body_state_t(double tt, TerseVector r, TerseVector v)
-        {
-            this.tt = tt;
-            this.r = r;
-            this.v = v;
-        }
-
-        public static body_state_t operator -(body_state_t s)
-        {
-            return new body_state_t(s.tt, -s.r, -s.v);
-        }
-
-        public static body_state_t operator -(body_state_t a, body_state_t b)
-        {
-            return new body_state_t(a.tt, a.r - b.r, a.v - b.v);
-        }
-    }
-
-    internal struct body_grav_calc_t
-    {
-        public double tt;       // J2000 terrestrial time [days]
-        public TerseVector r;   // position [au]
-        public TerseVector v;   // velocity [au/day]
-        public TerseVector a;   // acceleration [au/day^2]
-
-        public body_grav_calc_t(double tt, TerseVector r, TerseVector v, TerseVector a)
-        {
-            this.tt = tt;
-            this.r = r;
-            this.v = v;
-            this.a = a;
-        }
-    }
-
-    /// <summary>
-    /// A function for which to solve a light-travel time problem.
-    /// </summary>
-    /// <remarks>
-    /// The function #Astronomy.CorrectLightTravel solves a generalized
-    /// problem of deducing how far in the past light must have left
-    /// a target object to be seen by an observer at a specified time.
-    /// This interface expresses an arbitrary position vector as
-    /// function of time that is passed to #Astronomy.CorrectLightTravel.
-    /// </remarks>
-    public interface IPositionFunction
-    {
-        /// <summary>
-        /// Returns a relative position vector for a given time.
-        /// </summary>
-        /// <param name="time">The time at which to evaluate a relative position vector.</param>
-        AstroVector Position(AstroTime time);
-    }
 
     /// <summary>
     /// The wrapper class that holds Astronomy Engine functions.
     /// </summary>
-    public static class Astronomy
+    public class Astronomy
     {
         /// <summary>
         /// The number of kilometers in one astronomical unit (AU).
@@ -3107,17 +192,17 @@ namespace CosineKitty
 
         internal const double MOON_GM = EARTH_GM / EARTH_MOON_MASS_RATIO;
 
-        private static bool isfinite(double x)
+        private bool isfinite(double x)
         {
             return !double.IsNaN(x) && !double.IsInfinity(x);
         }
 
-        internal static double hypot(double x, double y)
+        internal double hypot(double x, double y)
         {
             return Math.Sqrt(x * x + y * y);
         }
 
-        internal static double hypot(double x, double y, double z)
+        internal double hypot(double x, double y, double z)
         {
             return Math.Sqrt(x * x + y * y + z * z);
         }
@@ -3181,7 +266,7 @@ namespace CosineKitty
         /// If you don't know the distance to the star, using a large value like 1000 will generally work well.
         /// The minimum allowed distance is 1 light-year, which is required to provide certain internal optimizations.
         /// </param>
-        public static void DefineStar(Body body, double ra, double dec, double distanceLightYears)
+        public void DefineStar(Body body, double ra, double dec, double distanceLightYears)
         {
             StarDef star = GetStar(body) ?? throw new InvalidBodyException(body);
 
@@ -3314,6 +399,7 @@ namespace CosineKitty
             }
         };
 
+        #region VSOP Mercury Data
         private static readonly vsop_term_t[] vsop_lon_Mercury_0 = new vsop_term_t[]
         {
             new vsop_term_t(4.40250710144, 0.00000000000, 0.00000000000),
@@ -3384,8 +470,9 @@ namespace CosineKitty
             new vsop_series_t(vsop_rad_Mercury_0),
             new vsop_series_t(vsop_rad_Mercury_1)
         };
+        #endregion
 
-
+        #region VSOP Venus Data
         private static readonly vsop_term_t[] vsop_lon_Venus_0 = new vsop_term_t[]
         {
             new vsop_term_t(3.17614666774, 0.00000000000, 0.00000000000),
@@ -3453,8 +540,9 @@ namespace CosineKitty
             new vsop_series_t(vsop_rad_Venus_0),
             new vsop_series_t(vsop_rad_Venus_1)
         };
+        #endregion
 
-
+        #region VSOP Earth Data
         private static readonly vsop_term_t[] vsop_lon_Earth_0 = new vsop_term_t[]
         {
             new vsop_term_t(1.75347045673, 0.00000000000, 0.00000000000),
@@ -3557,8 +645,9 @@ namespace CosineKitty
             new vsop_series_t(vsop_rad_Earth_1),
             new vsop_series_t(vsop_rad_Earth_2)
         };
+        #endregion
 
-
+        #region VSOP Mars Data
         private static readonly vsop_term_t[] vsop_lon_Mars_0 = new vsop_term_t[]
         {
             new vsop_term_t(6.20347711581, 0.00000000000, 0.00000000000),
@@ -3701,8 +790,9 @@ namespace CosineKitty
             new vsop_series_t(vsop_rad_Mars_1),
             new vsop_series_t(vsop_rad_Mars_2)
         };
+        #endregion
 
-
+        #region VSOP Jupiter Data
         private static readonly vsop_term_t[] vsop_lon_Jupiter_0 = new vsop_term_t[]
         {
             new vsop_term_t(0.59954691494, 0.00000000000, 0.00000000000),
@@ -3821,8 +911,9 @@ namespace CosineKitty
             new vsop_series_t(vsop_rad_Jupiter_0),
             new vsop_series_t(vsop_rad_Jupiter_1)
         };
+        #endregion
 
-
+        #region VSOP Saturn Data
         private static readonly vsop_term_t[] vsop_lon_Saturn_0 = new vsop_term_t[]
         {
             new vsop_term_t(0.87401354025, 0.00000000000, 0.00000000000),
@@ -3965,8 +1056,9 @@ namespace CosineKitty
             new vsop_series_t(vsop_rad_Saturn_1),
             new vsop_series_t(vsop_rad_Saturn_2)
         };
+        #endregion
 
-
+        #region VSOP Uranus Data
         private static readonly vsop_term_t[] vsop_lon_Uranus_0 = new vsop_term_t[]
         {
             new vsop_term_t(5.48129294297, 0.00000000000, 0.00000000000),
@@ -4084,8 +1176,9 @@ namespace CosineKitty
             new vsop_series_t(vsop_rad_Uranus_0),
             new vsop_series_t(vsop_rad_Uranus_1)
         };
+        #endregion
 
-
+        #region VSOP Neptune Data
         private static readonly vsop_term_t[] vsop_lon_Neptune_0 = new vsop_term_t[]
         {
             new vsop_term_t(5.31188633046, 0.00000000000, 0.00000000000),
@@ -4147,7 +1240,7 @@ namespace CosineKitty
         {
             new vsop_series_t(vsop_rad_Neptune_0)
         };
-
+        #endregion
 
 
         private static readonly vsop_model_t[] vsop = new vsop_model_t[]
@@ -5238,7 +2331,7 @@ namespace CosineKitty
         /// unless it has already been cached, in which case the cached value is reused.
         /// </param>
         /// <returns>GAST in sidereal hours.</returns>
-        public static double SiderealTime(AstroTime time)
+        public double SiderealTime(AstroTime time)
         {
             if (double.IsNaN(time.st))
             {
@@ -5261,7 +2354,7 @@ namespace CosineKitty
             return time.st;     // return sidereal hours in the half-open range [0, 24).
         }
 
-        private static Observer inverse_terra(AstroVector ovec)
+        private Observer inverse_terra(AstroVector ovec)
         {
             double lon_deg, lat_deg, height_km;
 
@@ -5331,7 +2424,7 @@ namespace CosineKitty
             return new Observer(lat_deg, lon_deg, 1000.0 * height_km);
         }
 
-        private static StateVector terra(Observer observer, AstroTime time)
+        private StateVector terra(Observer observer, AstroTime time)
         {
             double st = SiderealTime(time);
             double phi = observer.latitude * DEG2RAD;
@@ -5449,7 +2542,7 @@ namespace CosineKitty
                 nutation_posvel(precession_posvel(state, dir), dir);
         }
 
-        private static AstroVector geo_pos(AstroTime time, Observer observer)
+        private AstroVector geo_pos(AstroTime time, Observer observer)
         {
             AstroVector pos = terra(observer, time).Position();
             return gyration(pos, PrecessDirection.Into2000);
@@ -5546,7 +2639,7 @@ namespace CosineKitty
         /// <param name="time">
         /// The date and time for which to calculate the Moon's position.
         /// </param>
-        public static Spherical EclipticGeoMoon(AstroTime time)
+        public Spherical EclipticGeoMoon(AstroTime time)
         {
             // Find ecliptic coordinates of the Moon in mean equinox of date (ECM).
             var context = new MoonContext(time.tt / 36525.0);
@@ -5815,7 +2908,7 @@ namespace CosineKitty
         /// </param>
         /// <param name="time">The date and time for which to calculate the position.</param>
         /// <returns>A heliocentric position vector of the center of the given body.</returns>
-        public static AstroVector HelioVector(Body body, AstroTime time)
+        public AstroVector HelioVector(Body body, AstroTime time)
         {
             AstroVector earth, geomoon;
 
@@ -5858,6 +2951,8 @@ namespace CosineKitty
             }
         }
 
+
+
         /// <summary>
         /// Calculates the distance between a body and the Sun at a given time.
         /// </summary>
@@ -5878,7 +2973,7 @@ namespace CosineKitty
         /// <returns>
         /// The heliocentric distance in AU.
         /// </returns>
-        public static double HelioDistance(Body body, AstroTime time)
+        public double HelioDistance(Body body, AstroTime time)
         {
             switch (body)
             {
@@ -5904,7 +2999,7 @@ namespace CosineKitty
             }
         }
 
-        private static AstroVector CalcEarth(AstroTime time)
+        private AstroVector CalcEarth(AstroTime time)
         {
             return CalcVsop(vsop[(int)Body.Earth], time);
         }
@@ -5942,7 +3037,7 @@ namespace CosineKitty
         /// The `t` field holds the time that light left the observed
         /// body to arrive at the observer at the observation time.
         /// </returns>
-        public static AstroVector CorrectLightTravel(IPositionFunction func, AstroTime time)
+        public AstroVector CorrectLightTravel(IPositionFunction func, AstroTime time)
         {
             AstroTime ltime = time;
             for (int iter = 0; iter < 10; ++iter)
@@ -5963,55 +3058,7 @@ namespace CosineKitty
             throw new InternalError("Light travel time correction did not converge.");
         }
 
-        internal struct BodyPosition : IPositionFunction
-        {
-            private Body observerBody;
-            private Body targetBody;
-            private Aberration aberration;
-            private AstroVector observerPos;    // used only when aberration == Aberration.None
 
-            public BodyPosition(Body observerBody, Body targetBody, Aberration aberration, AstroVector observerPos)
-            {
-                this.observerBody = observerBody;
-                this.targetBody = targetBody;
-                this.aberration = aberration;
-                this.observerPos = observerPos;
-            }
-
-            public AstroVector Position(AstroTime time)
-            {
-                if (aberration == Aberration.None)
-                {
-                    // No aberration, so use the pre-calculated initial position of
-                    // the observer body that is already stored in `observerPos`.
-                    // To avoid an exception in the subtraction below, patch the time.
-                    observerPos.t = time;
-                }
-                else
-                {
-                    // The following discussion is worded with the observer body being the Earth,
-                    // which is often the case. However, the same reasoning applies to any observer body
-                    // without loss of generality.
-                    //
-                    // To include aberration, make a good first-order approximation
-                    // by backdating the Earth's position also.
-                    // This is confusing, but it works for objects within the Solar System
-                    // because the distance the Earth moves in that small amount of light
-                    // travel time (a few minutes to a few hours) is well approximated
-                    // by a line segment that substends the angle seen from the remote
-                    // body viewing Earth. That angle is pretty close to the aberration
-                    // angle of the moving Earth viewing the remote body.
-                    // In other words, both of the following approximate the aberration angle:
-                    //     (transverse distance Earth moves) / (distance to body)
-                    //     (transverse speed of Earth) / (speed of light).
-
-                    observerPos = Astronomy.HelioVector(observerBody, time);
-                }
-
-                // Subtract the bodies' heliocentric positions to obtain a relative position vector.
-                return Astronomy.HelioVector(targetBody, time) - observerPos;
-            }
-        }
 
         /// <summary>
         /// Solve for light travel time correction of apparent position.
@@ -6042,7 +3089,7 @@ namespace CosineKitty
         /// Its `t` field holds the time that light left the observed
         /// body to arrive at the observer at the observation time.
         /// </returns>
-        public static AstroVector BackdatePosition(
+        public AstroVector BackdatePosition(
             AstroTime time,
             Body observerBody,
             Body targetBody,
@@ -6095,8 +3142,39 @@ namespace CosineKitty
                 default:
                     throw new ArgumentException($"Unsupported aberration option: {aberration}");
             }
-            var func = new BodyPosition(observerBody, targetBody, aberration, observerPos);
+            var func = new BodyPosition(this, observerBody, targetBody, aberration, observerPos);
             return CorrectLightTravel(func, time);
+        }
+
+        public AstroVector BackdatePosition(
+            AstroTime time,
+            Body observerBody,
+            double ra,
+            double dec,
+            double dist,
+            Aberration aberration)
+        {
+            
+            AstroVector tvec = VectorFromSphere(new Spherical(dec, 15 * ra, dist), time);
+            switch (aberration)
+            {
+                case Aberration.None:
+                    // No correction is needed. Simply return the star's current position as seen from the observer.
+                    return tvec - HelioVector(observerBody, time);
+
+                case Aberration.Corrected:
+                    // (Observer velocity) - (light vector) = (Aberration-corrected direction to target body).
+                    // Note that this is an approximation, because technically the light vector should
+                    // be measured in barycentric coordinates, not heliocentric. The error is very small.
+                    StateVector ostate = HelioState(observerBody, time);
+                    AstroVector rvec = tvec - ostate.Position();
+                    double s = C_AUDAY / rvec.Length();    // conversion factor from relative distance to speed of light
+                    return rvec + ostate.Velocity() / s;
+
+                default:
+                    throw new ArgumentException($"Unsupported aberration option: {aberration}");
+            }
+            
         }
 
         /// <summary>
@@ -6123,7 +3201,7 @@ namespace CosineKitty
         /// <param name="time">The date and time for which to calculate the position.</param>
         /// <param name="aberration">`Aberration.Corrected` to correct for aberration, or `Aberration.None` to leave uncorrected.</param>
         /// <returns>A geocentric position vector of the center of the given body.</returns>
-        public static AstroVector GeoVector(
+        public AstroVector GeoVector(
             Body body,
             AstroTime time,
             Aberration aberration)
@@ -6144,6 +3222,18 @@ namespace CosineKitty
                     vector.t = time;    // tricky: return the observation time, not the backdated time.
                     return vector;
             }
+        }
+
+        public AstroVector GeoVector(
+        double ra,
+        double dec,
+        double dist,
+        AstroTime time,
+        Aberration aberration)
+        {
+            AstroVector vector = BackdatePosition(time, Body.Earth, ra,dec,dist, aberration);
+            vector.t = time;    // tricky: return the observation time, not the backdated time.
+            return vector;
         }
 
         internal static StateVector ExportState(body_state_t terse, AstroTime time)
@@ -6263,7 +3353,7 @@ namespace CosineKitty
         /// <returns>
         /// A structure that contains heliocentric position and velocity vectors.
         /// </returns>
-        public static StateVector HelioState(Body body, AstroTime time)
+        public StateVector HelioState(Body body, AstroTime time)
         {
             switch (body)
             {
@@ -6347,7 +3437,7 @@ namespace CosineKitty
         /// <param name="equdate">Selects the date of the Earth's equator in which to express the equatorial coordinates.</param>
         /// <param name="aberration">Selects whether or not to correct for aberration.</param>
         /// <returns>Topocentric equatorial coordinates of the celestial body.</returns>
-        public static Equatorial Equator(
+        public Equatorial Equator(
             Body body,
             AstroTime time,
             Observer observer,
@@ -6356,6 +3446,33 @@ namespace CosineKitty
         {
             AstroVector gc_observer = geo_pos(time, observer);
             AstroVector gc = GeoVector(body, time, aberration);
+            AstroVector j2000 = gc - gc_observer;
+
+            switch (equdate)
+            {
+                case EquatorEpoch.OfDate:
+                    AstroVector datevect = gyration(j2000, PrecessDirection.From2000);
+                    return EquatorFromVector(datevect);
+
+                case EquatorEpoch.J2000:
+                    return EquatorFromVector(j2000);
+
+                default:
+                    throw new ArgumentException(string.Format("Unsupported equator epoch {0}", equdate));
+            }
+        }
+
+        public Equatorial Equator(
+           double ra,
+           double dec,
+           double dist,
+           AstroTime time,
+           Observer observer,
+           EquatorEpoch equdate,
+           Aberration aberration)
+        {
+            AstroVector gc_observer = geo_pos(time, observer);
+            AstroVector gc = VectorFromSphere(new Spherical(dec, 15 * ra, dist), time);
             AstroVector j2000 = gc - gc_observer;
 
             switch (equdate)
@@ -6414,7 +3531,7 @@ namespace CosineKitty
         /// An equatorial vector from the center of the Earth to the specified location
         /// on (or near) the Earth's surface.
         /// </returns>
-        public static AstroVector ObserverVector(
+        public AstroVector ObserverVector(
             AstroTime time,
             Observer observer,
             EquatorEpoch equdate)
@@ -6463,7 +3580,7 @@ namespace CosineKitty
         /// <returns>
         /// The position and velocity of the given geographic location, relative to the center of the Earth.
         /// </returns>
-        public static StateVector ObserverState(
+        public StateVector ObserverState(
             AstroTime time,
             Observer observer,
             EquatorEpoch equdate)
@@ -6509,7 +3626,7 @@ namespace CosineKitty
         /// The geographic latitude, longitude, and elevation above sea level
         /// that corresponds to the given equatorial vector.
         /// </returns>
-        public static Observer VectorObserver(
+        public Observer VectorObserver(
             AstroVector vector,
             EquatorEpoch equdate)
         {
@@ -6591,7 +3708,7 @@ namespace CosineKitty
         /// <returns>
         /// The body's apparent horizontal coordinates and equatorial coordinates, both optionally corrected for refraction.
         /// </returns>
-        public static Topocentric Horizon(
+        public Topocentric Horizon(
             AstroTime time,
             Observer observer,
             double ra,
@@ -6736,7 +3853,7 @@ namespace CosineKitty
         /// <returns>
         /// The ecliptic coordinates of the Sun using the Earth's true equator of date.
         /// </returns>
-        public static Ecliptic SunPosition(AstroTime time)
+        public Ecliptic SunPosition(AstroTime time)
         {
             // Correct for light travel time from the Sun.
             // Otherwise season calculations (equinox, solstice) will all be early by about 8 minutes!
@@ -6755,7 +3872,7 @@ namespace CosineKitty
             return RotateEquatorialToEcliptic(sun_ofdate, true_obliq);
         }
 
-        private static Ecliptic RotateEquatorialToEcliptic(AstroVector pos, double obliq_radians)
+        private Ecliptic RotateEquatorialToEcliptic(AstroVector pos, double obliq_radians)
         {
             double cos_ob = Math.Cos(obliq_radians);
             double sin_ob = Math.Sin(obliq_radians);
@@ -6792,7 +3909,7 @@ namespace CosineKitty
         /// You can call #Astronomy.GeoVector to obtain suitable equatorial coordinates.
         /// </param>
         /// <returns>Spherical and vector coordinates expressed in true ecliptic coordinates of date (ECT).</returns>
-        public static Ecliptic EquatorialToEcliptic(AstroVector eqj)
+        public Ecliptic EquatorialToEcliptic(AstroVector eqj)
         {
             // Calculate nutation and obliquity for this time.
             // As an optimization, the nutation angles are cached in `eqj.t`,
@@ -6842,7 +3959,7 @@ namespace CosineKitty
         /// A #SeasonsInfo structure that contains four #AstroTime values:
         /// the March and September equinoxes and the June and December solstices.
         /// </returns>
-        public static SeasonsInfo Seasons(int year)
+        public SeasonsInfo Seasons(int year)
         {
             // https://github.com/cosinekitty/astronomy/issues/187
             // Solstices and equinoxes drift over long spans of time,
@@ -6860,7 +3977,7 @@ namespace CosineKitty
             );
         }
 
-        private static AstroTime FindSeasonChange(double targetLon, int year, int month, int day)
+        private AstroTime FindSeasonChange(double targetLon, int year, int month, int day)
         {
             var startTime = new AstroTime(year, month, day, 0, 0, 0);
             return SearchSunLongitude(targetLon, startTime, 20.0) ??
@@ -6901,7 +4018,7 @@ namespace CosineKitty
         /// <returns>
         /// The date and time when the Sun reaches the specified apparent ecliptic longitude.
         /// </returns>
-        public static AstroTime SearchSunLongitude(double targetLon, AstroTime startTime, double limitDays)
+        public AstroTime SearchSunLongitude(double targetLon, AstroTime startTime, double limitDays)
         {
             var sun_offset = new SearchContext_SunOffset(targetLon);
             AstroTime t2 = startTime.AddDays(limitDays);
@@ -6969,7 +4086,7 @@ namespace CosineKitty
         /// window `t1`..`t2`, the function returns `null`.
         /// If the search does not converge within 20 iterations, an exception is thrown.
         /// </returns>
-        public static AstroTime Search(
+        public AstroTime Search(
             SearchContext func,
             AstroTime t1,
             AstroTime t2,
@@ -6977,8 +4094,8 @@ namespace CosineKitty
         {
             const int iter_limit = 20;
             double dt_days = Math.Abs(dt_tolerance_seconds / SECONDS_PER_DAY);
-            double f1 = func.Eval(t1);
-            double f2 = func.Eval(t2);
+            double f1 = func.Eval(this,t1);
+            double f2 = func.Eval(this,t2);
             int iter = 0;
             bool calc_fmid = true;
             double fmid = 0.0;
@@ -6996,7 +4113,7 @@ namespace CosineKitty
                 }
 
                 if (calc_fmid)
-                    fmid = func.Eval(tmid);
+                    fmid = func.Eval(this,tmid);
                 else
                     calc_fmid = true;   // we already have the correct value of fmid from the previous loop
 
@@ -7008,7 +4125,7 @@ namespace CosineKitty
                 if (QuadInterp(tmid.ut, t2.ut - tmid.ut, f1, fmid, f2, out q_ut, out q_df_dt))
                 {
                     var tq = new AstroTime(q_ut);
-                    double fq = func.Eval(tq);
+                    double fq = func.Eval(this, tq);
                     if (q_df_dt != 0.0)
                     {
                         double dt_guess = Math.Abs(fq / q_df_dt);
@@ -7028,8 +4145,8 @@ namespace CosineKitty
                             {
                                 if ((tright.ut - t1.ut) * (tright.ut - t2.ut) < 0.0)
                                 {
-                                    double fleft = func.Eval(tleft);
-                                    double fright = func.Eval(tright);
+                                    double fleft = func.Eval(this, tleft);
+                                    double fright = func.Eval(this, tright);
                                     if (fleft < 0.0 && fright >= 0.0)
                                     {
                                         f1 = fleft;
@@ -7146,7 +4263,7 @@ namespace CosineKitty
         /// <returns>
         /// An angle in the range [0, 360), expressed in degrees.
         /// </returns>
-        public static double PairLongitude(Body body1, Body body2, AstroTime time)
+        public double PairLongitude(Body body1, Body body2, AstroTime time)
         {
             if (body1 == Body.Earth || body2 == Body.Earth)
                 throw new EarthNotAllowedException();
@@ -7175,7 +4292,7 @@ namespace CosineKitty
         /// </remarks>
         /// <param name="time">The date and time of the observation.</param>
         /// <returns>The angle as described above, a value in the range 0..360 degrees.</returns>
-        public static double MoonPhase(AstroTime time)
+        public double MoonPhase(AstroTime time)
         {
             return PairLongitude(Body.Moon, Body.Sun, time);
         }
@@ -7198,7 +4315,7 @@ namespace CosineKitty
         /// <returns>
         /// A #MoonQuarterInfo structure reporting the next quarter phase and the time it will occur.
         /// </returns>
-        public static MoonQuarterInfo SearchMoonQuarter(AstroTime startTime)
+        public MoonQuarterInfo SearchMoonQuarter(AstroTime startTime)
         {
             double currentPhaseAngle = MoonPhase(startTime);
             int quarter = (1 + (int)Math.Floor(currentPhaseAngle / 90.0)) % 4;
@@ -7220,7 +4337,7 @@ namespace CosineKitty
         /// </remarks>
         /// <param name="mq">The previous moon quarter found by a call to #Astronomy.SearchMoonQuarter or `Astronomy.NextMoonQuarter`.</param>
         /// <returns>The moon quarter that occurs next in time after the one passed in `mq`.</returns>
-        public static MoonQuarterInfo NextMoonQuarter(MoonQuarterInfo mq)
+        public MoonQuarterInfo NextMoonQuarter(MoonQuarterInfo mq)
         {
             // Skip 6 days past the previous found moon quarter to find the next one.
             // This is less than the minimum possible increment.
@@ -7243,7 +4360,7 @@ namespace CosineKitty
         /// <param name="startTime">
         /// Specifies the time to begin searching for consecutive lunar quarter phases.
         /// </param>
-        public static IEnumerable<MoonQuarterInfo> MoonQuartersAfter(AstroTime startTime)
+        public IEnumerable<MoonQuarterInfo> MoonQuartersAfter(AstroTime startTime)
         {
             MoonQuarterInfo mq = SearchMoonQuarter(startTime);
             yield return mq;
@@ -7289,7 +4406,7 @@ namespace CosineKitty
         /// `targetlon`. This function will return `null` if the phase does not
         /// occur within `limitDays` of `startTime`; that is, if the search window is too small.
         /// </returns>
-        public static AstroTime SearchMoonPhase(double targetLon, AstroTime startTime, double limitDays)
+        public AstroTime SearchMoonPhase(double targetLon, AstroTime startTime, double limitDays)
         {
             // To avoid discontinuities in the moon_offset function causing problems,
             // we need to approximate when that function will next return 0.
@@ -7304,7 +4421,7 @@ namespace CosineKitty
             const double uncertainty = 1.5;
             var moon_offset = new SearchContext_MoonOffset(targetLon);
 
-            double ya = moon_offset.Eval(startTime);
+            double ya = moon_offset.Eval(this,startTime);
 
             double est_dt, dt1, dt2;
             if (limitDays < 0.0)
@@ -7354,7 +4471,7 @@ namespace CosineKitty
         /// The elevation above sea level at which to calculate atmospheric variables.
         /// Must be in the range -500 to +100000, or an exception will occur.
         /// </param>
-        public static AtmosphereInfo Atmosphere(double elevationMeters)
+        public AtmosphereInfo Atmosphere(double elevationMeters)
         {
             const double P0 = 101325.0;     // pressure at sea level [pascals]
             const double T0 = 288.15;       // temperature at sea level [kelvins]
@@ -7387,7 +4504,7 @@ namespace CosineKitty
         }
 
 
-        private static double HorizonDipAngle(Observer observer, double metersAboveGround)
+        private double HorizonDipAngle(Observer observer, double metersAboveGround)
         {
             // Calculate the effective radius of the Earth at ground level below the observer.
             // Correct for the Earth's oblateness.
@@ -7430,7 +4547,7 @@ namespace CosineKitty
         }
 
 
-        private static AscentInfo FindAscent(
+        private AscentInfo FindAscent(
             int depth,
             SearchContext_Altitude context,
             double max_deriv_alt,
@@ -7495,7 +4612,7 @@ namespace CosineKitty
 
             // Bisect the time interval and evaluate the altitude at the midpoint.
             var tmid = new AstroTime((t1.ut + t2.ut) / 2);
-            double amid = context.Eval(tmid);
+            double amid = context.Eval(this,tmid);
 
             // Recurse to the left interval.
             AscentInfo ascent = FindAscent(1 + depth, context, max_deriv_alt, t1, tmid, a1, amid);
@@ -7587,7 +4704,7 @@ namespace CosineKitty
 
         private const double RISE_SET_DT = 0.42;    // 10.08 hours: Nyquist-safe for 22-hour period.
 
-        private static AstroTime InternalSearchAltitude(
+        private AstroTime InternalSearchAltitude(
             Body body,
             Observer observer,
             Direction direction,
@@ -7603,7 +4720,7 @@ namespace CosineKitty
             // But we want to keep t1 < t2, so we need a few if/else statements.
             AstroTime t1 = startTime;
             AstroTime t2 = t1;
-            double a1 = context.Eval(t1);
+            double a1 = context.Eval(this,t1);
             double a2 = a1;
 
             for (; ; )
@@ -7611,12 +4728,12 @@ namespace CosineKitty
                 if (limitDays < 0.0)
                 {
                     t1 = t2.AddDays(-RISE_SET_DT);
-                    a1 = context.Eval(t1);
+                    a1 = context.Eval(this,t1);
                 }
                 else
                 {
                     t2 = t1.AddDays(+RISE_SET_DT);
-                    a2 = context.Eval(t2);
+                    a2 = context.Eval(this,t2);
                 }
 
                 AscentInfo ascent = FindAscent(0, context, max_deriv_alt, t1, t2, a1, a2);
@@ -7730,7 +4847,7 @@ namespace CosineKitty
         /// within `limitDays` days of `startTime`. This is a normal condition,
         /// not an error.
         /// </returns>
-        public static AstroTime SearchRiseSet(
+        public AstroTime SearchRiseSet(
             Body body,
             Observer observer,
             Direction direction,
@@ -7758,7 +4875,7 @@ namespace CosineKitty
             }
 
             // Calculate atmospheric density at ground level.
-            AtmosphereInfo atmos = Astronomy.Atmosphere(observer.height - metersAboveGround);
+            AtmosphereInfo atmos = Atmosphere(observer.height - metersAboveGround);
 
             // Calculate the apparent angular dip of the horizon.
             double dip = HorizonDipAngle(observer, metersAboveGround);
@@ -7840,7 +4957,7 @@ namespace CosineKitty
         /// The date and time of the altitude event, or `null` if no such event
         /// occurs within the specified time window.
         /// </returns>
-        public static AstroTime SearchAltitude(
+        public AstroTime SearchAltitude(
             Body body,
             Observer observer,
             Direction direction,
@@ -7869,7 +4986,7 @@ namespace CosineKitty
         /// <param name="time">The time of the observation.</param>
         /// <param name="observer">The geographic location where the observation takes place.</param>
         /// <returns>The real-valued hour angle of the body in the half-open range [0, 24).</returns>
-        public static double HourAngle(
+        public double HourAngle(
             Body body,
             AstroTime time,
             Observer observer)
@@ -7938,7 +5055,7 @@ namespace CosineKitty
         /// If any error occurs, it throws an exception.
         /// It never returns a null value.
         /// </returns>
-        public static HourAngleInfo SearchHourAngle(
+        public HourAngleInfo SearchHourAngle(
             Body body,
             Observer observer,
             double hourAngle,
@@ -8057,7 +5174,7 @@ namespace CosineKitty
         /// </param>
         ///
         /// <returns>The date and time of the relative longitude event.</returns>
-        public static AstroTime SearchRelativeLongitude(Body body, double targetRelLon, AstroTime startTime)
+        public AstroTime SearchRelativeLongitude(Body body, double targetRelLon, AstroTime startTime)
         {
             if (body == Body.Earth || body == Body.Sun || body == Body.Moon)
                 throw new InvalidBodyException(body);
@@ -8099,7 +5216,7 @@ namespace CosineKitty
             throw new InternalError("Relative longitude search failed to converge.");
         }
 
-        private static double RelativeLongitudeOffset(Body body, AstroTime time, int direction, double targetRelLon)
+        private double RelativeLongitudeOffset(Body body, AstroTime time, int direction, double targetRelLon)
         {
             double plon = EclipticLongitude(body, time);
             double elon = EclipticLongitude(Body.Earth, time);
@@ -8135,7 +5252,7 @@ namespace CosineKitty
         /// <returns>
         ///      Returns the ecliptic longitude in degrees of the given body at the given time.
         /// </returns>
-        public static double EclipticLongitude(Body body, AstroTime time)
+        public double EclipticLongitude(Body body, AstroTime time)
         {
             if (body == Body.Sun)
                 throw new ArgumentException("Cannot calculate heliocentric longitude of the Sun.");
@@ -8216,7 +5333,7 @@ namespace CosineKitty
         /// <returns>
         /// Returns a valid #ElongationInfo structure, or throws an exception if there is an error.
         /// </returns>
-        public static ElongationInfo Elongation(Body body, AstroTime time)
+        public ElongationInfo Elongation(Body body, AstroTime time)
         {
             Visibility visibility;
             double ecliptic_separation = PairLongitude(body, Body.Sun, time);
@@ -8264,7 +5381,7 @@ namespace CosineKitty
         /// <returns>
         /// Either an exception will be thrown, or the function will return a valid value.
         /// </returns>
-        public static ElongationInfo SearchMaxElongation(Body body, AstroTime startTime)
+        public ElongationInfo SearchMaxElongation(Body body, AstroTime startTime)
         {
             double s1, s2;
             switch (body)
@@ -8340,11 +5457,11 @@ namespace CosineKitty
 
                 // Now we have a time range [t1,t2] that brackets a maximum elongation event.
                 // Confirm the bracketing.
-                double m1 = neg_elong_slope.Eval(t1);
+                double m1 = neg_elong_slope.Eval(this, t1);
                 if (m1 >= 0.0)
                     throw new InternalError("There is a bug in the bracketing algorithm! m1 = " + m1);
 
-                double m2 = neg_elong_slope.Eval(t2);
+                double m2 = neg_elong_slope.Eval(this, t2);
                 if (m2 <= 0.0)
                     throw new InternalError("There is a bug in the bracketing algorithm! m2 = " + m2);
 
@@ -8386,7 +5503,7 @@ namespace CosineKitty
         /// Returns the angle in degrees between the Sun and the specified body as
         /// seen from the center of the Earth.
         /// </returns>
-        public static double AngleFromSun(Body body, AstroTime time)
+        public double AngleFromSun(Body body, AstroTime time)
         {
             if (body == Body.Earth)
                 throw new EarthNotAllowedException();
@@ -8453,7 +5570,7 @@ namespace CosineKitty
         /// <returns>
         /// Returns an #ApsisInfo structure containing information about the next lunar apsis.
         /// </returns>
-        public static ApsisInfo SearchLunarApsis(AstroTime startTime)
+        public ApsisInfo SearchLunarApsis(AstroTime startTime)
         {
             const double increment = 5.0;   // number of days to skip in each iteration
             var positive_slope = new SearchContext_MoonDistanceSlope(+1);
@@ -8466,11 +5583,11 @@ namespace CosineKitty
             // Either way, the polarity of the slope will change, so the product will be negative.
             // Handle the crazy corner case of exactly touching zero by checking for m1*m2 <= 0.
             AstroTime t1 = startTime;
-            double m1 = positive_slope.Eval(t1);
+            double m1 = positive_slope.Eval(this,t1);
             for (int iter = 0; iter * increment < 2.0 * Astronomy.MEAN_SYNODIC_MONTH; ++iter)
             {
                 AstroTime t2 = t1.AddDays(increment);
-                double m2 = positive_slope.Eval(t2);
+                double m2 = positive_slope.Eval(this,t2);
                 if (m1 * m2 <= 0.0)
                 {
                     // There is a change of slope polarity within the time range [t1, t2].
@@ -8532,7 +5649,7 @@ namespace CosineKitty
         /// <returns>
         /// Same as the return value for #Astronomy.SearchLunarApsis.
         /// </returns>
-        public static ApsisInfo NextLunarApsis(ApsisInfo apsis)
+        public ApsisInfo NextLunarApsis(ApsisInfo apsis)
         {
             const double skip = 11.0;   // number of days to skip to start looking for next apsis event
 
@@ -8555,7 +5672,7 @@ namespace CosineKitty
         /// <param name="startTime">
         /// Specifies the time to begin searching for consecutive lunar apsides.
         /// </param>
-        public static IEnumerable<ApsisInfo> LunarApsidesAfter(AstroTime startTime)
+        public IEnumerable<ApsisInfo> LunarApsidesAfter(AstroTime startTime)
         {
             ApsisInfo apsis = SearchLunarApsis(startTime);
             yield return apsis;
@@ -8567,7 +5684,7 @@ namespace CosineKitty
         }
 
 
-        private static ApsisInfo PlanetExtreme(Body body, ApsisKind kind, AstroTime start_time, double dayspan)
+        private ApsisInfo PlanetExtreme(Body body, ApsisKind kind, AstroTime start_time, double dayspan)
         {
             double direction = (kind == ApsisKind.Apocenter) ? +1.0 : -1.0;
             const int npoints = 10;
@@ -8602,7 +5719,7 @@ namespace CosineKitty
             }
         }
 
-        private static ApsisInfo BruteSearchPlanetApsis(Body body, AstroTime startTime)
+        private ApsisInfo BruteSearchPlanetApsis(Body body, AstroTime startTime)
         {
             const int npoints = 100;
             int i;
@@ -8720,7 +5837,7 @@ namespace CosineKitty
         /// `kind` holds either `ApsisKind.Pericenter` for perihelion or `ApsisKind.Apocenter` for aphelion.
         /// and distance values `dist_au` (astronomical units) and `dist_km` (kilometers).
         /// </returns>
-        public static ApsisInfo SearchPlanetApsis(Body body, AstroTime startTime)
+        public ApsisInfo SearchPlanetApsis(Body body, AstroTime startTime)
         {
             if (body == Body.Neptune || body == Body.Pluto)
                 return BruteSearchPlanetApsis(body, startTime);
@@ -8730,11 +5847,11 @@ namespace CosineKitty
             double orbit_period_days = PlanetOrbitalPeriod(body);
             double increment = orbit_period_days / 6.0;
             AstroTime t1 = startTime;
-            double m1 = positive_slope.Eval(t1);
+            double m1 = positive_slope.Eval(this, t1);
             for (int iter = 0; iter * increment < 2.0 * orbit_period_days; ++iter)
             {
                 AstroTime t2 = t1.AddDays(increment);
-                double m2 = positive_slope.Eval(t2);
+                double m2 = positive_slope.Eval(this, t2);
                 if (m1 * m2 <= 0.0)
                 {
                     // There is a change of slope polarity within the time range [t1, t2].
@@ -8799,7 +5916,7 @@ namespace CosineKitty
         /// <returns>
         /// Same as the return value for #Astronomy.SearchPlanetApsis.
         /// </returns>
-        public static ApsisInfo NextPlanetApsis(Body body, ApsisInfo apsis)
+        public ApsisInfo NextPlanetApsis(Body body, ApsisInfo apsis)
         {
             if (apsis.kind != ApsisKind.Apocenter && apsis.kind != ApsisKind.Pericenter)
                 throw new ArgumentException("Invalid apsis kind");
@@ -8832,7 +5949,7 @@ namespace CosineKitty
         /// <param name="startTime">
         /// Specifies the time to begin searching for consecutive planetary apsides.
         /// </param>
-        public static IEnumerable<ApsisInfo> PlanetApsidesAfter(Body body, AstroTime startTime)
+        public IEnumerable<ApsisInfo> PlanetApsidesAfter(Body body, AstroTime startTime)
         {
             ApsisInfo apsis = SearchPlanetApsis(body, startTime);
             yield return apsis;
@@ -8849,7 +5966,7 @@ namespace CosineKitty
         // This reduces memory allocation overhead.
         private static readonly SearchContext_EarthShadowSlope earthShadowSlopeContext = new SearchContext_EarthShadowSlope();
 
-        private static ShadowInfo PeakEarthShadow(AstroTime search_center_time)
+        private ShadowInfo PeakEarthShadow(AstroTime search_center_time)
         {
             const double window = 0.03;        // initial search window, in days, before/after given time
             AstroTime t1 = search_center_time.AddDays(-window);
@@ -8953,7 +6070,7 @@ namespace CosineKitty
         /// <returns>
         /// A #LunarEclipseInfo structure containing information about the lunar eclipse.
         /// </returns>
-        public static LunarEclipseInfo SearchLunarEclipse(AstroTime startTime)
+        public LunarEclipseInfo SearchLunarEclipse(AstroTime startTime)
         {
             const double PruneLatitude = 1.8;   // full Moon's ecliptic latitude above which eclipse is impossible
             // Iterate through consecutive full moons until we find any kind of lunar eclipse.
@@ -9033,7 +6150,7 @@ namespace CosineKitty
         /// <returns>
         /// A #LunarEclipseInfo structure containing information about the lunar eclipse.
         /// </returns>
-        public static LunarEclipseInfo NextLunarEclipse(AstroTime prevEclipseTime)
+        public LunarEclipseInfo NextLunarEclipse(AstroTime prevEclipseTime)
         {
             AstroTime startTime = prevEclipseTime.AddDays(10.0);
             return SearchLunarEclipse(startTime);
@@ -9048,7 +6165,7 @@ namespace CosineKitty
         /// <param name="startTime">
         /// Specifies the time to begin searching for consecutive lunar eclipses.
         /// </param>
-        public static IEnumerable<LunarEclipseInfo> LunarEclipsesAfter(AstroTime startTime)
+        public IEnumerable<LunarEclipseInfo> LunarEclipsesAfter(AstroTime startTime)
         {
             LunarEclipseInfo eclipse = SearchLunarEclipse(startTime);
             yield return eclipse;
@@ -9060,7 +6177,7 @@ namespace CosineKitty
         }
 
 
-        private static double ShadowSemiDurationMinutes(AstroTime center_time, double radius_limit, double window_minutes)
+        private double ShadowSemiDurationMinutes(AstroTime center_time, double radius_limit, double window_minutes)
         {
             // Search backwards and forwards from the center time until shadow axis distance crosses radius limit.
             double window = window_minutes / (24.0 * 60.0);
@@ -9088,7 +6205,7 @@ namespace CosineKitty
         /// See #Astronomy.GlobalSolarEclipsesAfter for a convenient enumerator.
         /// </remarks>
         /// <param name="startTime">The date and time for starting the search for a solar eclipse.</param>
-        public static GlobalSolarEclipseInfo SearchGlobalSolarEclipse(AstroTime startTime)
+        public GlobalSolarEclipseInfo SearchGlobalSolarEclipse(AstroTime startTime)
         {
             const double PruneLatitude = 1.8;   // Moon's ecliptic latitude beyond which eclipse is impossible
 
@@ -9140,7 +6257,7 @@ namespace CosineKitty
         /// <param name="prevEclipseTime">
         /// A date and time near a new moon. Solar eclipse search will start at the next new moon.
         /// </param>
-        public static GlobalSolarEclipseInfo NextGlobalSolarEclipse(AstroTime prevEclipseTime)
+        public GlobalSolarEclipseInfo NextGlobalSolarEclipse(AstroTime prevEclipseTime)
         {
             AstroTime startTime = prevEclipseTime.AddDays(10.0);
             return SearchGlobalSolarEclipse(startTime);
@@ -9155,7 +6272,7 @@ namespace CosineKitty
         /// <param name="startTime">
         /// Specifies the time to begin searching for consecutive solar eclipses.
         /// </param>
-        public static IEnumerable<GlobalSolarEclipseInfo> GlobalSolarEclipsesAfter(AstroTime startTime)
+        public IEnumerable<GlobalSolarEclipseInfo> GlobalSolarEclipsesAfter(AstroTime startTime)
         {
             GlobalSolarEclipseInfo eclipse = SearchGlobalSolarEclipse(startTime);
             yield return eclipse;
@@ -9167,7 +6284,7 @@ namespace CosineKitty
         }
 
 
-        private static GlobalSolarEclipseInfo GeoidIntersect(ShadowInfo shadow)
+        private GlobalSolarEclipseInfo GeoidIntersect(ShadowInfo shadow)
         {
             var eclipse = new GlobalSolarEclipseInfo();
             eclipse.kind = EclipseKind.Partial;
@@ -9269,7 +6386,7 @@ namespace CosineKitty
         }
 
 
-        private static EclipseKind EclipseKindFromUmbra(double k)
+        private EclipseKind EclipseKindFromUmbra(double k)
         {
             // The umbra radius tells us what kind of eclipse the observer sees.
             // If the umbra radius is positive, this is a total eclipse. Otherwise, it's annular.
@@ -9280,7 +6397,7 @@ namespace CosineKitty
 
         private static readonly SearchContext_MoonShadowSlope moonShadowSlopeContext = new SearchContext_MoonShadowSlope();
 
-        private static ShadowInfo PeakMoonShadow(AstroTime search_center_time)
+        private ShadowInfo PeakMoonShadow(AstroTime search_center_time)
         {
             // Search for when the Moon's shadow axis is closest to the center of the Earth.
 
@@ -9292,7 +6409,7 @@ namespace CosineKitty
             return MoonShadow(time);
         }
 
-        private static ShadowInfo PeakLocalMoonShadow(AstroTime search_center_time, Observer observer)
+        private ShadowInfo PeakLocalMoonShadow(AstroTime search_center_time, Observer observer)
         {
             // Search for the time near search_center_time that the Moon's shadow comes
             // closest to the given observer.
@@ -9305,7 +6422,7 @@ namespace CosineKitty
             return LocalMoonShadow(time, observer);
         }
 
-        private static ShadowInfo PeakPlanetShadow(Body body, double planet_radius_km, AstroTime search_center_time)
+        private ShadowInfo PeakPlanetShadow(Body body, double planet_radius_km, AstroTime search_center_time)
         {
             // Search for when the body's shadow is closest to the center of the Earth.
             const double window = 1.0;     // days before/after inferior conjunction to search for minimum shadow distance
@@ -9317,7 +6434,7 @@ namespace CosineKitty
             return PlanetShadow(body, planet_radius_km, time);
         }
 
-        private static ShadowInfo CalcShadow(
+        private ShadowInfo CalcShadow(
             double body_radius_km,
             AstroTime time,
             AstroVector target,
@@ -9334,7 +6451,7 @@ namespace CosineKitty
         }
 
 
-        internal static ShadowInfo EarthShadow(AstroTime time)
+        internal ShadowInfo EarthShadow(AstroTime time)
         {
             // This function helps find when the Earth's shadow falls upon the Moon.
 
@@ -9349,7 +6466,7 @@ namespace CosineKitty
         }
 
 
-        internal static ShadowInfo MoonShadow(AstroTime time)
+        internal ShadowInfo MoonShadow(AstroTime time)
         {
             // This function helps find when the Moon's shadow falls upon the Earth.
 
@@ -9362,7 +6479,7 @@ namespace CosineKitty
         }
 
 
-        internal static ShadowInfo LocalMoonShadow(AstroTime time, Observer observer)
+        internal ShadowInfo LocalMoonShadow(AstroTime time, Observer observer)
         {
             // Calculate observer's geocentric position.
             AstroVector o = geo_pos(time, observer);
@@ -9379,7 +6496,7 @@ namespace CosineKitty
         }
 
 
-        internal static ShadowInfo PlanetShadow(Body body, double planet_radius_km, AstroTime time)
+        internal ShadowInfo PlanetShadow(Body body, double planet_radius_km, AstroTime time)
         {
             // Calculate light-travel-corrected vector from Earth to planet.
             AstroVector p = GeoVector(body, time, Aberration.Corrected);
@@ -9421,7 +6538,7 @@ namespace CosineKitty
         ///
         /// <param name="startTime">The date and time for starting the search for a solar eclipse.</param>
         /// <param name="observer">The geographic location of the observer.</param>
-        public static LocalSolarEclipseInfo SearchLocalSolarEclipse(AstroTime startTime, Observer observer)
+        public LocalSolarEclipseInfo SearchLocalSolarEclipse(AstroTime startTime, Observer observer)
         {
             const double PruneLatitude = 1.8;   // Moon's ecliptic latitude beyond which eclipse is impossible
 
@@ -9480,7 +6597,7 @@ namespace CosineKitty
         /// <param name="observer">
         /// The geographic location of the observer.
         /// </param>
-        public static LocalSolarEclipseInfo NextLocalSolarEclipse(AstroTime prevEclipseTime, Observer observer)
+        public LocalSolarEclipseInfo NextLocalSolarEclipse(AstroTime prevEclipseTime, Observer observer)
         {
             AstroTime startTime = prevEclipseTime.AddDays(10.0);
             return SearchLocalSolarEclipse(startTime, observer);
@@ -9498,7 +6615,7 @@ namespace CosineKitty
         /// <param name="observer">
         /// The geographic location of the observer.
         /// </param>
-        public static IEnumerable<LocalSolarEclipseInfo> LocalSolarEclipsesAfter(
+        public IEnumerable<LocalSolarEclipseInfo> LocalSolarEclipsesAfter(
             AstroTime startTime,
             Observer observer)
         {
@@ -9524,7 +6641,7 @@ namespace CosineKitty
             return Math.Abs(shadow.k) - shadow.r;
         }
 
-        private static LocalSolarEclipseInfo LocalEclipse(ShadowInfo shadow, Observer observer)
+        private LocalSolarEclipseInfo LocalEclipse(ShadowInfo shadow, Observer observer)
         {
             const double PARTIAL_WINDOW = 0.2;
             const double TOTAL_WINDOW = 0.01;
@@ -9553,7 +6670,7 @@ namespace CosineKitty
             return eclipse;
         }
 
-        private static EclipseEvent LocalEclipseTransition(
+        private EclipseEvent LocalEclipseTransition(
             Observer observer,
             double direction,
             Func<ShadowInfo, double> func,
@@ -9566,7 +6683,7 @@ namespace CosineKitty
             return CalcEvent(observer, search);
         }
 
-        private static EclipseEvent CalcEvent(Observer observer, AstroTime time)
+        private EclipseEvent CalcEvent(Observer observer, AstroTime time)
         {
             var evt = new EclipseEvent();
             evt.time = time;
@@ -9574,7 +6691,7 @@ namespace CosineKitty
             return evt;
         }
 
-        private static double SunAltitude(AstroTime time, Observer observer)
+        private double SunAltitude(AstroTime time, Observer observer)
         {
             Equatorial equ = Equator(Body.Sun, time, observer, EquatorEpoch.OfDate, Aberration.Corrected);
             Topocentric hor = Horizon(time, observer, equ.ra, equ.dec, Refraction.Normal);
@@ -9582,7 +6699,7 @@ namespace CosineKitty
         }
 
 
-        private static AstroTime PlanetTransitBoundary(
+        private AstroTime PlanetTransitBoundary(
             Body body,
             double planet_radius_km,
             AstroTime t1,
@@ -9615,7 +6732,7 @@ namespace CosineKitty
         /// <param name="startTime">
         /// The date and time for starting the search for a transit.
         /// </param>
-        public static TransitInfo SearchTransit(Body body, AstroTime startTime)
+        public TransitInfo SearchTransit(Body body, AstroTime startTime)
         {
             const double threshold_angle = 0.4;     // maximum angular separation to attempt transit calculation
             const double dt_days = 1.0;
@@ -9694,7 +6811,7 @@ namespace CosineKitty
         /// <param name="prevTransitTime">
         /// A date and time near the previous transit.
         /// </param>
-        public static TransitInfo NextTransit(Body body, AstroTime prevTransitTime)
+        public TransitInfo NextTransit(Body body, AstroTime prevTransitTime)
         {
             AstroTime startTime = prevTransitTime.AddDays(100.0);
             return SearchTransit(body, startTime);
@@ -9711,7 +6828,7 @@ namespace CosineKitty
         /// <param name="startTime">
         /// Specifies the time to begin searching for consecutive transits.
         /// </param>
-        public static IEnumerable<TransitInfo> TransitsAfter(Body body, AstroTime startTime)
+        public IEnumerable<TransitInfo> TransitsAfter(Body body, AstroTime startTime)
         {
             TransitInfo transit = SearchTransit(body, startTime);
             yield return transit;
@@ -9743,7 +6860,7 @@ namespace CosineKitty
         /// <param name="startTime">
         /// The date and time for starting the search for an ascending or descending node of the Moon.
         /// </param>
-        public static NodeEventInfo SearchMoonNode(AstroTime startTime)
+        public NodeEventInfo SearchMoonNode(AstroTime startTime)
         {
             // Start at the given moment in time and sample the Moon's ecliptic latitude.
             // Step 10 days at a time, searching for an interval where that latitude crosses zero.
@@ -9792,7 +6909,7 @@ namespace CosineKitty
         /// <param name="prevNode">
         /// The previous node found from calling #Astronomy.SearchMoonNode or `Astronomy.NextMoonNode`.
         /// </param>
-        public static NodeEventInfo NextMoonNode(NodeEventInfo prevNode)
+        public NodeEventInfo NextMoonNode(NodeEventInfo prevNode)
         {
             AstroTime time = prevNode.time.AddDays(MoonNodeStepDays);
             NodeEventInfo node = SearchMoonNode(time);
@@ -9823,7 +6940,7 @@ namespace CosineKitty
         /// <param name="startTime">
         /// Specifies the time to begin searching for consecutive lunar apsides.
         /// </param>
-        public static IEnumerable<NodeEventInfo> MoonNodesAfter(AstroTime startTime)
+        public IEnumerable<NodeEventInfo> MoonNodesAfter(AstroTime startTime)
         {
             NodeEventInfo node = SearchMoonNode(startTime);
             yield return node;
@@ -9860,7 +6977,7 @@ namespace CosineKitty
         /// <param name="body">The Sun, Moon, or any planet other than the Earth.</param>
         /// <param name="time">The date and time of the observation.</param>
         /// <returns>An #IllumInfo structure with fields as documented above.</returns>
-        public static IllumInfo Illumination(Body body, AstroTime time)
+        public IllumInfo Illumination(Body body, AstroTime time)
         {
             if (body == Body.Earth)
                 throw new EarthNotAllowedException();
@@ -9973,7 +7090,7 @@ namespace CosineKitty
             return mag;
         }
 
-        private static double SaturnMagnitude(
+        private double SaturnMagnitude(
             double phase,
             double helio_dist,
             double geo_dist,
@@ -10030,7 +7147,7 @@ namespace CosineKitty
         /// <returns>
         ///      See documentation about the return value from #Astronomy.Illumination.
         /// </returns>
-        public static IllumInfo SearchPeakMagnitude(Body body, AstroTime startTime)
+        public IllumInfo SearchPeakMagnitude(Body body, AstroTime startTime)
         {
             // s1 and s2 are relative longitudes within which peak magnitude of Venus can occur.
             const double s1 = 10.0;
@@ -10099,11 +7216,11 @@ namespace CosineKitty
 
                 // Now we have a time range [t1,t2] that brackets a maximum magnitude event.
                 // Confirm the bracketing.
-                double m1 = mag_slope.Eval(t1);
+                double m1 = mag_slope.Eval(this,t1);
                 if (m1 >= 0.0)
                     throw new InternalError("m1 >= 0");    // should never happen!
 
-                double m2 = mag_slope.Eval(t2);
+                double m2 = mag_slope.Eval(this,t2);
                 if (m2 <= 0.0)
                     throw new InternalError("m2 <= 0");    // should never happen!
 
@@ -10124,7 +7241,7 @@ namespace CosineKitty
         }
 
 
-        private static double CubeRoot(double x)
+        private double CubeRoot(double x)
         {
             // Astronomy Engine is targeted at .NET Standard 2.0.
             // That means it supports the older Framework 4+ platform
@@ -10176,7 +7293,7 @@ namespace CosineKitty
         /// <param name="major_body">The more massive of the co-orbiting bodies: `Body.Sun` or `Body.Earth`.</param>
         /// <param name="minor_body">The less massive of the co-orbiting bodies. See main remarks.</param>
         /// <returns>The position and velocity of the selected Lagrange point with respect to the major body's center.</returns>
-        public static StateVector LagrangePoint(
+        public StateVector LagrangePoint(
             int point,
             AstroTime time,
             Body major_body,
@@ -10249,7 +7366,7 @@ namespace CosineKitty
         /// <param name="minor_state">The state vector of the minor (less massive) of the pair of bodies.</param>
         /// <param name="minor_mass">The mass product GM of the minor body.</param>
         /// <returns>The position and velocity of the selected Lagrange point with respect to the major body's center.</returns>
-        public static StateVector LagrangePointFast(
+        public StateVector LagrangePointFast(
             int point,
             StateVector major_state,
             double major_mass,
@@ -10508,7 +7625,7 @@ namespace CosineKitty
         /// </param>
         ///
         /// <returns>A pivoted matrix object.</returns>
-        public static RotationMatrix Pivot(RotationMatrix rotation, int axis, double angle)
+        public RotationMatrix Pivot(RotationMatrix rotation, int axis, double angle)
         {
             // Check for an invalid coordinate axis.
             if (axis < 0 || axis > 2)
@@ -10594,7 +7711,7 @@ namespace CosineKitty
         /// <param name="sphere">Spherical coordinates to be converted.</param>
         /// <param name="time">The time that should be included in the return value.</param>
         /// <returns>The vector form of the supplied spherical coordinates.</returns>
-        public static AstroVector VectorFromSphere(Spherical sphere, AstroTime time)
+        public AstroVector VectorFromSphere(Spherical sphere, AstroTime time)
         {
             double radlat = sphere.lat * DEG2RAD;
             double radlon = sphere.lon * DEG2RAD;
@@ -10695,7 +7812,7 @@ namespace CosineKitty
         /// <returns>
         /// Horizontal spherical coordinates as described above.
         /// </returns>
-        public static Spherical HorizonFromVector(AstroVector vector, Refraction refraction)
+        public Spherical HorizonFromVector(AstroVector vector, Refraction refraction)
         {
             Spherical sphere = SphereFromVector(vector);
             return new Spherical(
@@ -10726,7 +7843,7 @@ namespace CosineKitty
         /// <returns>
         /// A vector in the horizontal system: `x` = north, `y` = west, and `z` = zenith (up).
         /// </returns>
-        public static AstroVector VectorFromHorizon(Spherical sphere, AstroTime time, Refraction refraction)
+        public AstroVector VectorFromHorizon(Spherical sphere, AstroTime time, Refraction refraction)
         {
             return VectorFromSphere(
                 new Spherical(
@@ -10764,7 +7881,7 @@ namespace CosineKitty
         /// <returns>
         /// The angular adjustment in degrees to be added to the altitude angle to correct for atmospheric lensing.
         /// </returns>
-        public static double RefractionAngle(Refraction refraction, double altitude)
+        public double RefractionAngle(Refraction refraction, double altitude)
         {
             if (altitude < -90.0 || altitude > +90.0)
                 return 0.0;     // no attempt to correct an invalid altitude
@@ -10826,7 +7943,7 @@ namespace CosineKitty
         /// altitude angle to correct for atmospheric lensing.
         /// This will be less than or equal to zero.
         /// </returns>
-        public static double InverseRefractionAngle(Refraction refraction, double bent_altitude)
+        public double InverseRefractionAngle(Refraction refraction, double bent_altitude)
         {
             if (bent_altitude < -90.0 || bent_altitude > +90.0)
                 return 0.0;     // no attempt to correct an invalid altitude
@@ -11254,7 +8371,7 @@ namespace CosineKitty
         /// These components are chosen so that the "right-hand rule" works for the vector
         /// and so that north represents the direction where azimuth = 0.
         /// </returns>
-        public static RotationMatrix Rotation_EQD_HOR(AstroTime time, Observer observer)
+        public RotationMatrix Rotation_EQD_HOR(AstroTime time, Observer observer)
         {
             double sinlat = Math.Sin(observer.latitude * DEG2RAD);
             double coslat = Math.Cos(observer.latitude * DEG2RAD);
@@ -11299,7 +8416,7 @@ namespace CosineKitty
         /// <returns>
         ///  A rotation matrix that converts HOR to EQD at `time` and for `observer`.
         /// </returns>
-        public static RotationMatrix Rotation_HOR_EQD(AstroTime time, Observer observer)
+        public RotationMatrix Rotation_HOR_EQD(AstroTime time, Observer observer)
         {
             RotationMatrix rot = Rotation_EQD_HOR(time, observer);
             return InverseRotation(rot);
@@ -11324,7 +8441,7 @@ namespace CosineKitty
         /// <returns>
         /// A rotation matrix that converts HOR to EQJ at `time` and for `observer`.
         /// </returns>
-        public static RotationMatrix Rotation_HOR_EQJ(AstroTime time, Observer observer)
+        public RotationMatrix Rotation_HOR_EQJ(AstroTime time, Observer observer)
         {
             RotationMatrix hor_eqd = Rotation_HOR_EQD(time, observer);
             RotationMatrix eqd_eqj = Rotation_EQD_EQJ(time);
@@ -11354,7 +8471,7 @@ namespace CosineKitty
         /// These components are chosen so that the "right-hand rule" works for the vector
         /// and so that north represents the direction where azimuth = 0.
         /// </returns>
-        public static RotationMatrix Rotation_EQJ_HOR(AstroTime time, Observer observer)
+        public RotationMatrix Rotation_EQJ_HOR(AstroTime time, Observer observer)
         {
             RotationMatrix rot = Rotation_HOR_EQJ(time, observer);
             return InverseRotation(rot);
@@ -11428,7 +8545,7 @@ namespace CosineKitty
         /// These components are chosen so that the "right-hand rule" works for the vector
         /// and so that north represents the direction where azimuth = 0.
         /// </returns>
-        public static RotationMatrix Rotation_ECL_HOR(AstroTime time, Observer observer)
+        public RotationMatrix Rotation_ECL_HOR(AstroTime time, Observer observer)
         {
             RotationMatrix ecl_eqd = Rotation_ECL_EQD(time);
             RotationMatrix eqd_hor = Rotation_EQD_HOR(time, observer);
@@ -11453,7 +8570,7 @@ namespace CosineKitty
         /// <returns>
         /// A rotation matrix that converts HOR to ECL.
         /// </returns>
-        public static RotationMatrix Rotation_HOR_ECL(AstroTime time, Observer observer)
+        public RotationMatrix Rotation_HOR_ECL(AstroTime time, Observer observer)
         {
             RotationMatrix rot = Rotation_ECL_HOR(time, observer);
             return InverseRotation(rot);
@@ -11666,7 +8783,7 @@ namespace CosineKitty
         /// of the constellation that contains the given (ra,dec), along with
         /// the converted B1875 (ra,dec) for that point.
         /// </returns>
-        public static ConstellationInfo Constellation(double ra, double dec)
+        public ConstellationInfo Constellation(double ra, double dec)
         {
             if (dec < -90.0 || dec > +90.0)
                 throw new ArgumentException("Invalid declination angle. Must be -90..+90.");
