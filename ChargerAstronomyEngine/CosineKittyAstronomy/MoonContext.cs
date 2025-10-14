@@ -127,11 +127,11 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             GAM1C = 0;
             SINPI = 3422.7;
             LongPeriodic();
-            L0 = Astronomy.PI2 * Frac(0.60643382 + 1336.85522467 * T - 0.00000313 * T2) + DL0 / Astronomy.ARC;
-            L = Astronomy.PI2 * Frac(0.37489701 + 1325.55240982 * T + 0.00002565 * T2) + DL / Astronomy.ARC;
-            LS = Astronomy.PI2 * Frac(0.99312619 + 99.99735956 * T - 0.00000044 * T2) + DLS / Astronomy.ARC;
-            F = Astronomy.PI2 * Frac(0.25909118 + 1342.22782980 * T - 0.00000892 * T2) + DF / Astronomy.ARC;
-            D = Astronomy.PI2 * Frac(0.82736186 + 1236.85308708 * T - 0.00000397 * T2) + DD / Astronomy.ARC;
+            L0 = Constants.PI2 * Frac(0.60643382 + 1336.85522467 * T - 0.00000313 * T2) + DL0 / Constants.ARC;
+            L = Constants.PI2 * Frac(0.37489701 + 1325.55240982 * T + 0.00002565 * T2) + DL / Constants.ARC;
+            LS = Constants.PI2 * Frac(0.99312619 + 99.99735956 * T - 0.00000044 * T2) + DLS / Constants.ARC;
+            F = Constants.PI2 * Frac(0.25909118 + 1342.22782980 * T - 0.00000892 * T2) + DF / Constants.ARC;
+            D = Constants.PI2 * Frac(0.82736186 + 1236.85308708 * T - 0.00000397 * T2) + DD / Constants.ARC;
             for (I = 1; I <= 4; ++I)
             {
                 switch (I)
@@ -271,14 +271,14 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             SolarN();
             Planetary();
-            S = F + DS / Astronomy.ARC;
+            S = F + DS / Constants.ARC;
 
             double lat_seconds = (1.000002708 + 139.978 * DGAM) * (18518.511 + 1.189 + GAM1C) * Math.Sin(S) - 6.24 * Math.Sin(3 * S) + N;
 
             return new MoonResult(
-                Astronomy.PI2 * Frac((L0 + DLAM / Astronomy.ARC) / Astronomy.PI2),
-                lat_seconds * (Astronomy.DEG2RAD / 3600.0),
-                (Astronomy.ARC * Astronomy.EARTH_EQUATORIAL_RADIUS_AU) / (0.999953253 * SINPI)
+                Constants.PI2 * Frac((L0 + DLAM / Constants.ARC) / Constants.PI2),
+                lat_seconds * (Constants.DEG2RAD / 3600.0),
+                (Constants.ARC * Constants.EARTH_EQUATORIAL_RADIUS_AU) / (0.999953253 * SINPI)
             );
         }
     }

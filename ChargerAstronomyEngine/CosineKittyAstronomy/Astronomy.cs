@@ -57,141 +57,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
     /// </summary>
     public class Astronomy
     {
-        /// <summary>
-        /// The number of kilometers in one astronomical unit (AU).
-        /// </summary>
-        public const double KM_PER_AU = 1.4959787069098932e+8;
-
-        /// <summary>
-        /// The factor to convert radians to degrees = 180/pi.
-        /// </summary>
-        public const double RAD2DEG = 57.295779513082321;
-
-        /// <summary>
-        /// The factor to convert radians to sidereal hours = 12/pi.
-        /// </summary>
-        public const double RAD2HOUR = 3.819718634205488;
-
-        /// <summary>
-        /// The factor to convert degrees to radians = pi/180.
-        /// </summary>
-        public const double DEG2RAD = 0.017453292519943296;
-
-        /// <summary>
-        /// The factor to convert sidereal hours to radians = pi/12.
-        /// </summary>
-        public const double HOUR2RAD = 0.2617993877991494365;
-
-
-        // Jupiter radius data are nominal values obtained from:
-        // https://www.iau.org/static/resolutions/IAU2015_English.pdf
-        // https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html
-
-        /// <summary>
-        /// The equatorial radius of Jupiter, expressed in kilometers.
-        /// </summary>
-        public const double JUPITER_EQUATORIAL_RADIUS_KM = 71492.0;
-
-        /// <summary>
-        /// The polar radius of Jupiter, expressed in kilometers.
-        /// </summary>
-        public const double JUPITER_POLAR_RADIUS_KM = 66854.0;
-
-        /// <summary>
-        /// The volumetric mean radius of Jupiter, expressed in kilometers.
-        /// </summary>
-        public const double JUPITER_MEAN_RADIUS_KM = 69911.0;
-
-        // The radii of Jupiter's four major moons are obtained from:
-        // https://ssd.jpl.nasa.gov/?sat_phys_par
-
-        /// <summary>
-        /// The mean radius of Jupiter's moon Io, expressed in kilometers.
-        /// </summary>
-        public const double IO_RADIUS_KM = 1821.6;
-
-        /// <summary>
-        /// The mean radius of Jupiter's moon Europa, expressed in kilometers.
-        /// </summary>
-        public const double EUROPA_RADIUS_KM = 1560.8;
-
-        /// <summary>
-        /// The mean radius of Jupiter's moon Ganymede, expressed in kilometers.
-        /// </summary>
-        public const double GANYMEDE_RADIUS_KM = 2631.2;
-
-        /// <summary>
-        /// The mean radius of Jupiter's moon Callisto, expressed in kilometers.
-        /// </summary>
-        public const double CALLISTO_RADIUS_KM = 2410.3;
-
-        /// <summary>
-        /// The speed of light in AU/day.
-        /// </summary>
-        public const double C_AUDAY = 173.1446326846693;
-
-        /// <summary>
-        /// The number of astronomical units in one light-year.
-        /// </summary>
-        public const double AU_PER_LY = 63241.07708807546;
-
-        private const double DAYS_PER_TROPICAL_YEAR = 365.24217;
-        private const double ASEC360 = 1296000.0;
-        private const double ASEC2RAD = 4.848136811095359935899141e-6;
-        internal const double PI2 = 2.0 * Math.PI;
-        internal const double ARC = 3600.0 * 180.0 / Math.PI;       // arcseconds per radian
-
-        internal const double SUN_RADIUS_KM = 695700.0;
-        internal const double SUN_RADIUS_AU = SUN_RADIUS_KM / KM_PER_AU;
-
-        internal const double EARTH_FLATTENING = 0.996647180302104;
-        internal const double EARTH_EQUATORIAL_RADIUS_KM = 6378.1366;
-        internal const double EARTH_EQUATORIAL_RADIUS_AU = EARTH_EQUATORIAL_RADIUS_KM / KM_PER_AU;
-        internal const double EARTH_POLAR_RADIUS_KM = EARTH_EQUATORIAL_RADIUS_KM * EARTH_FLATTENING;
-        internal const double EARTH_MEAN_RADIUS_KM = 6371.0;    // mean radius of the Earth's geoid, without atmosphere
-        internal const double EARTH_ATMOSPHERE_KM = 88.0;       // effective atmosphere thickness for lunar eclipses
-        internal const double EARTH_ECLIPSE_RADIUS_KM = EARTH_MEAN_RADIUS_KM + EARTH_ATMOSPHERE_KM;
-
-        internal const double MOON_EQUATORIAL_RADIUS_KM = 1738.1;
-        internal const double MOON_MEAN_RADIUS_KM = 1737.4;
-        internal const double MOON_POLAR_RADIUS_KM = 1736.0;
-        internal const double MOON_POLAR_RADIUS_AU = (MOON_POLAR_RADIUS_KM / KM_PER_AU);
-        internal const double MOON_EQUATORIAL_RADIUS_AU = (MOON_EQUATORIAL_RADIUS_KM / KM_PER_AU);
-
-        private const double ANGVEL = 7.2921150e-5;
-        private const double SECONDS_PER_DAY = 24.0 * 3600.0;
-        private const double SOLAR_DAYS_PER_SIDEREAL_DAY = 0.9972695717592592;
-        private const double MEAN_SYNODIC_MONTH = 29.530588;     // average number of days for Moon to return to the same phase
-        private const double EARTH_ORBITAL_PERIOD = 365.256;
-        private const double NEPTUNE_ORBITAL_PERIOD = 60189.0;
-        internal const double REFRACTION_NEAR_HORIZON = 34.0 / 60.0;   //  degrees of refractive "lift" seen for objects near horizon
-        private const double ASEC180 = 180.0 * 60.0 * 60.0;         // arcseconds per 180 degrees (or pi radians)
-        private const double AU_PER_PARSEC = (ASEC180 / Math.PI);   // exact definition of how many AU = one parsec
-        private const double EARTH_MOON_MASS_RATIO = 81.30056;
-
-        //  Masses of the Sun and outer planets, used for:
-        //  (1) Calculating the Solar System Barycenter
-        //  (2) Integrating the movement of Pluto
-        //
-        //  https://web.archive.org/web/20120220062549/http://iau-comm4.jpl.nasa.gov/de405iom/de405iom.pdf
-        //
-        //  Page 10 in the above document describes the constants used in the DE405 ephemeris.
-        //  The following are G*M values (gravity constant * mass) in [au^3 / day^2].
-        //  This side-steps issues of not knowing the exact values of G and masses M[i];
-        //  the products GM[i] are known extremely accurately.
-        internal const double SUN_GM = 0.2959122082855911e-03;
-        internal const double MERCURY_GM = 0.4912547451450812e-10;
-        internal const double VENUS_GM = 0.7243452486162703e-09;
-        internal const double EARTH_GM = 0.8887692390113509e-09;
-        internal const double MARS_GM = 0.9549535105779258e-10;
-        internal const double JUPITER_GM = 0.2825345909524226e-06;
-        internal const double SATURN_GM = 0.8459715185680659e-07;
-        internal const double URANUS_GM = 0.1292024916781969e-07;
-        internal const double NEPTUNE_GM = 0.1524358900784276e-07;
-        internal const double PLUTO_GM = 0.2188699765425970e-11;
-
-        internal const double MOON_GM = EARTH_GM / EARTH_MOON_MASS_RATIO;
-
+        
         private bool isfinite(double x)
         {
             return !double.IsNaN(x) && !double.IsInfinity(x);
@@ -281,7 +147,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             star.ra = ra;
             star.dec = dec;
-            star.dist = distanceLightYears * AU_PER_LY;
+            star.dist = distanceLightYears * Constants.AU_PER_LY;
         }
 
         /// <summary>
@@ -306,18 +172,18 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         {
             switch (body)
             {
-                case Body.Sun: return SUN_GM;
-                case Body.Mercury: return MERCURY_GM;
-                case Body.Venus: return VENUS_GM;
-                case Body.Earth: return EARTH_GM;
-                case Body.Moon: return MOON_GM;
-                case Body.EMB: return EARTH_GM + MOON_GM;
-                case Body.Mars: return MARS_GM;
-                case Body.Jupiter: return JUPITER_GM;
-                case Body.Saturn: return SATURN_GM;
-                case Body.Uranus: return URANUS_GM;
-                case Body.Neptune: return NEPTUNE_GM;
-                case Body.Pluto: return PLUTO_GM;
+                case Body.Sun: return Constants.SUN_GM;
+                case Body.Mercury: return Constants.MERCURY_GM;
+                case Body.Venus: return Constants.VENUS_GM;
+                case Body.Earth: return Constants.EARTH_GM;
+                case Body.Moon: return Constants.MOON_GM;
+                case Body.EMB: return Constants.EARTH_GM + Constants.MOON_GM;
+                case Body.Mars: return Constants.MARS_GM;
+                case Body.Jupiter: return Constants.JUPITER_GM;
+                case Body.Saturn: return Constants.SATURN_GM;
+                case Body.Uranus: return Constants.URANUS_GM;
+                case Body.Neptune: return Constants.NEPTUNE_GM;
+                case Body.Pluto: return Constants.PLUTO_GM;
                 default:
                     throw new InvalidBodyException(body);
             }
@@ -1277,7 +1143,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             // to the UTC Date 15-January-2000. Convert difference in days
             // to mean tropical years.
             double u, u2, u3, u4, u5, u6, u7;
-            double y = 2000 + ((ut - 14) / DAYS_PER_TROPICAL_YEAR);
+            double y = 2000 + ((ut - 14) / Constants.DAYS_PER_TROPICAL_YEAR);
             if (y < -500)
             {
                 u = (y - 1820) / 100;
@@ -1403,7 +1269,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     sum += term.amplitude * Math.Cos(term.phase + (t * term.frequency));
                 double incr = tpower * sum;
                 if (clamp_angle)
-                    incr %= PI2;    // improve precision: longitude angles can be hundreds of radians
+                    incr %= Constants.PI2;    // improve precision: longitude angles can be hundreds of radians
                 coord += incr;
                 tpower *= t;
             }
@@ -1484,11 +1350,11 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 // Use barycentric coordinates of the Sun and major planets to calculate
                 // the gravitational acceleration vector experienced by a small body at location 'small_pos'.
                 return
-                    AccelerationIncrement(small_pos, SUN_GM, Sun.r) +
-                    AccelerationIncrement(small_pos, JUPITER_GM, Jupiter.r) +
-                    AccelerationIncrement(small_pos, SATURN_GM, Saturn.r) +
-                    AccelerationIncrement(small_pos, URANUS_GM, Uranus.r) +
-                    AccelerationIncrement(small_pos, NEPTUNE_GM, Neptune.r);
+                    AccelerationIncrement(small_pos, Constants.SUN_GM, Sun.r) +
+                    AccelerationIncrement(small_pos, Constants.JUPITER_GM, Jupiter.r) +
+                    AccelerationIncrement(small_pos, Constants.SATURN_GM, Saturn.r) +
+                    AccelerationIncrement(small_pos, Constants.URANUS_GM, Uranus.r) +
+                    AccelerationIncrement(small_pos, Constants.NEPTUNE_GM, Neptune.r);
             }
 
             private static TerseVector AccelerationIncrement(TerseVector small_pos, double gm, TerseVector major_pos)
@@ -1630,7 +1496,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
         internal static body_state_t AdjustBarycenterPosVel(ref body_state_t ssb, double tt, Body body, double planet_gm)
         {
-            double shift = planet_gm / (planet_gm + SUN_GM);
+            double shift = planet_gm / (planet_gm + Constants.SUN_GM);
             body_state_t planet = CalcVsopPosVel(vsop[(int)body], tt);
             ssb.r += shift * planet.r;
             ssb.v += shift * planet.v;
@@ -1641,10 +1507,10 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         {
             var bary = new major_bodies_t();
             var ssb = new body_state_t(tt, TerseVector.Zero, TerseVector.Zero);
-            bary.Jupiter = AdjustBarycenterPosVel(ref ssb, tt, Body.Jupiter, JUPITER_GM);
-            bary.Saturn = AdjustBarycenterPosVel(ref ssb, tt, Body.Saturn, SATURN_GM);
-            bary.Uranus = AdjustBarycenterPosVel(ref ssb, tt, Body.Uranus, URANUS_GM);
-            bary.Neptune = AdjustBarycenterPosVel(ref ssb, tt, Body.Neptune, NEPTUNE_GM);
+            bary.Jupiter = AdjustBarycenterPosVel(ref ssb, tt, Body.Jupiter, Constants.JUPITER_GM);
+            bary.Saturn = AdjustBarycenterPosVel(ref ssb, tt, Body.Saturn, Constants.SATURN_GM);
+            bary.Uranus = AdjustBarycenterPosVel(ref ssb, tt, Body.Uranus, Constants.URANUS_GM);
+            bary.Neptune = AdjustBarycenterPosVel(ref ssb, tt, Body.Neptune, Constants.NEPTUNE_GM);
 
             // Convert planets' [pos, vel] vectors from heliocentric to barycentric.
             bary.Jupiter.r -= ssb.r; bary.Jupiter.v -= ssb.v;
@@ -2046,9 +1912,9 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             foreach (vsop_term_t term in m.l)
                 elem1 += term.amplitude * Math.Sin(term.phase + (t * term.frequency));
 
-            elem1 %= PI2;
+            elem1 %= Constants.PI2;
             if (elem1 < 0)
-                elem1 += PI2;
+                elem1 += Constants.PI2;
 
             double elem2 = 0.0;
             double elem3 = 0.0;
@@ -2136,10 +2002,10 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                                  - 2.3814292) * t
                                  + 10.556403) * t);
 
-            eps0 *= ASEC2RAD;
-            psia *= ASEC2RAD;
-            omegaa *= ASEC2RAD;
-            chia *= ASEC2RAD;
+            eps0 *= Constants.ASEC2RAD;
+            psia *= Constants.ASEC2RAD;
+            omegaa *= Constants.ASEC2RAD;
+            chia *= Constants.ASEC2RAD;
 
             double sa = Math.Sin(eps0);
             double ca = Math.Cos(eps0);
@@ -2234,10 +2100,10 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             if (double.IsNaN(time.psi))
             {
                 double t = time.tt / 36525.0;
-                double elp = ((1287104.79305 + t * 129596581.0481) % ASEC360) * ASEC2RAD;
-                double f = ((335779.526232 + t * 1739527262.8478) % ASEC360) * ASEC2RAD;
-                double d = ((1072260.70369 + t * 1602961601.2090) % ASEC360) * ASEC2RAD;
-                double om = ((450160.398036 - t * 6962890.5431) % ASEC360) * ASEC2RAD;
+                double elp = ((1287104.79305 + t * 129596581.0481) % Constants.ASEC360) * Constants.ASEC2RAD;
+                double f = ((335779.526232 + t * 1739527262.8478) % Constants.ASEC360) * Constants.ASEC2RAD;
+                double d = ((1072260.70369 + t * 1602961601.2090) % Constants.ASEC360) * Constants.ASEC2RAD;
+                double om = ((450160.398036 - t * 6962890.5431) % Constants.ASEC360) * Constants.ASEC2RAD;
 
                 double sarg = Math.Sin(om);
                 double carg = Math.Cos(om);
@@ -2291,7 +2157,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             double mobl = mean_obliq(time.tt);
             double tobl = mobl + (time.eps / 3600.0);
-            double ee = time.psi * Math.Cos(mobl * DEG2RAD) / 15.0;
+            double ee = time.psi * Math.Cos(mobl * Constants.DEG2RAD) / 15.0;
             return new earth_tilt_t(time.tt, time.psi, time.eps, ee, mobl, tobl);
         }
 
@@ -2359,9 +2225,9 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             double lon_deg, lat_deg, height_km;
 
             // Convert from AU to kilometers.
-            double x = ovec.x * KM_PER_AU;
-            double y = ovec.y * KM_PER_AU;
-            double z = ovec.z * KM_PER_AU;
+            double x = ovec.x * Constants.KM_PER_AU;
+            double y = ovec.y * Constants.KM_PER_AU;
+            double z = ovec.z * Constants.KM_PER_AU;
             double p = hypot(x, y);
             if (p < 1.0e-6)
             {
@@ -2370,21 +2236,21 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 lon_deg = 0.0;
                 lat_deg = (z > 0.0) ? +90.0 : -90.0;
                 // Elevation is calculated directly from z
-                height_km = Math.Abs(z) - EARTH_POLAR_RADIUS_KM;
+                height_km = Math.Abs(z) - Constants.EARTH_POLAR_RADIUS_KM;
             }
             else
             {
                 double stlocl = Math.Atan2(y, x);
                 double st = SiderealTime(ovec.t);
                 // Calculate exact longitude.
-                lon_deg = RAD2DEG * stlocl - (15.0 * st);
+                lon_deg = Constants.RAD2DEG * stlocl - (15.0 * st);
                 // Normalize longitude to the range (-180, +180].
                 while (lon_deg <= -180.0)
                     lon_deg += 360.0;
                 while (lon_deg > +180.0)
                     lon_deg -= 360.0;
                 // Numerically solve for exact latitude, using Newton's Method.
-                double F = EARTH_FLATTENING * EARTH_FLATTENING;
+                double F = Constants.EARTH_FLATTENING * Constants.EARTH_FLATTENING;
                 // Start with initial latitude estimate, based on a spherical Earth.
                 double lat = Math.Atan2(z, p);
                 double c, s, denom;
@@ -2397,7 +2263,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     // We try to find the root of W, meaning where the error is 0.
                     c = Math.Cos(lat);
                     s = Math.Sin(lat);
-                    double factor = (F - 1) * EARTH_EQUATORIAL_RADIUS_KM;
+                    double factor = (F - 1) * Constants.EARTH_EQUATORIAL_RADIUS_KM;
                     double c2 = c * c;
                     double s2 = s * s;
                     double radicand = c2 + F * s2;
@@ -2411,10 +2277,10 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     lat -= W / D;
                 }
                 // We now have a solution for the latitude in radians.
-                lat_deg = lat * RAD2DEG;
+                lat_deg = lat * Constants.RAD2DEG;
                 // Solve for exact height in kilometers.
                 // There are two formulas I can use. Use whichever has the less risky denominator.
-                double adjust = EARTH_EQUATORIAL_RADIUS_KM / denom;
+                double adjust = Constants.EARTH_EQUATORIAL_RADIUS_KM / denom;
                 if (Math.Abs(s) > Math.Abs(c))
                     height_km = z / s - F * adjust;
                 else
@@ -2427,24 +2293,24 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         private StateVector terra(Observer observer, AstroTime time)
         {
             double st = SiderealTime(time);
-            double phi = observer.latitude * DEG2RAD;
+            double phi = observer.latitude * Constants.DEG2RAD;
             double sinphi = Math.Sin(phi);
             double cosphi = Math.Cos(phi);
-            double c = 1.0 / hypot(cosphi, EARTH_FLATTENING * sinphi);
-            double s = (EARTH_FLATTENING * EARTH_FLATTENING) * c;
+            double c = 1.0 / hypot(cosphi, Constants.EARTH_FLATTENING * sinphi);
+            double s = (Constants.EARTH_FLATTENING * Constants.EARTH_FLATTENING) * c;
             double ht_km = observer.height / 1000.0;
-            double ach = EARTH_EQUATORIAL_RADIUS_KM * c + ht_km;
-            double ash = EARTH_EQUATORIAL_RADIUS_KM * s + ht_km;
-            double stlocl = (15.0 * st + observer.longitude) * DEG2RAD;
+            double ach = Constants.EARTH_EQUATORIAL_RADIUS_KM * c + ht_km;
+            double ash = Constants.EARTH_EQUATORIAL_RADIUS_KM * s + ht_km;
+            double stlocl = (15.0 * st + observer.longitude) * Constants.DEG2RAD;
             double sinst = Math.Sin(stlocl);
             double cosst = Math.Cos(stlocl);
 
             return new StateVector(
-                ach * cosphi * cosst / KM_PER_AU,
-                ach * cosphi * sinst / KM_PER_AU,
-                ash * sinphi / KM_PER_AU,
-                -(ANGVEL * 86400.0 / KM_PER_AU) * ach * cosphi * sinst,
-                +(ANGVEL * 86400.0 / KM_PER_AU) * ach * cosphi * cosst,
+                ach * cosphi * cosst / Constants.KM_PER_AU,
+                ach * cosphi * sinst / Constants.KM_PER_AU,
+                ash * sinphi / Constants.KM_PER_AU,
+                -(Constants.ANGVEL * 86400.0 / Constants.KM_PER_AU) * ach * cosphi * sinst,
+                +(Constants.ANGVEL * 86400.0 / Constants.KM_PER_AU) * ach * cosphi * cosst,
                 0.0,
                 time
             );
@@ -2453,9 +2319,9 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         private static RotationMatrix nutation_rot(AstroTime time, PrecessDirection dir)
         {
             earth_tilt_t tilt = e_tilt(time);
-            double oblm = tilt.mobl * DEG2RAD;
-            double oblt = tilt.tobl * DEG2RAD;
-            double psi = tilt.dpsi * ASEC2RAD;
+            double oblm = tilt.mobl * Constants.DEG2RAD;
+            double oblt = tilt.tobl * Constants.DEG2RAD;
+            double psi = tilt.dpsi * Constants.ASEC2RAD;
             double cobm = Math.Cos(oblm);
             double sobm = Math.Sin(oblm);
             double cobt = Math.Cos(oblt);
@@ -2550,7 +2416,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
         private static AstroVector spin(double angle, AstroVector pos)
         {
-            double angr = angle * DEG2RAD;
+            double angr = angle * Constants.DEG2RAD;
             double cosang = Math.Cos(angr);
             double sinang = Math.Sin(angr);
             return new AstroVector(
@@ -2576,7 +2442,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
         private static AstroVector ecl2equ_vec(AstroVector ecl)
         {
-            return ecl2equ_vec(ecl, mean_obliq(ecl.t.tt) * DEG2RAD);
+            return ecl2equ_vec(ecl, mean_obliq(ecl.t.tt) * Constants.DEG2RAD);
         }
 
         /// <summary>
@@ -2660,13 +2526,13 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             earth_tilt_t et = e_tilt(time);
 
             // Convert ecliptic coordinates to equatorial coordinates, both in mean equinox of date.
-            AstroVector eqm = ecl2equ_vec(ecm, et.mobl * DEG2RAD);
+            AstroVector eqm = ecl2equ_vec(ecm, et.mobl * Constants.DEG2RAD);
 
             // Add nutation to convert ECM to true equatorial coordinates of date (EQD).
             AstroVector eqd = nutation(eqm, PrecessDirection.From2000);
 
             // Convert back to ecliptic, this time in true equinox of date (ECT).
-            Ecliptic eclip = RotateEquatorialToEcliptic(eqd, et.tobl * DEG2RAD);
+            Ecliptic eclip = RotateEquatorialToEcliptic(eqd, et.tobl * Constants.DEG2RAD);
 
             return new Spherical(eclip.elat, eclip.elon, moon.distance_au);
         }
@@ -2729,7 +2595,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         public static StateVector GeoEmbState(AstroTime time)
         {
             StateVector s = GeoMoonState(time);
-            const double d = 1.0 + EARTH_MOON_MASS_RATIO;
+            const double d = 1.0 + Constants.EARTH_MOON_MASS_RATIO;
             s.x /= d;
             s.y /= d;
             s.z /= d;
@@ -2770,28 +2636,28 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             MoonResult moon = context.CalcMoon();
 
             LibrationInfo lib;
-            lib.mlon = RAD2DEG * moon.geo_eclip_lon;
-            lib.mlat = RAD2DEG * moon.geo_eclip_lat;
-            lib.dist_km = moon.distance_au * KM_PER_AU;
-            lib.diam_deg = (2.0 * RAD2DEG) * Math.Atan(MOON_MEAN_RADIUS_KM / Math.Sqrt(lib.dist_km * lib.dist_km - MOON_MEAN_RADIUS_KM * MOON_MEAN_RADIUS_KM));
+            lib.mlon = Constants.RAD2DEG * moon.geo_eclip_lon;
+            lib.mlat = Constants.RAD2DEG * moon.geo_eclip_lat;
+            lib.dist_km = moon.distance_au * Constants.KM_PER_AU;
+            lib.diam_deg = (2.0 * Constants.RAD2DEG) * Math.Atan(Constants.MOON_MEAN_RADIUS_KM / Math.Sqrt(lib.dist_km * lib.dist_km - Constants.MOON_MEAN_RADIUS_KM * Constants.MOON_MEAN_RADIUS_KM));
 
             // Inclination angle
-            const double I = DEG2RAD * 1.543;
+            const double I = Constants.DEG2RAD * 1.543;
 
             // Moon's argument of latitude in radians.
-            double f = DEG2RAD * NormalizeLongitude(93.2720950 + 483202.0175233 * t - 0.0036539 * t2 - t3 / 3526000 + t4 / 863310000);
+            double f = Constants.DEG2RAD * NormalizeLongitude(93.2720950 + 483202.0175233 * t - 0.0036539 * t2 - t3 / 3526000 + t4 / 863310000);
 
             // Moon's ascending node's mean longitude in radians.
-            double omega = DEG2RAD * NormalizeLongitude(125.0445479 - 1934.1362891 * t + 0.0020754 * t2 + t3 / 467441 - t4 / 60616000);
+            double omega = Constants.DEG2RAD * NormalizeLongitude(125.0445479 - 1934.1362891 * t + 0.0020754 * t2 + t3 / 467441 - t4 / 60616000);
 
             // Sun's mean anomaly.
-            double m = DEG2RAD * NormalizeLongitude(357.5291092 + 35999.0502909 * t - 0.0001536 * t2 + t3 / 24490000);
+            double m = Constants.DEG2RAD * NormalizeLongitude(357.5291092 + 35999.0502909 * t - 0.0001536 * t2 + t3 / 24490000);
 
             // Moon's mean anomaly.
-            double mdash = DEG2RAD * NormalizeLongitude(134.9633964 + 477198.8675055 * t + 0.0087414 * t2 + t3 / 69699 - t4 / 14712000);
+            double mdash = Constants.DEG2RAD * NormalizeLongitude(134.9633964 + 477198.8675055 * t + 0.0087414 * t2 + t3 / 69699 - t4 / 14712000);
 
             // Moon's mean elongation.
-            double d = DEG2RAD * NormalizeLongitude(297.8501921 + 445267.1114034 * t - 0.0018819 * t2 + t3 / 545868 - t4 / 113065000);
+            double d = Constants.DEG2RAD * NormalizeLongitude(297.8501921 + 445267.1114034 * t - 0.0018819 * t2 + t3 / 545868 - t4 / 113065000);
 
             // Eccentricity of the Earth's orbit.
             double e = 1.0 - 0.002516 * t - 0.0000074 * t2;
@@ -2799,12 +2665,12 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             // Optical librations
             double w = moon.geo_eclip_lon - omega;
             double a = Math.Atan2(Math.Sin(w) * Math.Cos(moon.geo_eclip_lat) * Math.Cos(I) - Math.Sin(moon.geo_eclip_lat) * Math.Sin(I), Math.Cos(w) * Math.Cos(moon.geo_eclip_lat));
-            double ldash = LongitudeOffset(RAD2DEG * (a - f));
+            double ldash = LongitudeOffset(Constants.RAD2DEG * (a - f));
             double bdash = Math.Asin(-Math.Sin(w) * Math.Cos(moon.geo_eclip_lat) * Math.Sin(I) - Math.Sin(moon.geo_eclip_lat) * Math.Cos(I));
 
             // Physical librations
-            double k1 = DEG2RAD * (119.75 + 131.849 * t);
-            double k2 = DEG2RAD * (72.56 + 20.186 * t);
+            double k1 = Constants.DEG2RAD * (119.75 + 131.849 * t);
+            double k2 = Constants.DEG2RAD * (72.56 + 20.186 * t);
 
             double rho = (
                 -0.02752 * Math.Cos(mdash) +
@@ -2858,7 +2724,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             );
 
             double ldash2 = -tau + (rho * Math.Cos(a) + sigma * Math.Sin(a)) * Math.Tan(bdash);
-            bdash *= RAD2DEG;
+            bdash *= Constants.RAD2DEG;
             double bdash2 = sigma * Math.Cos(a) - rho * Math.Sin(a);
 
             lib.elon = ldash + ldash2;
@@ -2870,15 +2736,15 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         private static AstroVector BarycenterContrib(AstroTime time, Body body, double planet_gm)
         {
             AstroVector p = CalcVsop(vsop[(int)body], time);
-            return (planet_gm / (planet_gm + SUN_GM)) * p;
+            return (planet_gm / (planet_gm + Constants.SUN_GM)) * p;
         }
 
         private static AstroVector CalcSolarSystemBarycenter(AstroTime time)
         {
-            AstroVector j = BarycenterContrib(time, Body.Jupiter, JUPITER_GM);
-            AstroVector s = BarycenterContrib(time, Body.Saturn, SATURN_GM);
-            AstroVector u = BarycenterContrib(time, Body.Uranus, URANUS_GM);
-            AstroVector n = BarycenterContrib(time, Body.Neptune, NEPTUNE_GM);
+            AstroVector j = BarycenterContrib(time, Body.Jupiter, Constants.JUPITER_GM);
+            AstroVector s = BarycenterContrib(time, Body.Saturn, Constants.SATURN_GM);
+            AstroVector u = BarycenterContrib(time, Body.Uranus, Constants.URANUS_GM);
+            AstroVector n = BarycenterContrib(time, Body.Neptune, Constants.NEPTUNE_GM);
             return new AstroVector(
                 j.x + s.x + u.x + n.x,
                 j.y + s.y + u.y + n.y,
@@ -2939,7 +2805,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 case Body.EMB:
                     geomoon = GeoMoon(time);
                     earth = CalcEarth(time);
-                    return earth + (geomoon / (1.0 + EARTH_MOON_MASS_RATIO));
+                    return earth + (geomoon / (1.0 + Constants.EARTH_MOON_MASS_RATIO));
 
                 case Body.SSB:
                     return CalcSolarSystemBarycenter(time);
@@ -3046,7 +2912,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 // This solver does not support more than one light-day of distance,
                 // because that would cause convergence problems and inaccurate
                 // values for stellar aberration angles.
-                double lt = pos.Length() / C_AUDAY;
+                double lt = pos.Length() / Constants.C_AUDAY;
                 if (lt > 1.0)
                     throw new ArgumentException("Object is too distant for light-travel solver.");
                 AstroTime ltime2 = time.AddDays(-lt);
@@ -3115,7 +2981,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                         // be measured in barycentric coordinates, not heliocentric. The error is very small.
                         StateVector ostate = HelioState(observerBody, time);
                         AstroVector rvec = tvec - ostate.Position();
-                        double s = C_AUDAY / rvec.Length();    // conversion factor from relative distance to speed of light
+                        double s = Constants.C_AUDAY / rvec.Length();    // conversion factor from relative distance to speed of light
                         return rvec + ostate.Velocity() / s;
 
                     default:
@@ -3168,7 +3034,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     // be measured in barycentric coordinates, not heliocentric. The error is very small.
                     StateVector ostate = HelioState(observerBody, time);
                     AstroVector rvec = tvec - ostate.Position();
-                    double s = C_AUDAY / rvec.Length();    // conversion factor from relative distance to speed of light
+                    double s = Constants.C_AUDAY / rvec.Length();    // conversion factor from relative distance to speed of light
                     return rvec + ostate.Velocity() / s;
 
                 default:
@@ -3663,7 +3529,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         /// </returns>
         public static double ObserverGravity(double latitude, double height)
         {
-            double s = Math.Sin(latitude * DEG2RAD);
+            double s = Math.Sin(latitude * Constants.DEG2RAD);
             double s2 = s * s;
             double g0 = 9.7803253359 * (1.0 + 0.00193185265241 * s2) / Math.Sqrt(1.0 - 0.00669437999013 * s2);
             return g0 * (1.0 - (3.15704e-07 - 2.10269e-09 * s2) * height + 7.37452e-14 * height * height);
@@ -3715,14 +3581,14 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             double dec,
             Refraction refraction)
         {
-            double sinlat = Math.Sin(observer.latitude * DEG2RAD);
-            double coslat = Math.Cos(observer.latitude * DEG2RAD);
-            double sinlon = Math.Sin(observer.longitude * DEG2RAD);
-            double coslon = Math.Cos(observer.longitude * DEG2RAD);
-            double sindc = Math.Sin(dec * DEG2RAD);
-            double cosdc = Math.Cos(dec * DEG2RAD);
-            double sinra = Math.Sin(ra * HOUR2RAD);
-            double cosra = Math.Cos(ra * HOUR2RAD);
+            double sinlat = Math.Sin(observer.latitude * Constants.DEG2RAD);
+            double coslat = Math.Cos(observer.latitude * Constants.DEG2RAD);
+            double sinlon = Math.Sin(observer.longitude * Constants.DEG2RAD);
+            double coslon = Math.Cos(observer.longitude * Constants.DEG2RAD);
+            double sindc = Math.Sin(dec * Constants.DEG2RAD);
+            double cosdc = Math.Cos(dec * Constants.DEG2RAD);
+            double sinra = Math.Sin(ra * Constants.HOUR2RAD);
+            double cosra = Math.Cos(ra * Constants.HOUR2RAD);
 
             // Calculate three mutually perpendicular unit vectors
             // in equatorial coordinates: uze, une, uwe.
@@ -3775,7 +3641,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             {
                 // If the body is not exactly straight up/down, it has an azimuth.
                 // Invert the angle to produce degrees eastward from north.
-                az = -Math.Atan2(pw, pn) * RAD2DEG;
+                az = -Math.Atan2(pw, pn) * Constants.RAD2DEG;
                 if (az < 0.0)
                     az += 360.0;
             }
@@ -3787,7 +3653,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             }
 
             // zd = the angle of the body away from the observer's zenith, in degrees.
-            double zd = Math.Atan2(proj, pz) * RAD2DEG;
+            double zd = Math.Atan2(proj, pz) * Constants.RAD2DEG;
             double hor_ra = ra;
             double hor_dec = dec;
 
@@ -3799,10 +3665,10 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
                 if (refr > 0.0 && zd > 3.0e-4)
                 {
-                    double sinzd = Math.Sin(zd * DEG2RAD);
-                    double coszd = Math.Cos(zd * DEG2RAD);
-                    double sinzd0 = Math.Sin(zd0 * DEG2RAD);
-                    double coszd0 = Math.Cos(zd0 * DEG2RAD);
+                    double sinzd = Math.Sin(zd * Constants.DEG2RAD);
+                    double coszd = Math.Cos(zd * Constants.DEG2RAD);
+                    double sinzd0 = Math.Sin(zd0 * Constants.DEG2RAD);
+                    double coszd0 = Math.Cos(zd0 * Constants.DEG2RAD);
 
                     double prx = ((p.x - coszd0 * uz.x) / sinzd0) * sinzd + uz.x * coszd;
                     double pry = ((p.y - coszd0 * uz.y) / sinzd0) * sinzd + uz.y * coszd;
@@ -3811,7 +3677,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     proj = hypot(prx, pry);
                     if (proj > 0.0)
                     {
-                        hor_ra = RAD2HOUR * Math.Atan2(pry, prx);
+                        hor_ra = Constants.RAD2HOUR * Math.Atan2(pry, prx);
                         if (hor_ra < 0.0)
                             hor_ra += 24.0;
                     }
@@ -3819,7 +3685,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     {
                         hor_ra = 0.0;
                     }
-                    hor_dec = RAD2DEG * Math.Atan2(prz, proj);
+                    hor_dec = Constants.RAD2DEG * Math.Atan2(prz, proj);
                 }
             }
             else if (refraction != Refraction.None)
@@ -3857,7 +3723,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         {
             // Correct for light travel time from the Sun.
             // Otherwise season calculations (equinox, solstice) will all be early by about 8 minutes!
-            AstroTime adjusted_time = time.AddDays(-1.0 / C_AUDAY);
+            AstroTime adjusted_time = time.AddDays(-1.0 / Constants.C_AUDAY);
 
             AstroVector earth2000 = CalcEarth(adjusted_time);
 
@@ -3868,7 +3734,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             AstroVector sun_ofdate = gyration(sun2000, PrecessDirection.From2000);
 
             // Convert equatorial coordinates to ecliptic coordinates.
-            double true_obliq = DEG2RAD * e_tilt(adjusted_time).tobl;
+            double true_obliq = Constants.DEG2RAD * e_tilt(adjusted_time).tobl;
             return RotateEquatorialToEcliptic(sun_ofdate, true_obliq);
         }
 
@@ -3885,12 +3751,12 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             double elon = 0.0;
             if (xyproj > 0.0)
             {
-                elon = RAD2DEG * Math.Atan2(ey, ex);
+                elon = Constants.RAD2DEG * Math.Atan2(ey, ex);
                 if (elon < 0.0)
                     elon += 360.0;
             }
 
-            double elat = RAD2DEG * Math.Atan2(ez, xyproj);
+            double elat = Constants.RAD2DEG * Math.Atan2(ez, xyproj);
 
             var vec = new AstroVector(ex, ey, ez, pos.t);
             return new Ecliptic(vec, elat, elon);
@@ -3921,7 +3787,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             AstroVector eqd = nutation(mean_pos, PrecessDirection.From2000);
 
             // Rotate from EQD to true ecliptic of date (ECT).
-            return RotateEquatorialToEcliptic(eqd, et.tobl * DEG2RAD);
+            return RotateEquatorialToEcliptic(eqd, et.tobl * Constants.DEG2RAD);
         }
 
         /// <summary>
@@ -4093,7 +3959,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             double dt_tolerance_seconds)
         {
             const int iter_limit = 20;
-            double dt_days = Math.Abs(dt_tolerance_seconds / SECONDS_PER_DAY);
+            double dt_days = Math.Abs(dt_tolerance_seconds / Constants.SECONDS_PER_DAY);
             double f1 = func.Eval(this,t1);
             double f2 = func.Eval(this,t2);
             int iter = 0;
@@ -4428,7 +4294,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             {
                 // Search backward in time.
                 if (ya < 0.0) ya += 360.0;
-                est_dt = -(MEAN_SYNODIC_MONTH * ya) / 360.0;
+                est_dt = -(Constants.MEAN_SYNODIC_MONTH * ya) / 360.0;
                 dt1 = est_dt - uncertainty;
                 dt2 = est_dt + uncertainty;
                 if (dt2 < limitDays)
@@ -4440,7 +4306,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             {
                 // Search forward in time.
                 if (ya > 0.0) ya -= 360.0;
-                est_dt = -(MEAN_SYNODIC_MONTH * ya) / 360.0;
+                est_dt = -(Constants.MEAN_SYNODIC_MONTH * ya) / 360.0;
                 dt1 = est_dt - uncertainty;
                 dt2 = est_dt + uncertainty;
                 if (dt1 > limitDays)
@@ -4508,14 +4374,14 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         {
             // Calculate the effective radius of the Earth at ground level below the observer.
             // Correct for the Earth's oblateness.
-            double phi = observer.latitude * DEG2RAD;
+            double phi = observer.latitude * Constants.DEG2RAD;
             double sinphi = Math.Sin(phi);
             double cosphi = Math.Cos(phi);
-            double c = 1.0 / hypot(cosphi, sinphi * EARTH_FLATTENING);
-            double s = c * (EARTH_FLATTENING * EARTH_FLATTENING);
+            double c = 1.0 / hypot(cosphi, sinphi * Constants.EARTH_FLATTENING);
+            double s = c * (Constants.EARTH_FLATTENING * Constants.EARTH_FLATTENING);
             double ht_km = (observer.height - metersAboveGround) / 1000.0;     // height of ground above sea level
-            double ach = EARTH_EQUATORIAL_RADIUS_KM * c + ht_km;
-            double ash = EARTH_EQUATORIAL_RADIUS_KM * s + ht_km;
+            double ach = Constants.EARTH_EQUATORIAL_RADIUS_KM * c + ht_km;
+            double ash = Constants.EARTH_EQUATORIAL_RADIUS_KM * s + ht_km;
             double radius_m = 1000.0 * hypot(ach * cosphi, ash * sinphi);
 
             // Correct refraction of a ray of light traveling tangent to the Earth's surface.
@@ -4528,7 +4394,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             double k = 0.175 * Math.Pow(1.0 - (6.5e-3 / 283.15) * (observer.height - (2.0 / 3.0) * metersAboveGround), 3.256);
 
             // Calculate how far below the observer's horizontal plane the observed horizon dips.
-            return RAD2DEG * -(Math.Sqrt(2 * (1 - k) * metersAboveGround / radius_m) / (1 - k));
+            return Constants.RAD2DEG * -(Math.Sqrt(2 * (1 - k) * metersAboveGround / radius_m) / (1 - k));
         }
 
 
@@ -4591,7 +4457,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             // anyway, due to unpredictable atmospheric refraction conditions (air temperature and pressure).
 
             double dt = t2.ut - t1.ut;
-            if (dt * SECONDS_PER_DAY < 1.0)
+            if (dt * Constants.SECONDS_PER_DAY < 1.0)
                 return new AscentInfo { valid = false };
 
             // Is it possible to reach zero from the altitude that is closer to zero?
@@ -4698,8 +4564,8 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     throw new InvalidBodyException(body);
             }
 
-            double latrad = DEG2RAD * latitude;
-            return Math.Abs(((360.0 / SOLAR_DAYS_PER_SIDEREAL_DAY) - deriv_ra) * Math.Cos(latrad)) + Math.Abs(deriv_dec * Math.Sin(latrad));
+            double latrad = Constants.DEG2RAD * latitude;
+            return Math.Abs(((360.0 / Constants.SOLAR_DAYS_PER_SIDEREAL_DAY) - deriv_ra) * Math.Cos(latrad)) + Math.Abs(deriv_dec * Math.Sin(latrad));
         }
 
         private const double RISE_SET_DT = 0.42;    // 10.08 hours: Nyquist-safe for 22-hour period.
@@ -4862,11 +4728,11 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             switch (body)
             {
                 case Body.Sun:
-                    bodyRadiusAu = SUN_RADIUS_AU;
+                    bodyRadiusAu = Constants.SUN_RADIUS_AU;
                     break;
 
                 case Body.Moon:
-                    bodyRadiusAu = MOON_EQUATORIAL_RADIUS_AU;
+                    bodyRadiusAu = Constants.MOON_EQUATORIAL_RADIUS_AU;
                     break;
 
                 default:
@@ -4881,7 +4747,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             double dip = HorizonDipAngle(observer, metersAboveGround);
 
             // Correct refraction for objects near the horizon, using atmospheric density at the ground.
-            double altitude = dip - (REFRACTION_NEAR_HORIZON * atmos.density);
+            double altitude = dip - (Constants.REFRACTION_NEAR_HORIZON * atmos.density);
 
             // Search for the top of the body crossing the corrected altitude angle.
             return InternalSearchAltitude(body, observer, direction, startTime, limitDays, bodyRadiusAu, altitude);
@@ -5123,7 +4989,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
                 // We need to loop another time to get more accuracy.
                 // Update the terrestrial time (in solar days) adjusting by sidereal time (sidereal hours).
-                time = time.AddDays((delta_sidereal_hours / 24.0) * SOLAR_DAYS_PER_SIDEREAL_DAY);
+                time = time.AddDays((delta_sidereal_hours / 24.0) * Constants.SOLAR_DAYS_PER_SIDEREAL_DAY);
             }
         }
 
@@ -5197,7 +5063,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 // we have to go to get closer to the target relative longitude.
                 double day_adjust = (-error_angle / 360.0) * syn;
                 time = time.AddDays(day_adjust);
-                if (Math.Abs(day_adjust) * SECONDS_PER_DAY < 1.0)
+                if (Math.Abs(day_adjust) * Constants.SECONDS_PER_DAY < 1.0)
                     return time;
 
                 double prev_angle = error_angle;
@@ -5231,10 +5097,10 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 throw new EarthNotAllowedException();
 
             if (body == Body.Moon)
-                return MEAN_SYNODIC_MONTH;
+                return Constants.MEAN_SYNODIC_MONTH;
 
             double Tp = PlanetOrbitalPeriod(body);
-            return Math.Abs(EARTH_ORBITAL_PERIOD / (EARTH_ORBITAL_PERIOD / Tp - 1.0));
+            return Math.Abs(Constants.EARTH_ORBITAL_PERIOD / (Constants.EARTH_ORBITAL_PERIOD / Tp - 1.0));
         }
 
         /// <summary>Calculates heliocentric ecliptic longitude of a body.</summary>
@@ -5271,12 +5137,12 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             {
                 case Body.Mercury: return 87.969;
                 case Body.Venus: return 224.701;
-                case Body.Earth: return EARTH_ORBITAL_PERIOD;
+                case Body.Earth: return Constants.EARTH_ORBITAL_PERIOD;
                 case Body.Mars: return 686.980;
                 case Body.Jupiter: return 4332.589;
                 case Body.Saturn: return 10759.22;
                 case Body.Uranus: return 30685.4;
-                case Body.Neptune: return NEPTUNE_ORBITAL_PERIOD;
+                case Body.Neptune: return Constants.NEPTUNE_ORBITAL_PERIOD;
                 case Body.Pluto: return 90560.0;
                 default:
                     throw new InvalidBodyException(body);
@@ -5541,7 +5407,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             if (dot >= +1.0)
                 return 0.0;
 
-            return RAD2DEG * Math.Acos(dot);
+            return Constants.RAD2DEG * Math.Acos(dot);
         }
 
         /// <summary>
@@ -5584,7 +5450,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             // Handle the crazy corner case of exactly touching zero by checking for m1*m2 <= 0.
             AstroTime t1 = startTime;
             double m1 = positive_slope.Eval(this,t1);
-            for (int iter = 0; iter * increment < 2.0 * Astronomy.MEAN_SYNODIC_MONTH; ++iter)
+            for (int iter = 0; iter * increment < 2.0 * Constants.MEAN_SYNODIC_MONTH; ++iter)
             {
                 AstroTime t2 = t1.AddDays(increment);
                 double m2 = positive_slope.Eval(this,t2);
@@ -6036,16 +5902,16 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             AstroVector ho = hm + lo;
 
             // Calculate the apparent angular radius of the Sun for the observer.
-            double sun_radius = Math.Asin(SUN_RADIUS_AU / ho.Length());
+            double sun_radius = Math.Asin(Constants.SUN_RADIUS_AU / ho.Length());
 
             // Calculate the apparent angular radius of the Moon for the observer.
-            double moon_radius = Math.Asin(MOON_POLAR_RADIUS_AU / lo.Length());
+            double moon_radius = Math.Asin(Constants.MOON_POLAR_RADIUS_AU / lo.Length());
 
             // Calculate the apparent angular separation between the Sun's center and the Moon's center.
             double sun_moon_separation = AngleBetween(lo, ho);
 
             // Find the fraction of the Sun's apparent disc area that is covered by the Moon.
-            double obscuration = Obscuration(sun_radius, moon_radius, sun_moon_separation * DEG2RAD);
+            double obscuration = Obscuration(sun_radius, moon_radius, sun_moon_separation * Constants.DEG2RAD);
 
             // HACK: In marginal cases, we need to clamp obscuration to less than 1.0.
             // This function is never called for total eclipses, so it should never return 1.0.
@@ -6086,37 +5952,37 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 // the minimum moon distance.
                 var mc = new MoonContext(fullmoon.tt / 36525.0);
                 MoonResult mr = mc.CalcMoon();
-                if (RAD2DEG * Math.Abs(mr.geo_eclip_lat) < PruneLatitude)
+                if (Constants.RAD2DEG * Math.Abs(mr.geo_eclip_lat) < PruneLatitude)
                 {
                     // Search near the full moon for the time when the center of the Moon
                     // is closest to the line passing through the centers of the Sun and Earth.
                     ShadowInfo shadow = PeakEarthShadow(fullmoon);
 
-                    if (shadow.r < shadow.p + MOON_MEAN_RADIUS_KM)
+                    if (shadow.r < shadow.p + Constants.MOON_MEAN_RADIUS_KM)
                     {
                         // This is at least a penumbral eclipse. We will return a result.
                         EclipseKind kind = EclipseKind.Penumbral;
                         double obscuration = 0.0;
                         double sd_total = 0.0;
                         double sd_partial = 0.0;
-                        double sd_penum = ShadowSemiDurationMinutes(shadow.time, shadow.p + MOON_MEAN_RADIUS_KM, 200.0);
+                        double sd_penum = ShadowSemiDurationMinutes(shadow.time, shadow.p + Constants.MOON_MEAN_RADIUS_KM, 200.0);
 
-                        if (shadow.r < shadow.k + MOON_MEAN_RADIUS_KM)
+                        if (shadow.r < shadow.k + Constants.MOON_MEAN_RADIUS_KM)
                         {
                             // This is at least a partial eclipse.
                             kind = EclipseKind.Partial;
-                            sd_partial = ShadowSemiDurationMinutes(shadow.time, shadow.k + MOON_MEAN_RADIUS_KM, sd_penum);
+                            sd_partial = ShadowSemiDurationMinutes(shadow.time, shadow.k + Constants.MOON_MEAN_RADIUS_KM, sd_penum);
 
-                            if (shadow.r + MOON_MEAN_RADIUS_KM < shadow.k)
+                            if (shadow.r + Constants.MOON_MEAN_RADIUS_KM < shadow.k)
                             {
                                 // This is a total eclipse.
                                 kind = EclipseKind.Total;
                                 obscuration = 1.0;
-                                sd_total = ShadowSemiDurationMinutes(shadow.time, shadow.k - MOON_MEAN_RADIUS_KM, sd_partial);
+                                sd_total = ShadowSemiDurationMinutes(shadow.time, shadow.k - Constants.MOON_MEAN_RADIUS_KM, sd_partial);
                             }
                             else
                             {
-                                obscuration = Obscuration(MOON_MEAN_RADIUS_KM, shadow.k, shadow.r);
+                                obscuration = Obscuration(Constants.MOON_MEAN_RADIUS_KM, shadow.k, shadow.r);
                             }
                         }
                         return new LunarEclipseInfo(kind, obscuration, shadow.time, sd_penum, sd_partial, sd_total);
@@ -6224,7 +6090,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     // Search near the new moon for the time when the center of the Earth
                     // is closest to the line passing through the centers of the Sun and Moon.
                     ShadowInfo shadow = PeakMoonShadow(newmoon);
-                    if (shadow.r < shadow.p + EARTH_MEAN_RADIUS_KM)
+                    if (shadow.r < shadow.p + Constants.EARTH_MEAN_RADIUS_KM)
                     {
                         // This is at least a partial solar eclipse visible somewhere on Earth.
                         // Try to find an intersection between the shadow axis and the Earth's oblate geoid.
@@ -6305,17 +6171,17 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             // But dilate the z-coordinates so that the Earth becomes a perfect sphere.
             // Then find the intersection of the vector with the sphere.
             // See p 184 in Montenbruck & Pfleger's "Astronomy on the Personal Computer", second edition.
-            v.x *= KM_PER_AU;
-            v.y *= KM_PER_AU;
-            v.z *= KM_PER_AU / EARTH_FLATTENING;
+            v.x *= Constants.KM_PER_AU;
+            v.y *= Constants.KM_PER_AU;
+            v.z *= Constants.KM_PER_AU / Constants.EARTH_FLATTENING;
 
-            e.x *= KM_PER_AU;
-            e.y *= KM_PER_AU;
-            e.z *= KM_PER_AU / EARTH_FLATTENING;
+            e.x *= Constants.KM_PER_AU;
+            e.y *= Constants.KM_PER_AU;
+            e.z *= Constants.KM_PER_AU / Constants.EARTH_FLATTENING;
 
             // Solve the quadratic equation that finds whether and where
             // the shadow axis intersects with the Earth in the dilated coordinate system.
-            double R = EARTH_EQUATORIAL_RADIUS_KM;
+            double R = Constants.EARTH_EQUATORIAL_RADIUS_KM;
             double A = v.x * v.x + v.y * v.y + v.z * v.z;
             double B = -2.0 * (v.x * e.x + v.y * e.y + v.z * e.z);
             double C = (e.x * e.x + e.y * e.y + e.z * e.z) - R * R;
@@ -6330,18 +6196,18 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 // Convert lunacentric dilated coordinates to geocentric coordinates.
                 double px = u * v.x - e.x;
                 double py = u * v.y - e.y;
-                double pz = (u * v.z - e.z) * EARTH_FLATTENING;
+                double pz = (u * v.z - e.z) * Constants.EARTH_FLATTENING;
 
                 // Convert cartesian coordinates into geodetic latitude/longitude.
-                double proj = hypot(px, py) * (EARTH_FLATTENING * EARTH_FLATTENING);
+                double proj = hypot(px, py) * (Constants.EARTH_FLATTENING * Constants.EARTH_FLATTENING);
                 if (proj == 0.0)
                     eclipse.latitude = (pz > 0.0) ? +90.0 : -90.0;
                 else
-                    eclipse.latitude = RAD2DEG * Math.Atan(pz / proj);
+                    eclipse.latitude = Constants.RAD2DEG * Math.Atan(pz / proj);
 
                 // Adjust longitude for Earth's rotation at the given UT.
                 double gast = SiderealTime(eclipse.peak);
-                eclipse.longitude = ((RAD2DEG * Math.Atan2(py, px)) - (15 * gast)) % 360.0;
+                eclipse.longitude = ((Constants.RAD2DEG * Math.Atan2(py, px)) - (15 * gast)) % 360.0;
                 if (eclipse.longitude <= -180.0)
                     eclipse.longitude += 360.0;
                 else if (eclipse.longitude > +180.0)
@@ -6354,7 +6220,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
                 // Put the EQD geocentric coordinates of the observer into the vector 'o'.
                 // Also convert back from kilometers to astronomical units.
-                var o = new AstroVector(px / KM_PER_AU, py / KM_PER_AU, pz / KM_PER_AU, shadow.time);
+                var o = new AstroVector(px / Constants.KM_PER_AU, py / Constants.KM_PER_AU, pz / Constants.KM_PER_AU, shadow.time);
 
                 // Rotate the observer's geocentric EQD back to the EQJ system.
                 o = RotateVector(inv, o);
@@ -6365,7 +6231,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 o.z += shadow.target.z;
 
                 // Recalculate the shadow using a vector from the Moon's center toward the observer.
-                ShadowInfo surface = CalcShadow(MOON_POLAR_RADIUS_KM, shadow.time, o, shadow.dir);
+                ShadowInfo surface = CalcShadow(Constants.MOON_POLAR_RADIUS_KM, shadow.time, o, shadow.dir);
 
                 // If we did everything right, the shadow distance should be very close to zero.
                 // That's because we already determined the observer 'o' is on the shadow axis!
@@ -6444,9 +6310,9 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             double dx = (u * dir.x) - target.x;
             double dy = (u * dir.y) - target.y;
             double dz = (u * dir.z) - target.z;
-            double r = KM_PER_AU * hypot(dx, dy, dz);
-            double k = +SUN_RADIUS_KM - (1.0 + u) * (SUN_RADIUS_KM - body_radius_km);
-            double p = -SUN_RADIUS_KM + (1.0 + u) * (SUN_RADIUS_KM + body_radius_km);
+            double r = Constants.KM_PER_AU * hypot(dx, dy, dz);
+            double k = +Constants.SUN_RADIUS_KM - (1.0 + u) * (Constants.SUN_RADIUS_KM - body_radius_km);
+            double p = -Constants.SUN_RADIUS_KM + (1.0 + u) * (Constants.SUN_RADIUS_KM + body_radius_km);
             return new ShadowInfo(time, u, r, k, p, target, dir);
         }
 
@@ -6462,7 +6328,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             // Geocentric Moon.
             AstroVector m = GeoMoon(time);
 
-            return CalcShadow(EARTH_ECLIPSE_RADIUS_KM, time, m, -s);
+            return CalcShadow(Constants.EARTH_ECLIPSE_RADIUS_KM, time, m, -s);
         }
 
 
@@ -6475,7 +6341,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             // -m  = lunacentric Earth
             // m-s = heliocentric Moon
-            return CalcShadow(MOON_MEAN_RADIUS_KM, time, -m, m - s);
+            return CalcShadow(Constants.MOON_MEAN_RADIUS_KM, time, -m, m - s);
         }
 
 
@@ -6492,7 +6358,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             // o-m = lunacentric observer
             // m-s = heliocentric Moon
-            return CalcShadow(MOON_MEAN_RADIUS_KM, time, o - m, m - s);
+            return CalcShadow(Constants.MOON_MEAN_RADIUS_KM, time, o - m, m - s);
         }
 
 
@@ -6514,7 +6380,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         {
             var context = new MoonContext(time.tt / 36525.0);
             MoonResult moon = context.CalcMoon();
-            return RAD2DEG * moon.geo_eclip_lat;
+            return Constants.RAD2DEG * moon.geo_eclip_lat;
         }
 
         /// <summary>
@@ -7021,7 +6887,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             switch (body)
             {
                 case Body.Sun:
-                    mag = -0.17 + 5.0 * Math.Log10(geo_dist / AU_PER_PARSEC);
+                    mag = -0.17 + 5.0 * Math.Log10(geo_dist / Constants.AU_PER_PARSEC);
                     break;
 
                 case Body.Moon:
@@ -7043,11 +6909,11 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         private static double MoonMagnitude(double phase, double helio_dist, double geo_dist)
         {
             // https://astronomy.stackexchange.com/questions/10246/is-there-a-simple-analytical-formula-for-the-lunar-phase-brightness-curve
-            double rad = phase * DEG2RAD;
+            double rad = phase * Constants.DEG2RAD;
             double rad2 = rad * rad;
             double rad4 = rad2 * rad2;
             double mag = -12.717 + 1.49 * Math.Abs(rad) + 0.0431 * rad4;
-            double moon_mean_distance_au = 385000.6 / KM_PER_AU;
+            double moon_mean_distance_au = 385000.6 / Constants.KM_PER_AU;
             double geo_au = geo_dist / moon_mean_distance_au;
             mag += 5.0 * Math.Log10(helio_dist * geo_au);
             return mag;
@@ -7105,12 +6971,12 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             // Find geocentric ecliptic coordinates of Saturn.
             Ecliptic eclip = EquatorialToEcliptic(gc);
 
-            double ir = DEG2RAD * 28.06;   // tilt of Saturn's rings to the ecliptic, in radians
-            double Nr = DEG2RAD * (169.51 + (3.82e-5 * time.tt));    // ascending node of Saturn's rings, in radians
+            double ir = Constants.DEG2RAD * 28.06;   // tilt of Saturn's rings to the ecliptic, in radians
+            double Nr = Constants.DEG2RAD * (169.51 + (3.82e-5 * time.tt));    // ascending node of Saturn's rings, in radians
 
             // Find tilt of Saturn's rings, as seen from Earth.
-            double lat = DEG2RAD * eclip.elat;
-            double lon = DEG2RAD * eclip.elon;
+            double lat = Constants.DEG2RAD * eclip.elat;
+            double lon = Constants.DEG2RAD * eclip.elon;
             double tilt = Math.Asin(Math.Sin(lat) * Math.Cos(ir) - Math.Cos(lat) * Math.Sin(ir) * Math.Sin(lon - Nr));
             double sin_tilt = Math.Sin(Math.Abs(tilt));
 
@@ -7118,7 +6984,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             mag += sin_tilt * (-2.6 + 1.2 * sin_tilt);
             mag += 5.0 * Math.Log10(helio_dist * geo_dist);
 
-            ring_tilt = RAD2DEG * tilt;
+            ring_tilt = Constants.RAD2DEG * tilt;
 
             return mag;
         }
@@ -7635,7 +7501,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             if (!isfinite(angle))
                 throw new ArgumentException("Angle is not a finite number.");
 
-            double radians = angle * DEG2RAD;
+            double radians = angle * Constants.DEG2RAD;
             double c = Math.Cos(radians);
             double s = Math.Sin(radians);
 
@@ -7713,8 +7579,8 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         /// <returns>The vector form of the supplied spherical coordinates.</returns>
         public AstroVector VectorFromSphere(Spherical sphere, AstroTime time)
         {
-            double radlat = sphere.lat * DEG2RAD;
-            double radlon = sphere.lon * DEG2RAD;
+            double radlat = sphere.lat * Constants.DEG2RAD;
+            double radlon = sphere.lon * Constants.DEG2RAD;
             double rcoslat = sphere.dist * Math.Cos(radlat);
             return new AstroVector(
                 rcoslat * Math.Cos(radlon),
@@ -7748,11 +7614,11 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             }
             else
             {
-                lon = RAD2DEG * Math.Atan2(vector.y, vector.x);
+                lon = Constants.RAD2DEG * Math.Atan2(vector.y, vector.x);
                 if (lon < 0.0)
                     lon += 360.0;
 
-                lat = RAD2DEG * Math.Atan2(vector.z, Math.Sqrt(xyproj));
+                lat = Constants.RAD2DEG * Math.Atan2(vector.z, Math.Sqrt(xyproj));
             }
 
             return new Spherical(lat, lon, dist);
@@ -7901,7 +7767,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 if (hd < -1.0)
                     hd = -1.0;
 
-                refr = (1.02 / Math.Tan((hd + 10.3 / (hd + 5.11)) * DEG2RAD)) / 60.0;
+                refr = (1.02 / Math.Tan((hd + 10.3 / (hd + 5.11)) * Constants.DEG2RAD)) / 60.0;
 
                 if (refraction == Refraction.Normal && altitude < -1.0)
                 {
@@ -8032,11 +7898,11 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     w = (
                         329.5988
                         + (6.1385108 * d)
-                        + (0.01067257 * Math.Sin(DEG2RAD * (174.7910857 + 4.092335 * d)))
-                        - (0.00112309 * Math.Sin(DEG2RAD * (349.5821714 + 8.184670 * d)))
-                        - (0.00011040 * Math.Sin(DEG2RAD * (164.3732571 + 12.277005 * d)))
-                        - (0.00002539 * Math.Sin(DEG2RAD * (339.1643429 + 16.369340 * d)))
-                        - (0.00000571 * Math.Sin(DEG2RAD * (153.9554286 + 20.461675 * d)))
+                        + (0.01067257 * Math.Sin(Constants.DEG2RAD * (174.7910857 + 4.092335 * d)))
+                        - (0.00112309 * Math.Sin(Constants.DEG2RAD * (349.5821714 + 8.184670 * d)))
+                        - (0.00011040 * Math.Sin(Constants.DEG2RAD * (164.3732571 + 12.277005 * d)))
+                        - (0.00002539 * Math.Sin(Constants.DEG2RAD * (339.1643429 + 16.369340 * d)))
+                        - (0.00000571 * Math.Sin(Constants.DEG2RAD * (153.9554286 + 20.461675 * d)))
                     );
                     break;
 
@@ -8052,19 +7918,19 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 case Body.Moon:
                     // See page 8, Table 2 in:
                     // https://astropedia.astrogeology.usgs.gov/alfresco/d/d/workspace/SpacesStore/28fd9e81-1964-44d6-a58b-fbbf61e64e15/WGCCRE2009reprint.pdf
-                    double E1 = DEG2RAD * (125.045 - 0.0529921 * d);
-                    double E2 = DEG2RAD * (250.089 - 0.1059842 * d);
-                    double E3 = DEG2RAD * (260.008 + 13.0120009 * d);
-                    double E4 = DEG2RAD * (176.625 + 13.3407154 * d);
-                    double E5 = DEG2RAD * (357.529 + 0.9856003 * d);
-                    double E6 = DEG2RAD * (311.589 + 26.4057084 * d);
-                    double E7 = DEG2RAD * (134.963 + 13.0649930 * d);
-                    double E8 = DEG2RAD * (276.617 + 0.3287146 * d);
-                    double E9 = DEG2RAD * (34.226 + 1.7484877 * d);
-                    double E10 = DEG2RAD * (15.134 - 0.1589763 * d);
-                    double E11 = DEG2RAD * (119.743 + 0.0036096 * d);
-                    double E12 = DEG2RAD * (239.961 + 0.1643573 * d);
-                    double E13 = DEG2RAD * (25.053 + 12.9590088 * d);
+                    double E1 = Constants.DEG2RAD * (125.045 - 0.0529921 * d);
+                    double E2 = Constants.DEG2RAD * (250.089 - 0.1059842 * d);
+                    double E3 = Constants.DEG2RAD * (260.008 + 13.0120009 * d);
+                    double E4 = Constants.DEG2RAD * (176.625 + 13.3407154 * d);
+                    double E5 = Constants.DEG2RAD * (357.529 + 0.9856003 * d);
+                    double E6 = Constants.DEG2RAD * (311.589 + 26.4057084 * d);
+                    double E7 = Constants.DEG2RAD * (134.963 + 13.0649930 * d);
+                    double E8 = Constants.DEG2RAD * (276.617 + 0.3287146 * d);
+                    double E9 = Constants.DEG2RAD * (34.226 + 1.7484877 * d);
+                    double E10 = Constants.DEG2RAD * (15.134 - 0.1589763 * d);
+                    double E11 = Constants.DEG2RAD * (119.743 + 0.0036096 * d);
+                    double E12 = Constants.DEG2RAD * (239.961 + 0.1643573 * d);
+                    double E13 = Constants.DEG2RAD * (25.053 + 12.9590088 * d);
 
                     ra = (
                         269.9949 + 0.0031 * T
@@ -8110,39 +7976,39 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                 case Body.Mars:
                     ra = (
                         317.269202 - 0.10927547 * T
-                        + 0.000068 * Math.Sin(DEG2RAD * (198.991226 + 19139.4819985 * T))
-                        + 0.000238 * Math.Sin(DEG2RAD * (226.292679 + 38280.8511281 * T))
-                        + 0.000052 * Math.Sin(DEG2RAD * (249.663391 + 57420.7251593 * T))
-                        + 0.000009 * Math.Sin(DEG2RAD * (266.183510 + 76560.6367950 * T))
-                        + 0.419057 * Math.Sin(DEG2RAD * (79.398797 + 0.5042615 * T))
+                        + 0.000068 * Math.Sin(Constants.DEG2RAD * (198.991226 + 19139.4819985 * T))
+                        + 0.000238 * Math.Sin(Constants.DEG2RAD * (226.292679 + 38280.8511281 * T))
+                        + 0.000052 * Math.Sin(Constants.DEG2RAD * (249.663391 + 57420.7251593 * T))
+                        + 0.000009 * Math.Sin(Constants.DEG2RAD * (266.183510 + 76560.6367950 * T))
+                        + 0.419057 * Math.Sin(Constants.DEG2RAD * (79.398797 + 0.5042615 * T))
                     );
 
                     dec = (
                         54.432516 - 0.05827105 * T
-                        + 0.000051 * Math.Cos(DEG2RAD * (122.433576 + 19139.9407476 * T))
-                        + 0.000141 * Math.Cos(DEG2RAD * (43.058401 + 38280.8753272 * T))
-                        + 0.000031 * Math.Cos(DEG2RAD * (57.663379 + 57420.7517205 * T))
-                        + 0.000005 * Math.Cos(DEG2RAD * (79.476401 + 76560.6495004 * T))
-                        + 1.591274 * Math.Cos(DEG2RAD * (166.325722 + 0.5042615 * T))
+                        + 0.000051 * Math.Cos(Constants.DEG2RAD * (122.433576 + 19139.9407476 * T))
+                        + 0.000141 * Math.Cos(Constants.DEG2RAD * (43.058401 + 38280.8753272 * T))
+                        + 0.000031 * Math.Cos(Constants.DEG2RAD * (57.663379 + 57420.7517205 * T))
+                        + 0.000005 * Math.Cos(Constants.DEG2RAD * (79.476401 + 76560.6495004 * T))
+                        + 1.591274 * Math.Cos(Constants.DEG2RAD * (166.325722 + 0.5042615 * T))
                     );
 
                     w = (
                         176.049863 + 350.891982443297 * d
-                        + 0.000145 * Math.Sin(DEG2RAD * (129.071773 + 19140.0328244 * T))
-                        + 0.000157 * Math.Sin(DEG2RAD * (36.352167 + 38281.0473591 * T))
-                        + 0.000040 * Math.Sin(DEG2RAD * (56.668646 + 57420.9295360 * T))
-                        + 0.000001 * Math.Sin(DEG2RAD * (67.364003 + 76560.2552215 * T))
-                        + 0.000001 * Math.Sin(DEG2RAD * (104.792680 + 95700.4387578 * T))
-                        + 0.584542 * Math.Sin(DEG2RAD * (95.391654 + 0.5042615 * T))
+                        + 0.000145 * Math.Sin(Constants.DEG2RAD * (129.071773 + 19140.0328244 * T))
+                        + 0.000157 * Math.Sin(Constants.DEG2RAD * (36.352167 + 38281.0473591 * T))
+                        + 0.000040 * Math.Sin(Constants.DEG2RAD * (56.668646 + 57420.9295360 * T))
+                        + 0.000001 * Math.Sin(Constants.DEG2RAD * (67.364003 + 76560.2552215 * T))
+                        + 0.000001 * Math.Sin(Constants.DEG2RAD * (104.792680 + 95700.4387578 * T))
+                        + 0.584542 * Math.Sin(Constants.DEG2RAD * (95.391654 + 0.5042615 * T))
                     );
                     break;
 
                 case Body.Jupiter:
-                    double Ja = DEG2RAD * (99.360714 + 4850.4046 * T);
-                    double Jb = DEG2RAD * (175.895369 + 1191.9605 * T);
-                    double Jc = DEG2RAD * (300.323162 + 262.5475 * T);
-                    double Jd = DEG2RAD * (114.012305 + 6070.2476 * T);
-                    double Je = DEG2RAD * (49.511251 + 64.3000 * T);
+                    double Ja = Constants.DEG2RAD * (99.360714 + 4850.4046 * T);
+                    double Jb = Constants.DEG2RAD * (175.895369 + 1191.9605 * T);
+                    double Jc = Constants.DEG2RAD * (300.323162 + 262.5475 * T);
+                    double Jd = Constants.DEG2RAD * (114.012305 + 6070.2476 * T);
+                    double Je = Constants.DEG2RAD * (49.511251 + 64.3000 * T);
 
                     ra = (
                         268.056595 - 0.006499 * T
@@ -8178,7 +8044,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
                     break;
 
                 case Body.Neptune:
-                    double N = DEG2RAD * (357.85 + 52.316 * T);
+                    double N = Constants.DEG2RAD * (357.85 + 52.316 * T);
                     ra = 299.36 + 0.70 * Math.Sin(N);
                     dec = 43.46 - 0.51 * Math.Cos(N);
                     w = 249.978 + 541.1397757 * d - 0.48 * Math.Sin(N);
@@ -8200,8 +8066,8 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             axis.spin = w;
 
             // Calculate the north pole vector using the given angles.
-            double radlat = dec * DEG2RAD;
-            double radlon = ra * DEG2RAD;
+            double radlat = dec * Constants.DEG2RAD;
+            double radlon = ra * Constants.DEG2RAD;
             double rcoslat = Math.Cos(radlat);
             axis.north = new AstroVector(
                 rcoslat * Math.Cos(radlon),
@@ -8373,10 +8239,10 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         /// </returns>
         public RotationMatrix Rotation_EQD_HOR(AstroTime time, Observer observer)
         {
-            double sinlat = Math.Sin(observer.latitude * DEG2RAD);
-            double coslat = Math.Cos(observer.latitude * DEG2RAD);
-            double sinlon = Math.Sin(observer.longitude * DEG2RAD);
-            double coslon = Math.Cos(observer.longitude * DEG2RAD);
+            double sinlat = Math.Sin(observer.latitude * Constants.DEG2RAD);
+            double coslat = Math.Cos(observer.latitude * Constants.DEG2RAD);
+            double sinlon = Math.Sin(observer.longitude * Constants.DEG2RAD);
+            double coslon = Math.Cos(observer.longitude * Constants.DEG2RAD);
 
             var uze = new AstroVector(coslat * coslon, coslat * sinlon, sinlat, time);
             var une = new AstroVector(-sinlat * coslon, -sinlat * sinlon, coslat, time);
@@ -8667,7 +8533,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             // Find true ecliptic obliquity for this time.
             earth_tilt_t et = e_tilt(time);
-            double tobl = et.tobl * DEG2RAD;
+            double tobl = et.tobl * Constants.DEG2RAD;
             double cos_tobl = Math.Cos(tobl);
             double sin_tobl = Math.Sin(tobl);
 
@@ -8710,7 +8576,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
             // Find true ecliptic obliquity for this time.
             earth_tilt_t et = e_tilt(time);
-            double tobl = et.tobl * DEG2RAD;
+            double tobl = et.tobl * Constants.DEG2RAD;
             double cos_tobl = Math.Cos(tobl);
             double sin_tobl = Math.Sin(tobl);
 

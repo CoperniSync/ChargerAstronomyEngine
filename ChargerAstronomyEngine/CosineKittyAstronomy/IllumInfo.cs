@@ -36,7 +36,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             this.time = time;
             this.mag = mag;
             this.phase_angle = phase_angle;
-            this.phase_fraction = (1.0 + Math.Cos(Astronomy.DEG2RAD * phase_angle)) / 2.0;
+            this.phase_fraction = (1.0 + Math.Cos(Constants.DEG2RAD * phase_angle)) / 2.0;
             this.helio_dist = helio_dist;
             this.ring_tilt = ring_tilt;
         }

@@ -40,7 +40,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             this.time = time;
             this.kind = kind;
             this.dist_au = dist_au;
-            this.dist_km = dist_au * Astronomy.KM_PER_AU;
+            this.dist_km = dist_au * Constants.KM_PER_AU;
         }
     }
 }

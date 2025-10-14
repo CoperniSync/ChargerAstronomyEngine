@@ -26,7 +26,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts
         {
             Equatorial ofdate = astro.Equator(body, time, observer, EquatorEpoch.OfDate, Aberration.Corrected);
             Topocentric hor = astro.Horizon(time, observer, ofdate.ra, ofdate.dec, Refraction.None);
-            double altitude = hor.altitude + Astronomy.RAD2DEG * Math.Asin(bodyRadiusAu / ofdate.dist);
+            double altitude = hor.altitude + Constants.RAD2DEG * Math.Asin(bodyRadiusAu / ofdate.dist);
             return direction * (altitude - targetAltitude);
         }
     }
