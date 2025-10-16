@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Diagnostics;
 
-namespace ChargerAstronomyEngine.Data
+namespace ChargerAstronomyEngine.Data.Star
 {
 
     public sealed class CsvStarRepository : IStarRepository
@@ -29,23 +29,23 @@ namespace ChargerAstronomyEngine.Data
                 throw new ArgumentException("Need CSV file path", nameof(csvPath));
             }
 
-            this.csvfilePath = csvPath;
+            csvfilePath = csvPath;
         }
 
         // We likely don't need any of these methods. Can still provide filtering capabilities in the engine though it may be difficult.
         public async Task<PageResult<EquatorialStar>> GetAllAsync(PageRequest page)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public async Task<EquatorialStar> GetStarByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Task<PageResult<EquatorialStar>> QueryBySkyRegionAsync(SkyRegion skyRegion, PageRequest page)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public async Task ProducePagesAsync(IInitializationQueue<PageResult<EquatorialStar>> queue, 
@@ -130,7 +130,7 @@ namespace ChargerAstronomyEngine.Data
 
         static CsvConfiguration GetCsvConfig()
         {
-            var config = new CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture)
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = true,
                 TrimOptions = TrimOptions.Trim,
