@@ -1,4 +1,5 @@
 ﻿using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
+using ChargerAstronomyShared.Domain.Equatorial;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,9 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts
 {
     internal class SearchContext_MagnitudeSlope : SearchContext
     {
-        private readonly Body body;
+        private readonly EquatorialCelestialBody body;
 
-        public SearchContext_MagnitudeSlope(Body body)
+        public SearchContext_MagnitudeSlope(EquatorialCelestialBody body)
         {
             this.body = body;
         }

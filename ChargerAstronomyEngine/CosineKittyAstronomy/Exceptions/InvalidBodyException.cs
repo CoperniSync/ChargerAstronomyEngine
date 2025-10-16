@@ -1,4 +1,5 @@
 ﻿using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
+using ChargerAstronomyShared.Domain.Equatorial;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions
     /// </summary>
     public class InvalidBodyException : ArgumentException
     {
-        internal InvalidBodyException(Body body) :
+        internal InvalidBodyException(BodyType body) :
             base("Invalid body: " + body)
         { }
     }

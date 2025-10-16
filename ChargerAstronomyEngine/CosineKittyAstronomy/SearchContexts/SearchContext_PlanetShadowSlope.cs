@@ -1,4 +1,5 @@
 ﻿using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
+using ChargerAstronomyShared.Domain.Equatorial;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts
 {
     internal class SearchContext_PlanetShadowSlope : SearchContext
     {
-        private Body body;
+        private EquatorialCelestialBody body;
         private double planet_radius_km;
 
-        public SearchContext_PlanetShadowSlope(Body body, double planet_radius_km)
+        public SearchContext_PlanetShadowSlope(EquatorialCelestialBody body, double planet_radius_km)
         {
             this.body = body;
             this.planet_radius_km = planet_radius_km;

@@ -16,7 +16,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts
         public override double Eval(Astronomy astro, AstroTime time)
         {
             Ecliptic ecl = astro.SunPosition(time);
-            return Astronomy.LongitudeOffset(ecl.elon - targetLon);
+            return astro.LongitudeOffset(ecl.elon - targetLon);
         }
     }
 }

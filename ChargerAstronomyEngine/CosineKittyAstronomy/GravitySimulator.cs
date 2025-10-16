@@ -1,5 +1,6 @@
 ﻿using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
 using ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions;
+using ChargerAstronomyShared.Domain.Equatorial;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,20 +24,20 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         /// <summary>
         /// The origin of the reference frame. See constructor for more info.
         /// </summary>
-        public readonly Body OriginBody;
+        public readonly EquatorialCelestialBody OriginBody;
 
         private GravSimEndpoint prev;
         private GravSimEndpoint curr;
-        private const int GravitatorArraySize = 1 + (int)Body.Sun;
+        private const int GravitatorArraySize = 1 + (int)BodyType.Sun;
         private static readonly int[] PlanetIndexes = new int[] {
-            (int)Body.Mercury,
-            (int)Body.Venus,
-            (int)Body.Earth,
-            (int)Body.Mars,
-            (int)Body.Jupiter,
-            (int)Body.Saturn,
-            (int)Body.Uranus,
-            (int)Body.Neptune
+            (int)BodyType.Mercury,
+            (int)BodyType.Venus,
+            (int)BodyType.Earth,
+            (int)BodyType.Mars,
+            (int)BodyType.Jupiter,
+            (int)BodyType.Saturn,
+            (int)BodyType.Uranus,
+            (int)BodyType.Neptune
         };
 
         /// <summary>Creates a gravity simulation object.</summary>
@@ -70,7 +71,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         /// If `bodyStates` is null, the gravity simulator will contain zero small bodies.
         /// </param>
         public GravitySimulator(
-            Body originBody,
+            EquatorialCelestialBody originBody,
             AstroTime time,
             IEnumerable<StateVector> bodyStates)
         {
@@ -109,7 +110,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             // We need to do all the physics calculations in barycentric coordinates.
             // But the caller provides the input vectors with respect to `originBody`.
             // Correct the input body state vectors for the specified origin.
-            if (originBody != Body.SSB)
+            if (originBody.BodyType != BodyType.SSB)
             {
                 // Determine the barycentric state of the origin body.
                 body_state_t ostate = InternalBodyState(originBody);
@@ -311,7 +312,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         /// <param name="body">
         /// The Sun, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, or Neptune.
         /// </param>
-        public StateVector SolarSystemBodyState(Body body)
+        public StateVector SolarSystemBodyState(EquatorialCelestialBody body)
         {
             body_state_t bstate = InternalBodyState(body);
             body_state_t ostate = InternalBodyState(OriginBody);
@@ -325,14 +326,14 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             // Initialize the Sun's position/velocity as zero vectors, then adjust from pulls of the planets.
             var ssb = new body_state_t(tt, TerseVector.Zero, TerseVector.Zero);
 
-            curr.gravitators[(int)Body.Mercury] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Mercury, Constants.MERCURY_GM);
-            curr.gravitators[(int)Body.Venus] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Venus, Constants.VENUS_GM);
-            curr.gravitators[(int)Body.Earth] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Earth, Constants.EARTH_GM + Constants.MOON_GM);
-            curr.gravitators[(int)Body.Mars] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Mars, Constants.MARS_GM);
-            curr.gravitators[(int)Body.Jupiter] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Jupiter, Constants.JUPITER_GM);
-            curr.gravitators[(int)Body.Saturn] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Saturn, Constants.SATURN_GM);
-            curr.gravitators[(int)Body.Uranus] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Uranus, Constants.URANUS_GM);
-            curr.gravitators[(int)Body.Neptune] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, Body.Neptune, Constants.NEPTUNE_GM);
+            curr.gravitators[(int)BodyType.Mercury] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, BodyType.Mercury, Constants.MERCURY_GM);
+            curr.gravitators[(int)BodyType.Venus] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, BodyType.Venus, Constants.VENUS_GM);
+            curr.gravitators[(int)BodyType.Earth] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, BodyType.Earth, Constants.EARTH_GM + Constants.MOON_GM);
+            curr.gravitators[(int)BodyType.Mars] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, BodyType.Mars, Constants.MARS_GM);
+            curr.gravitators[(int)BodyType.Jupiter] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, BodyType.Jupiter, Constants.JUPITER_GM);
+            curr.gravitators[(int)BodyType.Saturn] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, BodyType.Saturn, Constants.SATURN_GM);
+            curr.gravitators[(int)BodyType.Uranus] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, BodyType.Uranus, Constants.URANUS_GM);
+            curr.gravitators[(int)BodyType.Neptune] = Astronomy.AdjustBarycenterPosVel(ref ssb, tt, BodyType.Neptune, Constants.NEPTUNE_GM);
 
             // Convert planets states from heliocentric to barycentric.
             foreach (int bindex in PlanetIndexes)
@@ -342,18 +343,19 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             }
 
             // Convert heliocentric SSB to barycentric Sun.
-            curr.gravitators[(int)Body.Sun] = new body_state_t(tt, -ssb.r, -ssb.v);
+            curr.gravitators[(int)BodyType.Sun] = new body_state_t(tt, -ssb.r, -ssb.v);
         }
 
-        private body_state_t InternalBodyState(Body body)
+        private body_state_t InternalBodyState(EquatorialCelestialBody body)
         {
-            if (body == Body.Sun || (body >= Body.Mercury && body <= Body.Neptune))
-                return curr.gravitators[(int)body];
+            BodyType bodyType = body.BodyType;
+            if (bodyType == BodyType.Sun || (bodyType >= BodyType.Mercury && bodyType <= BodyType.Neptune))
+                return curr.gravitators[(int)bodyType];
 
-            if (body == Body.SSB)
+            if (bodyType == BodyType.SSB)
                 return new body_state_t(curr.time.tt, TerseVector.Zero, TerseVector.Zero);
 
-            throw new InvalidBodyException(body);
+            throw new InvalidBodyException(bodyType);
         }
 
         private void CalcBodyAccelerations()
@@ -363,15 +365,15 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             for (int i = 0; i < curr.bodies.Length; ++i)
             {
                 TerseVector a = TerseVector.Zero;
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Sun].r, Constants.SUN_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Mercury].r, Constants.MERCURY_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Venus].r, Constants.VENUS_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Earth].r, EMB_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Mars].r, Constants.MARS_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Jupiter].r, Constants.JUPITER_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Saturn].r, Constants.SATURN_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Uranus].r, Constants.URANUS_GM);
-                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)Body.Neptune].r, Constants.NEPTUNE_GM);
+                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)BodyType.Sun].r, Constants.SUN_GM);
+                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)BodyType.Mercury].r, Constants.MERCURY_GM);
+                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)BodyType.Venus].r, Constants.VENUS_GM);
+                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)BodyType.Earth].r, EMB_GM);
+                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)BodyType.Mars].r, Constants.MARS_GM);
+                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)BodyType.Jupiter].r, Constants.JUPITER_GM);
+                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)BodyType.Saturn].r, Constants.SATURN_GM);
+                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)BodyType.Uranus].r, Constants.URANUS_GM);
+                a += Acceleration(curr.bodies[i].r, curr.gravitators[(int)BodyType.Neptune].r, Constants.NEPTUNE_GM);
                 curr.bodies[i].a = a;
             }
         }

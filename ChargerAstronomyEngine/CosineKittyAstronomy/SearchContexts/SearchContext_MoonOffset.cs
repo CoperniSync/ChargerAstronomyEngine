@@ -16,7 +16,7 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts
         public override double Eval(Astronomy astro, AstroTime time)
         {
             double angle = astro.MoonPhase(time);
-            return Astronomy.LongitudeOffset(angle - targetLon);
+            return astro.LongitudeOffset(angle - targetLon);
         }
     }
 }

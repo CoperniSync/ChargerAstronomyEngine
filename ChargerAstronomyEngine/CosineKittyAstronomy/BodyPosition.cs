@@ -1,4 +1,5 @@
 ﻿using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
+using ChargerAstronomyShared.Domain.Equatorial;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,12 +9,12 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
     internal struct BodyPosition : IPositionFunction
     {
         private Astronomy astro;
-        private Body observerBody;
-        private Body targetBody;
+        private EquatorialCelestialBody observerBody;
+        private EquatorialCelestialBody targetBody;
         private Aberration aberration;
         private AstroVector observerPos;    // used only when aberration == Aberration.None
 
-        public BodyPosition(Astronomy astro, Body observerBody, Body targetBody, Aberration aberration, AstroVector observerPos)
+        public BodyPosition(Astronomy astro, EquatorialCelestialBody observerBody, EquatorialCelestialBody targetBody, Aberration aberration, AstroVector observerPos)
         {
             this.astro = astro;
             this.observerBody = observerBody;
@@ -21,6 +22,8 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
             this.aberration = aberration;
             this.observerPos = observerPos;
         }
+
+
 
         public AstroVector Position(AstroTime time)
         {

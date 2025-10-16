@@ -162,8 +162,6 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
 
         internal MoonResult CalcMoon()
         {
-            ++Astronomy.CalcMoonCount;
-
             AddSol(13.9020, 14.0600, -0.0010, 0.2607, 0, 0, 0, 4);
             AddSol(0.4030, -4.0100, 0.3940, 0.0023, 0, 0, 0, 3);
             AddSol(2369.9120, 2373.3600, 0.6010, 28.2333, 0, 0, 0, 2);
