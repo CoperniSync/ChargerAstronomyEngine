@@ -22,6 +22,11 @@ namespace ChargerAstronomyEngine.Data.Star
     {
         readonly string csvfilePath;
 
+        /// <summary>
+        /// A repository of stars loaded from a CSV file.
+        /// </summary>
+        /// <param name="csvPath"></param>
+        /// <exception cref="ArgumentException"></exception>
         public CsvStarRepository(string csvPath)
         {
             if (string.IsNullOrWhiteSpace(csvPath))
@@ -30,6 +35,21 @@ namespace ChargerAstronomyEngine.Data.Star
             }
 
             csvfilePath = csvPath;
+        }
+
+        /// <summary>
+        /// Provides a synchronous way to get all stars from the CSV file.
+        /// Used for testing only.
+        /// </summary>
+        /// <param name="csvFilePath"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="FileNotFoundException"></exception>
+
+        public IEnumerable<EquatorialStar> GetAllSync(CancellationToken cancellationToken = default)
+        {
+            return EnumerateStars(csvfilePath, cancellationToken);
         }
 
         // We likely don't need any of these methods. Can still provide filtering capabilities in the engine though it may be difficult.
