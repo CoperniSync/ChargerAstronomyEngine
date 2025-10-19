@@ -88,6 +88,9 @@ namespace tests
             }
         }
 
+        /// <summary>
+        /// Test that a SpatialStarIndex can be constructed from a stars CSV file.
+        /// </summary>
         [Fact]
         public void SpatialStarIndex_CanBeConstructed_FromSmallStarsFile()
         {
@@ -100,5 +103,25 @@ namespace tests
             // Assert
             starIndex.Should().NotBeNull("SpatialStarIndex should be constructed successfully from small stars file.");
         }
+
+        /// <summary>
+        /// Test that GetTileForStar returns a valid TileId for a given star.
+        /// </summary>
+        [Fact]
+        public void SpatialStarIndex_GetTileForStar_ReturnsValidTileId()
+        {
+            // Arrange
+            var stars = new CsvStarRepository(FindCsvPath("SmallStars")).GetAllSync();
+            var starIndex = new SpatialStarIndex(new IcosphereTileIndex(), stars);
+            var testStar = stars.First();
+
+            // Act
+            var tileId = starIndex.GetTileForStar(testStar);
+
+            // Assert
+            tileId.Should().NotBeNull("GetTileForStar should return a valid TileId for a given star.");
+        }
+
+        [Fact]
     }
 }
