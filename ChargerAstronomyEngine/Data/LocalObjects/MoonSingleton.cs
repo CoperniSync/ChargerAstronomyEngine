@@ -1,11 +1,13 @@
 using ChargerAstronomyShared.Domain.Equatorial;
 using ChargerAstronomyShared.Domain.Horizontal;
-using CosineKitty;
+using ChargerAstronomyEngine.CosineKittyAstronomy;
+using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
+using ChargerAstronomyShared.Domain;
 using System;
 
 namespace ChargerAstronomyEngine.Data.LocalObjects
 {
-    public sealed class MoonSingleton : EquatorialCelestialBody
+    public sealed class MoonSingleton
     {
         private static readonly Lazy<MoonSingleton> _instance = new Lazy<MoonSingleton>(() => new MoonSingleton());
 
@@ -30,28 +32,29 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
 
         /// <summary>
         /// Creates and returns a HorizontalMoon object using the current observer and time.
-        /// Updates the inherited properties from EquatorialCelestialBody.
         /// </summary>
         public HorizontalMoon CreateMoon()
         {
-            Equatorial equ = Astronomy.Equator(Body.Moon, astroTime, observer, EquatorEpoch.OfDate, Aberration.Corrected);
-            Topocentric hor = Astronomy.Horizon(astroTime, observer, equ.ra, equ.dec, Refraction.Normal);
-            var illumination = Astronomy.Illumination(Body.Moon, astroTime);
-            var phase = Astronomy.MoonPhase(astroTime);
+            // Create an instance of Astronomy
+            var astronomy = new Astronomy();
+            var moon = new HorizontalMoon();
 
-            // Update inherited properties from EquatorialCelestialBody
-            RightAscension = equ.ra;
-            Declination = equ.dec;
-            Distance = equ.dist;
-            Magnitude = illumination.mag;
+            // Calculate equatorial and horizontal coordinates
+            Equatorial equ = astronomy.Equator(moon, astroTime, observer, EquatorEpoch.OfDate, Aberration.Corrected);
+            Topocentric hor = astronomy.Horizon(astroTime, observer, equ, Refraction.Normal);
+            var illumination = astronomy.Illumination(moon, astroTime);
+            var phase = astronomy.MoonPhase(astroTime);
 
-            return new HorizontalMoon(new EquatorialStar
-            {
-                Declination = Declination,
-                RightAscension = RightAscension,
-                Distance = Distance,
-                Magnitude = Magnitude
-            });
+            // Update moon properties
+            moon.Azimuth = hor.azimuth;
+            moon.Altitude = hor.altitude;
+            moon.RightAscension = equ.ra;
+            moon.Declination = equ.dec;
+            moon.Distance = equ.dist;
+            moon.Magnitude = illumination.mag;
+            moon.Phase = phase;
+
+            return moon;
         }
     }
 }
