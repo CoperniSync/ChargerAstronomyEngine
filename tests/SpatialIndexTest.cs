@@ -123,5 +123,19 @@ namespace tests
         }
 
         [Fact]
+        public void SpatialStarIndex_GetStarsInTile_ReturnsExpectedStars()
+        {
+            // Arrange
+            var stars = new CsvStarRepository(FindCsvPath("SmallStars")).GetAllSync();
+            var starIndex = new SpatialStarIndex(new IcosphereTileIndex(), stars);
+            var testStar = stars.First();
+            var tileId = starIndex.GetTileForStar(testStar);
+
+            // Act
+            var starsInTile = starIndex.GetStarsInTile(tileId).ToList();
+
+            // Assert
+            starsInTile.Should().Contain(testStar, "The star should be present in the list of stars for its tile.");
+        }
     }
 }
