@@ -40,6 +40,7 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
             var astronomy = new Astronomy();
             var sun = new HorizontalSun();
 
+            // Calculate equatorial and horizontal coordinates
             Equatorial equ = astronomy.Equator(sun, astroTime, observer, EquatorEpoch.OfDate, Aberration.Corrected);
             Topocentric hor = astronomy.Horizon(astroTime, observer, equ, Refraction.Normal);
             var illumination = astronomy.Illumination(sun, astroTime);
