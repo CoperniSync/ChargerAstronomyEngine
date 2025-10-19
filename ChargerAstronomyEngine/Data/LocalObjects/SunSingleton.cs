@@ -1,11 +1,14 @@
+using ChargerAstronomyEngine.CosineKittyAstronomy;
+using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
+using ChargerAstronomyShared.Domain;
 using ChargerAstronomyShared.Domain.Equatorial;
 using ChargerAstronomyShared.Domain.Horizontal;
-using CosineKitty;
 using System;
+using System.Numerics;
 
 namespace ChargerAstronomyEngine.Data.LocalObjects
 {
-    public sealed class SunSingleton : EquatorialCelestialBody
+    public sealed class SunSingleton
     {
         private static readonly Lazy<SunSingleton> _instance = new Lazy<SunSingleton>(() => new SunSingleton());
 
@@ -34,23 +37,21 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
         /// </summary>
         public HorizontalSun CreateSun()
         {
-            Equatorial equ = Astronomy.Equator(Body.Moon, astroTime, observer, EquatorEpoch.OfDate, Aberration.Corrected);
-            Topocentric hor = Astronomy.Horizon(astroTime, observer, equ.ra, equ.dec, Refraction.Normal);
-            var illumination = Astronomy.Illumination(Body.Moon, astroTime);
+            var astronomy = new Astronomy();
+            var sun = new HorizontalSun();
 
-            // Update inherited properties from EquatorialCelestialBody
-            RightAscension = equ.ra;
-            Declination = equ.dec;
-            Distance = equ.dist;
-            Magnitude = illumination.mag;
+            Equatorial equ = astronomy.Equator(sun, astroTime, observer, EquatorEpoch.OfDate, Aberration.Corrected);
+            Topocentric hor = astronomy.Horizon(astroTime, observer, equ, Refraction.Normal);
+            var illumination = astronomy.Illumination(sun, astroTime);
 
-            return new HorizontalSun(new EquatorialStar
-            {
-                Declination = Declination,
-                RightAscension = RightAscension,
-                Distance = Distance,
-                Magnitude = Magnitude
-            });
+            sun.Azimuth = hor.azimuth;
+            sun.Altitude = hor.altitude;
+            sun.RightAscension = equ.ra;
+            sun.Declination = equ.dec;
+            sun.Distance = equ.dist;
+            sun.Magnitude = illumination.mag;
+
+            return sun;
         }
     }
 }
