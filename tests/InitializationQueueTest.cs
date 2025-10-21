@@ -35,6 +35,10 @@ public class CsvStarRepository_ProducePagesAsync_Tests
             "Mark it as Content -> Copy if newer, or place it next to the test binaries.");
     }
 
+    /// <summary>
+    /// Local helper to make a <see cref="CsvStarRepository"/> from the AllStars file.
+    /// </summary>
+    /// <returns></returns>
     private static CsvStarRepository MakeRepo()
         => new(FindCsvPath());
 
