@@ -122,20 +122,27 @@ namespace tests
             tileId.Should().NotBeNull("GetTileForStar should return a valid TileId for a given star.");
         }
 
+        /// <summary>
+        /// Test that GetStarsInTile returns stars that actually belong to the specified tile.
+        /// </summary>
         [Fact]
         public void SpatialStarIndex_GetStarsInTile_ReturnsExpectedStars()
         {
             // Arrange
             var stars = new CsvStarRepository(FindCsvPath("SmallStars")).GetAllSync();
             var starIndex = new SpatialStarIndex(new IcosphereTileIndex(), stars);
-            var testStar = stars.First();
-            var tileId = starIndex.GetTileForStar(testStar);
 
-            // Act
-            var starsInTile = starIndex.GetStarsInTile(tileId).ToList();
+            var testStars = stars.Take(5).ToList();
+            var tiles = testStars.Select(star => starIndex.GetTileForStar(star)).ToList();
 
-            // Assert
-            starsInTile.Should().Contain(testStar, "The star should be present in the list of stars for its tile.");
+            // Act & Assert
+            for (int i = 0; i < testStars.Count; i++)
+            {
+                var starsInTile = starIndex.GetStarsInTile(tiles[i]).ToList();
+                var containsStar = starsInTile.Any(star => star.StarId == testStars[i].StarId);
+
+                containsStar.Should().BeTrue($"The star with ID {testStars[i].StarId} should be present in the list of stars for its tile.");
+            }
         }
     }
 }
