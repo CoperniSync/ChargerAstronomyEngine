@@ -1,76 +1,71 @@
 using ChargerAstronomyShared.Domain.Equatorial;
 using ChargerAstronomyShared.Domain.Horizontal;
-using CosineKitty;
+using ChargerAstronomyEngine.CosineKittyAstronomy;
+using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
+using ChargerAstronomyShared.Domain;
 using System;
 using System.Collections.Generic;
 
 namespace ChargerAstronomyEngine.Data.LocalObjects
 {
-    public sealed class PlanetsSingleton : EquatorialCelestialBody
+    /// <summary>
+    /// Singleton class to manage and calculate horizontal positions of all planets (excluding Earth).
+    /// </summary>
+    public sealed class PlanetsSingleton
     {
         private static readonly Lazy<PlanetsSingleton> _instance = new Lazy<PlanetsSingleton>(() => new PlanetsSingleton());
 
+        private readonly Observer observer;
+        private readonly Dictionary<string, BodyType> planets;
         private DateTime currentTime;
         private AstroTime astroTime;
-        private Observer observer;
-        private readonly Dictionary<string, Body> planets;
 
         public static PlanetsSingleton Instance => _instance.Value;
 
         public DateTime CurrentTime => currentTime;
-
-        /// <summary>
-        /// Private constructor to initialize the singleton instance with default values.
-        /// </summary>
         private PlanetsSingleton()
         {
-            // Default values: observer at the equator and prime meridian, J2000 epoch time.
             observer = new Observer(0, 0, 150);
             currentTime = new AstroTime(2000, 1, 1, 12, 0, 0).ToUtcDateTime();
             astroTime = new AstroTime(currentTime);
 
-            // Initialize the dictionary of planets.
-            planets = new Dictionary<string, Body>
+            planets = new Dictionary<string, BodyType>
             {
-                { Body.Mercury.ToString(), Body.Mercury },
-                { Body.Venus.ToString(), Body.Venus },
-                { Body.Mars.ToString(), Body.Mars },
-                { Body.Jupiter.ToString(), Body.Jupiter },
-                { Body.Saturn.ToString(), Body.Saturn },
-                { Body.Uranus.ToString(), Body.Uranus },
-                { Body.Neptune.ToString(), Body.Neptune }
+                { BodyType.Mercury.ToString(), BodyType.Mercury },
+                { BodyType.Venus.ToString(), BodyType.Venus },
+                { BodyType.Mars.ToString(), BodyType.Mars },
+                { BodyType.Jupiter.ToString(), BodyType.Jupiter },
+                { BodyType.Saturn.ToString(), BodyType.Saturn },
+                { BodyType.Uranus.ToString(), BodyType.Uranus },
+                { BodyType.Neptune.ToString(), BodyType.Neptune }
             };
         }
 
         /// <summary>
         /// Creates and returns a list of HorizontalPlanet objects for all planets.
-        /// Updates the inherited properties from EquatorialCelestialBody.
         /// </summary>
+        /// <returns>A list of HorizontalPlanet objects.</returns>
         public IEnumerable<HorizontalPlanet> CreatePlanets()
         {
-            List<HorizontalPlanet> planetList = new List<HorizontalPlanet>();
+            var astronomy = new Astronomy();
+            var planetList = new List<HorizontalPlanet>();
 
             foreach (var planet in planets)
             {
-                Equatorial equ = Astronomy.Equator(planet.Value, astroTime, observer, EquatorEpoch.J2000, Aberration.Corrected);
-                var illumination = Astronomy.Illumination(planet.Value, astroTime);
+                var planetObject = new HorizontalPlanet(planet.Value, planet.Key);
 
-                // Update inherited properties from EquatorialCelestialBody
-                RightAscension = equ.ra;
-                Declination = equ.dec;
-                Distance = equ.dist;
-                Magnitude = illumination.mag;
+                Equatorial equ = astronomy.Equator(planetObject, astroTime, observer, EquatorEpoch.J2000, Aberration.Corrected);
+                Topocentric hor = astronomy.Horizon(astroTime, observer, equ, Refraction.Normal);
+                IllumInfo illumination = astronomy.Illumination(planetObject, astroTime);
 
-                var eqBody = new EquatorialStar
-                {
-                    ProperName = planet.Key,
-                    RightAscension = RightAscension,
-                    Declination = Declination,
-                    Distance = Distance,
-                    Magnitude = Magnitude
-                };
+                planetObject.Azimuth = hor.azimuth;
+                planetObject.Altitude = hor.altitude;
+                planetObject.RightAscension = equ.ra;
+                planetObject.Declination = equ.dec;
+                planetObject.Distance = equ.dist;
+                planetObject.Magnitude = illumination.mag;
 
-                planetList.Add(new HorizontalPlanet(planet.Key, illumination.phase_angle, eqBody));
+                planetList.Add(planetObject);
             }
 
             return planetList;
