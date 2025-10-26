@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ChargerAstronomyEngine.Data.CsvStarRepository">
-    <Position X="22.5" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIEAIAAAAAAAAAAAAAAAAAAAAIAAAABAEAAIQAAQAAA=</HashCode>
-      <FileName>Data\CsvStarRepository.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="ChargerAstronomyEngine.Streaming.BoundedInitializationQueue&lt;T&gt;">
     <Position X="24.75" Y="2" Width="2.25" />
     <TypeIdentifier>
@@ -30,7 +22,7 @@
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\EquatorialStarMap.cs</FileName>
+      <FileName>Data\Star\EquatorialStarMap.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ChargerAstronomyShared.Contracts.Models.LocalBodyContainer">
@@ -49,18 +41,6 @@
     <Position X="20.5" Y="7.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Class Name="ChargerAstronomyShared.Contracts.Models.TileId">
-    <Position X="23.5" Y="9.75" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ChargerAstronomyShared.Domain.CalendarDateTime">
-    <Position X="18" Y="2" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ChargerAstronomyShared.Domain.Observer">
-    <Position X="41.75" Y="1" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
   <Class Name="ChargerAstronomyShared.Domain.Equatorial.Constellation">
     <Position X="25.5" Y="6.25" Width="1.5" />
     <TypeIdentifier />
@@ -75,14 +55,6 @@
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Equatorial.EquatorialStar">
     <Position X="33.5" Y="3" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ChargerAstronomyShared.Domain.Equatorial.BodyType">
-    <Position X="22.5" Y="5.5" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ChargerAstronomyShared.Domain.Geometry.TileGeometry">
-    <Position X="21.5" Y="9.75" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Heat.HeatConfig">
@@ -133,6 +105,34 @@
   <Class Name="TileSelector">
     <Position X="33.25" Y="10" Width="1.5" />
     <TypeIdentifier />
+  </Class>
+  <Class Name="ChargerAstronomyShared.Contracts.Models.TileId">
+    <Position X="23.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChargerAstronomyShared.Domain.CalendarDateTime">
+    <Position X="18" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChargerAstronomyShared.Domain.Observer">
+    <Position X="41.75" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChargerAstronomyShared.Domain.Equatorial.BodyType">
+    <Position X="22.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChargerAstronomyShared.Domain.Geometry.TileGeometry">
+    <Position X="21.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChargerAstronomyEngine.Data.Star.CsvStarRepository">
+    <Position X="22.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAIAAAAAAAAAAAAAAAEAAAAIAAAABAEAAIQAAQAAA=</HashCode>
+      <FileName>Data\Star\CsvStarRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="ChargerAstronomyShared.Contracts.Models.LocalBodyRequest">
     <Position X="27.25" Y="8.5" Width="1.5" />
