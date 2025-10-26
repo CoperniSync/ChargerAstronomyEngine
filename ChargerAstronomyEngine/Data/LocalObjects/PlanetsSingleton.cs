@@ -11,7 +11,7 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
     /// <summary>
     /// Singleton class to manage and calculate horizontal positions of all planets (excluding Earth).
     /// </summary>
-    public sealed class PlanetsSingleton
+    public sealed class PlanetsSingleton : EquatorialCelestialBody
     {
         private static readonly Lazy<PlanetsSingleton> _instance = new Lazy<PlanetsSingleton>(() => new PlanetsSingleton());
 
@@ -23,7 +23,7 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
         public static PlanetsSingleton Instance => _instance.Value;
 
         public DateTime CurrentTime => currentTime;
-        private PlanetsSingleton()
+        private PlanetsSingleton() : base(BodyType.Earth)
         {
             observer = new Observer(0, 0, 150);
             currentTime = new AstroTime(2000, 1, 1, 12, 0, 0).ToUtcDateTime();

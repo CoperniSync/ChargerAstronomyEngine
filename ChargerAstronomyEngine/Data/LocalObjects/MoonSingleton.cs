@@ -7,7 +7,7 @@ using System;
 
 namespace ChargerAstronomyEngine.Data.LocalObjects
 {
-    public sealed class MoonSingleton
+    public sealed class MoonSingleton : EquatorialCelestialBody
     {
         private static readonly Lazy<MoonSingleton> _instance = new Lazy<MoonSingleton>(() => new MoonSingleton());
 
@@ -22,7 +22,7 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
         /// <summary>
         /// Private constructor to initialize the singleton instance with default values.
         /// </summary>
-        private MoonSingleton()
+        private MoonSingleton() : base(BodyType.Moon)
         {
             // Default values: observer at the equator and prime meridian, J2000 epoch time.
             observer = new Observer(0, 0, 150);
