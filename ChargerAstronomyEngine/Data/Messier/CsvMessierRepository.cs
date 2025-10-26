@@ -15,7 +15,7 @@ namespace ChargerAstronomyEngine.Data.Messier
     /// Author: Josh Johner
     /// Created: SPR 2025 
     /// </summary>
-    internal class StarLustMessierCsvRepository : IMessierRepository
+    internal class CsvMessierRepository : IMessierRepository
     {
         /// <summary>
         /// The path to the repository file.
@@ -26,7 +26,7 @@ namespace ChargerAstronomyEngine.Data.Messier
         /// Creates a new object.
         /// </summary>
         /// <param name="repositoryPath">The path to the directory containing the file.</param>
-        public StarLustMessierCsvRepository(string repositoryPath)
+        public CsvMessierRepository(string repositoryPath)
         {
             filePath = Path.Combine(repositoryPath, "messier-catalog.csv");
             if (!File.Exists(filePath)) throw new FileNotFoundException($"{filePath} does not exist");
@@ -55,7 +55,7 @@ namespace ChargerAstronomyEngine.Data.Messier
         }
 
         /// <summary>
-        /// A class internal to the <see cref="StarLustMessierCsvRepository"/> to map the csv columns to <see cref="EquatorialMessierObject"/> objects.
+        /// A class internal to the <see cref="CsvMessierRepository"/> to map the csv columns to <see cref="EquatorialMessierObject"/> objects.
         /// </summary>
         private class StarMap : ClassMap<EquatorialMessierObject>
         {
@@ -79,7 +79,7 @@ namespace ChargerAstronomyEngine.Data.Messier
             }
 
             /// <summary>
-            /// A type converter internal to the <see cref="StarLustMessierCsvRepository"/> class used to convert the <c>Right Ascension</c> from hours and decimal minutes to decimal hours. 
+            /// A type converter internal to the <see cref="CsvMessierRepository"/> class used to convert the <c>Right Ascension</c> from hours and decimal minutes to decimal hours. 
             /// </summary>
             private class HmsToDecimalDegreesConverter : DefaultTypeConverter
             {
@@ -107,7 +107,7 @@ namespace ChargerAstronomyEngine.Data.Messier
             }
 
             /// <summary>
-            /// A type converter internal to the <see cref="StarLustMessierCsvRepository"/> class used to convert the <c>Declination</c> from degrees and minutes to decimal degrees.
+            /// A type converter internal to the <see cref="CsvMessierRepository"/> class used to convert the <c>Declination</c> from degrees and minutes to decimal degrees.
             /// </summary>
             private class DdmToDecimalDegreesConverter : DefaultTypeConverter
             {
