@@ -38,7 +38,7 @@
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Contracts.Models.SkyRegion">
-    <Position X="30.25" Y="4" Width="1.5" />
+    <Position X="32" Y="4" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Equatorial.Constellation">
@@ -58,15 +58,15 @@
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Heat.HeatConfig">
-    <Position X="28.5" Y="7.5" Width="1.5" />
+    <Position X="30.25" Y="7.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Heat.HeatMap">
-    <Position X="26.5" Y="7.5" Width="1.75" />
+    <Position X="28.25" Y="7.5" Width="1.75" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Heat.HeatService">
-    <Position X="26.5" Y="5" Width="1.75" />
+    <Position X="28.25" Y="5" Width="1.75" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Horizontal.HorizontalBody">
@@ -103,7 +103,7 @@
     <TypeIdentifier />
   </Class>
   <Class Name="TileSelector">
-    <Position X="28.5" Y="1.5" Width="1.5" />
+    <Position X="30.25" Y="1.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyEngine.Data.Star.CsvStarRepository">
@@ -150,15 +150,15 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ChargerAstronomyShared.Contracts.Models.TileId">
-    <Position X="25" Y="1.5" Width="1.5" />
+    <Position X="26.75" Y="1.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.CalendarDateTime">
-    <Position X="32" Y="4" Width="1.75" />
+    <Position X="33.75" Y="4" Width="1.75" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Observer">
-    <Position X="30.25" Y="1.5" Width="1.5" />
+    <Position X="32" Y="1.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Equatorial.BodyType">
@@ -166,8 +166,13 @@
     <TypeIdentifier />
   </Class>
   <Class Name="ChargerAstronomyShared.Domain.Geometry.TileGeometry">
-    <Position X="26.75" Y="1.5" Width="1.5" />
+    <Position X="28.5" Y="1.5" Width="1.5" />
     <TypeIdentifier />
+  </Class>
+  <Class Name="ChargerAstronomyShared.Domain.Index.UVTileIndex">
+    <Position X="25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="ChargerAstronomyShared.Contracts.Models.LocalBodyRequest">
     <Position X="18" Y="9.25" Width="2" />
