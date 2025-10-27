@@ -30,21 +30,21 @@ namespace tests
                 "Mark it as Content -> Copy if newer, or place it next to the test binaries.");
         }
 
-        [Fact]  
-        public void HeatMap_RetrievalMethods_Work()  
-        {  
+        [Fact]
+        public void HeatMap_RetrievalMethods_Work()
+        {
             // Arrange  
-            var heatService = new HeatService(  
-                new HeatMap(new HeatConfig()  
-                {  
-                    ClampMin = 0f,  
-                    ClampMax = 10f,  
-                    DecayPerSecond = 1f  
-                }),  
-                new IcosphereTileIndex()  
-            );  
+            var heatService = new HeatService(
+                new HeatMap(new HeatConfig()
+                {
+                    ClampMin = 0f,
+                    ClampMax = 10f,
+                    DecayPerSecond = 1f
+                }),
+                new IcosphereTileIndex()
+            );
 
-            var heatMap = heatService.GetHeatMap();  
+            var heatMap = heatService.GetHeatMap();
             var tileIndex = heatService.GetTileIndex();
 
             heatMap.Set(tileIndex.Tiles, 10f);
@@ -62,27 +62,39 @@ namespace tests
         }
 
         [Fact]
-        public void HeatService_Step_UpdatesHeatMapCorrectly()
+        public void HeatService_Step_UpdatesHeatMapBasedOnCameraView()
         {
             // Arrange
             var heatService = new HeatService(
                 new HeatMap(new HeatConfig()
                 {
                     ClampMin = 0f,
-                    ClampMax = 10f,
-                    DecayPerSecond = 1f
+                    ClampMax = 1f,
+                    DecayPerSecond = .05f
                 }),
                 new IcosphereTileIndex()
             );
             var heatMap = heatService.GetHeatMap();
             var tileIndex = heatService.GetTileIndex();
 
-            heatMap.Set(tileIndex.Tiles, 10f);
+            var scratch = new List<TileId>();
+            var visibleTiles = TileSelector.Select(
+                tileIndex,
+                new Vector3(1, 1, 1),
+                45.0f * (float)(Math.PI / 180.0),
+                scratch,
+                false,
+                0f
+            );
+
+            heatMap.Set(tileIndex.Tiles, 1.0f);
 
             // Act
             heatService.Step(1.0f);
 
-            // ASSERT NOT FINISHED
+            // Assert
+            heatMap.TilesAbove(1.0f, true).Should().Contain(visibleTiles);
+            heatMap.TilesBelow(1.0f, false).Should().NotContain(visibleTiles);
         }
     }
 }
