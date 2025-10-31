@@ -52,31 +52,25 @@ namespace ChargerAstronomyEngine.Data.Star
             return EnumerateStars(csvfilePath, cancellationToken);
         }
 
-        // We likely don't need any of these methods. Can still provide filtering capabilities in the engine though it may be difficult.
+        /// <inheritdoc />
         public async Task<PageResult<EquatorialStar>> GetAllAsync(PageRequest page)
         {
             throw new NotImplementedException();
         }
 
+        /// <inheritdoc />
         public async Task<EquatorialStar> GetStarByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
+        /// <inheritdoc />
         public Task<PageResult<EquatorialStar>> QueryBySkyRegionAsync(SkyRegion skyRegion, PageRequest page)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Produces pages of stars into the provided queue, starting from the first PageRequest.
-        /// </summary>
-        /// <param name="queue"></param>
-        /// <param name="firstPage"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentException"></exception>
+        /// <inheritdoc />
         public async Task ProducePagesAsync(IInitializationQueue<PageResult<EquatorialStar>> queue, 
             PageRequest firstPage, CancellationToken cancellationToken = default)
         {
