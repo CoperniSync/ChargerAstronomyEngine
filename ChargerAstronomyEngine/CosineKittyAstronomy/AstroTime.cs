@@ -102,6 +102,11 @@ namespace ChargerAstronomyEngine.CosineKittyAstronomy
         {
         }
 
+        public AstroTime(CalendarDateTime cdt)
+            : this(UniversalTimeFromCalendar(cdt.year, cdt.month, cdt.day, cdt.hour, cdt.minute, cdt.second))
+        {
+        }
+
         /// <summary>
         /// Creates an `AstroTime` object from a Terrestrial Time day value.
         /// </summary>
