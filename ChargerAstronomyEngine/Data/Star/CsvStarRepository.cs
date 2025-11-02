@@ -77,7 +77,7 @@ namespace ChargerAstronomyEngine.Data.Star
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
-        public async Task ProducePagesAsync(IInitializationQueue<PageResult<EquatorialStar>> queue, 
+        public async Task ProducePagesAsync(BlockingQueue<PageResult<EquatorialStar>> queue, 
             PageRequest firstPage, CancellationToken cancellationToken = default)
         {
             if (queue == null) throw new ArgumentNullException(nameof(queue));
@@ -180,7 +180,7 @@ namespace ChargerAstronomyEngine.Data.Star
         /// <param name="skip"></param>
         /// <param name="take"></param>
         /// <param name="cancellationToken"></param>
-        static void EnqueuePage(IInitializationQueue<PageResult<EquatorialStar>> queue,
+        static void EnqueuePage(BlockingQueue<PageResult<EquatorialStar>> queue,
             List<EquatorialStar> buffer,
             int total, 
             int skip,
