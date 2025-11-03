@@ -71,16 +71,6 @@ namespace ChargerAstronomyEngine.Data.Star
         }
 
         /// <inheritdoc />
-        public async Task ProducePagesAsync(IInitializationQueue<PageResult<EquatorialStar>> queue, 
-        /// <summary>
-        /// Produces pages of stars into the provided queue, starting from the first PageRequest.
-        /// </summary>
-        /// <param name="queue"></param>
-        /// <param name="firstPage"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentException"></exception>
         public async Task ProducePagesAsync(BlockingQueue<PageResult<EquatorialStar>> queue, 
             PageRequest firstPage, CancellationToken cancellationToken = default)
         {
