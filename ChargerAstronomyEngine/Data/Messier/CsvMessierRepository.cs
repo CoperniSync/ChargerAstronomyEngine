@@ -15,7 +15,7 @@ namespace ChargerAstronomyEngine.Data.Messier
     /// Author: Josh Johner
     /// Created: SPR 2025 
     /// </summary>
-    internal class CsvMessierRepository : IMessierRepository
+    public sealed class StarLustMessierCsvRepository : IMessierRepository
     {
         /// <summary>
         /// The path to the repository file.
