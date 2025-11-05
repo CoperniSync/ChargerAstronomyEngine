@@ -89,7 +89,7 @@ namespace tests
         }
 
         /// <summary>
-        /// Test that a SpatialStarIndex can be constructed from a stars CSV file.
+        /// Test that a <see cref="SpatialStarIndex"/> can be constructed from a stars CSV file.
         /// </summary>
         [Fact]
         public void SpatialStarIndex_CanBeConstructed_FromSmallStarsFile()
@@ -105,7 +105,7 @@ namespace tests
         }
 
         /// <summary>
-        /// Test that GetTileForStar returns a valid TileId for a given star.
+        /// Test that <see cref="SpatialStarIndex.GetTileForStar"/> returns a valid TileId for a given star.
         /// </summary>
         [Fact]
         public void SpatialStarIndex_GetTileForStar_ReturnsValidTileId()
@@ -123,7 +123,7 @@ namespace tests
         }
 
         /// <summary>
-        /// Test that GetStarsInTile returns stars that actually belong to the specified tile.
+        /// Test that <see cref="SpatialStarIndex.GetStarsInTile"/> returns stars that actually belong to the specified tile.
         /// </summary>
         [Fact]
         public void SpatialStarIndex_GetStarsInTile_ReturnsExpectedStars()
@@ -143,6 +143,34 @@ namespace tests
 
                 containsStar.Should().BeTrue($"The star with ID {testStars[i].StarId} should be present in the list of stars for its tile.");
             }
+        }
+
+        /// <summary>
+        /// Tests that the <see cref="SpatialStarIndex.AddStar"/> method correctly adds a star to the appropriate tile.
+        /// </summary>
+
+        [Fact]
+        public void SpatialStarIndex_AddStar_AddsStarToCorrectTile()
+        {
+            // Arrange
+            var stars = new CsvStarRepository(FindCsvPath("SmallStars")).GetAllSync();
+            var starIndex = new SpatialStarIndex(new IcosphereTileIndex(), stars);
+            var newStar = new EquatorialStar
+            {
+                StarId = 999999,
+                RightAscension = 180.0,
+                Declination = 0.0,
+                Magnitude = 5.0
+            };
+
+            // Act
+            starIndex.AddStar(newStar);
+
+            var tileId = starIndex.GetTileForStar(newStar);
+            var starsInTile = starIndex.GetStarsInTile(tileId);
+
+            // Assert
+            starsInTile.Should().ContainSingle(star => star.StarId == newStar.StarId, "The newly added star should be present in the correct tile.");
         }
     }
 }

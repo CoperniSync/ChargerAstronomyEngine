@@ -8,7 +8,7 @@ using System.Numerics;
 
 namespace ChargerAstronomyEngine.Data.LocalObjects
 {
-    public sealed class SunSingleton
+    public sealed class SunSingleton : EquatorialCelestialBody
     {
         private static readonly Lazy<SunSingleton> _instance = new Lazy<SunSingleton>(() => new SunSingleton());
 
@@ -23,7 +23,7 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
         /// <summary>
         /// Private constructor to initialize the singleton instance with default values.
         /// </summary>
-        private SunSingleton()
+        private SunSingleton() : base(BodyType.Sun)
         {
             // Default values: observer at the equator and prime meridian, J2000 epoch time.
             observer = new Observer(0, 0, 150);

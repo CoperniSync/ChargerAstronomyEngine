@@ -12,7 +12,7 @@ namespace ChargerAstronomyEngine.Streaming
     /// Instance of a bounded initialization queue. Mason found this online and made a few modifications.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public sealed class BoundedInitializationQueue<T> : IInitializationQueue<T>, IDisposable
+    public sealed class BoundedInitializationQueue<T> : BlockingQueue<T>, IDisposable
     {
         readonly ConcurrentQueue<T> inner;
         readonly BlockingCollection<T> blocking;
