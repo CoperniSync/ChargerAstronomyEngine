@@ -117,6 +117,15 @@ namespace ChargerAstronomyEngine.Data.Star
             }
         }
 
+        /// <summary>
+        /// Enumerates stars from a CSV file, yielding each valid record as an <see cref="EquatorialStar"/> object.
+        /// </summary>
+        /// <remarks>The method reads the CSV file line by line and processes each record lazily. The caller can cancel the
+        /// operation at any time by signaling the provided <paramref name="cancellationToken"/>.</remarks>
+        /// <param name="csvfilePath">The path to the CSV file containing star data. The file must be in the expected format.</param>
+        /// <param name="cancellationToken">A token to monitor for cancellation requests. The operation will throw <see
+        /// cref="OperationCanceledException"/> if cancellation is requested.</param>
+        /// <returns>An enumerable collection of <see cref="EquatorialStar"/> objects representing the stars in the CSV file.</returns>
         static IEnumerable<EquatorialStar> EnumerateStars(string csvfilePath, CancellationToken cancellationToken)
         {
             var config = GetCsvConfig();
@@ -139,6 +148,15 @@ namespace ChargerAstronomyEngine.Data.Star
             }
         }
 
+        /// <summary>
+        /// Configures type conversion options for the <see cref="CsvReader"/> instance.
+        /// </summary>
+        /// <remarks>This method sets the <see cref="CultureInfo"/> for double and nullable double types
+        /// to  <see cref="CultureInfo.InvariantCulture"/> to ensure consistent parsing of numeric values regardless of
+        /// the system's culture settings. Additionally, it configures the handling of null values  for nullable double
+        /// types by adding "NULL" and "N/A" as recognized null value representations.</remarks>
+        /// <param name="csv">The <see cref="CsvReader"/> instance for which type conversion options are being configured.  This parameter
+        /// cannot be null.</param>
         static void RegisterTypeOptions(CsvReader csv)
         {
             var d = csv.Context.TypeConverterOptionsCache.GetOptions<double>();
@@ -151,6 +169,10 @@ namespace ChargerAstronomyEngine.Data.Star
             dn.NullValues.AddRange(new[] { "NULL", "N/A" });
         }
 
+        /// <summary>
+        /// Creates and returns a preconfigured <see cref="CsvConfiguration"/> instance for parsing CSV files.
+        /// </summary>
+        /// <returns>A <see cref="CsvConfiguration"/> instance with predefined settings for CSV parsing.</returns>
         static CsvConfiguration GetCsvConfig()
         {
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
