@@ -6,8 +6,10 @@ using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ChargerAstronomyEngine.CosineKittyAstronomy;
 using ChargerAstronomyShared.Contracts.Models;
 using ChargerAstronomyShared.Contracts.Repositories;
+using ChargerAstronomyShared.Domain;
 using ChargerAstronomyShared.Domain.Equatorial;
 using ChargerAstronomyShared.Domain.Heat;
 using ChargerAstronomyShared.Domain.Horizontal;
@@ -24,8 +26,8 @@ namespace ChargerAstronomyEngine.Streaming
 
         ITileIndex tileIndex;
 
-        EquatorialCalculator equatorialCalculator;
-        SpatialStarIndex spatialStarIndex;
+        private EquatorialCalculator equatorialCalculator;
+        private SpatialStarIndex spatialStarIndex;
 
 
         private readonly BlockingCollection<TileId> activationQueue; 
@@ -67,6 +69,11 @@ namespace ChargerAstronomyEngine.Streaming
             await heatService.Step(deltaTime, cameraDirection, horizontalFOV);
             
             Update();
+        }
+
+        public void UpdateTimeAndLocation(CalendarDateTime newTime, Observer newLocation)
+        {
+            equatorialCalculator.UpdateTimeAndLocation(newTime, newLocation);
         }
 
         private void Update()
