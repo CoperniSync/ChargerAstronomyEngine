@@ -2,6 +2,7 @@
 using ChargerAstronomyEngine.Streaming;
 using ChargerAstronomyShared.Contracts.Models;
 using ChargerAstronomyShared.Domain.Equatorial;
+using ChargerAstronomyShared.Domain.Horizontal;
 using ChargerAstronomyShared.Domain.Index;
 using ChargerAstronomyShared.Domain.SpatialIndex;
 using FluentAssertions;
@@ -14,6 +15,7 @@ namespace tests
 {
     public class SpatialIndexTest
     {
+        private List<TestStar> stars;
         private static string FindCsvPath(string fileName)
         {
             fileName = fileName + ".csv";
@@ -30,6 +32,12 @@ namespace tests
 
             throw new FileNotFoundException($"Could not locate '{fileName}'. " +
                 "Mark it as Content -> Copy if newer, or place it next to the test binaries.");
+        }
+
+        public SpatialIndexTest()
+        {
+            var equatorialStars = new CsvStarRepository(FindCsvPath("SmallStars")).GetAllSync();
+            stars = equatorialStars.Select(s => new TestStar(s)).ToList();
         }
 
         /// <summary>
@@ -94,11 +102,9 @@ namespace tests
         [Fact]
         public void SpatialStarIndex_CanBeConstructed_FromSmallStarsFile()
         {
-            // Arrange
-            var stars = new CsvStarRepository(FindCsvPath("SmallStars")).GetAllSync();
 
             // Act
-            var starIndex = new SpatialStarIndex(new IcosphereTileIndex(), stars);
+            var starIndex = new SpatialStarIndex<TestStar>(new IcosphereTileIndex(), stars);
 
             // Assert
             starIndex.Should().NotBeNull("SpatialStarIndex should be constructed successfully from small stars file.");
@@ -110,9 +116,8 @@ namespace tests
         [Fact]
         public void SpatialStarIndex_GetTileForStar_ReturnsValidTileId()
         {
-            // Arrange
-            var stars = new CsvStarRepository(FindCsvPath("SmallStars")).GetAllSync();
-            var starIndex = new SpatialStarIndex(new IcosphereTileIndex(), stars);
+
+            var starIndex = new SpatialStarIndex<TestStar>(new IcosphereTileIndex(), stars);
             var testStar = stars.First();
 
             // Act
@@ -128,9 +133,7 @@ namespace tests
         [Fact]
         public void SpatialStarIndex_GetStarsInTile_ReturnsExpectedStars()
         {
-            // Arrange
-            var stars = new CsvStarRepository(FindCsvPath("SmallStars")).GetAllSync();
-            var starIndex = new SpatialStarIndex(new IcosphereTileIndex(), stars);
+            var starIndex = new SpatialStarIndex<TestStar>(new IcosphereTileIndex(), stars);
 
             var testStars = stars.Take(5).ToList();
             var tiles = testStars.Select(star => starIndex.GetTileForStar(star)).ToList();
@@ -138,10 +141,16 @@ namespace tests
             // Act & Assert
             for (int i = 0; i < testStars.Count; i++)
             {
+                var testStar = testStars[i].HorizontalBody as HorizontalStar;
                 var starsInTile = starIndex.GetStarsInTile(tiles[i]).ToList();
-                var containsStar = starsInTile.Any(star => star.StarId == testStars[i].StarId);
+                var containsStar = starsInTile.Any(star =>
+                {
+                    if (star.HorizontalBody is HorizontalStar horizontalStar && testStar != null)
+                        return horizontalStar.StarId == testStar.StarId;
+                    return false;
+                });
 
-                containsStar.Should().BeTrue($"The star with ID {testStars[i].StarId} should be present in the list of stars for its tile.");
+                containsStar.Should().BeTrue($"The star with ID {testStar?.StarId : -1} should be present in the list of stars for its tile.");
             }
         }
 
@@ -152,16 +161,14 @@ namespace tests
         [Fact]
         public void SpatialStarIndex_AddStar_AddsStarToCorrectTile()
         {
-            // Arrange
-            var stars = new CsvStarRepository(FindCsvPath("SmallStars")).GetAllSync();
-            var starIndex = new SpatialStarIndex(new IcosphereTileIndex(), stars);
-            var newStar = new EquatorialStar
+            var starIndex = new SpatialStarIndex<TestStar>(new IcosphereTileIndex(), stars);
+            var newStar = new TestStar(new EquatorialStar
             {
                 StarId = 999999,
                 RightAscension = 180.0,
                 Declination = 0.0,
                 Magnitude = 5.0
-            };
+            });
 
             // Act
             starIndex.AddStar(newStar);
@@ -169,8 +176,27 @@ namespace tests
             var tileId = starIndex.GetTileForStar(newStar);
             var starsInTile = starIndex.GetStarsInTile(tileId);
 
-            // Assert
-            starsInTile.Should().ContainSingle(star => star.StarId == newStar.StarId, "The newly added star should be present in the correct tile.");
+            // Assert{
+            starsInTile.Should().ContainSingle(star => 
+                star.Equals(newStar), "The newly added star should be present in the correct tile.");
+        }
+
+        private class TestStar : IHorizontal
+        {
+
+            public TestStar (EquatorialStar equatorialStar)
+            {
+                HorizontalBody = new HorizontalStar(equatorialStar);
+            }
+
+            public override bool Equals(object? obj)
+            {
+                return obj is TestStar objTest && objTest.HorizontalBody is HorizontalStar objHor
+                    && this.HorizontalBody is HorizontalStar thisHor && thisHor.StarId == objHor.StarId;
+            }
+            public HorizontalBody HorizontalBody { get; }
         }
     }
+
+   
 }

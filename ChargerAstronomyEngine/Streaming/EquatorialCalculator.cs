@@ -15,16 +15,16 @@ using System.Text;
 
 namespace ChargerAstronomyEngine.Streaming
 {
-    public class EquatorialCalculator : ITimeAndPlaceProvider, IEquatorialCalculator
+    public class EquatorialCalculator<T> : ITimeAndPlaceProvider, IEquatorialCalculator where T : IHorizontal
     {
-        SpatialStarIndex starIndex;
+        SpatialStarIndex<T> starIndex;
 
         AstroTime astroTime;
         Observer location;
 
         Astronomy astro;
 
-        public EquatorialCalculator(HeatService heatService, SpatialStarIndex starIndex)
+        public EquatorialCalculator(HeatService heatService, SpatialStarIndex<T> starIndex)
         {
             this.starIndex = starIndex ?? throw new ArgumentNullException(nameof(starIndex));
             this.astro = new Astronomy();
@@ -62,11 +62,12 @@ namespace ChargerAstronomyEngine.Streaming
             astroTime = new AstroTime(astroTime.ut + deltaTime / 86400.0);
         }
 
-        public void UpdateStar(HorizontalStar star)
+        public void UpdateStar(T star)
         {
+            var horizontal = star.HorizontalBody;
             var currentTime = this.astroTime;
             var equatorial = astro.Equator(
-                star, 
+                horizontal, 
                 currentTime, 
                 location, 
                 EquatorEpoch.J2000, 
@@ -74,8 +75,8 @@ namespace ChargerAstronomyEngine.Streaming
             );
 
             var topocentric = astro.Horizon(currentTime, location, equatorial,Refraction.Normal);
-            star.Altitude = topocentric.altitude;
-            star.Azimuth = topocentric.azimuth;
+            horizontal.Altitude = topocentric.altitude;
+            horizontal.Azimuth = topocentric.azimuth;
         }
 
     }

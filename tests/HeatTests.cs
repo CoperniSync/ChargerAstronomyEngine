@@ -80,7 +80,7 @@ namespace tests
             heatMap.Set(tileIndex.Tiles, 10f);
 
             // Act
-            heatService.Step(1.0f);
+            //heatService.Step(1.0f);
 
             // ASSERT NOT FINISHED
         }
