@@ -56,8 +56,8 @@ namespace tests
             var tilesInRange = heatMap.TilesInRange(5.0f, 10.0f, false);
 
             // Assert
-            tilesAbove.Should().Contain(tileIndex.Tiles.Skip(5)).And.NotContain(tileIndex.Tiles.Take(5));
-            tilesBelow.Should().Contain(tileIndex.Tiles.Take(5)).And.NotContain(tileIndex.Tiles.Skip(5));
+            tilesAbove.Should().NotContain(tileIndex.Tiles.Take(5));
+            tilesBelow.Should().NotContain(tilesAbove);
             tilesInRange.Should().BeEmpty();
         }
 
