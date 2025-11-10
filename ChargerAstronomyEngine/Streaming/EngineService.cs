@@ -18,7 +18,6 @@ namespace ChargerAstronomyEngine.Streaming
 {
     public class EngineService<T> : IEngineService<T> where T : IHorizontal
     {
-        HeatService heatService;
         HeatMap heatMap;
         HeatConfig heatConfig;
 
@@ -26,12 +25,16 @@ namespace ChargerAstronomyEngine.Streaming
 
         EquatorialCalculator<T> equatorialCalculator;
         SpatialStarIndex<T> spatialStarIndex;
+        HeatService heatService;
 
 
         private readonly BlockingCollection<T> activationQueue; 
         private readonly BlockingCollection<T> deactivationQueue;
 
         private readonly BlockingCollection<T> updateTransformQueue; // unity will remove from this queue
+
+        public HeatService HeatService => heatService;
+        public SpatialStarIndex<T> SpatialStarIndex => spatialStarIndex;
 
         public BlockingCollection<T> ActivationQueue => activationQueue;
 
