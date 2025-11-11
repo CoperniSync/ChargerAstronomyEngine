@@ -26,7 +26,7 @@ namespace ChargerAstronomyEngine.Data.Messier
         /// Creates a new object.
         /// </summary>
         /// <param name="repositoryPath">The path to the directory containing the file.</param>
-        public CsvMessierRepository(string repositoryPath)
+        public StarLustMessierCsvRepository(string repositoryPath)
         {
             filePath = Path.Combine(repositoryPath, "messier-catalog.csv");
             if (!File.Exists(filePath)) throw new FileNotFoundException($"{filePath} does not exist");
