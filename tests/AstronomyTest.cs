@@ -18,7 +18,7 @@ namespace tests
         public void VerifyDateAndTime()
         {
             var cdt = DateTime.Now;
-            var calendarDateTime = new ChargerAstronomyShared.Domain.CalendarDateTime(cdt.Year, cdt.Month, cdt.Minute, cdt.Hour, cdt.Minute, cdt.Second);
+            var calendarDateTime = new ChargerAstronomyShared.Domain.CalendarDateTime(cdt.Year, cdt.Month, cdt.Day, cdt.Hour, cdt.Minute, cdt.Second);
             var astroTime = new ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime(calendarDateTime);
             astroTime.ToCalendarDateTime().ToString().Should().Be(calendarDateTime.ToString());
         }
