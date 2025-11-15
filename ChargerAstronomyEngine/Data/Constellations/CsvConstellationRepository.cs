@@ -18,7 +18,7 @@ namespace ChargerAstronomyEngine.Data.Constellations
     /// Author: Josh Johner
     /// Created: SPR 2025
     /// </summary>
-    internal class CsvConstellationRepository : IConstellationRepository
+    public class CsvConstellationRepository : IConstellationRepository
     {
         /// <summary>
         /// The path to the Stellarium Json file to read from
