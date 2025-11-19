@@ -23,6 +23,7 @@ namespace ChargerAstronomyEngine.Streaming
         Observer location;
 
         Astronomy astro;
+        Dictionary<string, BodyType> planets;
 
         public EquatorialCalculator(HeatService heatService, SpatialStarIndex<T> starIndex)
         {
@@ -33,6 +34,17 @@ namespace ChargerAstronomyEngine.Streaming
 
             var J200 = new CalendarDateTime(2000, 1, 1, 12, 0, 0);
             astroTime = new AstroTime(J200);
+
+            planets = new Dictionary<string, BodyType>
+            {
+                { BodyType.Mercury.ToString(), BodyType.Mercury },
+                { BodyType.Venus.ToString(), BodyType.Venus },
+                { BodyType.Mars.ToString(), BodyType.Mars },
+                { BodyType.Jupiter.ToString(), BodyType.Jupiter },
+                { BodyType.Saturn.ToString(), BodyType.Saturn },
+                { BodyType.Uranus.ToString(), BodyType.Uranus },
+                { BodyType.Neptune.ToString(), BodyType.Neptune }
+            };
         }
 
         public void UpdateLocation(Observer newLocation)
@@ -79,5 +91,30 @@ namespace ChargerAstronomyEngine.Streaming
             horizontal.Azimuth = topocentric.azimuth;
         }
 
+        public void UpdatePositionOf(HorizontalPlanet planet)
+        {
+            if (planets.TryGetValue(planet.Name, out BodyType bodyType))
+            {
+                var currentTime = this.astroTime;
+                var equatorial = astro.Equator(
+                    planet,
+                    currentTime,
+                    location,
+                    EquatorEpoch.J2000,
+                    Aberration.Corrected
+                );
+
+                var topocentric = astro.Horizon(currentTime, location, equatorial, Refraction.Normal);
+                var illumination = astro.Illumination(planet, astroTime);
+                planet.Altitude = topocentric.altitude;
+                planet.Azimuth = topocentric.azimuth;
+                planet.PhaseAngle = illumination.phase_angle;
+                planet.Distance = equatorial.dist;
+            } else
+            {
+                const string msg = "Planet name not recognized in UpdatePositionOf(HorizontalPlanet)";
+                throw new ArgumentException(msg, nameof(planet));
+            }
+        }
     }
 }
