@@ -86,7 +86,7 @@ namespace ChargerAstronomyEngine.Streaming
                 Aberration.Corrected
             );
 
-            var topocentric = astro.Horizon(currentTime, location, equatorial,Refraction.Normal);
+            var topocentric = astro.Horizon(currentTime, location, equatorial, Refraction.Normal);
             horizontal.Altitude = topocentric.altitude;
             horizontal.Azimuth = topocentric.azimuth;
         }
