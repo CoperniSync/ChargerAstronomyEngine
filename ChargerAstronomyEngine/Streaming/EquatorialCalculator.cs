@@ -116,5 +116,41 @@ namespace ChargerAstronomyEngine.Streaming
                 throw new ArgumentException(msg, nameof(planet));
             }
         }
+
+        public void UpdatePositionOf(HorizontalMoon moon)
+        {
+            var currentTime = this.astroTime;
+            var equatorial = astro.Equator(
+                moon,
+                currentTime,
+                location,
+                EquatorEpoch.J2000,
+                Aberration.Corrected
+            );
+
+            var topocentric = astro.Horizon(currentTime, location, equatorial, Refraction.Normal);
+            var illumination = astro.Illumination(moon, currentTime);
+            var phase = astro.MoonPhase(currentTime);
+            moon.Altitude = topocentric.altitude;
+            moon.Azimuth = topocentric.azimuth;
+            moon.Phase = phase;
+            moon.Distance = equatorial.dist;
+        }
+
+        public void UpdatePositionOf(HorizontalSun sun)
+        {
+            var currentTime = this.astroTime;
+            var equatorial = astro.Equator(
+                sun,
+                currentTime,
+                location,
+                EquatorEpoch.J2000,
+                Aberration.Corrected
+            );
+            var topocentric = astro.Horizon(currentTime, location, equatorial, Refraction.Normal);
+            sun.Altitude = topocentric.altitude;
+            sun.Azimuth = topocentric.azimuth;
+            sun.Distance = equatorial.dist;
+        }
     }
 }
