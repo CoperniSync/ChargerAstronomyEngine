@@ -1,17 +1,18 @@
 ﻿using ChargerAstronomyEngine.CosineKittyAstronomy;
-using ChargerAstronomyShared.Contracts.Models;
-using ChargerAstronomyShared.Contracts.Repositories;
+using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
 using ChargerAstronomyShared.Domain;
 using ChargerAstronomyShared.Domain.Heat;
 using ChargerAstronomyShared.Domain.Horizontal;
+using ChargerAstronomyShared.Domain.Equatorial;
 using ChargerAstronomyShared.Domain.SpatialIndex;
-using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
+using ChargerAstronomyShared.Contracts.Models;
+using ChargerAstronomyShared.Contracts.Repositories;
 
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Numerics;
 using System.Text;
+using System.Numerics;
+using System.Collections.Generic;
+using System.Collections.Concurrent;
 
 namespace ChargerAstronomyEngine.Streaming
 {
@@ -51,7 +52,7 @@ namespace ChargerAstronomyEngine.Streaming
         {
             location = newLocation;
         }
-        
+
         public void UpdateTimeAndLocation(CalendarDateTime newTime, Observer newLocation)
         {
             astroTime = new AstroTime(newTime);
@@ -79,10 +80,10 @@ namespace ChargerAstronomyEngine.Streaming
             var horizontal = star.HorizontalBody;
             var currentTime = this.astroTime;
             var equatorial = astro.Equator(
-                horizontal, 
-                currentTime, 
-                location, 
-                EquatorEpoch.J2000, 
+                horizontal,
+                currentTime,
+                location,
+                EquatorEpoch.J2000,
                 Aberration.Corrected
             );
 
