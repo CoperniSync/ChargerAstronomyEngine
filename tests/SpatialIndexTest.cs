@@ -194,6 +194,17 @@ namespace tests
                 return obj is TestStar objTest && objTest.HorizontalBody is HorizontalStar objHor
                     && this.HorizontalBody is HorizontalStar thisHor && thisHor.StarId == objHor.StarId;
             }
+
+            public void SetState(bool visible)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void UpdatePosition()
+            {
+                throw new NotImplementedException();
+            }
+
             public HorizontalBody HorizontalBody { get; }
         }
     }

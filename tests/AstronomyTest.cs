@@ -1,8 +1,10 @@
 ﻿using ChargerAstronomyEngine.Data.Star;
+using ChargerAstronomyEngine.Streaming;
 using ChargerAstronomyShared.Domain.Equatorial;
 using ChargerAstronomyShared.Domain.Horizontal;
 using CosineKitty;
 using FluentAssertions;
+using ChargerAstronomyShared.Domain.SpatialIndex;
 
 namespace tests
 {
