@@ -1,6 +1,6 @@
-# <a id="TileSelector"></a> Class TileSelector
+# <a id="ChargerAstronomyShared_Domain_Prediction_TileSelector"></a> Class TileSelector
 
-Namespace:   
+Namespace: [ChargerAstronomyShared.Domain.Prediction](ChargerAstronomyShared.Domain.Prediction.md)  
 Assembly: ChargerAstronomyShared.dll  
 
 ```csharp
@@ -10,7 +10,7 @@ public static class TileSelector
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
-[TileSelector](TileSelector.md)
+[TileSelector](ChargerAstronomyShared.Domain.Prediction.TileSelector.md)
 
 #### Inherited Members
 
@@ -24,7 +24,7 @@ public static class TileSelector
 
 ## Methods
 
-### <a id="TileSelector_Select_ChargerAstronomyShared_Domain_Index_ITileIndex_System_Numerics_Vector3_System_Single_System_Collections_Generic_List_ChargerAstronomyShared_Contracts_Models_TileId__System_Boolean_System_Single_"></a> Select\(ITileIndex, Vector3, float, List<TileId\>, bool, float\)
+### <a id="ChargerAstronomyShared_Domain_Prediction_TileSelector_Select_ChargerAstronomyShared_Domain_Index_ITileIndex_System_Numerics_Vector3_System_Single_System_Collections_Generic_List_ChargerAstronomyShared_Contracts_Models_TileId__System_Boolean_System_Single_"></a> Select\(ITileIndex, Vector3, float, List<TileId\>, bool, float\)
 
 Selects tiles from the given tile index that intersect with the specified camera direction and field of view
 (FOV).
@@ -53,8 +53,8 @@ A list to store the selected tiles. The method appends results to this list.
 
 `contains` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-A boolean indicating whether to use a "contains" mode for selection.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, tiles are
-    selected if they intersect with the FOV.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, tiles are selected if they are fully
+A boolean indicating whether to use a "contains" mode for selection. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>, tiles are
+    selected if they intersect with the FOV. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, tiles are selected if they are fully
     contained within the FOV.
 
 `eps` [float](https://learn.microsoft.com/dotnet/api/system.single)
@@ -71,6 +71,6 @@ A list of tile IDs representing the tiles that intersect with or are contained w
 #### Remarks
 
 This method normalizes the <code class="paramref">cameraDirection</code> vector before performing
-    calculations.  The selection process accounts for the angular size of each tile and the specified FOV.  If the
+    calculations. The selection process accounts for the angular size of each tile and the specified FOV. If the
     FOV is smaller than the angular size of a tile, the tile is treated as intersecting the FOV.
 

@@ -48,7 +48,7 @@ public BoundedInitializationQueue(int capacity)
 
 ### <a id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_Capacity"></a> Capacity
 
-The maximum capacity of the queue.
+The total amount of items that can be held in the queue.
 
 ```csharp
 public int Capacity { get; }
@@ -72,7 +72,7 @@ public IProducerConsumerCollection<T> Collection { get; }
 
 ### <a id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_Count"></a> Count
 
-The current count of items in the queue.
+The current amount of items that are in the queue.
 
 ```csharp
 public int Count { get; }
@@ -84,7 +84,7 @@ public int Count { get; }
 
 ### <a id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_IsCompleted"></a> IsCompleted
 
-States whether the queue has been marked complete and is fully drained.
+Marks whether the queue has been marked complete and is fully drained.
 
 ```csharp
 public bool IsCompleted { get; }
@@ -98,7 +98,7 @@ public bool IsCompleted { get; }
 
 ### <a id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_Complete"></a> Complete\(\)
 
-Signals that no more items will be added to the queue.
+Marks that the producer will not add more items to the queue. There may still be items left to dequeue.
 
 ```csharp
 public void Complete()
@@ -114,7 +114,8 @@ public void Dispose()
 
 ### <a id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_EnqueueBlocking__0_System_Threading_CancellationToken_"></a> EnqueueBlocking\(T, CancellationToken\)
 
-Attempt to enqueue an item, blocking until space is available or cancellation is requested. Blocked items will be added once space is made.
+Adds an item to the queue, blocking if the queue is full until space becomes available or the operation is
+canceled.
 
 ```csharp
 public void EnqueueBlocking(T item, CancellationToken ct)
@@ -124,11 +125,21 @@ public void EnqueueBlocking(T item, CancellationToken ct)
 
 `item` T
 
+The item to add to the queue.
+
 `ct` [CancellationToken](https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken)
+
+A <xref href="System.Threading.CancellationToken" data-throw-if-not-resolved="false"></xref> that can be used to cancel the operation.
+
+#### Remarks
+
+This method blocks the calling thread if the queue is full, waiting until space
+    becomes available. Ensure that the <code class="paramref">ct</code> token is monitored to avoid indefinite blocking in
+    scenarios if cancellation is required.
 
 ### <a id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_TryDequeue__0__"></a> TryDequeue\(out T\)
 
-Attempt to dequeue an item. If the queue is empty, returns false.
+Attempts to remove and return the item at the beginning of the queue.
 
 ```csharp
 public bool TryDequeue(out T item)
@@ -138,13 +149,17 @@ public bool TryDequeue(out T item)
 
 `item` T
 
+When this method returns, contains the object removed from the queue.
+
 #### Returns
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
+<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if an object was successfully removed from the queue; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+
 ### <a id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_TryEnqueue__0_"></a> TryEnqueue\(T\)
 
-Attempt to enqueue an item without blocking. If the queue is full, returns false.
+Attempts to add the item to the queue.
 
 ```csharp
 public bool TryEnqueue(T item)
@@ -154,7 +169,16 @@ public bool TryEnqueue(T item)
 
 `item` T
 
+The item to add to the queue.
+
 #### Returns
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the item was successfully added to the queue; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+
+#### Remarks
+
+Note this method does not throw an exception if the operation fails. The caller can use
+    the return value to determine whether the item was enqueued successfully.
 

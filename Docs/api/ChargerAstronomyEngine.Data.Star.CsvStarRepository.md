@@ -102,7 +102,7 @@ public Task<EquatorialStar> GetStarByIdAsync(int id)
 
 ### <a id="ChargerAstronomyEngine_Data_Star_CsvStarRepository_ProducePagesAsync_ChargerAstronomyShared_Contracts_Streaming_BlockingQueue_ChargerAstronomyShared_Contracts_Models_PageResult_ChargerAstronomyShared_Domain_Equatorial_EquatorialStar___ChargerAstronomyShared_Contracts_Models_PageRequest_System_Threading_CancellationToken_"></a> ProducePagesAsync\(BlockingQueue<PageResult<EquatorialStar\>\>, PageRequest, CancellationToken\)
 
-Produces pages of stars into the provided queue, starting from the first PageRequest.
+Asynchronously produces pages of data and enqueues them into the specified queue.
 
 ```csharp
 public Task ProducePagesAsync(BlockingQueue<PageResult<EquatorialStar>> queue, PageRequest firstPage, CancellationToken cancellationToken = default)
@@ -112,19 +112,24 @@ public Task ProducePagesAsync(BlockingQueue<PageResult<EquatorialStar>> queue, P
 
 `queue` [BlockingQueue](ChargerAstronomyShared.Contracts.Streaming.BlockingQueue\-1.md)<[PageResult](ChargerAstronomyShared.Contracts.Models.PageResult\-1.md)<[EquatorialStar](ChargerAstronomyShared.Domain.Equatorial.EquatorialStar.md)\>\>
 
+The queue into which the produced pages will be enqueued.
+
 `firstPage` [PageRequest](ChargerAstronomyShared.Contracts.Models.PageRequest.md)
 
+The initial page request that specifies the starting point for producing pages.
+
 `cancellationToken` [CancellationToken](https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken)
+
+A token to monitor for cancellation requests. The default value is <xref href="System.Threading.CancellationToken.None" data-throw-if-not-resolved="false"></xref>.
 
 #### Returns
 
  [Task](https://learn.microsoft.com/dotnet/api/system.threading.tasks.task)
 
-#### Exceptions
+#### Remarks
 
- [ArgumentNullException](https://learn.microsoft.com/dotnet/api/system.argumentnullexception)
-
- [ArgumentException](https://learn.microsoft.com/dotnet/api/system.argumentexception)
+This method processes the specified <code class="paramref">firstPage</code> and continues
+    producing subsequent pages  based on the page's configuration. Pages are enqueued into the <code class="paramref">queue</code> as they are produced. The operation can be canceled by signaling the <code class="paramref">cancellationToken</code>.
 
 ### <a id="ChargerAstronomyEngine_Data_Star_CsvStarRepository_QueryBySkyRegionAsync_ChargerAstronomyShared_Contracts_Models_SkyRegion_ChargerAstronomyShared_Contracts_Models_PageRequest_"></a> QueryBySkyRegionAsync\(SkyRegion, PageRequest\)
 

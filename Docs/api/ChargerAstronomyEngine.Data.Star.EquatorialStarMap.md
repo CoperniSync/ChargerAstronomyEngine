@@ -1,6 +1,6 @@
-# <a id="EquatorialStarMap"></a> Class EquatorialStarMap
+# <a id="ChargerAstronomyEngine_Data_Star_EquatorialStarMap"></a> Class EquatorialStarMap
 
-Namespace:   
+Namespace: [ChargerAstronomyEngine.Data.Star](ChargerAstronomyEngine.Data.Star.md)  
 Assembly: ChargerAstronomyEngine.dll  
 
 ```csharp
@@ -12,7 +12,7 @@ public sealed class EquatorialStarMap : ClassMap<EquatorialStar>
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
 ClassMap ← 
 ClassMap<EquatorialStar\> ← 
-[EquatorialStarMap](EquatorialStarMap.md)
+[EquatorialStarMap](ChargerAstronomyEngine.Data.Star.EquatorialStarMap.md)
 
 #### Inherited Members
 
@@ -43,7 +43,7 @@ ClassMap.ReferenceMaps,
 
 ## Constructors
 
-### <a id="EquatorialStarMap__ctor"></a> EquatorialStarMap\(\)
+### <a id="ChargerAstronomyEngine_Data_Star_EquatorialStarMap__ctor"></a> EquatorialStarMap\(\)
 
 ```csharp
 public EquatorialStarMap()

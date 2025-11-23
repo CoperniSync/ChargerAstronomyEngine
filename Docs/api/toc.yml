@@ -134,6 +134,8 @@
       - name: Classes
       - name: CsvStarRepository
         href: ChargerAstronomyEngine.Data.Star.CsvStarRepository.md
+      - name: EquatorialStarMap
+        href: ChargerAstronomyEngine.Data.Star.EquatorialStarMap.md
   - name: Streaming
     href: ChargerAstronomyEngine.Streaming.md
     items:
@@ -261,6 +263,12 @@
       - name: Interfaces
       - name: ITileIndex
         href: ChargerAstronomyShared.Domain.Index.ITileIndex.md
+    - name: Prediction
+      href: ChargerAstronomyShared.Domain.Prediction.md
+      items:
+      - name: Classes
+      - name: TileSelector
+        href: ChargerAstronomyShared.Domain.Prediction.TileSelector.md
     - name: SpatialIndex
       href: ChargerAstronomyShared.Domain.SpatialIndex.md
       items:
@@ -272,7 +280,3 @@
       href: ChargerAstronomyShared.Domain.CalendarDateTime.md
     - name: Observer
       href: ChargerAstronomyShared.Domain.Observer.md
-- name: EquatorialStarMap
-  href: EquatorialStarMap.md
-- name: TileSelector
-  href: TileSelector.md

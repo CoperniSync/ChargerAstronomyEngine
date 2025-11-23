@@ -86,58 +86,7 @@ public void UpdateLocation(Observer newLocation)
 
 The new location for the <xref href="ChargerAstronomyShared.Domain.Observer" data-throw-if-not-resolved="false"></xref> to update to.
 
-### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalPlanet_"></a> UpdatePositionOf\(HorizontalPlanet\)
-
-Updates the position and related properties of the specified planet based on the current astronomical time
-and location.
-
-```csharp
-public void UpdatePositionOf(HorizontalPlanet planet)
-```
-
-#### Parameters
-
-`planet` [HorizontalPlanet](ChargerAstronomyShared.Domain.Horizontal.HorizontalPlanet.md)
-
-#### Exceptions
-
- [ArgumentException](https://learn.microsoft.com/dotnet/api/system.argumentexception)
-
-Thrown if the <code class="paramref">planet</code> name is not recognized in the internal collection of known planets.
-
-### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalMoon_"></a> UpdatePositionOf\(HorizontalMoon\)
-
-Updates the position, phase, and distance of the specified moon object based on the current astronomical
-time and location.
-
-```csharp
-public void UpdatePositionOf(HorizontalMoon moon)
-```
-
-#### Parameters
-
-`moon` [HorizontalMoon](ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon.md)
-
-The <xref href="ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon" data-throw-if-not-resolved="false"></xref> object whose properties will be updated. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
-
-### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalSun_"></a> UpdatePositionOf\(HorizontalSun\)
-
-Updates the position of the specified <xref href="ChargerAstronomyShared.Domain.Horizontal.HorizontalSun" data-throw-if-not-resolved="false"></xref> object based on the current astronomical
-time and location.
-
-```csharp
-public void UpdatePositionOf(HorizontalSun sun)
-```
-
-#### Parameters
-
-`sun` [HorizontalSun](ChargerAstronomyShared.Domain.Horizontal.HorizontalSun.md)
-
-The <xref href="ChargerAstronomyShared.Domain.Horizontal.HorizontalSun" data-throw-if-not-resolved="false"></xref> object whose altitude, azimuth, and distance will be updated.
-
 ### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_UpdateStar__0_"></a> UpdateStar\(T\)
-
-Updates the horizontal coordinates of the specified star based on the current time and location.
 
 ```csharp
 public void UpdateStar(T star)
@@ -146,15 +95,6 @@ public void UpdateStar(T star)
 #### Parameters
 
 `star` T
-
-The star whose horizontal coordinates are to be updated. The star must have a valid <xref href="ChargerAstronomyShared.Domain.Horizontal.HorizontalBody" data-throw-if-not-resolved="false"></xref>
-    property.
-
-#### Remarks
-
-This method calculates the star's equatorial coordinates using the J2000 epoch and
-    applies corrections for aberration.  It then converts the equatorial coordinates to topocentric horizontal
-    coordinates, updating the star's altitude and azimuth.
 
 ### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_UpdateTime_ChargerAstronomyShared_Domain_CalendarDateTime_"></a> UpdateTime\(CalendarDateTime\)
 

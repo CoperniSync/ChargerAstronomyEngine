@@ -12,6 +12,8 @@
 
  [ChargerAstronomyShared.Domain.Index](ChargerAstronomyShared.Domain.Index.md)
 
+ [ChargerAstronomyShared.Domain.Prediction](ChargerAstronomyShared.Domain.Prediction.md)
+
  [ChargerAstronomyShared.Domain.SpatialIndex](ChargerAstronomyShared.Domain.SpatialIndex.md)
 
 ### Structs

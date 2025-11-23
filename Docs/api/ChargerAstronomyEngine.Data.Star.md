@@ -4,3 +4,5 @@
 
  [CsvStarRepository](ChargerAstronomyEngine.Data.Star.CsvStarRepository.md)
 
+ [EquatorialStarMap](ChargerAstronomyEngine.Data.Star.EquatorialStarMap.md)
+
