@@ -25,3 +25,4 @@ docfx docfx.json --serve
 
 You can delete the `api` and `_site` folders freely. They will be recreated when the serve command is ran.
 
+I don't recommend doing that unless you are updating documentation, though.
