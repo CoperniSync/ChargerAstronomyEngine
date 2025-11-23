@@ -20,3 +20,8 @@ Preview the website at <http://localhost:8080>
 ```bash
 docfx docfx.json --serve
 ```
+
+## Notes
+
+You can delete the `api` and `_site` folders freely. They will be recreated when the serve command is ran.
+

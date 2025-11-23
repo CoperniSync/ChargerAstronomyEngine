@@ -7,7 +7,7 @@
       <meta name="title" content=" Class BoundedInitializationQueue&lt;T&gt; | Stargazer Data API ">
       
       
-      <link rel="icon" href="../favicon.ico">
+      <link rel="icon" href="../images/copernisync_planet_only.svg">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
       <meta name="docfx:navrel" content="../toc.html">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -115,7 +115,7 @@ Assembly: ChargerAstronomyEngine.dll</p>
 <p><code>capacity</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
 <h2 id="properties">Properties</h2>
 <h3 id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_Capacity"> Capacity</h3>
-<p>The maximum capacity of the queue.</p>
+<p>The total amount of items that can be held in the queue.</p>
 <pre><code class="lang-csharp">public int Capacity { get; }
 </code></pre>
 <h4 id="property-value">Property Value</h4>
@@ -127,20 +127,20 @@ Assembly: ChargerAstronomyEngine.dll</p>
 <h4 id="property-value-1">Property Value</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.concurrent.iproducerconsumercollection-1">IProducerConsumerCollection</a>&lt;T&gt;</p>
 <h3 id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_Count"> Count</h3>
-<p>The current count of items in the queue.</p>
+<p>The current amount of items that are in the queue.</p>
 <pre><code class="lang-csharp">public int Count { get; }
 </code></pre>
 <h4 id="property-value-2">Property Value</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
 <h3 id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_IsCompleted"> IsCompleted</h3>
-<p>States whether the queue has been marked complete and is fully drained.</p>
+<p>Marks whether the queue has been marked complete and is fully drained.</p>
 <pre><code class="lang-csharp">public bool IsCompleted { get; }
 </code></pre>
 <h4 id="property-value-3">Property Value</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
 <h2 id="methods">Methods</h2>
 <h3 id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_Complete"> Complete()</h3>
-<p>Signals that no more items will be added to the queue.</p>
+<p>Marks that the producer will not add more items to the queue. There may still be items left to dequeue.</p>
 <pre><code class="lang-csharp">public void Complete()
 </code></pre>
 <h3 id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_Dispose"> Dispose()</h3>
@@ -148,33 +148,47 @@ Assembly: ChargerAstronomyEngine.dll</p>
 <pre><code class="lang-csharp">public void Dispose()
 </code></pre>
 <h3 id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_EnqueueBlocking__0_System_Threading_CancellationToken_"> EnqueueBlocking(T, CancellationToken)</h3>
-<p>Attempt to enqueue an item, blocking until space is available or cancellation is requested. Blocked items will be added once space is made.</p>
+<p>Adds an item to the queue, blocking if the queue is full until space becomes available or the operation is
+canceled.</p>
 <pre><code class="lang-csharp">public void EnqueueBlocking(T item, CancellationToken ct)
 </code></pre>
 <h4 id="parameters-1">Parameters</h4>
 <p><code>item</code> T</p>
+<p>The item to add to the queue.</p>
 <p><code>ct</code> <a href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+<p>A <span class="xref">System.Threading.CancellationToken</span> that can be used to cancel the operation.</p>
+<h4 id="remarks">Remarks</h4>
+<p>This method blocks the calling thread if the queue is full, waiting until space
+becomes available. Ensure that the <code class="paramref">ct</code> token is monitored to avoid indefinite blocking in
+scenarios if cancellation is required.</p>
 <h3 id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_TryDequeue__0__"> TryDequeue(out T)</h3>
-<p>Attempt to dequeue an item. If the queue is empty, returns false.</p>
+<p>Attempts to remove and return the item at the beginning of the queue.</p>
 <pre><code class="lang-csharp">public bool TryDequeue(out T item)
 </code></pre>
 <h4 id="parameters-2">Parameters</h4>
 <p><code>item</code> T</p>
+<p>When this method returns, contains the object removed from the queue.</p>
 <h4 id="returns">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
+<p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if an object was successfully removed from the queue; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
 <h3 id="ChargerAstronomyEngine_Streaming_BoundedInitializationQueue_1_TryEnqueue__0_"> TryEnqueue(T)</h3>
-<p>Attempt to enqueue an item without blocking. If the queue is full, returns false.</p>
+<p>Attempts to add the item to the queue.</p>
 <pre><code class="lang-csharp">public bool TryEnqueue(T item)
 </code></pre>
 <h4 id="parameters-3">Parameters</h4>
 <p><code>item</code> T</p>
+<p>The item to add to the queue.</p>
 <h4 id="returns-1">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
+<p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the item was successfully added to the queue; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+<h4 id="remarks-1">Remarks</h4>
+<p>Note this method does not throw an exception if the operation fails. The caller can use
+the return value to determine whether the item was enqueued successfully.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

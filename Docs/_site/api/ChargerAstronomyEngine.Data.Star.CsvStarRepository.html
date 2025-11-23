@@ -7,7 +7,7 @@
       <meta name="title" content=" Class CsvStarRepository | Stargazer Data API ">
       
       
-      <link rel="icon" href="../favicon.ico">
+      <link rel="icon" href="../images/copernisync_planet_only.svg">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
       <meta name="docfx:navrel" content="../toc.html">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyEngine.Data.Star.CsvStarRepository.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyEngine.Data.Star.CsvStarRepository.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -142,18 +142,21 @@ Used for testing only.</p>
 <h4 id="returns-2">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialStar.html">EquatorialStar</a>&gt;</p>
 <h3 id="ChargerAstronomyEngine_Data_Star_CsvStarRepository_ProducePagesAsync_ChargerAstronomyShared_Contracts_Streaming_BlockingQueue_ChargerAstronomyShared_Contracts_Models_PageResult_ChargerAstronomyShared_Domain_Equatorial_EquatorialStar___ChargerAstronomyShared_Contracts_Models_PageRequest_System_Threading_CancellationToken_"> ProducePagesAsync(BlockingQueue&lt;PageResult&lt;EquatorialStar&gt;&gt;, PageRequest, CancellationToken)</h3>
-<p>Produces pages of stars into the provided queue, starting from the first PageRequest.</p>
+<p>Asynchronously produces pages of data and enqueues them into the specified queue.</p>
 <pre><code class="lang-csharp">public Task ProducePagesAsync(BlockingQueue&lt;PageResult&lt;EquatorialStar&gt;&gt; queue, PageRequest firstPage, CancellationToken cancellationToken = default)
 </code></pre>
 <h4 id="parameters-4">Parameters</h4>
 <p><code>queue</code> <a href="ChargerAstronomyShared.Contracts.Streaming.BlockingQueue-1.html">BlockingQueue</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.PageResult-1.html">PageResult</a>&lt;<a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialStar.html">EquatorialStar</a>&gt;&gt;</p>
+<p>The queue into which the produced pages will be enqueued.</p>
 <p><code>firstPage</code> <a href="ChargerAstronomyShared.Contracts.Models.PageRequest.html">PageRequest</a></p>
+<p>The initial page request that specifies the starting point for producing pages.</p>
 <p><code>cancellationToken</code> <a href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+<p>A token to monitor for cancellation requests. The default value is <span class="xref">System.Threading.CancellationToken.None</span>.</p>
 <h4 id="returns-3">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-<h4 id="exceptions-2">Exceptions</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></p>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></p>
+<h4 id="remarks">Remarks</h4>
+<p>This method processes the specified <code class="paramref">firstPage</code> and continues
+producing subsequent pages  based on the page's configuration. Pages are enqueued into the <code class="paramref">queue</code> as they are produced. The operation can be canceled by signaling the <code class="paramref">cancellationToken</code>.</p>
 <h3 id="ChargerAstronomyEngine_Data_Star_CsvStarRepository_QueryBySkyRegionAsync_ChargerAstronomyShared_Contracts_Models_SkyRegion_ChargerAstronomyShared_Contracts_Models_PageRequest_"> QueryBySkyRegionAsync(SkyRegion, PageRequest)</h3>
 <p>Not implemented.</p>
 <pre><code class="lang-csharp">public Task&lt;PageResult&lt;EquatorialStar&gt;&gt; QueryBySkyRegionAsync(SkyRegion skyRegion, PageRequest page)
@@ -167,7 +170,7 @@ Used for testing only.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyEngine.Data.Star.CsvStarRepository.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyEngine.Data.Star.CsvStarRepository.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

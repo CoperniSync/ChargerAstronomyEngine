@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> Struct ApsisInfo | Stargazer Data API </title>
+      <title> Namespace ChargerAstronomyShared.Domain.Prediction | Stargazer Data API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" Struct ApsisInfo | Stargazer Data API ">
+      <meta name="title" content=" Namespace ChargerAstronomyShared.Domain.Prediction | Stargazer Data API ">
       
       
       <link rel="icon" href="../images/copernisync_planet_only.svg">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyShared.Domain.Prediction.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,60 +85,15 @@
         </div>
 
         <article data-uid="">
-<h1 id="ChargerAstronomyEngine_CosineKittyAstronomy_ApsisInfo"> Struct ApsisInfo</h1>
+<h1 id="ChargerAstronomyShared_Domain_Prediction"> Namespace ChargerAstronomyShared.Domain.Prediction</h1>
 
-<p>Namespace: <a href="ChargerAstronomyEngine.CosineKittyAstronomy.html">ChargerAstronomyEngine.CosineKittyAstronomy</a><br>
-Assembly: ChargerAstronomyEngine.dll</p>
-<p>An apsis event: pericenter (closest approach) or apocenter (farthest distance).</p>
-<pre><code class="lang-csharp">public struct ApsisInfo
-</code></pre>
-<h4 id="inherited-members">Inherited Members</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
-<h2 id="remarks">Remarks</h2>
-<p>For the Moon orbiting the Earth, or a planet orbiting the Sun, an <em>apsis</em> is an
-event where the orbiting body reaches its closest or farthest point from the primary body.
-The closest approach is called <em>pericenter</em> and the farthest point is <em>apocenter</em>.</p>
-<p>More specific terminology is common for particular orbiting bodies.
-The Moon's closest approach to the Earth is called <em>perigee</em> and its farthest
-point is called <em>apogee</em>. The closest approach of a planet to the Sun is called
-<em>perihelion</em> and the furthest point is called <em>aphelion</em>.</p>
-<p>This data structure is returned by #Astronomy.SearchLunarApsis and #Astronomy.NextLunarApsis
-to iterate through consecutive alternating perigees and apogees.</p>
-<h2 id="fields">Fields</h2>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_ApsisInfo_dist_au"> dist_au</h3>
-<p>The distance between the centers of the bodies in astronomical units.</p>
-<pre><code class="lang-csharp">public readonly double dist_au
-</code></pre>
-<h4 id="field-value">Field Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_ApsisInfo_dist_km"> dist_km</h3>
-<p>The distance between the centers of the bodies in kilometers.</p>
-<pre><code class="lang-csharp">public readonly double dist_km
-</code></pre>
-<h4 id="field-value-1">Field Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_ApsisInfo_kind"> kind</h3>
-<p>Whether this is a pericenter or apocenter event.</p>
-<pre><code class="lang-csharp">public readonly ApsisKind kind
-</code></pre>
-<h4 id="field-value-2">Field Value</h4>
-<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.ApsisKind.html">ApsisKind</a></p>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_ApsisInfo_time"> time</h3>
-<p>The date and time of the apsis.</p>
-<pre><code class="lang-csharp">public readonly AstroTime time
-</code></pre>
-<h4 id="field-value-3">Field Value</h4>
-<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<h3 id="classes">Classes</h3>
+<p><a href="ChargerAstronomyShared.Domain.Prediction.TileSelector.html">TileSelector</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyShared.Domain.Prediction.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

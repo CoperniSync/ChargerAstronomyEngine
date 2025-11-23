@@ -43,9 +43,10 @@
       "_appName": "Stargazer Data API",
       "_appTitle": "Stargazer Data API",
 	  "_appLogoPath": "images/copernisync_logo_small.svg",
+	  "_appFaviconPath": "images/copernisync_planet_only.svg",
 	  "_disableContribution": false,
       "_enableSearch": true,
       "pdf": false
     }
-  },
+  }
 }

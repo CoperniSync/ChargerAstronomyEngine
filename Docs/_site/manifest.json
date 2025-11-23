@@ -562,6 +562,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.Star.EquatorialStarMap.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.Star.EquatorialStarMap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyEngine.Data.Star.md",
       "output": {
         ".html": {
@@ -1082,6 +1092,26 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Prediction.TileSelector.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Prediction.TileSelector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Prediction.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Prediction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyShared.Domain.SpatialIndex.SpatialStarIndex-1.md",
       "output": {
         ".html": {
@@ -1116,26 +1146,6 @@
       "output": {
         ".html": {
           "relative_path": "api/ChargerAstronomyShared.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "api/EquatorialStarMap.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/EquatorialStarMap.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "api/TileSelector.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/TileSelector.html"
         }
       },
       "version": ""
@@ -1227,11 +1237,31 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "images/copernisync_planet_only.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/copernisync_planet_only.svg"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "local-testing-instructions.md",
+      "output": {
+        ".html": {
+          "relative_path": "local-testing-instructions.html"
         }
       },
       "version": ""
