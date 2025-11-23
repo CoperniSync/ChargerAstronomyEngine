@@ -1,4 +1,4 @@
-#Instructions
+# Instructions
 
 To open DocFX locally:
 
