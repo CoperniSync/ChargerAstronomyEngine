@@ -1,0 +1,278 @@
+### YamlMime:TableOfContent
+- name: ChargerAstronomyEngine
+  href: ChargerAstronomyEngine.md
+  items:
+  - name: CosineKittyAstronomy
+    href: ChargerAstronomyEngine.CosineKittyAstronomy.md
+    items:
+    - name: Enums
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.Enums.md
+      items:
+      - name: Enums
+      - name: Aberration
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Aberration.md
+      - name: ApsisKind
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Enums.ApsisKind.md
+      - name: Direction
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Direction.md
+      - name: EclipseKind
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EclipseKind.md
+      - name: EquatorEpoch
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EquatorEpoch.md
+      - name: NodeEventKind
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Enums.NodeEventKind.md
+      - name: Refraction
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Refraction.md
+      - name: Visibility
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Visibility.md
+    - name: Exceptions
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.md
+      items:
+      - name: Classes
+      - name: EarthNotAllowedException
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.EarthNotAllowedException.md
+      - name: InternalError
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.InternalError.md
+      - name: InvalidBodyException
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.InvalidBodyException.md
+    - name: SearchContexts
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.md
+      items:
+      - name: Classes
+      - name: SearchContext
+        href: ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext.md
+    - name: Classes
+    - name: AstroTime
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.md
+    - name: Astronomy
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.md
+    - name: GravitySimulator
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.GravitySimulator.md
+    - name: Structs
+    - name: ApsisInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.md
+    - name: AstroVector
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.md
+    - name: AtmosphereInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.AtmosphereInfo.md
+    - name: AxisInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.AxisInfo.md
+    - name: ConstellationInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.ConstellationInfo.md
+    - name: EclipseEvent
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.EclipseEvent.md
+    - name: Ecliptic
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.Ecliptic.md
+    - name: ElongationInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.ElongationInfo.md
+    - name: Equatorial
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.Equatorial.md
+    - name: GlobalSolarEclipseInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.GlobalSolarEclipseInfo.md
+    - name: HourAngleInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.HourAngleInfo.md
+    - name: IllumInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.IllumInfo.md
+    - name: JupiterMoonsInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.JupiterMoonsInfo.md
+    - name: LibrationInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.LibrationInfo.md
+    - name: LocalSolarEclipseInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.LocalSolarEclipseInfo.md
+    - name: LunarEclipseInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.LunarEclipseInfo.md
+    - name: MoonQuarterInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.MoonQuarterInfo.md
+    - name: NodeEventInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.NodeEventInfo.md
+    - name: RotationMatrix
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.md
+    - name: SeasonsInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.SeasonsInfo.md
+    - name: Spherical
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.Spherical.md
+    - name: StateVector
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.md
+    - name: Topocentric
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.Topocentric.md
+    - name: TransitInfo
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.TransitInfo.md
+    - name: Interfaces
+    - name: IPositionFunction
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.IPositionFunction.md
+    - name: Delegates
+    - name: DeltaTimeFunc
+      href: ChargerAstronomyEngine.CosineKittyAstronomy.DeltaTimeFunc.md
+  - name: Data
+    href: ChargerAstronomyEngine.Data.md
+    items:
+    - name: Constellations
+      href: ChargerAstronomyEngine.Data.Constellations.md
+      items:
+      - name: Classes
+      - name: CsvConstellationRepository
+        href: ChargerAstronomyEngine.Data.Constellations.CsvConstellationRepository.md
+    - name: LocalObjects
+      href: ChargerAstronomyEngine.Data.LocalObjects.md
+      items:
+      - name: Classes
+      - name: MoonSingleton
+        href: ChargerAstronomyEngine.Data.LocalObjects.MoonSingleton.md
+      - name: PlanetsSingleton
+        href: ChargerAstronomyEngine.Data.LocalObjects.PlanetsSingleton.md
+      - name: SunSingleton
+        href: ChargerAstronomyEngine.Data.LocalObjects.SunSingleton.md
+    - name: Messier
+      href: ChargerAstronomyEngine.Data.Messier.md
+      items:
+      - name: Classes
+      - name: StarLustMessierCsvRepository
+        href: ChargerAstronomyEngine.Data.Messier.StarLustMessierCsvRepository.md
+    - name: Star
+      href: ChargerAstronomyEngine.Data.Star.md
+      items:
+      - name: Classes
+      - name: CsvStarRepository
+        href: ChargerAstronomyEngine.Data.Star.CsvStarRepository.md
+  - name: Streaming
+    href: ChargerAstronomyEngine.Streaming.md
+    items:
+    - name: Classes
+    - name: BoundedInitializationQueue<T>
+      href: ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.md
+    - name: EngineService<T>
+      href: ChargerAstronomyEngine.Streaming.EngineService-1.md
+    - name: EquatorialCalculator<T>
+      href: ChargerAstronomyEngine.Streaming.EquatorialCalculator-1.md
+  - name: Classes
+  - name: Class1
+    href: ChargerAstronomyEngine.Class1.md
+- name: ChargerAstronomyShared
+  href: ChargerAstronomyShared.md
+  items:
+  - name: Contracts
+    href: ChargerAstronomyShared.Contracts.md
+    items:
+    - name: Models
+      href: ChargerAstronomyShared.Contracts.Models.md
+      items:
+      - name: Classes
+      - name: LocalBodyContainer
+        href: ChargerAstronomyShared.Contracts.Models.LocalBodyContainer.md
+      - name: PageRequest
+        href: ChargerAstronomyShared.Contracts.Models.PageRequest.md
+      - name: PageResult<T>
+        href: ChargerAstronomyShared.Contracts.Models.PageResult-1.md
+      - name: SkyRegion
+        href: ChargerAstronomyShared.Contracts.Models.SkyRegion.md
+      - name: TileId
+        href: ChargerAstronomyShared.Contracts.Models.TileId.md
+      - name: Interfaces
+      - name: IHorizontal
+        href: ChargerAstronomyShared.Contracts.Models.IHorizontal.md
+      - name: LocalBodyRequest
+        href: ChargerAstronomyShared.Contracts.Models.LocalBodyRequest.md
+    - name: Repositories
+      href: ChargerAstronomyShared.Contracts.Repositories.md
+      items:
+      - name: Classes
+      - name: StarSpatialIndex
+        href: ChargerAstronomyShared.Contracts.Repositories.StarSpatialIndex.md
+      - name: Interfaces
+      - name: IConstellationRepository
+        href: ChargerAstronomyShared.Contracts.Repositories.IConstellationRepository.md
+      - name: IEngineService<T>
+        href: ChargerAstronomyShared.Contracts.Repositories.IEngineService-1.md
+      - name: IEquatorialCalculator
+        href: ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator.md
+      - name: IMessierRepository
+        href: ChargerAstronomyShared.Contracts.Repositories.IMessierRepository.md
+      - name: IStarRepository
+        href: ChargerAstronomyShared.Contracts.Repositories.IStarRepository.md
+    - name: Streaming
+      href: ChargerAstronomyShared.Contracts.Streaming.md
+      items:
+      - name: Interfaces
+      - name: BlockingQueue<T>
+        href: ChargerAstronomyShared.Contracts.Streaming.BlockingQueue-1.md
+  - name: Domain
+    href: ChargerAstronomyShared.Domain.md
+    items:
+    - name: Equatorial
+      href: ChargerAstronomyShared.Domain.Equatorial.md
+      items:
+      - name: Classes
+      - name: Constellation
+        href: ChargerAstronomyShared.Domain.Equatorial.Constellation.md
+      - name: EquatorialCelestialBody
+        href: ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.md
+      - name: EquatorialMessierObject
+        href: ChargerAstronomyShared.Domain.Equatorial.EquatorialMessierObject.md
+      - name: EquatorialStar
+        href: ChargerAstronomyShared.Domain.Equatorial.EquatorialStar.md
+      - name: Interfaces
+      - name: IBodyType
+        href: ChargerAstronomyShared.Domain.Equatorial.IBodyType.md
+      - name: Enums
+      - name: BodyType
+        href: ChargerAstronomyShared.Domain.Equatorial.BodyType.md
+    - name: Geometry
+      href: ChargerAstronomyShared.Domain.Geometry.md
+      items:
+      - name: Structs
+      - name: TileGeometry
+        href: ChargerAstronomyShared.Domain.Geometry.TileGeometry.md
+    - name: Heat
+      href: ChargerAstronomyShared.Domain.Heat.md
+      items:
+      - name: Classes
+      - name: HeatConfig
+        href: ChargerAstronomyShared.Domain.Heat.HeatConfig.md
+      - name: HeatMap
+        href: ChargerAstronomyShared.Domain.Heat.HeatMap.md
+      - name: HeatService
+        href: ChargerAstronomyShared.Domain.Heat.HeatService.md
+    - name: Horizontal
+      href: ChargerAstronomyShared.Domain.Horizontal.md
+      items:
+      - name: Classes
+      - name: HorizontalBody
+        href: ChargerAstronomyShared.Domain.Horizontal.HorizontalBody.md
+      - name: HorizontalMessierObject
+        href: ChargerAstronomyShared.Domain.Horizontal.HorizontalMessierObject.md
+      - name: HorizontalMoon
+        href: ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon.md
+      - name: HorizontalPlanet
+        href: ChargerAstronomyShared.Domain.Horizontal.HorizontalPlanet.md
+      - name: HorizontalStar
+        href: ChargerAstronomyShared.Domain.Horizontal.HorizontalStar.md
+      - name: HorizontalSun
+        href: ChargerAstronomyShared.Domain.Horizontal.HorizontalSun.md
+    - name: Index
+      href: ChargerAstronomyShared.Domain.Index.md
+      items:
+      - name: Classes
+      - name: IcosphereTileIndex
+        href: ChargerAstronomyShared.Domain.Index.IcosphereTileIndex.md
+      - name: UVSphereTileIndex
+        href: ChargerAstronomyShared.Domain.Index.UVSphereTileIndex.md
+      - name: UVTileIndex
+        href: ChargerAstronomyShared.Domain.Index.UVTileIndex.md
+      - name: Interfaces
+      - name: ITileIndex
+        href: ChargerAstronomyShared.Domain.Index.ITileIndex.md
+    - name: SpatialIndex
+      href: ChargerAstronomyShared.Domain.SpatialIndex.md
+      items:
+      - name: Classes
+      - name: SpatialStarIndex<T>
+        href: ChargerAstronomyShared.Domain.SpatialIndex.SpatialStarIndex-1.md
+    - name: Structs
+    - name: CalendarDateTime
+      href: ChargerAstronomyShared.Domain.CalendarDateTime.md
+    - name: Observer
+      href: ChargerAstronomyShared.Domain.Observer.md
+- name: EquatorialStarMap
+  href: EquatorialStarMap.md
+- name: TileSelector
+  href: TileSelector.md

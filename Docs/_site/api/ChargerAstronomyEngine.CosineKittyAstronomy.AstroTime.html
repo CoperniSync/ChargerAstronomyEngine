@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> Class AstroTime | Stargazer Data API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" Class AstroTime | Stargazer Data API ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/copernisync_logo_small.svg" alt="Stargazer Data API">
+            Stargazer Data API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime"> Class AstroTime</h1>
+
+<p>Namespace: <a href="ChargerAstronomyEngine.CosineKittyAstronomy.html">ChargerAstronomyEngine.CosineKittyAstronomy</a><br>
+Assembly: ChargerAstronomyEngine.dll</p>
+<p>A date and time used for astronomical calculations.</p>
+<pre><code class="lang-csharp">public class AstroTime
+</code></pre>
+<h4 id="inheritance">Inheritance</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.object">object</a> ←
+<a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<h4 id="inherited-members">Inherited Members</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
+<h2 id="constructors">Constructors</h2>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime__ctor_System_Double_"> AstroTime(double)</h3>
+<p>Creates an <code>AstroTime</code> object from a Universal Time day value.</p>
+<pre><code class="lang-csharp">public AstroTime(double ut)
+</code></pre>
+<h4 id="parameters">Parameters</h4>
+<p><code>ut</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The number of days after the J2000 epoch.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime__ctor_System_DateTime_"> AstroTime(DateTime)</h3>
+<p>Creates an <code>AstroTime</code> object from a .NET <code>DateTime</code> object.</p>
+<pre><code class="lang-csharp">public AstroTime(DateTime d)
+</code></pre>
+<h4 id="parameters-1">Parameters</h4>
+<p><code>d</code> <a href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></p>
+<p>The date and time to be converted to AstroTime format.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Double_"> AstroTime(int, int, int, int, int, double)</h3>
+<p>Creates an <code>AstroTime</code> object from a UTC year, month, day, hour, minute and second.</p>
+<pre><code class="lang-csharp">public AstroTime(int year, int month, int day, int hour, int minute, double second)
+</code></pre>
+<h4 id="parameters-2">Parameters</h4>
+<p><code>year</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>The UTC year value.</p>
+<p><code>month</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>The UTC month value 1..12.</p>
+<p><code>day</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>The UTC day of the month 1..31.</p>
+<p><code>hour</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>The UTC hour value 0..23.</p>
+<p><code>minute</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>The UTC minute value 0..59.</p>
+<p><code>second</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The UTC second value [0, 60).</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime__ctor_ChargerAstronomyShared_Domain_CalendarDateTime_"> AstroTime(CalendarDateTime)</h3>
+<pre><code class="lang-csharp">public AstroTime(CalendarDateTime cdt)
+</code></pre>
+<h4 id="parameters-3">Parameters</h4>
+<p><code>cdt</code> <a href="ChargerAstronomyShared.Domain.CalendarDateTime.html">CalendarDateTime</a></p>
+<h2 id="fields">Fields</h2>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_tt"> tt</h3>
+<p>Terrestrial Time days since noon on January 1, 2000.</p>
+<pre><code class="lang-csharp">public readonly double tt
+</code></pre>
+<h4 id="field-value">Field Value</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<h4 id="remarks">Remarks</h4>
+<p>Terrestrial Time is an atomic time scale defined as a number of days since noon on January 1, 2000.
+In this system, days are not based on Earth rotations, but instead by
+the number of elapsed <a href="https://physics.nist.gov/cuu/Units/second.html">SI seconds</a>
+divided by 86400. Unlike <code>ut</code>, <code>tt</code> increases uniformly without adjustments
+for changes in the Earth's rotation.</p>
+<p>The value in <code>tt</code> is used for calculations of movements not involving the Earth's rotation,
+such as the orbits of planets around the Sun, or the Moon around the Earth.</p>
+<p>Historically, Terrestrial Time has also been known by the term <em>Ephemeris Time</em> (ET).</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ut"> ut</h3>
+<p>UT1/UTC number of days since noon on January 1, 2000.</p>
+<pre><code class="lang-csharp">public readonly double ut
+</code></pre>
+<h4 id="field-value-1">Field Value</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<h4 id="remarks-1">Remarks</h4>
+<p>The floating point number of days of Universal Time since noon UTC January 1, 2000.
+Astronomy Engine approximates UTC and UT1 as being the same thing, although they are
+not exactly equivalent; UTC and UT1 can disagree by up to plus or minus 0.9 seconds.
+This approximation is sufficient for the accuracy requirements of Astronomy Engine.</p>
+<p>Universal Time Coordinate (UTC) is the international standard for legal and civil
+timekeeping and replaces the older Greenwich Mean Time (GMT) standard.
+UTC is kept in sync with unpredictable observed changes in the Earth's rotation
+by occasionally adding leap seconds as needed.</p>
+<p>UT1 is an idealized time scale based on observed rotation of the Earth, which
+gradually slows down in an unpredictable way over time, due to tidal drag by the Moon and Sun,
+large scale weather events like hurricanes, and internal seismic and convection effects.
+Conceptually, UT1 drifts from atomic time continuously and erratically, whereas UTC
+is adjusted by a scheduled whole number of leap seconds as needed.</p>
+<p>The value in <code>ut</code> is appropriate for any calculation involving the Earth's rotation,
+such as calculating rise/set times, culumination, and anything involving apparent
+sidereal time.</p>
+<p>Before the era of atomic timekeeping, days based on the Earth's rotation
+were often known as <em>mean solar days</em>.</p>
+<h2 id="properties">Properties</h2>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_Eps"> Eps</h3>
+<p>Nutation angle <code>eps</code>. Intended for unit testing only.</p>
+<pre><code class="lang-csharp">public double Eps { get; }
+</code></pre>
+<h4 id="property-value">Property Value</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_Psi"> Psi</h3>
+<p>Nutation angle <code>psi</code>. Intended for unit testing only.</p>
+<pre><code class="lang-csharp">public double Psi { get; }
+</code></pre>
+<h4 id="property-value-1">Property Value</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<h2 id="methods">Methods</h2>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_AddDays_System_Double_"> AddDays(double)</h3>
+<p>Calculates the sum or difference of an #AstroTime with a specified floating point number of days.</p>
+<pre><code class="lang-csharp">public AstroTime AddDays(double days)
+</code></pre>
+<h4 id="parameters-4">Parameters</h4>
+<p><code>days</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>A floating point number of days by which to adjust <code>time</code>. May be negative, 0, or positive.</p>
+<h4 id="returns">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>A date and time that is conceptually equal to <code>time + days</code>.</p>
+<h4 id="remarks-2">Remarks</h4>
+<p>Sometimes we need to adjust a given #AstroTime value by a certain amount of time.
+This function adds the given real number of days in <code>days</code> to the date and time in this object.</p>
+<p>More precisely, the result's Universal Time field <code>ut</code> is exactly adjusted by <code>days</code> and
+the Terrestrial Time field <code>tt</code> is adjusted for the resulting UTC date and time,
+using a best-fit piecewise polynomial model devised by
+<a href="https://eclipse.gsfc.nasa.gov/SEhelp/deltatpoly2004.html">Espenak and Meeus</a>.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_FromTerrestrialTime_System_Double_"> FromTerrestrialTime(double)</h3>
+<p>Creates an <code>AstroTime</code> object from a Terrestrial Time day value.</p>
+<pre><code class="lang-csharp">public static AstroTime FromTerrestrialTime(double tt)
+</code></pre>
+<h4 id="parameters-5">Parameters</h4>
+<p><code>tt</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The number of days after the J2000 epoch.</p>
+<h4 id="returns-1">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<h4 id="remarks-3">Remarks</h4>
+<p>This function can be used in rare cases where a time must be based
+on Terrestrial Time (TT) rather than Universal Time (UT).
+Most developers will want to invoke <code>new AstroTime(ut)</code> with a universal time
+instead of this function, because usually time is based on civil time adjusted
+by leap seconds to match the Earth's rotation, rather than the uniformly
+flowing TT used to calculate solar system dynamics. In rare cases
+where the caller already knows TT, this function is provided to create
+an <code>AstroTime</code> value that can be passed to Astronomy Engine functions.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ToCalendarDateTime"> ToCalendarDateTime()</h3>
+<p>Converts this object to our custom type #CalendarDateTime.</p>
+<pre><code class="lang-csharp">public CalendarDateTime ToCalendarDateTime()
+</code></pre>
+<h4 id="returns-2">Returns</h4>
+<p><a href="ChargerAstronomyShared.Domain.CalendarDateTime.html">CalendarDateTime</a></p>
+<h4 id="remarks-4">Remarks</h4>
+<p>The .NET type <code>DateTime</code> can only represent years in the range 0000..9999.
+However, the Astronomy Engine type #CalendarDateTime can represent
+years in the range -999999..+999999. This is a time span of nearly 2 million years.
+This function converts this <code>AstroTime</code> object to an equivalent Gregorian calendar representation.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ToString"> ToString()</h3>
+<p>Converts this <code>AstroTime</code> to ISO 8601 format, expressed in UTC with millisecond resolution.</p>
+<pre><code class="lang-csharp">public override string ToString()
+</code></pre>
+<h4 id="returns-3">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.string">string</a></p>
+<p>Example: &quot;2019-08-30T17:45:22.763Z&quot;.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ToUtcDateTime"> ToUtcDateTime()</h3>
+<p>Converts this object to .NET <code>DateTime</code> format.</p>
+<pre><code class="lang-csharp">public DateTime ToUtcDateTime()
+</code></pre>
+<h4 id="returns-4">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></p>
+<p>a UTC <code>DateTime</code> object for this <code>AstroTime</code> value.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_TryParse_System_String_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime__"> TryParse(string, out AstroTime)</h3>
+<p>Converts a string of the format returned by #AstroTime.ToString back into an <code>AstroTime</code>.</p>
+<pre><code class="lang-csharp">public static bool TryParse(string text, out AstroTime time)
+</code></pre>
+<h4 id="parameters-6">Parameters</h4>
+<p><code>text</code> <a href="https://learn.microsoft.com/dotnet/api/system.string">string</a></p>
+<p>The string from which to parse a date and time.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>On success, receives the date and time value. On failure, receives <code>null</code>.</p>
+<h4 id="returns-5">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
+<h4 id="remarks-5">Remarks</h4>
+<p>This function attempts to parse an ISO 8601 formatted date and time string
+into an <code>AstroTime</code> object.
+If the string is valid, sets <code>time</code> to a new object and returns <code>true</code>.
+If the string is not valid, sets <code>time</code> to <code>null</code> and returns <code>false</code>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

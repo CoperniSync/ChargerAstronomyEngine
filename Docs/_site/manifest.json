@@ -1,0 +1,1258 @@
+{
+  "source_base_path": "C:/Users/jojot/source/repos/ChargerAstronomyLab/ChargerAstronomyEngine/Docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Class1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Class1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.AtmosphereInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.AtmosphereInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.AxisInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.AxisInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.ConstellationInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.ConstellationInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.DeltaTimeFunc.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.DeltaTimeFunc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.EclipseEvent.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.EclipseEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Ecliptic.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Ecliptic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.ElongationInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.ElongationInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Aberration.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Aberration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.ApsisKind.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.ApsisKind.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Direction.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Direction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EclipseKind.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EclipseKind.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EquatorEpoch.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EquatorEpoch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.NodeEventKind.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.NodeEventKind.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Refraction.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Refraction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Visibility.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Visibility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Enums.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Equatorial.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Equatorial.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.EarthNotAllowedException.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.EarthNotAllowedException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.InternalError.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.InternalError.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.InvalidBodyException.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.InvalidBodyException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.GlobalSolarEclipseInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.GlobalSolarEclipseInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.GravitySimulator.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.GravitySimulator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.HourAngleInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.HourAngleInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.IPositionFunction.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.IPositionFunction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.IllumInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.IllumInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.JupiterMoonsInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.JupiterMoonsInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.LibrationInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.LibrationInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.LocalSolarEclipseInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.LocalSolarEclipseInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.LunarEclipseInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.LunarEclipseInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.MoonQuarterInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.MoonQuarterInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.NodeEventInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.NodeEventInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.SeasonsInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.SeasonsInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Spherical.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Spherical.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Topocentric.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.Topocentric.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.TransitInfo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.TransitInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.Constellations.CsvConstellationRepository.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.Constellations.CsvConstellationRepository.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.Constellations.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.Constellations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.LocalObjects.MoonSingleton.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.LocalObjects.MoonSingleton.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.LocalObjects.PlanetsSingleton.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.LocalObjects.PlanetsSingleton.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.LocalObjects.SunSingleton.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.LocalObjects.SunSingleton.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.LocalObjects.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.LocalObjects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.Messier.StarLustMessierCsvRepository.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.Messier.StarLustMessierCsvRepository.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.Messier.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.Messier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.Star.CsvStarRepository.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.Star.CsvStarRepository.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.Star.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.Star.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Data.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Streaming.EngineService-1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Streaming.EngineService-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Streaming.EquatorialCalculator-1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Streaming.EquatorialCalculator-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Streaming.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Streaming.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Models.IHorizontal.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Models.IHorizontal.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Models.LocalBodyContainer.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Models.LocalBodyContainer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Models.LocalBodyRequest.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Models.LocalBodyRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Models.PageRequest.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Models.PageRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Models.PageResult-1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Models.PageResult-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Models.SkyRegion.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Models.SkyRegion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Models.TileId.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Models.TileId.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Models.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IConstellationRepository.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IConstellationRepository.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IEngineService-1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IEngineService-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IMessierRepository.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IMessierRepository.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IStarRepository.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IStarRepository.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.StarSpatialIndex.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.StarSpatialIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.BlockingQueue-1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.BlockingQueue-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.CalendarDateTime.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.CalendarDateTime.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.BodyType.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.BodyType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.Constellation.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.Constellation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.EquatorialMessierObject.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.EquatorialMessierObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.EquatorialStar.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.EquatorialStar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.IBodyType.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.IBodyType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Equatorial.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Geometry.TileGeometry.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Geometry.TileGeometry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Geometry.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Geometry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Heat.HeatConfig.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Heat.HeatConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Heat.HeatMap.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Heat.HeatMap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Heat.HeatService.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Heat.HeatService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Heat.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Heat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalBody.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalBody.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalMessierObject.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalMessierObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalPlanet.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalPlanet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalStar.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalStar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalSun.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.HorizontalSun.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Index.ITileIndex.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Index.ITileIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Index.IcosphereTileIndex.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Index.IcosphereTileIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Index.UVSphereTileIndex.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Index.UVSphereTileIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Index.UVTileIndex.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Index.UVTileIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Observer.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Observer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.SpatialIndex.SpatialStarIndex-1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.SpatialIndex.SpatialStarIndex-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.SpatialIndex.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.SpatialIndex.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/EquatorialStarMap.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/EquatorialStarMap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/TileSelector.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/TileSelector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/copernisync__logo_trimmed.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/copernisync__logo_trimmed.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/copernisync_logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/copernisync_logo.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/copernisync_logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/copernisync_logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/copernisync_logo_small.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/copernisync_logo_small.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

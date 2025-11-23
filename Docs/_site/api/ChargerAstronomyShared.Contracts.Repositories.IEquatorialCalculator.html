@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> Interface IEquatorialCalculator | Stargazer Data API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" Interface IEquatorialCalculator | Stargazer Data API ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/copernisync_logo_small.svg" alt="Stargazer Data API">
+            Stargazer Data API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator"> Interface IEquatorialCalculator</h1>
+
+<p>Namespace: <a href="ChargerAstronomyShared.Contracts.Repositories.html">ChargerAstronomyShared.Contracts.Repositories</a><br>
+Assembly: ChargerAstronomyShared.dll</p>
+<p>Converts a <span class="xref">ChargerAstronomyShared.Domain.Horizontal.HorizontalBody</span> to a {T} object
+Author: Josh Johner
+Created: SPR 2025</p>
+<pre><code class="lang-csharp">public interface IEquatorialCalculator
+</code></pre>
+<h2 id="methods">Methods</h2>
+<h3 id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_IncrementTime_System_Single_"> IncrementTime(float)</h3>
+<p>Increments the time of the internal universal time used to perform calculations.</p>
+<pre><code class="lang-csharp">void IncrementTime(float deltaTime)
+</code></pre>
+<h4 id="parameters">Parameters</h4>
+<p><code>deltaTime</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p>The amount of time to increase by, in seconds.</p>
+<h3 id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdateLocation_ChargerAstronomyShared_Domain_Observer_"> UpdateLocation(Observer)</h3>
+<p>Calculates and updates the position of an <span class="xref">ChargerAstronomyShared.Domain.Observer</span></p>
+<pre><code class="lang-csharp">void UpdateLocation(Observer newLocation)
+</code></pre>
+<h4 id="parameters-1">Parameters</h4>
+<p><code>newLocation</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The new location for the <span class="xref">ChargerAstronomyShared.Domain.Observer</span> to update to.</p>
+<h3 id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdateTime_ChargerAstronomyShared_Domain_CalendarDateTime_"> UpdateTime(CalendarDateTime)</h3>
+<p>Updates the internal universal time used for calculations.</p>
+<pre><code class="lang-csharp">void UpdateTime(CalendarDateTime newTime)
+</code></pre>
+<h4 id="parameters-2">Parameters</h4>
+<p><code>newTime</code> <a href="ChargerAstronomyShared.Domain.CalendarDateTime.html">CalendarDateTime</a></p>
+<p>The new universal time.</p>
+<h3 id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdateTimeAndLocation_ChargerAstronomyShared_Domain_CalendarDateTime_ChargerAstronomyShared_Domain_Observer_"> UpdateTimeAndLocation(CalendarDateTime, Observer)</h3>
+<p>Updates the internal universal time and <span class="xref">ChargerAstronomyShared.Domain.Observer</span> location for calculations.</p>
+<pre><code class="lang-csharp">void UpdateTimeAndLocation(CalendarDateTime newTime, Observer newLocation)
+</code></pre>
+<h4 id="parameters-3">Parameters</h4>
+<p><code>newTime</code> <a href="ChargerAstronomyShared.Domain.CalendarDateTime.html">CalendarDateTime</a></p>
+<p>The new universal time.</p>
+<p><code>newLocation</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The new location for the <span class="xref">ChargerAstronomyShared.Domain.Observer</span> to update to.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

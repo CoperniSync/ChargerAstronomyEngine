@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> Struct GlobalSolarEclipseInfo | Stargazer Data API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" Struct GlobalSolarEclipseInfo | Stargazer Data API ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.GlobalSolarEclipseInfo.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/copernisync_logo_small.svg" alt="Stargazer Data API">
+            Stargazer Data API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ChargerAstronomyEngine_CosineKittyAstronomy_GlobalSolarEclipseInfo"> Struct GlobalSolarEclipseInfo</h1>
+
+<p>Namespace: <a href="ChargerAstronomyEngine.CosineKittyAstronomy.html">ChargerAstronomyEngine.CosineKittyAstronomy</a><br>
+Assembly: ChargerAstronomyEngine.dll</p>
+<p>Reports the time and geographic location of the peak of a solar eclipse.</p>
+<pre><code class="lang-csharp">public struct GlobalSolarEclipseInfo
+</code></pre>
+<h4 id="inherited-members">Inherited Members</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
+<h2 id="remarks">Remarks</h2>
+<p>Returned by #Astronomy.SearchGlobalSolarEclipse or #Astronomy.NextGlobalSolarEclipse
+to report information about a solar eclipse event.</p>
+<p>The eclipse is classified as partial, annular, or total, depending on the
+maximum amount of the Sun's disc obscured, as seen at the peak location
+on the surface of the Earth.</p>
+<p>The <code>kind</code> field thus holds <code>EclipseKind.Partial</code>, <code>EclipseKind.Annular</code>, or <code>EclipseKind.Total</code>.
+A total eclipse is when the peak observer sees the Sun completely blocked by the Moon.
+An annular eclipse is like a total eclipse, but the Moon is too far from the Earth's surface
+to completely block the Sun; instead, the Sun takes on a ring-shaped appearance.
+A partial eclipse is when the Moon blocks part of the Sun's disc, but nobody on the Earth
+observes either a total or annular eclipse.</p>
+<p>If <code>kind</code> is <code>EclipseKind.Total</code> or <code>EclipseKind.Annular</code>, the <code>latitude</code> and <code>longitude</code>
+fields give the geographic coordinates of the center of the Moon's shadow projected
+onto the daytime side of the Earth at the instant of the eclipse's peak.
+If <code>kind</code> has any other value, <code>latitude</code> and <code>longitude</code> are undefined and should
+not be used.</p>
+<p>For total or annular eclipses, the <code>obscuration</code> field holds the fraction (0, 1]
+of the Sun's apparent disc area that is blocked from view by the Moon's silhouette,
+as seen by an observer located at the geographic coordinates <code>latitude</code>, <code>longitude</code>
+at the darkest time <code>peak</code>. The value will always be 1 for total eclipses, and less than
+1 for annular eclipses.
+For partial eclipses, <code>obscuration</code> is undefined and should not be used.
+This is because there is little practical use for an obscuration value of
+a partial eclipse without supplying a particular observation location.
+Developers who wish to find an obscuration value for partial solar eclipses should therefore use
+#Astronomy.SearchLocalSolarEclipse and provide the geographic coordinates of an observer.</p>
+<h2 id="fields">Fields</h2>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_GlobalSolarEclipseInfo_distance"> distance</h3>
+<p>The distance between the Sun/Moon shadow axis and the center of the Earth, in kilometers.</p>
+<pre><code class="lang-csharp">public double distance
+</code></pre>
+<h4 id="field-value">Field Value</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_GlobalSolarEclipseInfo_kind"> kind</h3>
+<p>The type of solar eclipse: <code>EclipseKind.Partial</code>, <code>EclipseKind.Annular</code>, or <code>EclipseKind.Total</code>.</p>
+<pre><code class="lang-csharp">public EclipseKind kind
+</code></pre>
+<h4 id="field-value-1">Field Value</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EclipseKind.html">EclipseKind</a></p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_GlobalSolarEclipseInfo_latitude"> latitude</h3>
+<p>The geographic latitude at the center of the peak eclipse shadow.</p>
+<pre><code class="lang-csharp">public double latitude
+</code></pre>
+<h4 id="field-value-2">Field Value</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_GlobalSolarEclipseInfo_longitude"> longitude</h3>
+<p>The geographic longitude at the center of the peak eclipse shadow.</p>
+<pre><code class="lang-csharp">public double longitude
+</code></pre>
+<h4 id="field-value-3">Field Value</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_GlobalSolarEclipseInfo_obscuration"> obscuration</h3>
+<p>The peak fraction of the Sun's apparent disc area obscured by the Moon (total and annular eclipses only).</p>
+<pre><code class="lang-csharp">public double obscuration
+</code></pre>
+<h4 id="field-value-4">Field Value</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_GlobalSolarEclipseInfo_peak"> peak</h3>
+<p>The date and time when the solar eclipse is at its darkest.
+This is the instant when the axis of the Moon's shadow cone passes closest to the Earth's center.</p>
+<pre><code class="lang-csharp">public AstroTime peak
+</code></pre>
+<h4 id="field-value-5">Field Value</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/local-equatorial-calculations/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.GlobalSolarEclipseInfo.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
