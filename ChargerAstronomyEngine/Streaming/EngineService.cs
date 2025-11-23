@@ -16,28 +16,31 @@ using ChargerAstronomyShared.Domain.SpatialIndex;
 
 namespace ChargerAstronomyEngine.Streaming
 {
-    public class EngineService : IEngineService
+    public class EngineService<T> : IEngineService<T> where T : IHorizontal
     {
-        HeatService heatService;
         HeatMap heatMap;
         HeatConfig heatConfig;
 
         ITileIndex tileIndex;
 
-        EquatorialCalculator equatorialCalculator;
-        SpatialStarIndex spatialStarIndex;
+        EquatorialCalculator<T> equatorialCalculator;
+        SpatialStarIndex<T> spatialStarIndex;
+        HeatService heatService;
 
 
-        private readonly BlockingCollection<TileId> activationQueue; 
-        private readonly BlockingCollection<TileId> deactivationQueue;
+        private readonly BlockingCollection<T> activationQueue; 
+        private readonly BlockingCollection<T> deactivationQueue;
 
-        private readonly BlockingCollection<TileId> updateTransformQueue; // unity will remove from this queue
+        private readonly BlockingCollection<T> updateTransformQueue; // unity will remove from this queue
 
-        public BlockingCollection<TileId> ActivationQueue => activationQueue;
+        public HeatService HeatService => heatService;
+        public SpatialStarIndex<T> SpatialStarIndex => spatialStarIndex;
 
-        public BlockingCollection<TileId> DeactivationQueue => deactivationQueue;
+        public BlockingCollection<T> ActivationQueue => activationQueue;
 
-        public BlockingCollection<TileId> UpdateTransformQueue => updateTransformQueue;
+        public BlockingCollection<T> DeactivationQueue => deactivationQueue;
+
+        public BlockingCollection<T> UpdateTransformQueue => updateTransformQueue;
 
         public EngineService(ITileIndex tileIndex)
         {
@@ -46,12 +49,12 @@ namespace ChargerAstronomyEngine.Streaming
             HeatMap heatMap = new HeatMap(new HeatConfig());
 
             heatService = new HeatService(heatMap, tileIndex);
-            spatialStarIndex = new SpatialStarIndex(tileIndex);
-            equatorialCalculator = new EquatorialCalculator(heatService, spatialStarIndex);
+            spatialStarIndex = new SpatialStarIndex<T>(tileIndex);
+            equatorialCalculator = new EquatorialCalculator<T>(heatService, spatialStarIndex);
 
-            activationQueue = new BlockingCollection<TileId>();
-            deactivationQueue = new BlockingCollection<TileId>();
-            updateTransformQueue = new BlockingCollection<TileId>();
+            activationQueue = new BlockingCollection<T>();
+            deactivationQueue = new BlockingCollection<T>();
+            updateTransformQueue = new BlockingCollection<T>();
         }
 
         public IEquatorialCalculator StartServices()
@@ -77,10 +80,11 @@ namespace ChargerAstronomyEngine.Streaming
             {
                 foreach (TileId tile in heatService.GetHeatMap().TilesAbove(0f))
                 {
-                    foreach (HorizontalStar star in spatialStarIndex.GetStarsInTile(tile))
+                    foreach (var star in spatialStarIndex.GetStarsInTile(tile))
+                    {
                         equatorialCalculator.UpdateStar(star);
-
-                    updateTransformQueue.Add(tile);
+                        updateTransformQueue.Add(star);
+                    }
                 }
             });
 
@@ -89,12 +93,15 @@ namespace ChargerAstronomyEngine.Streaming
                 foreach (var tile in heatMap.InactiveTilesAboveZero())
                 {
                     tile.active = true; 
-                    activationQueue.Add(tile);
+                    foreach (var star in spatialStarIndex.GetStarsInTile(tile))
+                        activationQueue.Add(star);
+
                 }
                 foreach (var tile in heatMap.ActiveTileAtZero())
                 {
                     tile.active = false;
-                    deactivationQueue.Add(tile);
+                    foreach (var star in spatialStarIndex.GetStarsInTile(tile))
+                        deactivationQueue.Add(star);
                 }
             });
         }
