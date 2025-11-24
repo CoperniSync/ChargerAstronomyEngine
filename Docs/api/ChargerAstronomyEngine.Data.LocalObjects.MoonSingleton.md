@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyEngine.Data.LocalObjects](ChargerAstronomyEngine.Data.LocalObjects.md)  
 Assembly: ChargerAstronomyEngine.dll  
 
+Singleton class used to create an instance of a <xref href="ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon" data-throw-if-not-resolved="false"></xref>.
+
 ```csharp
 public sealed class MoonSingleton : EquatorialCelestialBody
 ```
@@ -31,6 +33,8 @@ public sealed class MoonSingleton : EquatorialCelestialBody
 
 ### <a id="ChargerAstronomyEngine_Data_LocalObjects_MoonSingleton_CurrentTime"></a> CurrentTime
 
+The current date and time.
+
 ```csharp
 public DateTime CurrentTime { get; }
 ```
@@ -40,6 +44,8 @@ public DateTime CurrentTime { get; }
  [DateTime](https://learn.microsoft.com/dotnet/api/system.datetime)
 
 ### <a id="ChargerAstronomyEngine_Data_LocalObjects_MoonSingleton_Instance"></a> Instance
+
+The singleton instance of the <xref href="ChargerAstronomyEngine.Data.LocalObjects.MoonSingleton" data-throw-if-not-resolved="false"></xref> class.
 
 ```csharp
 public static MoonSingleton Instance { get; }

@@ -5,6 +5,4 @@
  [CsvConstellationRepository](ChargerAstronomyEngine.Data.Constellations.CsvConstellationRepository.md)
 
 Used to retrieve constellation data from the Stellarium Json file.
-Author: Josh Johner
-Created: SPR 2025
 

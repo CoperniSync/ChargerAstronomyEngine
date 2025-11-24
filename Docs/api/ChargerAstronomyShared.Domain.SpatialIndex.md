@@ -4,3 +4,5 @@
 
  [SpatialStarIndex<T\>](ChargerAstronomyShared.Domain.SpatialIndex.SpatialStarIndex\-1.md)
 
+Represents a spatial index for organizing and retrieving stars based on their positions in tiles.
+

@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Domain.SpatialIndex](ChargerAstronomyShared.Domain.SpatialIndex.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+Represents a spatial index for organizing and retrieving stars based on their positions in tiles.
+
 ```csharp
 public sealed class SpatialStarIndex<T> where T : IHorizontal
 ```
@@ -10,6 +12,8 @@ public sealed class SpatialStarIndex<T> where T : IHorizontal
 #### Type Parameters
 
 `T` 
+
+The type of stars to be indexed. Must implement <xref href="ChargerAstronomyShared.Contracts.Models.IHorizontal" data-throw-if-not-resolved="false"></xref> to provide positional data.
 
 #### Inheritance
 
@@ -25,11 +29,16 @@ public sealed class SpatialStarIndex<T> where T : IHorizontal
 [object.ReferenceEquals\(object, object\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
+## Remarks
+
+This class provides efficient spatial indexing for stars by associating them with tiles
+    defined by an <xref href="ChargerAstronomyShared.Domain.Index.ITileIndex" data-throw-if-not-resolved="false"></xref>. Stars can be added individually or in bulk, and their positions are used
+    to determine the corresponding tile for indexing. The index supports retrieving all stars within a specific tile
+    and ensures that each star is correctly associated with its corresponding tile.
+
 ## Constructors
 
 ### <a id="ChargerAstronomyShared_Domain_SpatialIndex_SpatialStarIndex_1__ctor_ChargerAstronomyShared_Domain_Index_ITileIndex_"></a> SpatialStarIndex\(ITileIndex\)
-
-Initializes a new instance of the SpatialStarIndex class using the specified tile index.
 
 ```csharp
 public SpatialStarIndex(ITileIndex tileIndex)
@@ -38,8 +47,6 @@ public SpatialStarIndex(ITileIndex tileIndex)
 #### Parameters
 
 `tileIndex` [ITileIndex](ChargerAstronomyShared.Domain.Index.ITileIndex.md)
-
-The tile index used to organize and manage spatial data.
 
 ### <a id="ChargerAstronomyShared_Domain_SpatialIndex_SpatialStarIndex_1__ctor_ChargerAstronomyShared_Domain_Index_ITileIndex_System_Collections_Generic_IEnumerable__0__"></a> SpatialStarIndex\(ITileIndex, IEnumerable<T\>\)
 
@@ -57,6 +64,8 @@ public SpatialStarIndex(ITileIndex tileIndex, IEnumerable<T> inputStars)
 
 ### <a id="ChargerAstronomyShared_Domain_SpatialIndex_SpatialStarIndex_1_Stars"></a> Stars
 
+A read-only list of all stars used in the index.
+
 ```csharp
 public IReadOnlyList<T> Stars { get; }
 ```
@@ -66,6 +75,8 @@ public IReadOnlyList<T> Stars { get; }
  [IReadOnlyList](https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist\-1)<T\>
 
 ### <a id="ChargerAstronomyShared_Domain_SpatialIndex_SpatialStarIndex_1_TileIndex"></a> TileIndex
+
+The TileIndex used for spatial indexing.
 
 ```csharp
 public ITileIndex TileIndex { get; }

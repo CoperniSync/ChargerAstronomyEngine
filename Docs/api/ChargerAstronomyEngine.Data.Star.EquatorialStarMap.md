@@ -3,6 +3,9 @@
 Namespace: [ChargerAstronomyEngine.Data.Star](ChargerAstronomyEngine.Data.Star.md)  
 Assembly: ChargerAstronomyEngine.dll  
 
+A class that maps properties of an equatorial
+star to their corresponding CSV column names.
+
 ```csharp
 public sealed class EquatorialStarMap : ClassMap<EquatorialStar>
 ```

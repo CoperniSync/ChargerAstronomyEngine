@@ -41,6 +41,36 @@ void UpdateLocation(Observer newLocation)
 
 The new location for the <xref href="ChargerAstronomyShared.Domain.Observer" data-throw-if-not-resolved="false"></xref> to update to.
 
+### <a id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalPlanet_"></a> UpdatePositionOf\(HorizontalPlanet\)
+
+```csharp
+void UpdatePositionOf(HorizontalPlanet planet)
+```
+
+#### Parameters
+
+`planet` [HorizontalPlanet](ChargerAstronomyShared.Domain.Horizontal.HorizontalPlanet.md)
+
+### <a id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalMoon_"></a> UpdatePositionOf\(HorizontalMoon\)
+
+```csharp
+void UpdatePositionOf(HorizontalMoon moon)
+```
+
+#### Parameters
+
+`moon` [HorizontalMoon](ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon.md)
+
+### <a id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalSun_"></a> UpdatePositionOf\(HorizontalSun\)
+
+```csharp
+void UpdatePositionOf(HorizontalSun sun)
+```
+
+#### Parameters
+
+`sun` [HorizontalSun](ChargerAstronomyShared.Domain.Horizontal.HorizontalSun.md)
+
 ### <a id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdateTime_ChargerAstronomyShared_Domain_CalendarDateTime_"></a> UpdateTime\(CalendarDateTime\)
 
 Updates the internal universal time used for calculations.

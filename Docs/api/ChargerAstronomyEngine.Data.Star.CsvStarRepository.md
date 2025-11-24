@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyEngine.Data.Star](ChargerAstronomyEngine.Data.Star.md)  
 Assembly: ChargerAstronomyEngine.dll  
 
+Used to retrieve star data from a csv file.
+
 ```csharp
 public sealed class CsvStarRepository : IStarRepository
 ```

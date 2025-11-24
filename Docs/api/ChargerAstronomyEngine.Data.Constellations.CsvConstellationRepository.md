@@ -4,8 +4,6 @@ Namespace: [ChargerAstronomyEngine.Data.Constellations](ChargerAstronomyEngine.D
 Assembly: ChargerAstronomyEngine.dll  
 
 Used to retrieve constellation data from the Stellarium Json file.
-Author: Josh Johner
-Created: SPR 2025
 
 ```csharp
 public class CsvConstellationRepository : IConstellationRepository
@@ -29,6 +27,11 @@ public class CsvConstellationRepository : IConstellationRepository
 [object.MemberwiseClone\(\)](https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone), 
 [object.ReferenceEquals\(object, object\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
+
+## Remarks
+
+Author: Josh Johner 
+    Created: SPR 2025
 
 ## Constructors
 

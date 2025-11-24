@@ -3,7 +3,7 @@
 Namespace: [ChargerAstronomyEngine.Data.LocalObjects](ChargerAstronomyEngine.Data.LocalObjects.md)  
 Assembly: ChargerAstronomyEngine.dll  
 
-Singleton class to manage and calculate horizontal positions of all planets (excluding Earth).
+Singleton class to a <xref href="ChargerAstronomyShared.Domain.Horizontal.HorizontalPlanet" data-throw-if-not-resolved="false"></xref> instance of all planets (excluding Earth).
 
 ```csharp
 public sealed class PlanetsSingleton : EquatorialCelestialBody
@@ -33,6 +33,8 @@ public sealed class PlanetsSingleton : EquatorialCelestialBody
 
 ### <a id="ChargerAstronomyEngine_Data_LocalObjects_PlanetsSingleton_CurrentTime"></a> CurrentTime
 
+The current date and time.
+
 ```csharp
 public DateTime CurrentTime { get; }
 ```
@@ -42,6 +44,8 @@ public DateTime CurrentTime { get; }
  [DateTime](https://learn.microsoft.com/dotnet/api/system.datetime)
 
 ### <a id="ChargerAstronomyEngine_Data_LocalObjects_PlanetsSingleton_Instance"></a> Instance
+
+The singleton instance of the <xref href="ChargerAstronomyEngine.Data.LocalObjects.PlanetsSingleton" data-throw-if-not-resolved="false"></xref> class.
 
 ```csharp
 public static PlanetsSingleton Instance { get; }

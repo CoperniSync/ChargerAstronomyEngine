@@ -1238,6 +1238,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/copernisync_logo_small_light.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/copernisync_logo_small_light.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/copernisync_planet_only.svg",
       "output": {
         "resource": {
