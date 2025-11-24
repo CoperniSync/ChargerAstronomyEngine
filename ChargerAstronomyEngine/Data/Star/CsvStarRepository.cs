@@ -17,9 +17,15 @@ using System.Diagnostics;
 
 namespace ChargerAstronomyEngine.Data.Star
 {
-
+    /// <summary>
+    /// Used to retrieve star data from a csv file.
+    /// </summary>
     public sealed class CsvStarRepository : IStarRepository
     {
+
+        /// <summary>
+        /// The file path of the CSV file.
+        /// </summary>
         readonly string csvfilePath;
 
         /// <summary>
@@ -46,7 +52,6 @@ namespace ChargerAstronomyEngine.Data.Star
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
-
         public IEnumerable<EquatorialStar> GetAllSync(CancellationToken cancellationToken = default)
         {
             return EnumerateStars(csvfilePath, cancellationToken);

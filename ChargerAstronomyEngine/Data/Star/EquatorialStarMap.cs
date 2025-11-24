@@ -1,11 +1,17 @@
-﻿namespace ChargerAstronomyEngine.Data.Star
-{
-    using System.Globalization;
-    using ChargerAstronomyShared.Domain.Equatorial;
-    using CsvHelper;
-    using CsvHelper.Configuration;
-    using CsvHelper.TypeConversion;
+﻿using System.Globalization;
+using ChargerAstronomyShared.Domain.Equatorial;
+using CsvHelper;
+using CsvHelper.Configuration;
+using CsvHelper.TypeConversion;
 
+
+namespace ChargerAstronomyEngine.Data.Star
+{
+
+    /// <summary>
+    /// A class that maps properties of an equatorial
+    /// star to their corresponding CSV column names.
+    /// </summary>
     public sealed class EquatorialStarMap : ClassMap<EquatorialStar>
     {
         public EquatorialStarMap()
