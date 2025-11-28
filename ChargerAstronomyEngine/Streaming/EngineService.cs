@@ -40,12 +40,12 @@ namespace ChargerAstronomyEngine.Streaming
 
         // magnitude tracking
         private float currentMagnitudeCutoff = 6f;
-        private float lastMagnitudeCutoff = 100f;
+        private float lastMagnitudeCutoff = 500f;
         private const float MAGNITUDE_CHANGE_THRESHOLD = 0.2f;
 
         // star update throttling
         private float timeSinceLastStarUpdate = 0f;
-        private const float baseStarUpdateInterval = 0.5f;
+        private const float baseStarUpdateInterval = 0.45f;
 
         public HeatService HeatService => heatService;
         public SpatialStarIndex<T> SpatialStarIndex => spatialStarIndex;
@@ -61,6 +61,7 @@ namespace ChargerAstronomyEngine.Streaming
             heatConfig = new HeatConfig();
             heatMap = new HeatMap(heatConfig);
 
+            // otherwise stars won't load properly
             foreach (var tileId in tileIndex.Enumerate())
             {
                 heatMap.Set(tileId, 0f);
@@ -122,10 +123,7 @@ namespace ChargerAstronomyEngine.Streaming
             }
         }
 
-        /// <summary>
-        /// Fast magnitude re-evaluation using the dictionary approach.
-        /// Zoom out = O(active stars), Zoom in = iterate tiles but early-out.
-        /// </summary>
+        // re-evaluate active stars based on new magnitude cutoff
         private void ReEvaluateActiveTileMagnitudes()
         {
             float oldCutoff = lastMagnitudeCutoff;
@@ -135,8 +133,6 @@ namespace ChargerAstronomyEngine.Streaming
             {
                 if (newCutoff < oldCutoff)
                 {
-                    // Zoomed OUT - deactivate stars that are now too dim
-                    // This is O(active stars) - just filter the dictionary
                     var toRemove = activeStarsWithMagnitude
                         .Where(kvp => kvp.Value > newCutoff)
                         .Select(kvp => kvp.Key)
@@ -150,8 +146,6 @@ namespace ChargerAstronomyEngine.Streaming
                 }
                 else
                 {
-                    // Zoomed IN - activate stars that are now visible
-                    // Need to check tiles, but early-out with sorted stars
                     foreach (var tileId in activeTiles)
                     {
                         try
