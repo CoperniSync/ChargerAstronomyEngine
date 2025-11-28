@@ -14,6 +14,19 @@
       "dest": "api",
       "namespaceLayout": "nested",
 	  "outputFormat": "markdown"
+    },
+	{
+      "src": [
+        {
+          "src": "../../",
+          "files": [
+            "Stargazer/Assembly-CSharp.csproj",
+          ]
+        }
+      ],
+      "dest": "stargazer",
+      "namespaceLayout": "nested",
+	  "outputFormat": "markdown"
     }
   ],
   "build": {

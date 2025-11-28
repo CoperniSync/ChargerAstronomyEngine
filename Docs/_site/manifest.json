@@ -1238,16 +1238,6 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/copernisync_logo_small_light.svg",
-      "output": {
-        "resource": {
-          "relative_path": "images/copernisync_logo_small_light.svg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "images/copernisync_planet_only.svg",
       "output": {
         "resource": {
@@ -1272,6 +1262,449 @@
       "output": {
         ".html": {
           "relative_path": "local-testing-instructions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.CelestialBodyBase.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.CelestialBodyBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.MessierObject.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.MessierObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.Moon.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.Moon.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.Planet.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.Planet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.Star.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.Star.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.Sun.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.Sun.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Core.ConstellationRetrieval.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Core.ConstellationRetrieval.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Core.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Core.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Rendering.StarGpuRenderer.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Rendering.StarGpuRenderer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Rendering.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Rendering.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.InputContainer.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.InputContainer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Visual.ButtonToggleGroup.Item.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Visual.ButtonToggleGroup.Item.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Visual.ButtonToggleGroup.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Visual.ButtonToggleGroup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Visual.ToggleButtonSprite.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Visual.ToggleButtonSprite.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Visual.ToggleSwitch.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Visual.ToggleSwitch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Visual.ToggleSwitchGroupManager.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Visual.ToggleSwitchGroupManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Visual.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Visual.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Calendar.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Calendar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/CalendarButton.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/CalendarButton.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/CameraControls.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/CameraControls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/ConstellationSegment.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/ConstellationSegment.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/GPUInstanceTest.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/GPUInstanceTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/GameLoop.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/GameLoop.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/HorizonFader.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/HorizonFader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/IUserContextObserver.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/IUserContextObserver.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/IUserContextSubject.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/IUserContextSubject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/InputData.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/InputData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/LatChange.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/LatChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/LocalObjectRetrieval.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/LocalObjectRetrieval.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/LongChange.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/LongChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/MessierRetrieval.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/MessierRetrieval.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/SidePanel.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/SidePanel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/StarQueue.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/StarQueue.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/StarTooltip.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/StarTooltip.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/StarTooltipText.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/StarTooltipText.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/TEMP.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/TEMP.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/TimeChange.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/TimeChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/TooltipGenerator.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/TooltipGenerator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/UnityConstellation.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/UnityConstellation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "stargazer/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/toc.html"
+        },
+        ".json": {
+          "relative_path": "stargazer/toc.json"
         }
       },
       "version": ""
