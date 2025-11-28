@@ -7,6 +7,9 @@ using System;
 
 namespace ChargerAstronomyEngine.Data.LocalObjects
 {
+    /// <summary>
+    /// Singleton class used to create an instance of a <see cref="HorizontalMoon"/>.
+    /// </summary>
     public sealed class MoonSingleton : EquatorialCelestialBody
     {
         private static readonly Lazy<MoonSingleton> _instance = new Lazy<MoonSingleton>(() => new MoonSingleton());
@@ -15,8 +18,15 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
         private AstroTime astroTime;
         private Observer observer;
 
+        /// <summary>
+        /// The singleton instance of the <see cref="MoonSingleton"/> class.
+        /// </summary>
         public static MoonSingleton Instance => _instance.Value;
 
+
+        /// <summary>
+        /// The current date and time.
+        /// </summary>
         public DateTime CurrentTime => currentTime;
 
         /// <summary>

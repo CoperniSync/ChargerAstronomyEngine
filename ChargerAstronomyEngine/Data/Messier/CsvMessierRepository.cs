@@ -12,9 +12,9 @@ namespace ChargerAstronomyEngine.Data.Messier
     /// <summary>
     /// Handles retrieving data from the csv listing of Messier Deep Space Objects retrieved from [Starlust.org](https://starlust.org/messier-catalog/)
     /// If a new repository is used, a new converter that implements the <see cref="IMessierRepository"/> needs to be created for it.
-    /// Author: Josh Johner
-    /// Created: SPR 2025 
     /// </summary>
+    /// <remarks>Author: Josh Johner
+    /// Created: SPR 2025 </remarks>
     public sealed class StarLustMessierCsvRepository : IMessierRepository
     {
         /// <summary>

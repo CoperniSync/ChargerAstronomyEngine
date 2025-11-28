@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",  
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../../",
+          "files": [
+            "ChargerAstronomyEngine/ChargerAstronomyEngine/*.csproj",
+            "ChargerAstronomyShared/src/ChargerAstronomyShared/*.csproj"
+          ]
+        }
+      ],
+      "dest": "api",
+      "namespaceLayout": "nested",
+	  "outputFormat": "markdown"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "Stargazer Data API",
+      "_appTitle": "Stargazer Data API",
+	  "_appLogoPath": "images/copernisync_logo_small.svg",
+	  "_appFaviconPath": "images/copernisync_planet_only.svg",
+	  "_disableContribution": false,
+      "_enableSearch": true,
+      "pdf": false
+    }
+  }
+}

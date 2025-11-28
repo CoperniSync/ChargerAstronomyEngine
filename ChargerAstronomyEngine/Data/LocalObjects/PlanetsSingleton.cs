@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace ChargerAstronomyEngine.Data.LocalObjects
 {
     /// <summary>
-    /// Singleton class to manage and calculate horizontal positions of all planets (excluding Earth).
+    /// Singleton class to a <see cref="HorizontalPlanet"/> instance of all planets (excluding Earth).
     /// </summary>
     public sealed class PlanetsSingleton : EquatorialCelestialBody
     {
@@ -20,8 +20,14 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
         private DateTime currentTime;
         private AstroTime astroTime;
 
+        /// <summary>
+        /// The singleton instance of the <see cref="PlanetsSingleton"/> class.
+        /// </summary>
         public static PlanetsSingleton Instance => _instance.Value;
 
+        /// <summary>
+        /// The current date and time.
+        /// </summary>
         public DateTime CurrentTime => currentTime;
         private PlanetsSingleton() : base(BodyType.Earth)
         {
