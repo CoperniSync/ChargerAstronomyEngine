@@ -15,9 +15,9 @@ namespace ChargerAstronomyEngine.Data.Constellations
 {
     /// <summary>
     /// Used to retrieve constellation data from the Stellarium Json file.
-    /// Author: Josh Johner
-    /// Created: SPR 2025
     /// </summary>
+    /// <remarks>Author: Josh Johner 
+    /// Created: SPR 2025</remarks> 
     public class CsvConstellationRepository : IConstellationRepository
     {
         /// <summary>

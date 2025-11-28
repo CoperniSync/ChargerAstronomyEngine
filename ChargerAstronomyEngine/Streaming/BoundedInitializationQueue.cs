@@ -26,53 +26,33 @@ namespace ChargerAstronomyEngine.Streaming
             Capacity = capacity;
         }
 
+        /// <inheritdoc />
         public IProducerConsumerCollection<T> Collection => inner;
 
-        /// <summary>
-        /// The maximum capacity of the queue.
-        /// </summary>
+        /// <inheritdoc />
         public int Capacity { get; }
 
-        /// <summary>
-        /// The current count of items in the queue.
-        /// </summary>
-
+        /// <inheritdoc />
         public int Count => blocking.Count;
 
-        /// <summary>
-        /// Attempt to enqueue an item without blocking. If the queue is full, returns false.
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public bool TryEnqueue(T item) => blocking.TryAdd(item, 0);
 
-        /// <summary>
-        /// Attempt to enqueue an item, blocking until space is available or cancellation is requested. Blocked items will be added once space is made.
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="ct"></param>
+        /// <inheritdoc />
         public void EnqueueBlocking(T item, CancellationToken ct) => blocking.Add(item, ct);
 
 
-        /// <summary>
-        /// Attempt to dequeue an item. If the queue is empty, returns false.
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public bool TryDequeue(out T item) => blocking.TryTake(out item, 0);
 
-        /// <summary>
-        /// Signals that no more items will be added to the queue.
-        /// </summary>
+        /// <inheritdoc />
         public void Complete()
         {
             if (Interlocked.Exchange(ref completed, 1) == 0)
                 blocking.CompleteAdding();
         }
 
-        /// <summary>
-        /// States whether the queue has been marked complete and is fully drained.
-        /// </summary>
+        /// <inheritdoc />
         public bool IsCompleted => blocking.IsAddingCompleted && inner.IsEmpty || blocking.IsCompleted;
 
         /// <summary>

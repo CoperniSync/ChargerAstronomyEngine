@@ -8,6 +8,9 @@ using System.Numerics;
 
 namespace ChargerAstronomyEngine.Data.LocalObjects
 {
+    /// <summary>
+    /// Singleton class used to create an instance of a <see cref="HorizontalSun"/>.
+    /// </summary>
     public sealed class SunSingleton : EquatorialCelestialBody
     {
         private static readonly Lazy<SunSingleton> _instance = new Lazy<SunSingleton>(() => new SunSingleton());
@@ -16,8 +19,14 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
         private AstroTime astroTime;
         private Observer observer;
 
+        /// <summary>
+        /// The singleton instance of the <see cref="SunSingleton"/> class.
+        /// </summary>
         public static SunSingleton Instance => _instance.Value;
 
+        /// <summary>
+        /// The current date and time.
+        /// </summary>
         public DateTime CurrentTime => currentTime;
 
         /// <summary>

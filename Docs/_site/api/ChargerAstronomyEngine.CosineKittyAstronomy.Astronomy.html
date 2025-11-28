@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> Class Astronomy | Stargazer Data API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" Class Astronomy | Stargazer Data API ">
+      
+      
+      <link rel="icon" href="../images/copernisync_planet_only.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/copernisync_logo_small.svg" alt="Stargazer Data API">
+            Stargazer Data API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy"> Class Astronomy</h1>
+
+<p>Namespace: <a href="ChargerAstronomyEngine.CosineKittyAstronomy.html">ChargerAstronomyEngine.CosineKittyAstronomy</a><br>
+Assembly: ChargerAstronomyEngine.dll</p>
+<p>The wrapper class that holds Astronomy Engine functions.</p>
+<pre><code class="lang-csharp">public class Astronomy
+</code></pre>
+<h4 id="inheritance">Inheritance</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.object">object</a> ←
+<a href="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.html">Astronomy</a></p>
+<h4 id="inherited-members">Inherited Members</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
+<h2 id="fields">Fields</h2>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_CalcMoonCount"> CalcMoonCount</h3>
+<p>Counter used for performance testing.</p>
+<pre><code class="lang-csharp">public int CalcMoonCount
+</code></pre>
+<h4 id="field-value">Field Value</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<h2 id="methods">Methods</h2>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_AngleBetween_ChargerAstronomyEngine_CosineKittyAstronomy_AstroVector_ChargerAstronomyEngine_CosineKittyAstronomy_AstroVector_"> AngleBetween(AstroVector, AstroVector)</h3>
+<p>Calculates the angle in degrees between two vectors.</p>
+<pre><code class="lang-csharp">public double AngleBetween(AstroVector a, AstroVector b)
+</code></pre>
+<h4 id="parameters">Parameters</h4>
+<p><code>a</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>The first of a pair of vectors between which to measure an angle.</p>
+<p><code>b</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>The second of a pair of vectors between which to measure an angle.</p>
+<h4 id="returns">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The angle between the two vectors expressed in degrees.
+The value is in the range [0, 180].</p>
+<h4 id="remarks">Remarks</h4>
+<p>Given a pair of vectors, this function returns the angle in degrees
+between the two vectors in 3D space.
+The angle is measured in the plane that contains both vectors.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_AngleFromSun_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> AngleFromSun(EquatorialCelestialBody, AstroTime)</h3>
+<p>Returns the angle between the given body and the Sun, as seen from the Earth.</p>
+<pre><code class="lang-csharp">public double AngleFromSun(EquatorialCelestialBody body, AstroTime time)
+</code></pre>
+<h4 id="parameters-1">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The celestial body whose angle from the Sun is to be measured.
+Not allowed to be <code>Body.Earth</code>.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The time at which the observation is made.</p>
+<h4 id="returns-1">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>Returns the angle in degrees between the Sun and the specified body as
+seen from the center of the Earth.</p>
+<h4 id="remarks-1">Remarks</h4>
+<p>This function calculates the angular separation between the given body and the Sun,
+as seen from the center of the Earth. This angle is helpful for determining how
+easy it is to see the body away from the glare of the Sun.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Atmosphere_System_Double_"> Atmosphere(double)</h3>
+<p>Calculates U.S. Standard Atmosphere (1976) variables as a function of elevation.</p>
+<pre><code class="lang-csharp">public AtmosphereInfo Atmosphere(double elevationMeters)
+</code></pre>
+<h4 id="parameters-2">Parameters</h4>
+<p><code>elevationMeters</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The elevation above sea level at which to calculate atmospheric variables.
+Must be in the range -500 to +100000, or an exception will occur.</p>
+<h4 id="returns-2">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AtmosphereInfo.html">AtmosphereInfo</a></p>
+<h4 id="remarks-2">Remarks</h4>
+<p>This function calculates idealized values of pressure, temperature, and density
+using the U.S. Standard Atmosphere (1976) model.</p>
+<ol>
+<li>COESA, U.S. Standard Atmosphere, 1976, U.S. Government Printing Office, Washington, DC, 1976.</li>
+<li>Jursa, A. S., Ed., Handbook of Geophysics and the Space Environment, Air Force Geophysics Laboratory, 1985.
+See:
+<a href="https://hbcp.chemnetbase.com/faces/documents/14_12/14_12_0001.xhtml">https://hbcp.chemnetbase.com/faces/documents/14_12/14_12_0001.xhtml</a>
+<a href="https://ntrs.nasa.gov/api/citations/19770009539/downloads/19770009539.pdf">https://ntrs.nasa.gov/api/citations/19770009539/downloads/19770009539.pdf</a>
+<a href="https://www.ngdc.noaa.gov/stp/space-weather/online-publications/miscellaneous/us-standard-atmosphere-1976/us-standard-atmosphere_st76-1562_noaa.pdf">https://www.ngdc.noaa.gov/stp/space-weather/online-publications/miscellaneous/us-standard-atmosphere-1976/us-standard-atmosphere_st76-1562_noaa.pdf</a></li>
+</ol>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_BackdatePosition_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Aberration_"> BackdatePosition(AstroTime, EquatorialCelestialBody, EquatorialCelestialBody, Aberration)</h3>
+<p>Solve for light travel time correction of apparent position.</p>
+<pre><code class="lang-csharp">public AstroVector BackdatePosition(AstroTime time, EquatorialCelestialBody observerBody, EquatorialCelestialBody targetBody, Aberration aberration)
+</code></pre>
+<h4 id="parameters-3">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The time of observation.</p>
+<p><code>observerBody</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The body to be used as the observation location.</p>
+<p><code>targetBody</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The body to be observed.</p>
+<p><code>aberration</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Aberration.html">Aberration</a></p>
+<p><code>Aberration.Corrected</code> to correct for aberration, or <code>Aberration.None</code> to leave uncorrected.</p>
+<h4 id="returns-3">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>The position vector at the solved backdated time.
+Its <code>t</code> field holds the time that light left the observed
+body to arrive at the observer at the observation time.</p>
+<h4 id="remarks-3">Remarks</h4>
+<p>When observing a distant object, for example Jupiter as seen from Earth,
+the amount of time it takes for light to travel from the object to the
+observer can significantly affect the object's apparent position.</p>
+<p>This function solves the light travel time correction for the apparent
+relative position vector of a target body as seen by an observer body
+at a given observation time.</p>
+<p>For geocentric calculations, #Astronomy.GeoVector also includes light
+travel time correction, but the time <code>t</code> embedded in its returned vector
+refers to the observation time, not the backdated time that light left
+the observed body. Thus <code>BackdatePosition</code> provides direct
+access to the light departure time for callers that need it.</p>
+<p>For a more generalized light travel correction solver, see #Astronomy.CorrectLightTravel.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_BaryState_ChargerAstronomyShared_Domain_Equatorial_BodyType_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> BaryState(BodyType, AstroTime)</h3>
+<p>Calculates barycentric position and velocity vectors for the given body.</p>
+<pre><code class="lang-csharp">public StateVector BaryState(BodyType body, AstroTime time)
+</code></pre>
+<h4 id="parameters-4">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.BodyType.html">BodyType</a></p>
+<p>The celestial body whose barycentric state vector is to be calculated.
+Supported values are <code>Body.Sun</code>, <code>Body.Moon</code>, <code>Body.EMB</code>, <code>Body.SSB</code>, and all planets:
+<code>Body.Mercury</code>, <code>Body.Venus</code>, <code>Body.Earth</code>, <code>Body.Mars</code>, <code>Body.Jupiter</code>,
+<code>Body.Saturn</code>, <code>Body.Uranus</code>, <code>Body.Neptune</code>, <code>Body.Pluto</code>.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate position and velocity.</p>
+<h4 id="returns-4">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>A structure that contains barycentric position and velocity vectors.</p>
+<h4 id="remarks-4">Remarks</h4>
+<p>Given a body and a time, calculates the barycentric position and velocity
+vectors for the center of that body at that time.
+The vectors are expressed in J2000 mean equator coordinates (EQJ).</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_CombineRotation_ChargerAstronomyEngine_CosineKittyAstronomy_RotationMatrix_ChargerAstronomyEngine_CosineKittyAstronomy_RotationMatrix_"> CombineRotation(RotationMatrix, RotationMatrix)</h3>
+<p>Creates a rotation based on applying one rotation followed by another.</p>
+<pre><code class="lang-csharp">public RotationMatrix CombineRotation(RotationMatrix a, RotationMatrix b)
+</code></pre>
+<h4 id="parameters-5">Parameters</h4>
+<p><code>a</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>The first rotation to apply.</p>
+<p><code>b</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>The second rotation to apply.</p>
+<h4 id="returns-5">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>The combined rotation matrix.</p>
+<h4 id="remarks-5">Remarks</h4>
+<p>Given two rotation matrices, returns a combined rotation matrix that is
+equivalent to rotating based on the first matrix, followed by the second.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Constellation_System_Double_System_Double_"> Constellation(double, double)</h3>
+<p>Determines the constellation that contains the given point in the sky.</p>
+<pre><code class="lang-csharp">public ConstellationInfo Constellation(double ra, double dec)
+</code></pre>
+<h4 id="parameters-6">Parameters</h4>
+<p><code>ra</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The right ascension (RA) of a point in the sky, using the J2000 equatorial system (EQJ).</p>
+<p><code>dec</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The declination (DEC) of a point in the sky, using the J2000 equatorial system (EQJ).</p>
+<h4 id="returns-6">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.ConstellationInfo.html">ConstellationInfo</a></p>
+<p>A structure that contains the 3-letter abbreviation and full name
+of the constellation that contains the given (ra,dec), along with
+the converted B1875 (ra,dec) for that point.</p>
+<h4 id="remarks-6">Remarks</h4>
+<p>Given J2000 equatorial (EQJ) coordinates of a point in the sky, determines the
+constellation that contains that point.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_CorrectLightTravel_ChargerAstronomyEngine_CosineKittyAstronomy_IPositionFunction_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> CorrectLightTravel(IPositionFunction, AstroTime)</h3>
+<p>Solve for light travel time of a vector function.</p>
+<pre><code class="lang-csharp">public AstroVector CorrectLightTravel(IPositionFunction func, AstroTime time)
+</code></pre>
+<h4 id="parameters-7">Parameters</h4>
+<p><code>func</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.IPositionFunction.html">IPositionFunction</a></p>
+<p>An arbitrary position vector as a function of time.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The observation time for which to solve for light travel delay.</p>
+<h4 id="returns-7">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>The position vector at the solved backdated time.
+The <code>t</code> field holds the time that light left the observed
+body to arrive at the observer at the observation time.</p>
+<h4 id="remarks-7">Remarks</h4>
+<p>When observing a distant object, for example Jupiter as seen from Earth,
+the amount of time it takes for light to travel from the object to the
+observer can significantly affect the object's apparent position.
+This function is a generic solver that figures out how long in the
+past light must have left the observed object to reach the observer
+at the specified observation time. It uses #IPositionFunction
+to express an arbitrary position vector as a function of time.</p>
+<p>This function repeatedly calls <code>func.Position</code>, passing a series of time
+estimates in the past. Then <code>func.Position</code> must return a relative state vector between
+the observer and the target. <code>CorrectLightTravel</code> keeps calling
+<code>func.Position</code> with more and more refined estimates of the time light must have
+left the target to arrive at the observer.</p>
+<p>For common use cases, it is simpler to use #Astronomy.BackdatePosition
+for calculating the light travel time correction of one body observing another body.</p>
+<p>For geocentric calculations, #Astronomy.GeoVector also backdates the returned
+position vector for light travel time, only it returns the observation time in
+the returned vector's <code>t</code> field rather than the backdated time.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_DeltaT_EspenakMeeus_System_Double_"> DeltaT_EspenakMeeus(double)</h3>
+<p>The default Delta T function used by Astronomy Engine.</p>
+<pre><code class="lang-csharp">public static double DeltaT_EspenakMeeus(double ut)
+</code></pre>
+<h4 id="parameters-8">Parameters</h4>
+<p><code>ut</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The floating point number of days since noon UTC on January 1, 2000.</p>
+<h4 id="returns-8">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The estimated difference TT-UT on the given date, expressed in seconds.</p>
+<h4 id="remarks-8">Remarks</h4>
+<p>Espenak and Meeus use a series of piecewise polynomials to
+approximate DeltaT of the Earth in their &quot;Five Millennium Canon of Solar Eclipses&quot;.
+See: <a href="https://eclipse.gsfc.nasa.gov/SEhelp/deltatpoly2004.html">https://eclipse.gsfc.nasa.gov/SEhelp/deltatpoly2004.html</a>
+This is the default Delta T function used by Astronomy Engine.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_EclipticGeoMoon_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> EclipticGeoMoon(AstroTime)</h3>
+<p>Calculates spherical ecliptic geocentric position of the Moon.</p>
+<pre><code class="lang-csharp">public Spherical EclipticGeoMoon(AstroTime time)
+</code></pre>
+<h4 id="parameters-9">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the Moon's position.</p>
+<h4 id="returns-9">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Spherical.html">Spherical</a></p>
+<h4 id="remarks-9">Remarks</h4>
+<p>Given a time of observation, calculates the Moon's geocentric position
+in ecliptic spherical coordinates. Provides the ecliptic latitude and
+longitude in degrees, and the geocentric distance in astronomical units (AU).</p>
+<p>The ecliptic angles are measured in &quot;ECT&quot;: relative to the true ecliptic plane and
+equatorial plane at the specified time. This means the Earth's equator
+is corrected for precession and nutation, and the plane of the Earth's
+orbit is corrected for gradual obliquity drift.</p>
+<p>This algorithm is based on the Nautical Almanac Office's <em>Improved Lunar Ephemeris</em> of 1954,
+which in turn derives from E. W. Brown's lunar theories from the early twentieth century.
+It is adapted from Turbo Pascal code from the book
+<a href="https://www.springer.com/us/book/9783540672210">Astronomy on the Personal Computer</a>
+by Montenbruck and Pfleger.</p>
+<p>To calculate a J2000 mean equator vector instead, use #Astronomy.GeoMoon.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_EclipticLongitude_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> EclipticLongitude(EquatorialCelestialBody, AstroTime)</h3>
+<p>Calculates heliocentric ecliptic longitude of a body.</p>
+<pre><code class="lang-csharp">public double EclipticLongitude(EquatorialCelestialBody body, AstroTime time)
+</code></pre>
+<h4 id="parameters-10">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>A body other than the Sun.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which the body's ecliptic longitude is to be calculated.</p>
+<h4 id="returns-10">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>Returns the ecliptic longitude in degrees of the given body at the given time.</p>
+<h4 id="remarks-10">Remarks</h4>
+<p>This function calculates the angle around the plane of the Earth's orbit
+of a celestial body, as seen from the center of the Sun.
+The angle is measured prograde (in the direction of the Earth's orbit around the Sun)
+in degrees from the true equinox of date. The ecliptic longitude is always in the range [0, 360).</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Elongation_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Elongation(EquatorialCelestialBody, AstroTime)</h3>
+<p>Determines visibility of a celestial body relative to the Sun, as seen from the Earth.</p>
+<pre><code class="lang-csharp">public ElongationInfo Elongation(EquatorialCelestialBody body, AstroTime time)
+</code></pre>
+<h4 id="parameters-11">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The celestial body whose visibility is to be calculated.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the observation.</p>
+<h4 id="returns-11">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.ElongationInfo.html">ElongationInfo</a></p>
+<p>Returns a valid #ElongationInfo structure, or throws an exception if there is an error.</p>
+<h4 id="remarks-11">Remarks</h4>
+<p>This function returns an #ElongationInfo structure, which provides the following
+information about the given celestial body at the given time:</p>
+<ul>
+<li><p><code>visibility</code> is an enumerated type that specifies whether the body is more easily seen
+in the morning before sunrise, or in the evening after sunset.</p>
+</li>
+<li><p><code>elongation</code> is the angle in degrees between two vectors: one from the center of the Earth to the
+center of the Sun, the other from the center of the Earth to the center of the specified body.
+This angle indicates how far away the body is from the glare of the Sun.
+The elongation angle is always in the range [0, 180].</p>
+</li>
+<li><p><code>ecliptic_separation</code> is the absolute value of the difference between the body's ecliptic longitude
+and the Sun's ecliptic longitude, both as seen from the center of the Earth. This angle measures
+around the plane of the Earth's orbit, and ignores how far above or below that plane the body is.
+The ecliptic separation is measured in degrees and is always in the range [0, 180].</p>
+</li>
+</ul>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Equator_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_EquatorEpoch_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Aberration_"> Equator(EquatorialCelestialBody, AstroTime, Observer, EquatorEpoch, Aberration)</h3>
+<p>Calculates equatorial coordinates of a celestial body as seen by an observer on the Earth's surface.</p>
+<pre><code class="lang-csharp">public Equatorial Equator(EquatorialCelestialBody body, AstroTime time, Observer observer, EquatorEpoch equdate, Aberration aberration)
+</code></pre>
+<h4 id="parameters-12">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The celestial body to be observed. Not allowed to be <code>Body.Earth</code>.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which the observation takes place.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>A location on or near the surface of the Earth.</p>
+<p><code>equdate</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EquatorEpoch.html">EquatorEpoch</a></p>
+<p>Selects the date of the Earth's equator in which to express the equatorial coordinates.</p>
+<p><code>aberration</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Aberration.html">Aberration</a></p>
+<p>Selects whether or not to correct for aberration.</p>
+<h4 id="returns-12">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Equatorial.html">Equatorial</a></p>
+<p>Topocentric equatorial coordinates of the celestial body.</p>
+<h4 id="remarks-12">Remarks</h4>
+<p>Calculates topocentric equatorial coordinates in one of two different systems:
+J2000 or true-equator-of-date, depending on the value of the <code>equdate</code> parameter.
+Equatorial coordinates include right ascension, declination, and distance in astronomical units.</p>
+<p>This function corrects for light travel time: it adjusts the apparent location
+of the observed body based on how long it takes for light to travel from the body to the Earth.</p>
+<p>This function corrects for <em>topocentric parallax</em>, meaning that it adjusts for the
+angular shift depending on where the observer is located on the Earth. This is most
+significant for the Moon, because it is so close to the Earth. However, parallax corection
+has a small effect on the apparent positions of other bodies.</p>
+<p>Correction for aberration is optional, using the <code>aberration</code> parameter.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_EquatorFromVector_ChargerAstronomyEngine_CosineKittyAstronomy_AstroVector_"> EquatorFromVector(AstroVector)</h3>
+<p>Given an equatorial vector, calculates equatorial angular coordinates.</p>
+<pre><code class="lang-csharp">public Equatorial EquatorFromVector(AstroVector vector)
+</code></pre>
+<h4 id="parameters-13">Parameters</h4>
+<p><code>vector</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>A vector in an equatorial coordinate system.</p>
+<h4 id="returns-13">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Equatorial.html">Equatorial</a></p>
+<p>Angular coordinates expressed in the same equatorial system as <code>vector</code>.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_EquatorialToEcliptic_ChargerAstronomyEngine_CosineKittyAstronomy_AstroVector_"> EquatorialToEcliptic(AstroVector)</h3>
+<p>Converts a J2000 mean equator (EQJ) vector to a true ecliptic of date (ETC) vector and angles.</p>
+<pre><code class="lang-csharp">public Ecliptic EquatorialToEcliptic(AstroVector eqj)
+</code></pre>
+<h4 id="parameters-14">Parameters</h4>
+<p><code>eqj</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>Equatorial coordinates in the J2000 frame of reference.
+You can call #Astronomy.GeoVector to obtain suitable equatorial coordinates.</p>
+<h4 id="returns-14">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Ecliptic.html">Ecliptic</a></p>
+<p>Spherical and vector coordinates expressed in true ecliptic coordinates of date (ECT).</p>
+<h4 id="remarks-13">Remarks</h4>
+<p>Given coordinates relative to the Earth's equator at J2000 (the instant of noon UTC
+on 1 January 2000), this function converts those coordinates to true ecliptic coordinates of date,
+which are relative to the plane of the Earth's orbit around the Sun.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_GeoEmbState_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> GeoEmbState(AstroTime)</h3>
+<p>Calculates the geocentric position and velocity of the Earth/Moon barycenter.</p>
+<pre><code class="lang-csharp">public StateVector GeoEmbState(AstroTime time)
+</code></pre>
+<h4 id="parameters-15">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the EMB vectors.</p>
+<h4 id="returns-15">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>The EMB's position and velocity vectors in geocentric J2000 equatorial coordinates.</p>
+<h4 id="remarks-14">Remarks</h4>
+<p>Given a time of observation, calculates the geocentric position and velocity vectors
+of the Earth/Moon barycenter (EMB).
+The position (x, y, z) components are expressed in AU (astronomical units).
+The velocity (vx, vy, vz) components are expressed in AU/day.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_GeoMoon_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> GeoMoon(AstroTime)</h3>
+<p>Calculates equatorial geocentric position of the Moon at a given time.</p>
+<pre><code class="lang-csharp">public AstroVector GeoMoon(AstroTime time)
+</code></pre>
+<h4 id="parameters-16">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the Moon's position.</p>
+<h4 id="returns-16">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>The Moon's position vector in J2000 equatorial coordinates (EQJ).</p>
+<h4 id="remarks-15">Remarks</h4>
+<p>Given a time of observation, calculates the Moon's position vector.
+The vector indicates the Moon's center relative to the Earth's center.
+The vector components are expressed in AU (astronomical units).
+The coordinates are oriented with respect to the Earth's equator at the J2000 epoch.
+In Astronomy Engine, this orientation is called EQJ.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_GeoMoonState_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> GeoMoonState(AstroTime)</h3>
+<p>Calculates equatorial geocentric position and velocity of the Moon at a given time.</p>
+<pre><code class="lang-csharp">public StateVector GeoMoonState(AstroTime time)
+</code></pre>
+<h4 id="parameters-17">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the Moon's position and velocity.</p>
+<h4 id="returns-17">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>The Moon's position and velocity vectors in J2000 equatorial coordinates (EQJ).</p>
+<h4 id="remarks-16">Remarks</h4>
+<p>Given a time of observation, calculates the Moon's position and velocity vectors.
+The position and velocity are of the Moon's center relative to the Earth's center.
+The position (x, y, z) components are expressed in AU (astronomical units).
+The velocity (vx, vy, vz) components are expressed in AU/day.
+The coordinates are oriented with respect to the Earth's equator at the J2000 epoch.
+In Astronomy Engine, this orientation is called EQJ.
+If you need the Moon's position only, and not its velocity,
+it is much more efficient to use #Astronomy.GeoMoon instead.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_GeoVector_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Aberration_"> GeoVector(EquatorialCelestialBody, AstroTime, Aberration)</h3>
+<p>Calculates geocentric Cartesian coordinates of a body in the J2000 equatorial system.</p>
+<pre><code class="lang-csharp">public AstroVector GeoVector(EquatorialCelestialBody body, AstroTime time, Aberration aberration)
+</code></pre>
+<h4 id="parameters-18">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>A body for which to calculate a heliocentric position: the Sun, Moon, or any of the planets.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the position.</p>
+<p><code>aberration</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Aberration.html">Aberration</a></p>
+<p><code>Aberration.Corrected</code> to correct for aberration, or <code>Aberration.None</code> to leave uncorrected.</p>
+<h4 id="returns-18">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>A geocentric position vector of the center of the given body.</p>
+<h4 id="remarks-17">Remarks</h4>
+<p>This function calculates the position of the given celestial body as a vector,
+using the center of the Earth as the origin.  The result is expressed as a Cartesian
+vector in the J2000 equatorial system: the coordinates are based on the mean equator
+of the Earth at noon UTC on 1 January 2000.</p>
+<p>If given an invalid value for <code>body</code>, this function will throw an exception.</p>
+<p>Unlike #Astronomy.HelioVector, this function corrects for light travel time.
+This means the position of the body is &quot;back-dated&quot; by the amount of time it takes
+light to travel from that body to an observer on the Earth.</p>
+<p>Also, the position can optionally be corrected for
+<a href="https://en.wikipedia.org/wiki/Aberration_of_light">aberration</a>, an effect
+causing the apparent direction of the body to be shifted due to transverse
+movement of the Earth with respect to the rays of light coming from that body.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_GlobalSolarEclipsesAfter_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> GlobalSolarEclipsesAfter(AstroTime)</h3>
+<p>Enumerates a series of global solar eclipses that occur after a specified time.</p>
+<pre><code class="lang-csharp">public IEnumerable&lt;GlobalSolarEclipseInfo&gt; GlobalSolarEclipsesAfter(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-19">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>Specifies the time to begin searching for consecutive solar eclipses.</p>
+<h4 id="returns-19">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyEngine.CosineKittyAstronomy.GlobalSolarEclipseInfo.html">GlobalSolarEclipseInfo</a>&gt;</p>
+<h4 id="remarks-18">Remarks</h4>
+<p>This is a convenience wrapper around the functions
+#Astronomy.SearchGlobalSolarEclipse and #Astronomy.NextGlobalSolarEclipse.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_HelioDistance_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> HelioDistance(EquatorialCelestialBody, AstroTime)</h3>
+<p>Calculates the distance between a body and the Sun at a given time.</p>
+<pre><code class="lang-csharp">public double HelioDistance(EquatorialCelestialBody body, AstroTime time)
+</code></pre>
+<h4 id="parameters-20">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>A body for which to calculate a heliocentric distance:
+the Sun, Moon, EMB, SSB, any of the planets, or a user-defined star.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the heliocentric distance.</p>
+<h4 id="returns-20">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The heliocentric distance in AU.</p>
+<h4 id="remarks-19">Remarks</h4>
+<p>Given a date and time, this function calculates the distance between
+the center of <code>body</code> and the center of the Sun, expressed in AU.
+For the planets Mercury through Neptune, this function is significantly
+more efficient than calling #Astronomy.HelioVector followed by taking the length
+of the resulting vector.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_HelioState_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> HelioState(EquatorialCelestialBody, AstroTime)</h3>
+<p>Calculates heliocentric position and velocity vectors for the given body.</p>
+<pre><code class="lang-csharp">public StateVector HelioState(EquatorialCelestialBody body, AstroTime time)
+</code></pre>
+<h4 id="parameters-21">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The celestial body whose heliocentric state vector is to be calculated.
+Supported values are <code>Body.Sun</code>, <code>Body.Moon</code>, <code>Body.EMB</code>, <code>Body.SSB</code>, and all planets:
+<code>Body.Mercury</code>, <code>Body.Venus</code>, <code>Body.Earth</code>, <code>Body.Mars</code>, <code>Body.Jupiter</code>,
+<code>Body.Saturn</code>, <code>Body.Uranus</code>, <code>Body.Neptune</code>, <code>Body.Pluto</code>.
+Also allowed to be a user-defined star created by #Astronomy.DefineStar.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate position and velocity.</p>
+<h4 id="returns-21">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>A structure that contains heliocentric position and velocity vectors.</p>
+<h4 id="remarks-20">Remarks</h4>
+<p>Given a body and a time, calculates the position and velocity
+vectors for the center of that body at that time, relative to the center of the Sun.
+The vectors are expressed in J2000 mean equator coordinates (EQJ).
+If you need the position vector only, it is more efficient to call #Astronomy.HelioVector.
+The Sun's center is a non-inertial frame of reference. In other words, the Sun
+experiences acceleration due to gravitational forces, mostly from the larger
+planets (Jupiter, Saturn, Uranus, and Neptune). If you want to calculate momentum,
+kinetic energy, or other quantities that require a non-accelerating frame
+of reference, consider using #Astronomy.BaryState instead.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_HelioVector_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> HelioVector(EquatorialCelestialBody, AstroTime)</h3>
+<p>Calculates heliocentric Cartesian coordinates of a body in the J2000 equatorial system.</p>
+<pre><code class="lang-csharp">public AstroVector HelioVector(EquatorialCelestialBody body, AstroTime time)
+</code></pre>
+<h4 id="parameters-22">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>A body for which to calculate a heliocentric position:
+the Sun, Moon, EMB, SSB, or any of the planets.
+Also allowed to be a user-defined star created by #Astronomy.DefineStar.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the position.</p>
+<h4 id="returns-22">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>A heliocentric position vector of the center of the given body.</p>
+<h4 id="remarks-21">Remarks</h4>
+<p>This function calculates the position of the given celestial body as a vector,
+using the center of the Sun as the origin.  The result is expressed as a Cartesian
+vector in the J2000 equatorial system: the coordinates are based on the mean equator
+of the Earth at noon UTC on 1 January 2000.</p>
+<p>The position is not corrected for light travel time or aberration.
+This is different from the behavior of #Astronomy.GeoVector.</p>
+<p>If given an invalid value for <code>body</code>, this function will throw an #InvalidBodyException.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Horizon_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_ChargerAstronomyEngine_CosineKittyAstronomy_Equatorial_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Refraction_"> Horizon(AstroTime, Observer, Equatorial, Refraction)</h3>
+<p>Calculates the apparent location of a body relative to the local horizon of an observer on the Earth.</p>
+<pre><code class="lang-csharp">public Topocentric Horizon(AstroTime time, Observer observer, Equatorial eq, Refraction refraction)
+</code></pre>
+<h4 id="parameters-23">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the observation.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The geographic location of the observer.</p>
+<p><code>eq</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Equatorial.html">Equatorial</a></p>
+<p><code>refraction</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Refraction.html">Refraction</a></p>
+<p>Selects whether to correct for atmospheric refraction, and if so, which model to use.
+The recommended value for most uses is <code>Refraction.Normal</code>.
+See remarks above for more details.</p>
+<h4 id="returns-23">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Topocentric.html">Topocentric</a></p>
+<p>The body's apparent horizontal coordinates and equatorial coordinates, both optionally corrected for refraction.</p>
+<h4 id="remarks-22">Remarks</h4>
+<p>Given a date and time, the geographic location of an observer on the Earth, and
+equatorial coordinates (right ascension and declination) of a celestial body,
+this function returns horizontal coordinates (azimuth and altitude angles) for the body
+relative to the horizon at the geographic location.</p>
+<p>The right ascension <code>ra</code> and declination <code>dec</code> passed in must be <em>equator of date</em>
+coordinates, based on the Earth's true equator at the date and time of the observation.
+Otherwise the resulting horizontal coordinates will be inaccurate.
+Equator of date coordinates can be obtained by calling #Astronomy.Equator, passing in
+<code>EquatorEpoch.OfDate</code> as its <code>equdate</code> parameter. It is also recommended to enable
+aberration correction by passing in <code>Aberration.Corrected</code> as the <code>aberration</code> parameter.</p>
+<p>This function optionally corrects for atmospheric refraction.
+For most uses, it is recommended to pass <code>Refraction.Normal</code> in the <code>refraction</code> parameter to
+correct for optical lensing of the Earth's atmosphere that causes objects
+to appear somewhat higher above the horizon than they actually are.
+However, callers may choose to avoid this correction by passing in <code>Refraction.None</code>.
+If refraction correction is enabled, the azimuth, altitude, right ascension, and declination
+in the #Topocentric structure returned by this function will all be corrected for refraction.
+If refraction is disabled, none of these four coordinates will be corrected; in that case,
+the right ascension and declination in the returned structure will be numerically identical
+to the respective <code>ra</code> and <code>dec</code> values passed in.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_HorizonFromVector_ChargerAstronomyEngine_CosineKittyAstronomy_AstroVector_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Refraction_"> HorizonFromVector(AstroVector, Refraction)</h3>
+<p>Converts Cartesian coordinates to horizontal coordinates.</p>
+<pre><code class="lang-csharp">public Spherical HorizonFromVector(AstroVector vector, Refraction refraction)
+</code></pre>
+<h4 id="parameters-24">Parameters</h4>
+<p><code>vector</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>Cartesian vector to be converted to horizontal coordinates.</p>
+<p><code>refraction</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Refraction.html">Refraction</a></p>
+<p><code>Refraction.Normal</code>: correct altitude for atmospheric refraction (recommended).
+<code>Refraction.None</code>: no atmospheric refraction correction is performed.
+<code>Refraction.JplHor</code>: for JPL Horizons compatibility testing only; not recommended for normal use.</p>
+<h4 id="returns-24">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Spherical.html">Spherical</a></p>
+<p>Horizontal spherical coordinates as described above.</p>
+<h4 id="remarks-23">Remarks</h4>
+<p>Given a horizontal Cartesian vector, returns horizontal azimuth and altitude.</p>
+<p><em>IMPORTANT:</em> This function differs from #Astronomy.SphereFromVector in two ways:</p>
+<ul>
+<li><code>Astronomy.SphereFromVector</code> returns a <code>lon</code> value that represents azimuth defined counterclockwise
+from north (e.g., west = +90), but this function represents a clockwise rotation
+(e.g., east = +90). The difference is because <code>Astronomy.SphereFromVector</code> is intended
+to preserve the vector &quot;right-hand rule&quot;, while this function defines azimuth in a more
+traditional way as used in navigation and cartography.</li>
+<li>This function optionally corrects for atmospheric refraction, while <code>Astronomy.SphereFromVector</code>
+does not.</li>
+</ul>
+<p>The returned structure contains the azimuth in <code>lon</code>.
+It is measured in degrees clockwise from north: east = +90 degrees, west = +270 degrees.</p>
+<p>The altitude is stored in <code>lat</code>.</p>
+<p>The distance to the observed object is stored in <code>dist</code>,
+and is expressed in astronomical units (AU).</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_HourAngle_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> HourAngle(EquatorialCelestialBody, AstroTime, Observer)</h3>
+<p>Finds the hour angle of a body for a given observer and time.</p>
+<pre><code class="lang-csharp">public double HourAngle(EquatorialCelestialBody body, AstroTime time, Observer observer)
+</code></pre>
+<h4 id="parameters-25">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The body whose observed hour angle is to be found.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The time of the observation.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The geographic location where the observation takes place.</p>
+<h4 id="returns-25">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The real-valued hour angle of the body in the half-open range [0, 24).</p>
+<h4 id="remarks-24">Remarks</h4>
+<p>The <em>hour angle</em> of a celestial body indicates its position in the sky with respect
+to the Earth's rotation. The hour angle depends on the location of the observer on the Earth.
+The hour angle is 0 when the body's center reaches its highest angle above the horizon in a given day.
+The hour angle increases by 1 unit for every sidereal hour that passes after that point, up
+to 24 sidereal hours when it reaches the highest point again. So the hour angle indicates
+the number of hours that have passed since the most recent time that the body has culminated,
+or reached its highest point.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_IdentityMatrix"> IdentityMatrix()</h3>
+<p>Creates an identity rotation matrix.</p>
+<pre><code class="lang-csharp">public RotationMatrix IdentityMatrix()
+</code></pre>
+<h4 id="returns-26">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>The identity matrix.</p>
+<h4 id="remarks-25">Remarks</h4>
+<p>Returns a rotation matrix that has no effect on orientation.
+This matrix can be the starting point for other operations,
+such as using a series of calls to #Astronomy.Pivot to
+create a custom rotation matrix.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Illumination_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Illumination(EquatorialCelestialBody, AstroTime)</h3>
+<p>Finds visual magnitude, phase angle, and other illumination information about a celestial body.</p>
+<pre><code class="lang-csharp">public IllumInfo Illumination(EquatorialCelestialBody body, AstroTime time)
+</code></pre>
+<h4 id="parameters-26">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The Sun, Moon, or any planet other than the Earth.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the observation.</p>
+<h4 id="returns-27">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.IllumInfo.html">IllumInfo</a></p>
+<p>An #IllumInfo structure with fields as documented above.</p>
+<h4 id="remarks-26">Remarks</h4>
+<p>This function calculates information about how bright a celestial body appears from the Earth,
+reported as visual magnitude, which is a smaller (or even negative) number for brighter objects
+and a larger number for dimmer objects.</p>
+<p>For bodies other than the Sun, it reports a phase angle, which is the angle in degrees between
+the Sun and the Earth, as seen from the center of the body. Phase angle indicates what fraction
+of the body appears illuminated as seen from the Earth. For example, when the phase angle is
+near zero, it means the body appears &quot;full&quot; as seen from the Earth.  A phase angle approaching
+180 degrees means the body appears as a thin crescent as seen from the Earth.  A phase angle
+of 90 degrees means the body appears &quot;half full&quot;.
+For the Sun, the phase angle is always reported as 0; the Sun emits light rather than reflecting it,
+so it doesn't have a phase angle.</p>
+<p>When the body is Saturn, the returned structure contains a field <code>ring_tilt</code> that holds
+the tilt angle in degrees of Saturn's rings as seen from the Earth. A value of 0 means
+the rings appear edge-on, and are thus nearly invisible from the Earth. The <code>ring_tilt</code> holds
+0 for all bodies other than Saturn.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_InverseRefractionAngle_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Refraction_System_Double_"> InverseRefractionAngle(Refraction, double)</h3>
+<p>Calculates the inverse of an atmospheric refraction angle.</p>
+<pre><code class="lang-csharp">public double InverseRefractionAngle(Refraction refraction, double bent_altitude)
+</code></pre>
+<h4 id="parameters-27">Parameters</h4>
+<p><code>refraction</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Refraction.html">Refraction</a></p>
+<p>The option selecting which refraction correction to use.
+See #Astronomy.RefractionAngle.</p>
+<p><code>bent_altitude</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The apparent altitude that includes atmospheric refraction.</p>
+<h4 id="returns-28">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The angular adjustment in degrees to be added to the
+altitude angle to correct for atmospheric lensing.
+This will be less than or equal to zero.</p>
+<h4 id="remarks-27">Remarks</h4>
+<p>Given an observed altitude angle that includes atmospheric refraction,
+calculates the negative angular correction to obtain the unrefracted
+altitude. This is useful for cases where observed horizontal
+coordinates are to be converted to another orientation system,
+but refraction first must be removed from the observed position.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_InverseRotation_ChargerAstronomyEngine_CosineKittyAstronomy_RotationMatrix_"> InverseRotation(RotationMatrix)</h3>
+<p>Calculates the inverse of a rotation matrix.</p>
+<pre><code class="lang-csharp">public RotationMatrix InverseRotation(RotationMatrix rotation)
+</code></pre>
+<h4 id="parameters-28">Parameters</h4>
+<p><code>rotation</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>The rotation matrix to be inverted.</p>
+<h4 id="returns-29">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that performs the opposite transformation.</p>
+<h4 id="remarks-28">Remarks</h4>
+<p>Given a rotation matrix that performs some coordinate transform,
+this function returns the matrix that reverses that transform.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_JupiterMoons_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> JupiterMoons(AstroTime)</h3>
+<p>Calculates jovicentric positions and velocities of Jupiter's largest 4 moons.</p>
+<pre><code class="lang-csharp">public JupiterMoonsInfo JupiterMoons(AstroTime time)
+</code></pre>
+<h4 id="parameters-29">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the position vectors.</p>
+<h4 id="returns-30">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.JupiterMoonsInfo.html">JupiterMoonsInfo</a></p>
+<p>Position and velocity vectors of Jupiter's largest 4 moons.</p>
+<h4 id="remarks-29">Remarks</h4>
+<p>Calculates position and velocity vectors for Jupiter's moons
+Io, Europa, Ganymede, and Callisto, at the given date and time.
+The vectors are jovicentric (relative to the center of Jupiter).
+Their orientation is the Earth's equatorial system at the J2000 epoch (EQJ).
+The position components are expressed in astronomical units (AU), and the
+velocity components are in AU/day.</p>
+<p>To convert to heliocentric position vectors, call #Astronomy.HelioVector
+with <code>Body.Jupiter</code> to get Jupiter's heliocentric position, then
+add the jovicentric positions. Likewise, you can call #Astronomy.GeoVector
+to convert to geocentric positions; however, you will have to manually
+correct for light travel time from the Jupiter system to Earth to
+figure out what time to pass to <code>jupiterMoons</code> to get an accurate picture
+of how Jupiter and its moons look from Earth.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_LagrangePoint_System_Int32_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_"> LagrangePoint(int, AstroTime, EquatorialCelestialBody, EquatorialCelestialBody)</h3>
+<p>Calculates one of the 5 Lagrange points for a pair of co-orbiting bodies.</p>
+<pre><code class="lang-csharp">public StateVector LagrangePoint(int point, AstroTime time, EquatorialCelestialBody major_body, EquatorialCelestialBody minor_body)
+</code></pre>
+<h4 id="parameters-30">Parameters</h4>
+<p><code>point</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>An integer 1..5 that selects which of the Lagrange points to calculate.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The time for which the Lagrange point is to be calculated.</p>
+<p><code>major_body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The more massive of the co-orbiting bodies: <code>Body.Sun</code> or <code>Body.Earth</code>.</p>
+<p><code>minor_body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The less massive of the co-orbiting bodies. See main remarks.</p>
+<h4 id="returns-31">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>The position and velocity of the selected Lagrange point with respect to the major body's center.</p>
+<h4 id="remarks-30">Remarks</h4>
+<p>Given a more massive &quot;major&quot; body and a much less massive &quot;minor&quot; body,
+calculates one of the five Lagrange points in relation to the minor body's
+orbit around the major body. The parameter <code>point</code> is an integer that
+selects the Lagrange point as follows:</p>
+<p>1 = the Lagrange point between the major body and minor body.
+2 = the Lagrange point on the far side of the minor body.
+3 = the Lagrange point on the far side of the major body.
+4 = the Lagrange point 60 degrees ahead of the minor body's orbital position.
+5 = the Lagrange point 60 degrees behind the minor body's orbital position.</p>
+<p>The function returns the state vector for the selected Lagrange point
+in J2000 mean equator coordinates (EQJ), with respect to the center of the
+major body.</p>
+<p>To calculate Sun/Earth Lagrange points, pass in <code>Body.Sun</code> for <code>major_body</code>
+and <code>Body.EMB</code> (Earth/Moon barycenter) for <code>minor_body</code>.
+For Lagrange points of the Sun and any other planet, pass in just that planet
+(e.g. <code>Body.Jupiter</code>) for <code>minor_body</code>.
+To calculate Earth/Moon Lagrange points, pass in <code>Body.Earth</code> and <code>Body.Moon</code>
+for the major and minor bodies respectively.</p>
+<p>In some cases, it may be more efficient to call #Astronomy.LagrangePointFast,
+especially when the state vectors have already been calculated, or are needed
+for some other purpose.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_LagrangePointFast_System_Int32_ChargerAstronomyEngine_CosineKittyAstronomy_StateVector_System_Double_ChargerAstronomyEngine_CosineKittyAstronomy_StateVector_System_Double_"> LagrangePointFast(int, StateVector, double, StateVector, double)</h3>
+<p>Calculates one of the 5 Lagrange points from body masses and state vectors.</p>
+<pre><code class="lang-csharp">public StateVector LagrangePointFast(int point, StateVector major_state, double major_mass, StateVector minor_state, double minor_mass)
+</code></pre>
+<h4 id="parameters-31">Parameters</h4>
+<p><code>point</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>An integer 1..5 that selects which of the Lagrange points to calculate.</p>
+<p><code>major_state</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>The state vector of the major (more massive) of the pair of bodies.</p>
+<p><code>major_mass</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The mass product GM of the major body.</p>
+<p><code>minor_state</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>The state vector of the minor (less massive) of the pair of bodies.</p>
+<p><code>minor_mass</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The mass product GM of the minor body.</p>
+<h4 id="returns-32">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>The position and velocity of the selected Lagrange point with respect to the major body's center.</p>
+<h4 id="remarks-31">Remarks</h4>
+<p>Given a more massive &quot;major&quot; body and a much less massive &quot;minor&quot; body,
+calculates one of the five Lagrange points in relation to the minor body's
+orbit around the major body. The parameter <code>point</code> is an integer that
+selects the Lagrange point as follows:</p>
+<p>1 = the Lagrange point between the major body and minor body.
+2 = the Lagrange point on the far side of the minor body.
+3 = the Lagrange point on the far side of the major body.
+4 = the Lagrange point 60 degrees ahead of the minor body's orbital position.
+5 = the Lagrange point 60 degrees behind the minor body's orbital position.</p>
+<p>The caller passes in the state vector and mass for both bodies.
+The state vectors can be in any orientation and frame of reference.
+The body masses are expressed as GM products, where G = the universal
+gravitation constant and M = the body's mass. Thus the units for
+<code>major_mass</code> and <code>minor_mass</code> must be au^3/day^2.
+Use #Astronomy.MassProduct to obtain GM values for various solar system bodies.</p>
+<p>The function returns the state vector for the selected Lagrange point
+using the same orientation as the state vector parameters <code>major_state</code> and <code>minor_state</code>,
+and the position and velocity components are with respect to the major body's center.</p>
+<p>Consider calling #Astronomy.LagrangePoint, instead of this function, for simpler usage in most cases.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Libration_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Libration(AstroTime)</h3>
+<p>Calculates the Moon's libration angles at a given moment in time.</p>
+<pre><code class="lang-csharp">public LibrationInfo Libration(AstroTime time)
+</code></pre>
+<h4 id="parameters-32">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate lunar libration.</p>
+<h4 id="returns-33">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.LibrationInfo.html">LibrationInfo</a></p>
+<p>The Moon's ecliptic position and libration angles as seen from the Earth.</p>
+<h4 id="remarks-32">Remarks</h4>
+<p>Libration is an observed back-and-forth wobble of the portion of the
+Moon visible from the Earth. It is caused by the imperfect tidal locking
+of the Moon's fixed rotation rate, compared to its variable angular speed
+of orbit around the Earth.</p>
+<p>This function calculates a pair of perpendicular libration angles,
+one representing rotation of the Moon in ecliptic longitude <code>elon</code>, the other
+in ecliptic latitude <code>elat</code>, both relative to the Moon's mean Earth-facing position.</p>
+<p>This function also returns the geocentric position of the Moon
+expressed in ecliptic longitude <code>mlon</code>, ecliptic latitude <code>mlat</code>, the
+distance <code>dist_km</code> between the centers of the Earth and Moon expressed in kilometers,
+and the apparent angular diameter of the Moon <code>diam_deg</code>.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_LocalSolarEclipsesAfter_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> LocalSolarEclipsesAfter(AstroTime, Observer)</h3>
+<p>Enumerates a series of local solar eclipses that occur after a specified time.</p>
+<pre><code class="lang-csharp">public IEnumerable&lt;LocalSolarEclipseInfo&gt; LocalSolarEclipsesAfter(AstroTime startTime, Observer observer)
+</code></pre>
+<h4 id="parameters-33">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>Specifies the time to begin searching for consecutive solar eclipses.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The geographic location of the observer.</p>
+<h4 id="returns-34">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyEngine.CosineKittyAstronomy.LocalSolarEclipseInfo.html">LocalSolarEclipseInfo</a>&gt;</p>
+<h4 id="remarks-33">Remarks</h4>
+<p>This is a convenience wrapper around the functions
+#Astronomy.SearchLocalSolarEclipse and #Astronomy.NextLocalSolarEclipse.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_LunarApsidesAfter_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> LunarApsidesAfter(AstroTime)</h3>
+<p>Enumerates a series of apogees/perigees that occur after a specified time.</p>
+<pre><code class="lang-csharp">public IEnumerable&lt;ApsisInfo&gt; LunarApsidesAfter(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-34">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>Specifies the time to begin searching for consecutive lunar apsides.</p>
+<h4 id="returns-35">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.html">ApsisInfo</a>&gt;</p>
+<h4 id="remarks-34">Remarks</h4>
+<p>This is a convenience wrapper around the functions
+#Astronomy.SearchLunarApsis and #Astronomy.NextLunarApsis.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_LunarEclipsesAfter_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> LunarEclipsesAfter(AstroTime)</h3>
+<p>Enumerates a series of lunar eclipses that occur after a specified time.</p>
+<pre><code class="lang-csharp">public IEnumerable&lt;LunarEclipseInfo&gt; LunarEclipsesAfter(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-35">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>Specifies the time to begin searching for consecutive lunar eclipses.</p>
+<h4 id="returns-36">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyEngine.CosineKittyAstronomy.LunarEclipseInfo.html">LunarEclipseInfo</a>&gt;</p>
+<h4 id="remarks-35">Remarks</h4>
+<p>This is a convenience wrapper around the functions
+#Astronomy.SearchLunarEclipse and #Astronomy.NextLunarEclipse.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_MassProduct_ChargerAstronomyShared_Domain_Equatorial_BodyType_"> MassProduct(BodyType)</h3>
+<p>Returns the product of mass and universal gravitational constant of a Solar System body.</p>
+<pre><code class="lang-csharp">public double MassProduct(BodyType body)
+</code></pre>
+<h4 id="parameters-36">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.BodyType.html">BodyType</a></p>
+<p>The body for which to find the GM product.
+Allowed to be the Sun, Moon, EMB (Earth/Moon Barycenter), or any planet.
+Any other value will cause an exception to be thrown.</p>
+<h4 id="returns-37">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The mass product of the given body in au^3/day^2.</p>
+<h4 id="remarks-36">Remarks</h4>
+<p>For problems involving the gravitational interactions of Solar System bodies,
+it is helpful to know the product GM, where G = the universal gravitational constant
+and M = the mass of the body. In practice, GM is known to a higher precision than
+either G or M alone, and thus using the product results in the most accurate results.
+This function returns the product GM in the units au^3/day^2.
+The values come from page 10 of a
+<a href="https://web.archive.org/web/20120220062549/http://iau-comm4.jpl.nasa.gov/de405iom/de405iom.pdf">JPL memorandum regarding the DE405/LE405 ephemeris</a>.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_MoonNodesAfter_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> MoonNodesAfter(AstroTime)</h3>
+<p>Enumerates a series of ascending/descending nodes of the Moon that occur after a specified time.</p>
+<pre><code class="lang-csharp">public IEnumerable&lt;NodeEventInfo&gt; MoonNodesAfter(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-37">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>Specifies the time to begin searching for consecutive lunar apsides.</p>
+<h4 id="returns-38">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyEngine.CosineKittyAstronomy.NodeEventInfo.html">NodeEventInfo</a>&gt;</p>
+<h4 id="remarks-37">Remarks</h4>
+<p>This is a convenience wrapper around the functions
+#Astronomy.SearchMoonNode and #Astronomy.NextMoonNode.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_MoonPhase_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> MoonPhase(AstroTime)</h3>
+<p>Returns the Moon's phase as an angle from 0 to 360 degrees.</p>
+<pre><code class="lang-csharp">public double MoonPhase(AstroTime time)
+</code></pre>
+<h4 id="parameters-38">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the observation.</p>
+<h4 id="returns-39">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The angle as described above, a value in the range 0..360 degrees.</p>
+<h4 id="remarks-38">Remarks</h4>
+<p>This function determines the phase of the Moon using its apparent
+ecliptic longitude relative to the Sun, as seen from the center of the Earth.
+Certain values of the angle have conventional definitions:</p>
+<ul>
+<li>0 = new moon</li>
+<li>90 = first quarter</li>
+<li>180 = full moon</li>
+<li>270 = third quarter</li>
+</ul>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_MoonQuartersAfter_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> MoonQuartersAfter(AstroTime)</h3>
+<p>Enumerates a series of lunar quarter phases that occur after a specified time.</p>
+<pre><code class="lang-csharp">public IEnumerable&lt;MoonQuarterInfo&gt; MoonQuartersAfter(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-39">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>Specifies the time to begin searching for consecutive lunar quarter phases.</p>
+<h4 id="returns-40">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyEngine.CosineKittyAstronomy.MoonQuarterInfo.html">MoonQuarterInfo</a>&gt;</p>
+<h4 id="remarks-39">Remarks</h4>
+<p>This is a convenience wrapper around the functions
+#Astronomy.SearchMoonQuarter and #Astronomy.NextMoonQuarter.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_NextGlobalSolarEclipse_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> NextGlobalSolarEclipse(AstroTime)</h3>
+<p>Searches for the next global solar eclipse in a series.</p>
+<pre><code class="lang-csharp">public GlobalSolarEclipseInfo NextGlobalSolarEclipse(AstroTime prevEclipseTime)
+</code></pre>
+<h4 id="parameters-40">Parameters</h4>
+<p><code>prevEclipseTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>A date and time near a new moon. Solar eclipse search will start at the next new moon.</p>
+<h4 id="returns-41">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.GlobalSolarEclipseInfo.html">GlobalSolarEclipseInfo</a></p>
+<h4 id="remarks-40">Remarks</h4>
+<p>After using #Astronomy.SearchGlobalSolarEclipse to find the first solar eclipse
+in a series, you can call this function to find the next consecutive solar eclipse.
+Pass in the <code>peak</code> value from the #GlobalSolarEclipseInfo returned by the
+previous call to <code>Astronomy.SearchGlobalSolarEclipse</code> or <code>Astronomy.NextGlobalSolarEclipse</code>
+to find the next solar eclipse.</p>
+<p>See #Astronomy.GlobalSolarEclipsesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_NextLocalSolarEclipse_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> NextLocalSolarEclipse(AstroTime, Observer)</h3>
+<p>Searches for the next local solar eclipse in a series.</p>
+<pre><code class="lang-csharp">public LocalSolarEclipseInfo NextLocalSolarEclipse(AstroTime prevEclipseTime, Observer observer)
+</code></pre>
+<h4 id="parameters-41">Parameters</h4>
+<p><code>prevEclipseTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>A date and time near a new moon. Solar eclipse search will start at the next new moon.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The geographic location of the observer.</p>
+<h4 id="returns-42">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.LocalSolarEclipseInfo.html">LocalSolarEclipseInfo</a></p>
+<h4 id="remarks-41">Remarks</h4>
+<p>After using #Astronomy.SearchLocalSolarEclipse to find the first solar eclipse
+in a series, you can call this function to find the next consecutive solar eclipse.
+Pass in the <code>peak</code> value from the #LocalSolarEclipseInfo returned by the
+previous call to <code>Astronomy.SearchLocalSolarEclipse</code> or <code>Astronomy.NextLocalSolarEclipse</code>
+to find the next solar eclipse.</p>
+<p>See #Astronomy.LocalSolarEclipsesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_NextLunarApsis_ChargerAstronomyEngine_CosineKittyAstronomy_ApsisInfo_"> NextLunarApsis(ApsisInfo)</h3>
+<p>Finds the next lunar perigee or apogee event in a series.</p>
+<pre><code class="lang-csharp">public ApsisInfo NextLunarApsis(ApsisInfo apsis)
+</code></pre>
+<h4 id="parameters-42">Parameters</h4>
+<p><code>apsis</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.html">ApsisInfo</a></p>
+<p>An apsis event obtained from a call to #Astronomy.SearchLunarApsis or <code>Astronomy.NextLunarApsis</code>.
+See #Astronomy.SearchLunarApsis for more details.</p>
+<h4 id="returns-43">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.html">ApsisInfo</a></p>
+<p>Same as the return value for #Astronomy.SearchLunarApsis.</p>
+<h4 id="remarks-42">Remarks</h4>
+<p>This function requires an #ApsisInfo value obtained from a call
+to #Astronomy.SearchLunarApsis or <code>Astronomy.NextLunarApsis</code>. Given
+an apogee event, this function finds the next perigee event, and vice versa.</p>
+<p>See #Astronomy.SearchLunarApsis for more details.
+See #Astronomy.LunarApsidesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_NextLunarEclipse_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> NextLunarEclipse(AstroTime)</h3>
+<p>Searches for the next lunar eclipse in a series.</p>
+<pre><code class="lang-csharp">public LunarEclipseInfo NextLunarEclipse(AstroTime prevEclipseTime)
+</code></pre>
+<h4 id="parameters-43">Parameters</h4>
+<p><code>prevEclipseTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>A date and time near a full moon. Lunar eclipse search will start at the next full moon.</p>
+<h4 id="returns-44">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.LunarEclipseInfo.html">LunarEclipseInfo</a></p>
+<p>A #LunarEclipseInfo structure containing information about the lunar eclipse.</p>
+<h4 id="remarks-43">Remarks</h4>
+<p>After using #Astronomy.SearchLunarEclipse to find the first lunar eclipse
+in a series, you can call this function to find the next consecutive lunar eclipse.
+Pass in the <code>center</code> value from the #LunarEclipseInfo returned by the
+previous call to <code>Astronomy.SearchLunarEclipse</code> or <code>Astronomy.NextLunarEclipse</code>
+to find the next lunar eclipse.</p>
+<p>See #Astronomy.LunarEclipsesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_NextMoonNode_ChargerAstronomyEngine_CosineKittyAstronomy_NodeEventInfo_"> NextMoonNode(NodeEventInfo)</h3>
+<p>Searches for the next time when the Moon's center crosses through the ecliptic plane.</p>
+<pre><code class="lang-csharp">public NodeEventInfo NextMoonNode(NodeEventInfo prevNode)
+</code></pre>
+<h4 id="parameters-44">Parameters</h4>
+<p><code>prevNode</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.NodeEventInfo.html">NodeEventInfo</a></p>
+<p>The previous node found from calling #Astronomy.SearchMoonNode or <code>Astronomy.NextMoonNode</code>.</p>
+<h4 id="returns-45">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.NodeEventInfo.html">NodeEventInfo</a></p>
+<h4 id="remarks-44">Remarks</h4>
+<p>Call #Astronomy.SearchMoonNode to find the first of a series of nodes.
+Then call <code>Astronomy.NextMoonNode</code> to find as many more consecutive nodes as desired.</p>
+<p>See #Astronomy.MoonNodesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_NextMoonQuarter_ChargerAstronomyEngine_CosineKittyAstronomy_MoonQuarterInfo_"> NextMoonQuarter(MoonQuarterInfo)</h3>
+<p>Continues searching for lunar quarters from a previous search.</p>
+<pre><code class="lang-csharp">public MoonQuarterInfo NextMoonQuarter(MoonQuarterInfo mq)
+</code></pre>
+<h4 id="parameters-45">Parameters</h4>
+<p><code>mq</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.MoonQuarterInfo.html">MoonQuarterInfo</a></p>
+<p>The previous moon quarter found by a call to #Astronomy.SearchMoonQuarter or <code>Astronomy.NextMoonQuarter</code>.</p>
+<h4 id="returns-46">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.MoonQuarterInfo.html">MoonQuarterInfo</a></p>
+<p>The moon quarter that occurs next in time after the one passed in <code>mq</code>.</p>
+<h4 id="remarks-45">Remarks</h4>
+<p>After calling #Astronomy.SearchMoonQuarter, this function can be called
+one or more times to continue finding consecutive lunar quarters.
+This function finds the next consecutive moon quarter event after
+the one passed in as the parameter <code>mq</code>.</p>
+<p>See #Astronomy.MoonQuartersAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_NextPlanetApsis_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_ApsisInfo_"> NextPlanetApsis(EquatorialCelestialBody, ApsisInfo)</h3>
+<p>Finds the next planetary perihelion or aphelion event in a series.</p>
+<pre><code class="lang-csharp">public ApsisInfo NextPlanetApsis(EquatorialCelestialBody body, ApsisInfo apsis)
+</code></pre>
+<h4 id="parameters-46">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The planet for which to find the next perihelion/aphelion event.
+Not allowed to be <code>Body.Sun</code> or <code>Body.Moon</code>.
+Must match the body passed into the call that produced the <code>apsis</code> parameter.</p>
+<p><code>apsis</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.html">ApsisInfo</a></p>
+<p>An apsis event obtained from a call to #Astronomy.SearchPlanetApsis or <code>Astronomy.NextPlanetApsis</code>.</p>
+<h4 id="returns-47">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.html">ApsisInfo</a></p>
+<p>Same as the return value for #Astronomy.SearchPlanetApsis.</p>
+<h4 id="remarks-46">Remarks</h4>
+<p>This function requires an #ApsisInfo value obtained from a call
+to #Astronomy.SearchPlanetApsis or <code>Astronomy.NextPlanetApsis</code>.
+Given an aphelion event, this function finds the next perihelion event, and vice versa.</p>
+<p>See #Astronomy.SearchPlanetApsis for more details.
+See #Astronomy.PlanetApsidesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_NextTransit_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> NextTransit(EquatorialCelestialBody, AstroTime)</h3>
+<p>Searches for another transit of Mercury or Venus.</p>
+<pre><code class="lang-csharp">public TransitInfo NextTransit(EquatorialCelestialBody body, AstroTime prevTransitTime)
+</code></pre>
+<h4 id="parameters-47">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The planet whose transit is to be found. Must be <code>Body.Mercury</code> or <code>Body.Venus</code>.</p>
+<p><code>prevTransitTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>A date and time near the previous transit.</p>
+<h4 id="returns-48">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.TransitInfo.html">TransitInfo</a></p>
+<h4 id="remarks-47">Remarks</h4>
+<p>After calling #Astronomy.SearchTransit to find a transit of Mercury or Venus,
+this function finds the next transit after that.
+Keep calling this function as many times as you want to keep finding more transits.</p>
+<p>See #Astronomy.TransitsAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_ObserverGravity_System_Double_System_Double_"> ObserverGravity(double, double)</h3>
+<p>Calculates the gravitational acceleration experienced by an observer on the Earth.</p>
+<pre><code class="lang-csharp">public static double ObserverGravity(double latitude, double height)
+</code></pre>
+<h4 id="parameters-48">Parameters</h4>
+<p><code>latitude</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The latitude of the observer in degrees north or south of the equator.
+By formula symmetry, positive latitudes give the same answer as negative
+latitudes, so the sign does not matter.</p>
+<p><code>height</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The height above the sea level geoid in meters.
+No range checking is done; however, accuracy is only valid in the
+range 0 to 100000 meters.</p>
+<h4 id="returns-49">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The effective gravitational acceleration expressed in meters per second squared [m/s^2].</p>
+<h4 id="remarks-48">Remarks</h4>
+<p>This function implements the WGS 84 Ellipsoidal Gravity Formula.
+The result is a combination of inward gravitational acceleration
+with outward centrifugal acceleration, as experienced by an observer
+in the Earth's rotating frame of reference.
+The resulting value increases toward the Earth's poles and decreases
+toward the equator, consistent with changes of the weight measured
+by a spring scale of a fixed mass moved to different latitudes and heights
+on the Earth.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_ObserverState_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_EquatorEpoch_"> ObserverState(AstroTime, Observer, EquatorEpoch)</h3>
+<p>Calculates geocentric equatorial position and velocity of an observer on the surface of the Earth.</p>
+<pre><code class="lang-csharp">public StateVector ObserverState(AstroTime time, Observer observer, EquatorEpoch equdate)
+</code></pre>
+<h4 id="parameters-49">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the observer's geocentric state vector.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The geographic location of a point on or near the surface of the Earth.</p>
+<p><code>equdate</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EquatorEpoch.html">EquatorEpoch</a></p>
+<p>Selects the date of the Earth's equator in which to express the equatorial coordinates.
+The caller may select <code>EquatorEpoch.J2000</code> to use the orientation of the Earth's equator
+at noon UTC on January 1, 2000, in which case this function corrects for precession
+and nutation of the Earth as it was at the moment specified by the <code>time</code> parameter.
+Or the caller may select <code>EquatorEpoch.OfDate</code> to use the Earth's equator at <code>time</code>
+as the orientation.</p>
+<h4 id="returns-50">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>The position and velocity of the given geographic location, relative to the center of the Earth.</p>
+<h4 id="remarks-49">Remarks</h4>
+<p>This function calculates position and velocity vectors of an observer
+on or near the surface of the Earth, expressed in equatorial
+coordinates. It takes into account the rotation of the Earth at the given
+time, along with the given latitude, longitude, and elevation of the observer.</p>
+<p>The caller may pass a value in <code>equdate</code> to select either <code>EquatorEpoch.J2000</code>
+for using J2000 coordinates, or <code>EquatorEpoch.OfDate</code> for using coordinates relative
+to the Earth's equator at the specified time.</p>
+<p>The returned position vector has components expressed in astronomical units (AU).
+To convert to kilometers, multiply the <code>x</code>, <code>y</code>, and <code>z</code> values by
+the constant value #Astronomy.KM_PER_AU.</p>
+<p>The returned velocity vector is measured in AU/day.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_ObserverVector_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_EquatorEpoch_"> ObserverVector(AstroTime, Observer, EquatorEpoch)</h3>
+<p>Calculates geocentric equatorial coordinates of an observer on the surface of the Earth.</p>
+<pre><code class="lang-csharp">public AstroVector ObserverVector(AstroTime time, Observer observer, EquatorEpoch equdate)
+</code></pre>
+<h4 id="parameters-50">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the observer's position vector.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The geographic location of a point on or near the surface of the Earth.</p>
+<p><code>equdate</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EquatorEpoch.html">EquatorEpoch</a></p>
+<p>Selects the date of the Earth's equator in which to express the equatorial coordinates.
+The caller may select <code>EquatorEpoch.J2000</code> to use the orientation of the Earth's equator
+at noon UTC on January 1, 2000, in which case this function corrects for precession
+and nutation of the Earth as it was at the moment specified by the <code>time</code> parameter.
+Or the caller may select <code>EquatorEpoch.OfDate</code> to use the Earth's equator at <code>time</code>
+as the orientation.</p>
+<h4 id="returns-51">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>An equatorial vector from the center of the Earth to the specified location
+on (or near) the Earth's surface.</p>
+<h4 id="remarks-50">Remarks</h4>
+<p>This function calculates a vector from the center of the Earth to
+a point on or near the surface of the Earth, expressed in equatorial
+coordinates. It takes into account the rotation of the Earth at the given
+time, along with the given latitude, longitude, and elevation of the observer.</p>
+<p>The caller may pass a value in <code>equdate</code> to select either <code>EquatorEpoch.J2000</code>
+for using J2000 coordinates, or <code>EquatorEpoch.OfDate</code> for using coordinates relative
+to the Earth's equator at the specified time.</p>
+<p>The returned vector has components expressed in astronomical units (AU).
+To convert to kilometers, multiply the <code>x</code>, <code>y</code>, and <code>z</code> values by
+the constant value #Astronomy.KM_PER_AU.</p>
+<p>The inverse of this function is also available: #Astronomy.VectorObserver.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_PairLongitude_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> PairLongitude(EquatorialCelestialBody, EquatorialCelestialBody, AstroTime)</h3>
+<p>Returns one body's ecliptic longitude with respect to another, as seen from the Earth.</p>
+<pre><code class="lang-csharp">public double PairLongitude(EquatorialCelestialBody body1, EquatorialCelestialBody body2, AstroTime time)
+</code></pre>
+<h4 id="parameters-51">Parameters</h4>
+<p><code>body1</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The first body, whose longitude is to be found relative to the second body.</p>
+<p><code>body2</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The second body, relative to which the longitude of the first body is to be found.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the observation.</p>
+<h4 id="returns-52">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>An angle in the range [0, 360), expressed in degrees.</p>
+<h4 id="remarks-51">Remarks</h4>
+<p>This function determines where one body appears around the ecliptic plane
+(the plane of the Earth's orbit around the Sun) as seen from the Earth,
+relative to the another body's apparent position.
+The function returns an angle in the half-open range [0, 360) degrees.
+The value is the ecliptic longitude of <code>body1</code> relative to the ecliptic
+longitude of <code>body2</code>.</p>
+<p>The angle is 0 when the two bodies are at the same ecliptic longitude
+as seen from the Earth. The angle increases in the prograde direction
+(the direction that the planets orbit the Sun and the Moon orbits the Earth).</p>
+<p>When the angle is 180 degrees, it means the two bodies appear on opposite sides
+of the sky for an Earthly observer.</p>
+<p>Neither <code>body1</code> nor <code>body2</code> is allowed to be <code>Body.Earth</code>.
+If this happens, the function throws an exception.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Pivot_ChargerAstronomyEngine_CosineKittyAstronomy_RotationMatrix_System_Int32_System_Double_"> Pivot(RotationMatrix, int, double)</h3>
+<p>Re-orients a rotation matrix by pivoting it by an angle around one of its axes.</p>
+<pre><code class="lang-csharp">public RotationMatrix Pivot(RotationMatrix rotation, int axis, double angle)
+</code></pre>
+<h4 id="parameters-52">Parameters</h4>
+<p><code>rotation</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>The input rotation matrix.</p>
+<p><code>axis</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>An integer that selects which coordinate axis to rotate around:
+0 = x, 1 = y, 2 = z. Any other value will cause an ArgumentException to be thrown.</p>
+<p><code>angle</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>An angle in degrees indicating the amount of rotation around the specified axis.
+Positive angles indicate rotation counterclockwise as seen from the positive
+direction along that axis, looking towards the origin point of the orientation system.
+Any finite number of degrees is allowed, but best precision will result from keeping
+<code>angle</code> in the range [-360, +360].</p>
+<h4 id="returns-53">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A pivoted matrix object.</p>
+<h4 id="remarks-52">Remarks</h4>
+<p>Given a rotation matrix, a selected coordinate axis, and an angle in degrees,
+this function pivots the rotation matrix by that angle around that coordinate axis.</p>
+<p>For example, if you have rotation matrix that converts ecliptic coordinates (ECL)
+to horizontal coordinates (HOR), but you really want to convert ECL to the orientation
+of a telescope camera pointed at a given body, you can use <code>Astronomy.Pivot</code> twice:
+(1) pivot around the zenith axis by the body's azimuth, then (2) pivot around the
+western axis by the body's altitude angle. The resulting rotation matrix will then
+reorient ECL coordinates to the orientation of your telescope camera.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_PlanetApsidesAfter_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> PlanetApsidesAfter(EquatorialCelestialBody, AstroTime)</h3>
+<p>Enumerates a series of planet aphelia/perihelia that occur after a specified time.</p>
+<pre><code class="lang-csharp">public IEnumerable&lt;ApsisInfo&gt; PlanetApsidesAfter(EquatorialCelestialBody body, AstroTime startTime)
+</code></pre>
+<h4 id="parameters-53">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The planet for which to find a series of consecutive aphelia/perihelia.
+Not allowed to be <code>Body.Sun</code> or <code>Body.Moon</code>.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>Specifies the time to begin searching for consecutive planetary apsides.</p>
+<h4 id="returns-54">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.html">ApsisInfo</a>&gt;</p>
+<h4 id="remarks-53">Remarks</h4>
+<p>This is a convenience wrapper around the functions
+#Astronomy.SearchPlanetApsis and #Astronomy.NextPlanetApsis.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_PlanetOrbitalPeriod_ChargerAstronomyShared_Domain_Equatorial_BodyType_"> PlanetOrbitalPeriod(BodyType)</h3>
+<p>Returns the average number of days it takes for a planet to orbit the Sun.</p>
+<pre><code class="lang-csharp">public double PlanetOrbitalPeriod(BodyType body)
+</code></pre>
+<h4 id="parameters-54">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.BodyType.html">BodyType</a></p>
+<p>One of the planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, or Pluto.</p>
+<h4 id="returns-55">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The mean orbital period of the body in days.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_RefractionAngle_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Refraction_System_Double_"> RefractionAngle(Refraction, double)</h3>
+<p>Calculates the amount of &quot;lift&quot; to an altitude angle caused by atmospheric refraction.</p>
+<pre><code class="lang-csharp">public double RefractionAngle(Refraction refraction, double altitude)
+</code></pre>
+<h4 id="parameters-55">Parameters</h4>
+<p><code>refraction</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Refraction.html">Refraction</a></p>
+<p>The option selecting which refraction correction to use.
+If <code>Refraction.Normal</code>, uses a well-behaved refraction model that works well for
+all valid values (-90 to +90) of <code>altitude</code>.
+If <code>Refraction.JplHor</code>, this function returns a compatible value with the JPL Horizons tool.
+If any other value (including <code>Refraction.None</code>), this function returns 0.</p>
+<p><code>altitude</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>An altitude angle in a horizontal coordinate system. Must be a value between -90 and +90.</p>
+<h4 id="returns-56">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The angular adjustment in degrees to be added to the altitude angle to correct for atmospheric lensing.</p>
+<h4 id="remarks-54">Remarks</h4>
+<p>Given an altitude angle and a refraction option, calculates
+the amount of &quot;lift&quot; caused by atmospheric refraction.
+This is the number of degrees higher in the sky an object appears
+due to the lensing of the Earth's atmosphere.
+This function works best near sea level.
+To correct for higher elevations, call #Astronomy.Atmosphere for that
+elevation and multiply the refraction angle by the resulting relative density.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_RotateState_ChargerAstronomyEngine_CosineKittyAstronomy_RotationMatrix_ChargerAstronomyEngine_CosineKittyAstronomy_StateVector_"> RotateState(RotationMatrix, StateVector)</h3>
+<p>Applies a rotation to a state vector, yielding a rotated state vector.</p>
+<pre><code class="lang-csharp">public StateVector RotateState(RotationMatrix rotation, StateVector state)
+</code></pre>
+<h4 id="parameters-56">Parameters</h4>
+<p><code>rotation</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that specifies how the orientation of the state vector is to be changed.</p>
+<p><code>state</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>The state vector whose orientation is to be changed.</p>
+<h4 id="returns-57">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector.html">StateVector</a></p>
+<p>A state vector in the orientation specified by <code>rotation</code>.</p>
+<h4 id="remarks-55">Remarks</h4>
+<p>This function transforms a state vector in one orientation to a state vector in another orientation.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_RotateVector_ChargerAstronomyEngine_CosineKittyAstronomy_RotationMatrix_ChargerAstronomyEngine_CosineKittyAstronomy_AstroVector_"> RotateVector(RotationMatrix, AstroVector)</h3>
+<p>Applies a rotation to a vector, yielding a rotated vector.</p>
+<pre><code class="lang-csharp">public AstroVector RotateVector(RotationMatrix rotation, AstroVector vector)
+</code></pre>
+<h4 id="parameters-57">Parameters</h4>
+<p><code>rotation</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that specifies how the orientation of the vector is to be changed.</p>
+<p><code>vector</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>The vector whose orientation is to be changed.</p>
+<h4 id="returns-58">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>A vector in the orientation specified by <code>rotation</code>.</p>
+<h4 id="remarks-56">Remarks</h4>
+<p>This function transforms a vector in one orientation to a vector
+in another orientation.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_RotationAxis_ChargerAstronomyShared_Domain_Equatorial_BodyType_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> RotationAxis(BodyType, AstroTime)</h3>
+<p>Calculates information about a body's rotation axis at a given time.</p>
+<pre><code class="lang-csharp">public AxisInfo RotationAxis(BodyType body, AstroTime time)
+</code></pre>
+<h4 id="parameters-58">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.BodyType.html">BodyType</a></p>
+<p>One of the following values:
+<code>Body.Sun</code>, <code>Body.Moon</code>, <code>Body.Mercury</code>, <code>Body.Venus</code>, <code>Body.Earth</code>, <code>Body.Mars</code>,
+<code>Body.Jupiter</code>, <code>Body.Saturn</code>, <code>Body.Uranus</code>, <code>Body.Neptune</code>, <code>Body.Pluto</code>.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The time at which to calculate the body's rotation axis.</p>
+<h4 id="returns-59">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AxisInfo.html">AxisInfo</a></p>
+<p>North pole orientation and body spin angle.</p>
+<h4 id="remarks-57">Remarks</h4>
+<p>Calculates the orientation of a body's rotation axis, along with
+the rotation angle of its prime meridian, at a given moment in time.</p>
+<p>This function uses formulas standardized by the IAU Working Group
+on Cartographics and Rotational Elements 2015 report, as described
+in the following document:</p>
+<p><a href="https://astropedia.astrogeology.usgs.gov/download/Docs/WGCCRE/WGCCRE2015reprint.pdf">https://astropedia.astrogeology.usgs.gov/download/Docs/WGCCRE/WGCCRE2015reprint.pdf</a></p>
+<p>See #AxisInfo for more detailed information.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_ECL_EQD_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Rotation_ECL_EQD(AstroTime)</h3>
+<p>Calculates a rotation matrix from J2000 mean ecliptic (ECL) to equatorial of-date (EQD).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_ECL_EQD(AstroTime time)
+</code></pre>
+<h4 id="parameters-59">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the desired equator.</p>
+<h4 id="returns-60">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts ECL to EQD.</p>
+<h4 id="remarks-58">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: ECL = ecliptic system, using equator at J2000 epoch.
+Target: EQD = equatorial system, using equator of date.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_ECL_EQJ"> Rotation_ECL_EQJ()</h3>
+<p>Calculates a rotation matrix from J2000 mean ecliptic (ECL) to J2000 mean equator (EQJ).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_ECL_EQJ()
+</code></pre>
+<h4 id="returns-61">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts ECL to EQJ.</p>
+<h4 id="remarks-59">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: ECL = ecliptic system, using equator at J2000 epoch.
+Target: EQJ = equatorial system, using equator at J2000 epoch.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_ECL_HOR_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> Rotation_ECL_HOR(AstroTime, Observer)</h3>
+<p>Calculates a rotation matrix from J2000 mean ecliptic (ECL) to horizontal (HOR).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_ECL_HOR(AstroTime time, Observer observer)
+</code></pre>
+<h4 id="parameters-60">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the desired horizontal orientation.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>A location near the Earth's mean sea level that defines the observer's horizon.</p>
+<h4 id="returns-62">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts ECL to HOR at <code>time</code> and for <code>observer</code>.
+The components of the horizontal vector are:
+x = north, y = west, z = zenith (straight up from the observer).
+These components are chosen so that the &quot;right-hand rule&quot; works for the vector
+and so that north represents the direction where azimuth = 0.</p>
+<h4 id="remarks-60">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: ECL = ecliptic system, using equator at J2000 epoch.
+Target: HOR = horizontal system.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_ECT_EQD_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Rotation_ECT_EQD(AstroTime)</h3>
+<p>Calculates a rotation matrix from true ecliptic of date (ECT) to equator of date (EQD).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_ECT_EQD(AstroTime time)
+</code></pre>
+<h4 id="parameters-61">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the ecliptic/equator conversion.</p>
+<h4 id="returns-63">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts ECT to EQD.</p>
+<h4 id="remarks-61">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: ECT = true ecliptic of date.
+Target: EQD = equator of date.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_ECT_EQJ_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Rotation_ECT_EQJ(AstroTime)</h3>
+<p>Calculates a rotation matrix from true ecliptic of date (ECT) to J2000 mean equator (EQJ).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_ECT_EQJ(AstroTime time)
+</code></pre>
+<h4 id="parameters-62">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which the Earth's equator defines the target orientation.</p>
+<h4 id="returns-64">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts ECT to EQJ at <code>time</code>.</p>
+<h4 id="remarks-62">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: ECT = ecliptic system, using true equinox of the specified date/time.
+Target: EQJ = equatorial system, using equator at J2000 epoch.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_EQD_ECL_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Rotation_EQD_ECL(AstroTime)</h3>
+<p>Calculates a rotation matrix from equatorial of-date (EQD) to J2000 mean ecliptic (ECL).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_EQD_ECL(AstroTime time)
+</code></pre>
+<h4 id="parameters-63">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the source equator.</p>
+<h4 id="returns-65">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts EQD to ECL.</p>
+<h4 id="remarks-63">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: EQD = equatorial system, using equator of date.
+Target: ECL = ecliptic system, using equator at J2000 epoch.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_EQD_ECT_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Rotation_EQD_ECT(AstroTime)</h3>
+<p>Calculates a rotation matrix from equator of date (EQD) to true ecliptic of date (ECT) .</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_EQD_ECT(AstroTime time)
+</code></pre>
+<h4 id="parameters-64">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the equator/ecliptic conversion.</p>
+<h4 id="returns-66">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts EQD to ECT.</p>
+<h4 id="remarks-64">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: EQD = equator of date.
+Target: ECT = true ecliptic of date.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_EQD_EQJ_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Rotation_EQD_EQJ(AstroTime)</h3>
+<p>Calculates a rotation matrix from equatorial of-date (EQD) to J2000 mean equator (EQJ).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_EQD_EQJ(AstroTime time)
+</code></pre>
+<h4 id="parameters-65">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which the Earth's equator defines the source orientation.</p>
+<h4 id="returns-67">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts EQD at <code>time</code> to EQJ.</p>
+<h4 id="remarks-65">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: EQD = equatorial system, using equator of the specified date/time.
+Target: EQJ = equatorial system, using equator at J2000 epoch.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_EQD_HOR_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> Rotation_EQD_HOR(AstroTime, Observer)</h3>
+<p>Calculates a rotation matrix from equatorial of-date (EQD) to horizontal (HOR).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_EQD_HOR(AstroTime time, Observer observer)
+</code></pre>
+<h4 id="parameters-66">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which the Earth's equator applies.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>A location near the Earth's mean sea level that defines the observer's horizon.</p>
+<h4 id="returns-68">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts EQD to HOR at <code>time</code> and for <code>observer</code>.
+The components of the horizontal vector are:
+x = north, y = west, z = zenith (straight up from the observer).
+These components are chosen so that the &quot;right-hand rule&quot; works for the vector
+and so that north represents the direction where azimuth = 0.</p>
+<h4 id="remarks-66">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: EQD = equatorial system, using equator of the specified date/time.
+Target: HOR = horizontal system.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_EQJ_ECL"> Rotation_EQJ_ECL()</h3>
+<p>Calculates a rotation matrix from J2000 mean equator (EQJ) to J2000 mean ecliptic (ECL).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_EQJ_ECL()
+</code></pre>
+<h4 id="returns-69">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts EQJ to ECL.</p>
+<h4 id="remarks-67">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: EQJ = equatorial system, using equator at J2000 epoch.
+Target: ECL = ecliptic system, using equator at J2000 epoch.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_EQJ_ECT_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Rotation_EQJ_ECT(AstroTime)</h3>
+<p>Calculates a rotation matrix from J2000 mean equator (EQJ) to true ecliptic of date (ECT).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_EQJ_ECT(AstroTime time)
+</code></pre>
+<h4 id="parameters-67">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which the Earth's equator defines the target orientation.</p>
+<h4 id="returns-70">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts EQJ to ECT at <code>time</code>.</p>
+<h4 id="remarks-68">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: EQJ = equatorial system, using equator at J2000 epoch.
+Target: ECT = ecliptic system, using true equinox of the specified date/time.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_EQJ_EQD_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> Rotation_EQJ_EQD(AstroTime)</h3>
+<p>Calculates a rotation matrix from J2000 mean equator (EQJ) to equatorial of-date (EQD).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_EQJ_EQD(AstroTime time)
+</code></pre>
+<h4 id="parameters-68">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which the Earth's equator defines the target orientation.</p>
+<h4 id="returns-71">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts EQJ to EQD at <code>time</code>.</p>
+<h4 id="remarks-69">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: EQJ = equatorial system, using equator at J2000 epoch.
+Target: EQD = equatorial system, using equator of the specified date/time.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_EQJ_GAL"> Rotation_EQJ_GAL()</h3>
+<p>Calculates a rotation matrix from J2000 mean equator (EQJ) to galactic (GAL).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_EQJ_GAL()
+</code></pre>
+<h4 id="returns-72">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts EQJ to GAL.</p>
+<h4 id="remarks-70">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: EQJ = equatorial system, using the equator at the J2000 epoch.
+Target: GAL = galactic system (IAU 1958 definition).</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_EQJ_HOR_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> Rotation_EQJ_HOR(AstroTime, Observer)</h3>
+<p>Calculates a rotation matrix from J2000 mean equator (EQJ) to horizontal (HOR).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_EQJ_HOR(AstroTime time, Observer observer)
+</code></pre>
+<h4 id="parameters-69">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the desired horizontal orientation.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>A location near the Earth's mean sea level that defines the observer's horizon.</p>
+<h4 id="returns-73">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts EQJ to HOR at <code>time</code> and for <code>observer</code>.
+The components of the horizontal vector are:
+x = north, y = west, z = zenith (straight up from the observer).
+These components are chosen so that the &quot;right-hand rule&quot; works for the vector
+and so that north represents the direction where azimuth = 0.</p>
+<h4 id="remarks-71">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: EQJ = equatorial system, using the equator at the J2000 epoch.
+Target: HOR = horizontal system.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_GAL_EQJ"> Rotation_GAL_EQJ()</h3>
+<p>Calculates a rotation matrix from galactic (GAL) to J2000 mean equator (EQJ).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_GAL_EQJ()
+</code></pre>
+<h4 id="returns-74">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts GAL to EQJ.</p>
+<h4 id="remarks-72">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: GAL = galactic system (IAU 1958 definition).
+Target: EQJ = equatorial system, using the equator at the J2000 epoch.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_HOR_ECL_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> Rotation_HOR_ECL(AstroTime, Observer)</h3>
+<p>Calculates a rotation matrix from horizontal (HOR) to J2000 mean ecliptic (ECL).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_HOR_ECL(AstroTime time, Observer observer)
+</code></pre>
+<h4 id="parameters-70">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the horizontal observation.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The location of the horizontal observer.</p>
+<h4 id="returns-75">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts HOR to ECL.</p>
+<h4 id="remarks-73">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: HOR = horizontal system.
+Target: ECL = ecliptic system, using equator at J2000 epoch.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_HOR_EQD_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> Rotation_HOR_EQD(AstroTime, Observer)</h3>
+<p>Calculates a rotation matrix from horizontal (HOR) to equatorial of-date (EQD).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_HOR_EQD(AstroTime time, Observer observer)
+</code></pre>
+<h4 id="parameters-71">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which the Earth's equator applies.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>A location near the Earth's mean sea level that defines the observer's horizon.</p>
+<h4 id="returns-76">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts HOR to EQD at <code>time</code> and for <code>observer</code>.</p>
+<h4 id="remarks-74">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: HOR = horizontal system (x=North, y=West, z=Zenith).
+Target: EQD = equatorial system, using equator of the specified date/time.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Rotation_HOR_EQJ_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> Rotation_HOR_EQJ(AstroTime, Observer)</h3>
+<p>Calculates a rotation matrix from horizontal (HOR) to J2000 equatorial (EQJ).</p>
+<pre><code class="lang-csharp">public RotationMatrix Rotation_HOR_EQJ(AstroTime time, Observer observer)
+</code></pre>
+<h4 id="parameters-72">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the observation.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>A location near the Earth's mean sea level that defines the observer's horizon.</p>
+<h4 id="returns-77">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix.html">RotationMatrix</a></p>
+<p>A rotation matrix that converts HOR to EQJ at <code>time</code> and for <code>observer</code>.</p>
+<h4 id="remarks-75">Remarks</h4>
+<p>This is one of the family of functions that returns a rotation matrix
+for converting from one orientation to another.
+Source: HOR = horizontal system (x=North, y=West, z=Zenith).
+Target: EQJ = equatorial system, using equator at the J2000 epoch.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Search_ChargerAstronomyEngine_CosineKittyAstronomy_SearchContexts_SearchContext_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_System_Double_"> Search(SearchContext, AstroTime, AstroTime, double)</h3>
+<p>Searches for a time at which a function's value increases through zero.</p>
+<pre><code class="lang-csharp">public AstroTime Search(SearchContext func, AstroTime t1, AstroTime t2, double dt_tolerance_seconds)
+</code></pre>
+<h4 id="parameters-73">Parameters</h4>
+<p><code>func</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext.html">SearchContext</a></p>
+<p>The function for which to find the time of an ascending root.
+See remarks above for more details.</p>
+<p><code>t1</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The lower time bound of the search window.
+See remarks above for more details.</p>
+<p><code>t2</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The upper time bound of the search window.
+See remarks above for more details.</p>
+<p><code>dt_tolerance_seconds</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>Specifies an amount of time in seconds within which a bounded ascending root
+is considered accurate enough to stop. A typical value is 1 second.</p>
+<h4 id="returns-78">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>If successful, returns an #AstroTime value indicating a date and time
+that is within <code>dt_tolerance_seconds</code> of an ascending root.
+If no ascending root is found, or more than one root exists in the time
+window <code>t1</code>..<code>t2</code>, the function returns <code>null</code>.
+If the search does not converge within 20 iterations, an exception is thrown.</p>
+<h4 id="remarks-76">Remarks</h4>
+<p>Certain astronomy calculations involve finding a time when an event occurs.
+Often such events can be defined as the root of a function:
+the time at which the function's value becomes zero.</p>
+<p><code>Search</code> finds the <em>ascending root</em> of a function: the time at which
+the function's value becomes zero while having a positive slope. That is, as time increases,
+the function transitions from a negative value, through zero at a specific moment,
+to a positive value later. The goal of the search is to find that specific moment.</p>
+<p>The <code>func</code> parameter is an instance of the abstract class #SearchContext.
+As an example, a caller may wish to find the moment a celestial body reaches a certain
+ecliptic longitude. In that case, the caller might derive a class that contains
+a #Body member to specify the body and a <code>double</code> to hold the target longitude.
+It could subtract the target longitude from the actual longitude at a given time;
+thus the difference would equal zero at the moment in time the planet reaches the
+desired longitude.</p>
+<p>The search calls <code>func.Eval</code> repeatedly to rapidly narrow in on any ascending
+root within the time window specified by <code>t1</code> and <code>t2</code>. The search never
+reports a solution outside this time window.</p>
+<p><code>Search</code> uses a combination of bisection and quadratic interpolation
+to minimize the number of function calls. However, it is critical that the
+supplied time window be small enough that there cannot be more than one root
+(ascedning or descending) within it; otherwise the search can fail.
+Beyond that, it helps to make the time window as small as possible, ideally
+such that the function itself resembles a smooth parabolic curve within that window.</p>
+<p>If an ascending root is not found, or more than one root
+(ascending and/or descending) exists within the window <code>t1</code>..<code>t2</code>,
+the search will return <code>null</code>.</p>
+<p>If the search does not converge within 20 iterations, it will throw an exception.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchAltitude_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyShared_Domain_Observer_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Direction_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_System_Double_System_Double_"> SearchAltitude(EquatorialCelestialBody, Observer, Direction, AstroTime, double, double)</h3>
+<p>Finds the next time the center of a body passes through a given altitude.</p>
+<pre><code class="lang-csharp">public AstroTime SearchAltitude(EquatorialCelestialBody body, Observer observer, Direction direction, AstroTime startTime, double limitDays, double altitude)
+</code></pre>
+<h4 id="parameters-74">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The Sun, Moon, any planet other than the Earth,
+or a user-defined star that was created by a call to #Astronomy.DefineStar.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The location where observation takes place.</p>
+<p><code>direction</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Direction.html">Direction</a></p>
+<p>Either <code>Direction.Rise</code> to find an ascending altitude event
+or <code>Direction.Set</code> to find a descending altitude event.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which to start the search.</p>
+<p><code>limitDays</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>Limits how many days to search for the body reaching the altitude angle,
+and defines the direction in time to search. When <code>limitDays</code> is positive, the
+search is performed into the future, after <code>startTime</code>.
+When negative, the search is performed into the past, before <code>startTime</code>.
+To limit the search to the same day, you can use a value of 1 day.
+In cases where you want to find the altitude event no matter how far
+in the future (for example, for an observer near the south pole), you can
+pass in a larger value like 365.</p>
+<p><code>altitude</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The desired altitude angle of the body's center above (positive)
+or below (negative) the observer's local horizon, expressed in degrees.
+Must be in the range [-90, +90].</p>
+<h4 id="returns-79">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the altitude event, or <code>null</code> if no such event
+occurs within the specified time window.</p>
+<h4 id="remarks-77">Remarks</h4>
+<p>Finds when the center of the given body ascends or descends through a given
+altitude angle, as seen by an observer at the specified location on the Earth.
+By using the appropriate combination of <code>direction</code> and <code>altitude</code> parameters,
+this function can be used to find when civil, nautical, or astronomical twilight
+begins (dawn) or ends (dusk).</p>
+<p>Civil dawn begins before sunrise when the Sun ascends through 6 degrees below
+the horizon. To find civil dawn, pass <code>Direction.Rise</code> for <code>direction</code> and -6 for <code>altitude</code>.</p>
+<p>Civil dusk ends after sunset when the Sun descends through 6 degrees below the horizon.
+To find civil dusk, pass <code>Direction.Set</code> for <code>direction</code> and -6 for <code>altitude</code>.</p>
+<p>Nautical twilight is similar to civil twilight, only the <code>altitude</code> value should be -12 degrees.</p>
+<p>Astronomical twilight uses -18 degrees as the <code>altitude</code> value.</p>
+<p>By convention for twilight time calculations, the altitude is not corrected for
+atmospheric refraction. This is because the target altitudes are below the horizon,
+and refraction is not directly observable.</p>
+<p><code>SearchAltitude</code> is not intended to find rise/set times of a body for two reasons:
+(1) Rise/set times of the Sun or Moon are defined by their topmost visible portion, not their centers.
+(2) Rise/set times are affected significantly by atmospheric refraction.
+Therefore, it is better to use #Astronomy.SearchRiseSet to find rise/set times, which
+corrects for both of these considerations.</p>
+<p><code>SearchAltitude</code> will not work reliably for altitudes at or near the body's
+maximum or minimum altitudes. To find the time a body reaches minimum or maximum altitude
+angles, use #Astronomy.SearchHourAngle.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchGlobalSolarEclipse_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchGlobalSolarEclipse(AstroTime)</h3>
+<p>Searches for a solar eclipse visible anywhere on the Earth's surface.</p>
+<pre><code class="lang-csharp">public GlobalSolarEclipseInfo SearchGlobalSolarEclipse(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-75">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for starting the search for a solar eclipse.</p>
+<h4 id="returns-80">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.GlobalSolarEclipseInfo.html">GlobalSolarEclipseInfo</a></p>
+<h4 id="remarks-78">Remarks</h4>
+<p>This function finds the first solar eclipse that occurs after <code>startTime</code>.
+A solar eclipse may be partial, annular, or total.
+See #GlobalSolarEclipseInfo for more information.
+To find a series of solar eclipses, call this function once,
+then keep calling #Astronomy.NextGlobalSolarEclipse as many times as desired,
+passing in the <code>peak</code> value returned from the previous call.</p>
+<p>See #Astronomy.GlobalSolarEclipsesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchHourAngle_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyShared_Domain_Observer_System_Double_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_System_Int32_"> SearchHourAngle(EquatorialCelestialBody, Observer, double, AstroTime, int)</h3>
+<p>Searches for the time when the center of a body reaches a specified hour angle as seen by an observer on the Earth.</p>
+<pre><code class="lang-csharp">public HourAngleInfo SearchHourAngle(EquatorialCelestialBody body, Observer observer, double hourAngle, AstroTime startTime, int direction = 1)
+</code></pre>
+<h4 id="parameters-76">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The Sun, Moon, any planet other than the Earth,
+or a user-defined star that was created by a call to #Astronomy.DefineStar.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>Indicates a location on or near the surface of the Earth where the observer is located.</p>
+<p><code>hourAngle</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>An hour angle value in the range [0, 24) indicating the number of sidereal hours after the
+body's most recent culmination.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which to start the search.</p>
+<p><code>direction</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>The direction in time to perform the search: a positive value
+searches forward in time, a negative value searches backward in time.
+The function throws an exception if <code>direction</code> is zero.</p>
+<h4 id="returns-81">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.HourAngleInfo.html">HourAngleInfo</a></p>
+<p>This function returns a valid #HourAngleInfo object on success.
+If any error occurs, it throws an exception.
+It never returns a null value.</p>
+<h4 id="remarks-79">Remarks</h4>
+<p>The <em>hour angle</em> of a celestial body indicates its position in the sky with respect
+to the Earth's rotation. The hour angle depends on the location of the observer on the Earth.
+The hour angle is 0 when the body's center reaches its highest angle above the horizon in a given day.
+The hour angle increases by 1 unit for every sidereal hour that passes after that point, up
+to 24 sidereal hours when it reaches the highest point again. So the hour angle indicates
+the number of hours that have passed since the most recent time that the body has culminated,
+or reached its highest point.</p>
+<p>This function searches for the next or previous time a celestial body reaches the given hour angle
+relative to the date and time specified by <code>startTime</code>.
+To find when a body culminates, pass 0 for <code>hourAngle</code>.
+To find when a body reaches its lowest point in the sky, pass 12 for <code>hourAngle</code>.</p>
+<p>Note that, especially close to the Earth's poles, a body as seen on a given day
+may always be above the horizon or always below the horizon, so the caller cannot
+assume that a culminating object is visible nor that an object is below the horizon
+at its minimum altitude.</p>
+<p>On success, the function reports the date and time, along with the horizontal coordinates
+of the body at that time, as seen by the given observer.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchLocalSolarEclipse_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyShared_Domain_Observer_"> SearchLocalSolarEclipse(AstroTime, Observer)</h3>
+<p>Searches for a solar eclipse visible at a specific location on the Earth's surface.</p>
+<pre><code class="lang-csharp">public LocalSolarEclipseInfo SearchLocalSolarEclipse(AstroTime startTime, Observer observer)
+</code></pre>
+<h4 id="parameters-77">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for starting the search for a solar eclipse.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The geographic location of the observer.</p>
+<h4 id="returns-82">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.LocalSolarEclipseInfo.html">LocalSolarEclipseInfo</a></p>
+<h4 id="remarks-80">Remarks</h4>
+<p>This function finds the first solar eclipse that occurs after <code>startTime</code>.
+A solar eclipse may be partial, annular, or total.
+See #LocalSolarEclipseInfo for more information.</p>
+<p>To find a series of solar eclipses, call this function once,
+then keep calling #Astronomy.NextLocalSolarEclipse as many times as desired,
+passing in the <code>peak</code> value returned from the previous call.</p>
+<p>IMPORTANT: An eclipse reported by this function might be partly or
+completely invisible to the observer due to the time of day.</p>
+<p>See #LocalSolarEclipseInfo for more information about this topic.
+See #Astronomy.LocalSolarEclipsesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchLunarApsis_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchLunarApsis(AstroTime)</h3>
+<p>Finds the date and time of the Moon's closest distance (perigee)
+or farthest distance (apogee) with respect to the Earth.</p>
+<pre><code class="lang-csharp">public ApsisInfo SearchLunarApsis(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-78">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which to start searching for the next perigee or apogee.</p>
+<h4 id="returns-83">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.html">ApsisInfo</a></p>
+<p>Returns an #ApsisInfo structure containing information about the next lunar apsis.</p>
+<h4 id="remarks-81">Remarks</h4>
+<p>Given a date and time to start the search in <code>startTime</code>, this function finds the
+next date and time that the center of the Moon reaches the closest or farthest point
+in its orbit with respect to the center of the Earth, whichever comes first
+after <code>startTime</code>.</p>
+<p>The closest point is called <em>perigee</em> and the farthest point is called <em>apogee</em>.
+The word <em>apsis</em> refers to either event.</p>
+<p>To iterate through consecutive alternating perigee and apogee events, call <code>Astronomy.SearchLunarApsis</code>
+once, then use the return value to call #Astronomy.NextLunarApsis. After that,
+keep feeding the previous return value from <code>Astronomy.NextLunarApsis</code> into another
+call of <code>Astronomy.NextLunarApsis</code> as many times as desired.</p>
+<p>See #Astronomy.LunarApsidesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchLunarEclipse_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchLunarEclipse(AstroTime)</h3>
+<p>Searches for a lunar eclipse.</p>
+<pre><code class="lang-csharp">public LunarEclipseInfo SearchLunarEclipse(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-79">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for starting the search for a lunar eclipse.</p>
+<h4 id="returns-84">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.LunarEclipseInfo.html">LunarEclipseInfo</a></p>
+<p>A #LunarEclipseInfo structure containing information about the lunar eclipse.</p>
+<h4 id="remarks-82">Remarks</h4>
+<p>This function finds the first lunar eclipse that occurs after <code>startTime</code>.
+A lunar eclipse may be penumbral, partial, or total.
+See #LunarEclipseInfo for more information.
+To find a series of lunar eclipses, call this function once,
+then keep calling #Astronomy.NextLunarEclipse as many times as desired,
+passing in the <code>center</code> value returned from the previous call.</p>
+<p>See #Astronomy.LunarEclipsesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchMaxElongation_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchMaxElongation(EquatorialCelestialBody, AstroTime)</h3>
+<p>Finds a date and time when Mercury or Venus reaches its maximum angle from the Sun as seen from the Earth.</p>
+<pre><code class="lang-csharp">public ElongationInfo SearchMaxElongation(EquatorialCelestialBody body, AstroTime startTime)
+</code></pre>
+<h4 id="parameters-80">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>Either <code>Body.Mercury</code> or <code>Body.Venus</code>. Any other value will result in an exception.
+To find the best viewing opportunites for planets farther from the Sun than the Earth is (Mars through Pluto)
+use #Astronomy.SearchRelativeLongitude to find the next opposition event.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which to begin the search. The maximum elongation event found will always
+be the first one that occurs after this date and time.</p>
+<h4 id="returns-85">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.ElongationInfo.html">ElongationInfo</a></p>
+<p>Either an exception will be thrown, or the function will return a valid value.</p>
+<h4 id="remarks-83">Remarks</h4>
+<p>Mercury and Venus are are often difficult to observe because they are closer to the Sun than the Earth is.
+Mercury especially is almost always impossible to see because it gets lost in the Sun's glare.
+The best opportunities for spotting Mercury, and the best opportunities for viewing Venus through
+a telescope without atmospheric interference, are when these planets reach maximum elongation.
+These are events where the planets reach the maximum angle from the Sun as seen from the Earth.</p>
+<p>This function solves for those times, reporting the next maximum elongation event's date and time,
+the elongation value itself, the relative longitude with the Sun, and whether the planet is best
+observed in the morning or evening. See #Astronomy.Elongation for more details about the returned structure.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchMoonNode_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchMoonNode(AstroTime)</h3>
+<p>Searches for a time when the Moon's center crosses through the ecliptic plane.</p>
+<pre><code class="lang-csharp">public NodeEventInfo SearchMoonNode(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-81">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for starting the search for an ascending or descending node of the Moon.</p>
+<h4 id="returns-86">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.NodeEventInfo.html">NodeEventInfo</a></p>
+<h4 id="remarks-84">Remarks</h4>
+<p>Searches for the first ascending or descending node of the Moon after <code>startTime</code>.
+An ascending node is when the Moon's center passes through the ecliptic plane
+(the plane of the Earth's orbit around the Sun) from south to north.
+A descending node is when the Moon's center passes through the ecliptic plane
+from north to south. Nodes indicate possible times of solar or lunar eclipses,
+if the Moon also happens to be in the correct phase (new or full, respectively).
+Call <code>Astronomy.SearchMoonNode</code> to find the first of a series of nodes.
+Then call #Astronomy.NextMoonNode to find as many more consecutive nodes as desired.</p>
+<p>See #Astronomy.MoonNodesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchMoonPhase_System_Double_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_System_Double_"> SearchMoonPhase(double, AstroTime, double)</h3>
+<p>Searches for the time that the Moon reaches a specified phase.</p>
+<pre><code class="lang-csharp">public AstroTime SearchMoonPhase(double targetLon, AstroTime startTime, double limitDays)
+</code></pre>
+<h4 id="parameters-82">Parameters</h4>
+<p><code>targetLon</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The difference in geocentric longitude between the Sun and Moon
+that specifies the lunar phase being sought. This can be any value
+in the range [0, 360).  Certain values have conventional names:
+0 = new moon, 90 = first quarter, 180 = full moon, 270 = third quarter.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The beginning of the time window in which to search for the Moon reaching the specified phase.</p>
+<p><code>limitDays</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The number of days away from <code>startTime</code> that limits the time window for the search.
+If the value is negative, the search is performed into the past from <code>startTime</code>.
+Otherwise, the search is performed into the future from <code>startTime</code>.</p>
+<h4 id="returns-87">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>If successful, returns the date and time the moon reaches the phase specified by
+<code>targetlon</code>. This function will return <code>null</code> if the phase does not
+occur within <code>limitDays</code> of <code>startTime</code>; that is, if the search window is too small.</p>
+<h4 id="remarks-85">Remarks</h4>
+<p>Lunar phases are conventionally defined in terms of the Moon's geocentric ecliptic
+longitude with respect to the Sun's geocentric ecliptic longitude.
+When the Moon and the Sun have the same longitude, that is defined as a new moon.
+When their longitudes are 180 degrees apart, that is defined as a full moon.</p>
+<p>This function searches for any value of the lunar phase expressed as an
+angle in degrees in the range [0, 360).</p>
+<p>If you want to iterate through lunar quarters (new moon, first quarter, full moon, third quarter)
+it is much easier to call the functions #Astronomy.SearchMoonQuarter and #Astronomy.NextMoonQuarter.
+This function is useful for finding general phase angles outside those four quarters.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchMoonQuarter_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchMoonQuarter(AstroTime)</h3>
+<p>Finds the first lunar quarter after the specified date and time.</p>
+<pre><code class="lang-csharp">public MoonQuarterInfo SearchMoonQuarter(AstroTime startTime)
+</code></pre>
+<h4 id="parameters-83">Parameters</h4>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which to start the search.</p>
+<h4 id="returns-88">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.MoonQuarterInfo.html">MoonQuarterInfo</a></p>
+<p>A #MoonQuarterInfo structure reporting the next quarter phase and the time it will occur.</p>
+<h4 id="remarks-86">Remarks</h4>
+<p>A lunar quarter is one of the following four lunar phase events:
+new moon, first quarter, full moon, third quarter.
+This function finds the lunar quarter that happens soonest
+after the specified date and time.</p>
+<p>To continue iterating through consecutive lunar quarters, call this function once,
+followed by calls to #Astronomy.NextMoonQuarter as many times as desired.</p>
+<p>See #Astronomy.MoonQuartersAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchPeakMagnitude_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchPeakMagnitude(EquatorialCelestialBody, AstroTime)</h3>
+<p>Searches for the date and time Venus will next appear brightest as seen from the Earth.</p>
+<pre><code class="lang-csharp">public IllumInfo SearchPeakMagnitude(EquatorialCelestialBody body, AstroTime startTime)
+</code></pre>
+<h4 id="parameters-84">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>Currently only <code>Body.Venus</code> is allowed. Any other value causes an exception.
+See remarks above for more details.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time to start searching for the next peak magnitude event.</p>
+<h4 id="returns-89">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.IllumInfo.html">IllumInfo</a></p>
+<p>See documentation about the return value from #Astronomy.Illumination.</p>
+<h4 id="remarks-87">Remarks</h4>
+<p>This function searches for the date and time Venus appears brightest as seen from the Earth.
+Currently only Venus is supported for the <code>body</code> parameter, though this could change in the future.
+Mercury's peak magnitude occurs at superior conjunction, when it is virtually impossible to see from the Earth,
+so peak magnitude events have little practical value for that planet.
+Planets other than Venus and Mercury reach peak magnitude at opposition, which can
+be found using #Astronomy.SearchRelativeLongitude.
+The Moon reaches peak magnitude at full moon, which can be found using
+#Astronomy.SearchMoonQuarter or #Astronomy.SearchMoonPhase.
+The Sun reaches peak magnitude at perihelion, which occurs each year in January.
+However, the difference is minor and has little practical value.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchPlanetApsis_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchPlanetApsis(EquatorialCelestialBody, AstroTime)</h3>
+<p>Finds the date and time of a planet's perihelion (closest approach to the Sun)
+or aphelion (farthest distance from the Sun) after a given time.</p>
+<pre><code class="lang-csharp">public ApsisInfo SearchPlanetApsis(EquatorialCelestialBody body, AstroTime startTime)
+</code></pre>
+<h4 id="parameters-85">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The planet for which to find the next perihelion/aphelion event.
+Not allowed to be <code>Body.Sun</code> or <code>Body.Moon</code>.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which to start searching for the next perihelion or aphelion.</p>
+<h4 id="returns-90">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.html">ApsisInfo</a></p>
+<p>Returns a structure in which <code>time</code> holds the date and time of the next planetary apsis,
+<code>kind</code> holds either <code>ApsisKind.Pericenter</code> for perihelion or <code>ApsisKind.Apocenter</code> for aphelion.
+and distance values <code>dist_au</code> (astronomical units) and <code>dist_km</code> (kilometers).</p>
+<h4 id="remarks-88">Remarks</h4>
+<p>Given a date and time to start the search in <code>startTime</code>, this function finds the
+next date and time that the center of the specified planet reaches the closest or farthest point
+in its orbit with respect to the center of the Sun, whichever comes first
+after <code>startTime</code>.</p>
+<p>The closest point is called <em>perihelion</em> and the farthest point is called <em>aphelion</em>.
+The word <em>apsis</em> refers to either event.</p>
+<p>To iterate through consecutive alternating perihelion and aphelion events,
+call <code>Astronomy.SearchPlanetApsis</code> once, then use the return value to call
+#Astronomy.NextPlanetApsis. After that, keep feeding the previous return value
+from <code>Astronomy.NextPlanetApsis</code> into another call of <code>Astronomy.NextPlanetApsis</code>
+as many times as desired.</p>
+<p>See #Astronomy.PlanetApsidesAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchRelativeLongitude_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_System_Double_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchRelativeLongitude(EquatorialCelestialBody, double, AstroTime)</h3>
+<p>Searches for the time when the Earth and another planet are separated by a specified angle
+in ecliptic longitude, as seen from the Sun.</p>
+<pre><code class="lang-csharp">public AstroTime SearchRelativeLongitude(EquatorialCelestialBody body, double targetRelLon, AstroTime startTime)
+</code></pre>
+<h4 id="parameters-86">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>A planet other than the Earth.
+If <code>body</code> is <code>Body.Earth</code>, <code>Body.Sun</code>, or <code>Body.Moon</code>, this function throws an exception.</p>
+<p><code>targetRelLon</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The desired relative longitude, expressed in degrees. Must be in the range [0, 360).</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which to begin the search.</p>
+<h4 id="returns-91">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the relative longitude event.</p>
+<h4 id="remarks-89">Remarks</h4>
+<p>A relative longitude is the angle between two bodies measured in the plane of the Earth's orbit
+(the ecliptic plane). The distance of the bodies above or below the ecliptic plane is ignored.
+If you imagine the shadow of the body cast onto the ecliptic plane, and the angle measured around
+that plane from one body to the other in the direction the planets orbit the Sun, you will get an
+angle somewhere between 0 and 360 degrees. This is the relative longitude.</p>
+<p>Given a planet other than the Earth in <code>body</code> and a time to start the search in <code>startTime</code>,
+this function searches for the next time that the relative longitude measured from the planet
+to the Earth is <code>targetRelLon</code>.</p>
+<p>Certain astronomical events are defined in terms of relative longitude between the Earth and another planet:</p>
+<ul>
+<li><p>When the relative longitude is 0 degrees, it means both planets are in the same direction from the Sun.
+For planets that orbit closer to the Sun (Mercury and Venus), this is known as <em>inferior conjunction</em>,
+a time when the other planet becomes very difficult to see because of being lost in the Sun's glare.
+(The only exception is in the rare event of a transit, when we see the silhouette of the planet passing
+between the Earth and the Sun.)</p>
+</li>
+<li><p>When the relative longitude is 0 degrees and the other planet orbits farther from the Sun,
+this is known as <em>opposition</em>.  Opposition is when the planet is closest to the Earth, and
+also when it is visible for most of the night, so it is considered the best time to observe the planet.</p>
+</li>
+<li><p>When the relative longitude is 180 degrees, it means the other planet is on the opposite side of the Sun
+from the Earth. This is called <em>superior conjunction</em>. Like inferior conjunction, the planet is
+very difficult to see from the Earth. Superior conjunction is possible for any planet other than the Earth.</p>
+</li>
+</ul>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchRiseSet_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyShared_Domain_Observer_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Direction_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_System_Double_System_Double_"> SearchRiseSet(EquatorialCelestialBody, Observer, Direction, AstroTime, double, double)</h3>
+<p>Searches for the next time a celestial body rises or sets as seen by an observer on the Earth.</p>
+<pre><code class="lang-csharp">public AstroTime SearchRiseSet(EquatorialCelestialBody body, Observer observer, Direction direction, AstroTime startTime, double limitDays, double metersAboveGround = 0)
+</code></pre>
+<h4 id="parameters-87">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The Sun, Moon, any planet other than the Earth,
+or a user-defined star that was created by a call to #Astronomy.DefineStar.</p>
+<p><code>observer</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The location where observation takes place.</p>
+<p><code>direction</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Direction.html">Direction</a></p>
+<p>Either <code>Direction.Rise</code> to find a rise time or <code>Direction.Set</code> to find a set time.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time at which to start the search.</p>
+<p><code>limitDays</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>Limits how many days to search for a rise or set time, and defines
+the direction in time to search. When <code>limitDays</code> is positive, the
+search is performed into the future, after <code>startTime</code>.
+When negative, the search is performed into the past, before <code>startTime</code>.
+To limit a rise or set time to the same day, you can use a value of 1 day.
+In cases where you want to find the next rise or set time no matter how far
+in the future (for example, for an observer near the south pole), you can
+pass in a larger value like 365.</p>
+<p><code>metersAboveGround</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>Usually the observer is located at ground level. Then this parameter
+should be zero. But if the observer is significantly higher than ground
+level, for example in an airplane, this parameter should be a positive
+number indicating how far above the ground the observer is.
+An exception occurs if <code>metersAboveGround</code> is negative.</p>
+<h4 id="returns-92">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>On success, returns the date and time of the rise or set time as requested.
+If the function returns <code>null</code>, it means the rise or set event does not occur
+within <code>limitDays</code> days of <code>startTime</code>. This is a normal condition,
+not an error.</p>
+<h4 id="remarks-90">Remarks</h4>
+<p>This function finds the next rise or set time of the Sun, Moon, or planet other than the Earth.
+Rise time is when the body first starts to be visible above the horizon.
+For example, sunrise is the moment that the top of the Sun first appears to peek above the horizon.
+Set time is the moment when the body appears to vanish below the horizon.
+Therefore, this function adjusts for the apparent angular radius of the observed body
+(significant only for the Sun and Moon).</p>
+<p>This function corrects for a typical value of atmospheric refraction, which causes celestial
+bodies to appear higher above the horizon than they would if the Earth had no atmosphere.
+Astronomy Engine uses a correction of 34 arcminutes. Real-world refraction varies based
+on air temperature, pressure, and humidity; such weather-based conditions are outside
+the scope of Astronomy Engine.</p>
+<p>Note that rise or set may not occur in every 24 hour period.
+For example, near the Earth's poles, there are long periods of time where
+the Sun stays below the horizon, never rising.
+Also, it is possible for the Moon to rise just before midnight but not set during the subsequent 24-hour day.
+This is because the Moon sets nearly an hour later each day due to orbiting the Earth a
+significant amount during each rotation of the Earth.
+Therefore callers must not assume that the function will always succeed.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchSunLongitude_System_Double_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_System_Double_"> SearchSunLongitude(double, AstroTime, double)</h3>
+<p>Searches for the time when the Sun reaches an apparent ecliptic longitude as seen from the Earth.</p>
+<pre><code class="lang-csharp">public AstroTime SearchSunLongitude(double targetLon, AstroTime startTime, double limitDays)
+</code></pre>
+<h4 id="parameters-88">Parameters</h4>
+<p><code>targetLon</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The desired ecliptic longitude in degrees, relative to the true equinox of date.
+This may be any value in the range [0, 360), although certain values have
+conventional meanings:
+0 = March equinox, 90 = June solstice, 180 = September equinox, 270 = December solstice.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for starting the search for the desired longitude event.</p>
+<p><code>limitDays</code> <a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>The real-valued number of days, which when added to <code>startTime</code>, limits the
+range of time over which the search looks.
+It is recommended to keep this value between 1 and 10 days.
+See remarks above for more details.</p>
+<h4 id="returns-93">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time when the Sun reaches the specified apparent ecliptic longitude.</p>
+<h4 id="remarks-91">Remarks</h4>
+<p>This function finds the moment in time, if any exists in the given time window,
+that the center of the Sun reaches a specific ecliptic longitude as seen from the center of the Earth.</p>
+<p>This function can be used to determine equinoxes and solstices.
+However, it is usually more convenient and efficient to call #Astronomy.Seasons
+to calculate all equinoxes and solstices for a given calendar year.</p>
+<p>The function searches the window of time specified by <code>startTime</code> and <code>startTime+limitDays</code>.
+The search will return <code>null</code> if the Sun never reaches the longitude <code>targetLon</code> or
+if the window is so large that the longitude ranges more than 180 degrees within it.
+It is recommended to keep the window smaller than 10 days when possible.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SearchTransit_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SearchTransit(EquatorialCelestialBody, AstroTime)</h3>
+<p>Searches for the first transit of Mercury or Venus after a given date.</p>
+<pre><code class="lang-csharp">public TransitInfo SearchTransit(EquatorialCelestialBody body, AstroTime startTime)
+</code></pre>
+<h4 id="parameters-89">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The planet whose transit is to be found. Must be <code>Body.Mercury</code> or <code>Body.Venus</code>.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for starting the search for a transit.</p>
+<h4 id="returns-94">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.TransitInfo.html">TransitInfo</a></p>
+<h4 id="remarks-92">Remarks</h4>
+<p>Finds the first transit of Mercury or Venus after a specified date.
+A transit is when an inferior planet passes between the Sun and the Earth
+so that the silhouette of the planet is visible against the Sun in the background.
+To continue the search, pass the <code>finish</code> time in the returned structure to
+#Astronomy.NextTransit.</p>
+<p>See #Astronomy.TransitsAfter for a convenient enumerator.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_Seasons_System_Int32_"> Seasons(int)</h3>
+<p>Finds both equinoxes and both solstices for a given calendar year.</p>
+<pre><code class="lang-csharp">public SeasonsInfo Seasons(int year)
+</code></pre>
+<h4 id="parameters-90">Parameters</h4>
+<p><code>year</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>The calendar year number for which to calculate equinoxes and solstices.
+The value may be any integer, but only the years 1800 through 2100 have been
+validated for accuracy: unit testing against data from the
+United States Naval Observatory confirms that all equinoxes and solstices
+for that range of years are within 2 minutes of the correct time.</p>
+<h4 id="returns-95">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.SeasonsInfo.html">SeasonsInfo</a></p>
+<p>A #SeasonsInfo structure that contains four #AstroTime values:
+the March and September equinoxes and the June and December solstices.</p>
+<h4 id="remarks-93">Remarks</h4>
+<p>The changes of seasons are defined by solstices and equinoxes.
+Given a calendar year number, this function calculates the
+March and September equinoxes and the June and December solstices.</p>
+<p>The equinoxes are the moments twice each year when the plane of the
+Earth's equator passes through the center of the Sun. In other words,
+the Sun's declination is zero at both equinoxes.
+The March equinox defines the beginning of spring in the northern hemisphere
+and the beginning of autumn in the southern hemisphere.
+The September equinox defines the beginning of autumn in the northern hemisphere
+and the beginning of spring in the southern hemisphere.</p>
+<p>The solstices are the moments twice each year when one of the Earth's poles
+is most tilted toward the Sun. More precisely, the Sun's declination reaches
+its minimum value at the December solstice, which defines the beginning of
+winter in the northern hemisphere and the beginning of summer in the southern
+hemisphere. The Sun's declination reaches its maximum value at the June solstice,
+which defines the beginning of summer in the northern hemisphere and the beginning
+of winter in the southern hemisphere.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SiderealTime_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SiderealTime(AstroTime)</h3>
+<p>Calculates Greenwich Apparent Sidereal Time (GAST).</p>
+<pre><code class="lang-csharp">public double SiderealTime(AstroTime time)
+</code></pre>
+<h4 id="parameters-91">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to find GAST.
+As an optimization, this function caches the sidereal time value in <code>time</code>,
+unless it has already been cached, in which case the cached value is reused.</p>
+<h4 id="returns-96">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>GAST in sidereal hours.</p>
+<h4 id="remarks-94">Remarks</h4>
+<p>Given a date and time, this function calculates the rotation of the
+Earth, represented by the equatorial angle of the Greenwich prime meridian
+with respect to distant stars (not the Sun, which moves relative to background
+stars by almost one degree per day).
+This angle is called Greenwich Apparent Sidereal Time (GAST).
+GAST is measured in sidereal hours in the half-open range [0, 24).
+When GAST = 0, it means the prime meridian is aligned with the of-date equinox,
+corrected at that time for precession and nutation of the Earth's axis.
+In this context, the &quot;equinox&quot; is the direction in space where the Earth's
+orbital plane (the ecliptic) intersects with the plane of the Earth's equator,
+at the location on the Earth's orbit of the (seasonal) March equinox.
+As the Earth rotates, GAST increases from 0 up to 24 sidereal hours,
+then starts over at 0.
+To convert to degrees, multiply the return value by 15.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SphereFromVector_ChargerAstronomyEngine_CosineKittyAstronomy_AstroVector_"> SphereFromVector(AstroVector)</h3>
+<p>Converts Cartesian coordinates to spherical coordinates.</p>
+<pre><code class="lang-csharp">public Spherical SphereFromVector(AstroVector vector)
+</code></pre>
+<h4 id="parameters-92">Parameters</h4>
+<p><code>vector</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>Cartesian vector to be converted to spherical coordinates.</p>
+<h4 id="returns-97">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Spherical.html">Spherical</a></p>
+<p>Spherical coordinates that are equivalent to the given vector.</p>
+<h4 id="remarks-95">Remarks</h4>
+<p>Given a Cartesian vector, returns latitude, longitude, and distance.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_SunPosition_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> SunPosition(AstroTime)</h3>
+<p>Calculates geocentric ecliptic coordinates for the Sun.</p>
+<pre><code class="lang-csharp">public Ecliptic SunPosition(AstroTime time)
+</code></pre>
+<h4 id="parameters-93">Parameters</h4>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time for which to calculate the Sun's position.</p>
+<h4 id="returns-98">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.Ecliptic.html">Ecliptic</a></p>
+<p>The ecliptic coordinates of the Sun using the Earth's true equator of date.</p>
+<h4 id="remarks-96">Remarks</h4>
+<p>This function calculates the position of the Sun as seen from the Earth.
+The returned value includes both Cartesian and spherical coordinates.
+The x-coordinate and longitude values in the returned structure are based
+on the <em>true equinox of date</em>: one of two points in the sky where the instantaneous
+plane of the Earth's equator at the given date and time (the <em>equatorial plane</em>)
+intersects with the plane of the Earth's orbit around the Sun (the <em>ecliptic plane</em>).
+By convention, the apparent location of the Sun at the March equinox is chosen
+as the longitude origin and x-axis direction, instead of the one for September.</p>
+<p><code>SunPosition</code> corrects for precession and nutation of the Earth's axis
+in order to obtain the exact equatorial plane at the given time.</p>
+<p>This function can be used for calculating changes of seasons: equinoxes and solstices.
+In fact, the function #Astronomy.Seasons does use this function for that purpose.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_TransitsAfter_ChargerAstronomyShared_Domain_Equatorial_EquatorialCelestialBody_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> TransitsAfter(EquatorialCelestialBody, AstroTime)</h3>
+<p>Enumerates a series of transits of Mercury or Venus.</p>
+<pre><code class="lang-csharp">public IEnumerable&lt;TransitInfo&gt; TransitsAfter(EquatorialCelestialBody body, AstroTime startTime)
+</code></pre>
+<h4 id="parameters-94">Parameters</h4>
+<p><code>body</code> <a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialCelestialBody.html">EquatorialCelestialBody</a></p>
+<p>The planet whose transits are to be enumerated. Must be <code>Body.Mercury</code> or <code>Body.Venus</code>.</p>
+<p><code>startTime</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>Specifies the time to begin searching for consecutive transits.</p>
+<h4 id="returns-99">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyEngine.CosineKittyAstronomy.TransitInfo.html">TransitInfo</a>&gt;</p>
+<h4 id="remarks-97">Remarks</h4>
+<p>This is a convenience wrapper around the functions
+#Astronomy.SearchTransit and #Astronomy.NextTransit.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_VectorFromHorizon_ChargerAstronomyEngine_CosineKittyAstronomy_Spherical_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_Refraction_"> VectorFromHorizon(Spherical, AstroTime, Refraction)</h3>
+<p>Given apparent angular horizontal coordinates in <code>sphere</code>, calculate horizontal vector.</p>
+<pre><code class="lang-csharp">public AstroVector VectorFromHorizon(Spherical sphere, AstroTime time, Refraction refraction)
+</code></pre>
+<h4 id="parameters-95">Parameters</h4>
+<p><code>sphere</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Spherical.html">Spherical</a></p>
+<p>A structure that contains apparent horizontal coordinates:
+<code>lat</code> holds the refracted altitude angle,
+<code>lon</code> holds the azimuth in degrees clockwise from north,
+and <code>dist</code> holds the distance from the observer to the object in AU.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The date and time of the observation. This is needed because the returned
+#AstroVector requires a valid time value when passed to certain other functions.</p>
+<p><code>refraction</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Refraction.html">Refraction</a></p>
+<p>The refraction option used to model atmospheric lensing. See #Astronomy.RefractionAngle.
+This specifies how refraction is to be removed from the altitude stored in <code>sphere.lat</code>.</p>
+<h4 id="returns-100">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>A vector in the horizontal system: <code>x</code> = north, <code>y</code> = west, and <code>z</code> = zenith (up).</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_VectorFromSphere_ChargerAstronomyEngine_CosineKittyAstronomy_Spherical_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime_"> VectorFromSphere(Spherical, AstroTime)</h3>
+<p>Converts spherical coordinates to Cartesian coordinates.</p>
+<pre><code class="lang-csharp">public AstroVector VectorFromSphere(Spherical sphere, AstroTime time)
+</code></pre>
+<h4 id="parameters-96">Parameters</h4>
+<p><code>sphere</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Spherical.html">Spherical</a></p>
+<p>Spherical coordinates to be converted.</p>
+<p><code>time</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.html">AstroTime</a></p>
+<p>The time that should be included in the return value.</p>
+<h4 id="returns-101">Returns</h4>
+<p><a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>The vector form of the supplied spherical coordinates.</p>
+<h4 id="remarks-98">Remarks</h4>
+<p>Given spherical coordinates and a time at which they are valid,
+returns a vector of Cartesian coordinates. The returned value
+includes the time, as required by the type #AstroVector.</p>
+<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_Astronomy_VectorObserver_ChargerAstronomyEngine_CosineKittyAstronomy_AstroVector_ChargerAstronomyEngine_CosineKittyAstronomy_Enums_EquatorEpoch_"> VectorObserver(AstroVector, EquatorEpoch)</h3>
+<p>Calculates the geographic location corresponding to an equatorial vector.</p>
+<pre><code class="lang-csharp">public Observer VectorObserver(AstroVector vector, EquatorEpoch equdate)
+</code></pre>
+<h4 id="parameters-97">Parameters</h4>
+<p><code>vector</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector.html">AstroVector</a></p>
+<p>The geocentric equatorial position vector for which to find geographic coordinates.
+The components are expressed in Astronomical Units (AU).
+You can calculate AU by dividing kilometers by the constant #Astronomy.KM_PER_AU.
+The time <code>vector.t</code> determines the Earth's rotation.</p>
+<p><code>equdate</code> <a href="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EquatorEpoch.html">EquatorEpoch</a></p>
+<p>Selects the date of the Earth's equator in which <code>vector</code> is expressed.
+The caller may select <code>EquatorEpoch.J2000</code> to use the orientation of the Earth's equator
+at noon UTC on January 1, 2000, in which case this function corrects for precession
+and nutation of the Earth as it was at the moment specified by <code>vector.t</code>.
+Or the caller may select <code>EquatorEpoch.OfDate</code> to use the Earth's equator at <code>vector.t</code>
+as the orientation.</p>
+<h4 id="returns-102">Returns</h4>
+<p><a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
+<p>The geographic latitude, longitude, and elevation above sea level
+that corresponds to the given equatorial vector.</p>
+<h4 id="remarks-99">Remarks</h4>
+<p>This is the inverse function of #Astronomy.ObserverVector.
+Given a geocentric equatorial vector, it returns the geographic
+latitude, longitude, and elevation for that vector.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
