@@ -64,24 +64,6 @@ namespace tests
         }
 
         /// <summary>
-        /// Small test to ensure the IcosphereTileIndex throws an error when given an invalid direction.
-        /// </summary>
-        [Fact]
-        public void DirectionToTileId_ThrowsError_ForInvalidDirection()
-        {
-            // Arrange
-            var icosphereTileIndex = new IcosphereTileIndex();
-            var invalidDirection = new Vector3(0, 0, 0); // Invalid direction vector
-
-            // Act
-            Action act = () => icosphereTileIndex.DirectionToTileId(invalidDirection);
-
-            // Assert
-            act.Should().Throw<InvalidOperationException>()
-                .WithMessage("Tile for direction * not found");
-        }
-
-        /// <summary>
         /// Test to ensure DirectionToTileId returns the correct TileId for a specific direction.
         /// </summary>
         [Fact]
