@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.EarthNotAllowedException" Collapsed="true">
+    <Position X="19" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Exceptions\EathNotAllowedException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.InternalError">
+    <Position X="12.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Exceptions\InternalError.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.Exceptions.InvalidBodyException" Collapsed="true">
+    <Position X="15.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Exceptions\InvalidBodyException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_Altitude">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAIAAAIAAAgAAAAAAAAQQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_Altitude.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_EarthShadow">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_EarthShadow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_EarthShadowSlope">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_EarthShadowSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_LocalEclipseTransition">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAIAAAIAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_LocalEclipseTransition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_LocalMoonShadowSlope">
+    <Position X="25.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_LocalMoonShadowSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_MagnitudeSlope">
+    <Position X="29.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_MagnitudeSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_MoonDistanceSlope">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAIAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_MoonDistanceSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_MoonNode">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_MoonNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_MoonOffset">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_MoonOffset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_MoonShadowSlope">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_MoonShadowSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_NegElongSlope">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_NegElongSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_PlanetDistanceSlope">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_PlanetDistanceSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_PlanetShadowBoundary">
+    <Position X="23" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAIAAAAAAAAEAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_PlanetShadowBoundary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_PlanetShadowSlope">
+    <Position X="27.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAEAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_PlanetShadowSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.SearchContexts.SearchContext_SunOffset">
+    <Position X="32" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SearchContexts\SearchContext_SunOffset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy" Collapsed="true">
+    <Position X="15.5" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.jupiter_moon_t" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.vsop_series_t" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.constel_boundary_t" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.vsop_model_t" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.AscentInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.earth_tilt_t" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.constel_info_t" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.vsop_formula_t" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.major_bodies_t" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.vsop_term_t" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Enum Name="ChargerAstronomyEngine.CosineKittyAstronomy.Astronomy.PrecessDirection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CosineKittyAstronomy\Astronomy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>6m/97z7y8NVbjePNDTK7V3j//b/07T3r+s2x3vd3q90=</HashCode>
+      <FileName>CosineKittyAstronomy\Astronomy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime" Collapsed="true">
+    <Position X="24.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIECAgAgAAAAAIAEAAIAAAAAACAAACAsAAIAAAgCAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\AstroTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.Constants">
+    <Position X="36.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwQCBMAAACEBhGEAAQAARVAQgmQAEgMlAIArADrCQgw=</HashCode>
+      <FileName>CosineKittyAstronomy\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.GravitySimulator" Collapsed="true">
+    <Position X="20.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEEAAAAEAAAAAAQQAAAAAAAgABIAAAAABEAAEAIRA=</HashCode>
+      <FileName>CosineKittyAstronomy\GravitySimulator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.GravSimEndpoint" Collapsed="true">
+    <Position X="22.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\GravSimEndpoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.MoonContext" Collapsed="true">
+    <Position X="17.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACADAAAABCEAgAAEQABBAAIAAAAAAAQAmAACFBTEiAA=</HashCode>
+      <FileName>CosineKittyAstronomy\MoonContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargerAstronomyEngine.CosineKittyAstronomy.PascalArray2&lt;ElemType&gt;" Collapsed="true">
+    <Position X="19" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAIAAAAAAAAAAAACAgAAAAAAAAAAAAAAAAAAEAAEAA=</HashCode>
+      <FileName>CosineKittyAstronomy\PascalArray2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACAAACAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\ApsisInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.AstroVector">
+    <Position X="27" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEYAcBAABAAAAAAAAAAARgAQAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\AstroVector.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.AtmosphereInfo">
+    <Position X="34" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQACAAQAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\AtmosphereInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.AxisInfo">
+    <Position X="25.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>CosineKittyAstronomy\AxisInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.body_grav_calc_t">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkABABAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\body_grav_calc_t.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.body_state_t">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAEABABAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\body_state_t.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.BodyPosition" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAQAgAAAAAAAggAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\BodyPosition.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.ConstellationInfo">
+    <Position X="28.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAQAAAAAAAAAQAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>CosineKittyAstronomy\ConstellationInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.EclipseEvent">
+    <Position X="32.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\EclipseEvent.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Ecliptic">
+    <Position X="23.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>CosineKittyAstronomy\Ecliptic.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.ElongationInfo">
+    <Position X="7.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\ElongationInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Equatorial">
+    <Position X="9.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAAAAAAACAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Equatorial.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.GlobalSolarEclipseInfo">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAQAAAAAAAAAQAAAAAAACEAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\GlobalSolarEclipseInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.HourAngleInfo">
+    <Position X="30.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\HourAngleInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.IllumInfo">
+    <Position X="30.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABEAAAAAAAABQAAAAAAAAAAABAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>CosineKittyAstronomy\IllumInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.JupiterMoonsInfo">
+    <Position X="21.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAABAIAAACAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\JupiterMoonsInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.LibrationInfo">
+    <Position X="5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAACAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAgIA=</HashCode>
+      <FileName>CosineKittyAstronomy\LibrationInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.LocalSolarEclipseInfo">
+    <Position X="11" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAABAAgAIAQAAAAAAAAAAIAAAAAAAAAACAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\LocalSolarEclipseInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.LunarEclipseInfo">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAQAgAAAAAAAAAIAAAAQAAAACAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\LunarEclipseInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.MoonQuarterInfo">
+    <Position X="32.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\MoonQuarterInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.MoonResult">
+    <Position X="28.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAEAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\MoonResult.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.NodeEventInfo">
+    <Position X="20" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\NodeEventInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.RotationMatrix">
+    <Position X="5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\RotationMatrix.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.SeasonsInfo">
+    <Position X="7.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAQAAAAAAgAAAAAAACAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\SeasonInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.ShadowInfo">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAAAAAIAAAAAAAAAAAAAAAgEIBAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\ShadowInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Spherical">
+    <Position X="34" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Spherical.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.StateVector">
+    <Position X="27" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAkAgAAAAAAAAAAAAAAAERgAQAEAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\StateVector.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.TerseVector">
+    <Position X="18.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAYAUAAAAAAQAAAAAAAAFgAQEQAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\TerseVector.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.Topocentric">
+    <Position X="12.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAgAAAAIAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Topocentric.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ChargerAstronomyEngine.CosineKittyAstronomy.TransitInfo">
+    <Position X="11" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAgABAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\TransitInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="ChargerAstronomyEngine.CosineKittyAstronomy.IPositionFunction">
+    <Position X="16.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\IPositionFunction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Aberration">
+    <Position X="18.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAEAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Enums\Abberation.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.ApsisKind">
+    <Position X="21.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Enums\ApsisKind.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Direction">
+    <Position X="9.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Enums\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EclipseKind">
+    <Position X="11" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAEAAAEAAFAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Enums\EclipseKind.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.EquatorEpoch">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Enums\EquatorEpoch.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.NodeEventKind">
+    <Position X="14.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAECAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Enums\NodeEventKind.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Refraction">
+    <Position X="20" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAIAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Enums\Refraction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChargerAstronomyEngine.CosineKittyAstronomy.Enums.Visibility">
+    <Position X="23.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAABAAAAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Enums\Visibility.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="ChargerAstronomyEngine.CosineKittyAstronomy.DeltaTimeFunc">
+    <Position X="25.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>CosineKittyAstronomy\Astronomy.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
