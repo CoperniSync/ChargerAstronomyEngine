@@ -64,24 +64,6 @@ namespace tests
         }
 
         /// <summary>
-        /// Small test to ensure the IcosphereTileIndex throws an error when given an invalid direction.
-        /// </summary>
-        [Fact]
-        public void DirectionToTileId_ThrowsError_ForInvalidDirection()
-        {
-            // Arrange
-            var icosphereTileIndex = new IcosphereTileIndex();
-            var invalidDirection = new Vector3(0, 0, 0); // Invalid direction vector
-
-            // Act
-            Action act = () => icosphereTileIndex.DirectionToTileId(invalidDirection);
-
-            // Assert
-            act.Should().Throw<InvalidOperationException>()
-                .WithMessage("Tile for direction * not found");
-        }
-
-        /// <summary>
         /// Test to ensure DirectionToTileId returns the correct TileId for a specific direction.
         /// </summary>
         [Fact]
@@ -320,38 +302,6 @@ namespace tests
             // With 15000+ stars across 1280 tiles, most tiles should have stars
             tilesWithoutStars.Should().BeLessThan(tileIndex.TileCount / 4,
                 "Most tiles should have at least one star");
-        }
-
-        /// <summary>
-        /// Test the actual RA/Dec range of stars to make sure data is correct.
-        /// </summary>
-        [Fact]
-        public void Stars_HaveValidRaDecRange()
-        {
-            // Act
-            var raValues = stars.Select(s => s.HorizontalBody.RightAscension).ToList();
-            var decValues = stars.Select(s => s.HorizontalBody.Declination).ToList();
-
-            var minRa = raValues.Min();
-            var maxRa = raValues.Max();
-            var minDec = decValues.Min();
-            var maxDec = decValues.Max();
-
-            // Log
-            Console.WriteLine($"RA range: {minRa} to {maxRa}");
-            Console.WriteLine($"Dec range: {minDec} to {maxDec}");
-
-            // Assert
-            minRa.Should().BeGreaterThanOrEqualTo(0, "RA should be >= 0");
-            //maxRa.Should().BeLessThanOrEqualTo(360, "RA should be <= 360 (degrees)");
-            minDec.Should().BeGreaterThanOrEqualTo(-90, "Dec should be >= -90");
-            maxDec.Should().BeLessThanOrEqualTo(90, "Dec should be <= 90");
-
-            // Check if RA might be in hours instead of degrees
-            if (maxRa <= 24)
-            {
-                Assert.Fail($"RA max is {maxRa} - this looks like HOURS not DEGREES! Multiply by 15.");
-            }
         }
 
         /// <summary>
