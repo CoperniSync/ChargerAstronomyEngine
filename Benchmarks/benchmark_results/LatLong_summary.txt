@@ -1,0 +1,19 @@
+LatLong Summary:
+  Total Tiles: 952
+  Tile Lookup Time: 0.000062 ms (avg per lookup)
+  Memory Footprint: 2.76 MB
+  Stars Updated:
+    Avg: 1911.2
+    Min: 1618
+    Max: 2121
+    StdDev: 95.9
+  Active Tiles:
+    Avg: 371.8
+    Min: 301
+    Max: 400
+    StdDev: 26.6
+  Frame Time (ms):
+    Avg: 0.318
+    Min: 0.155
+    Max: 23.625
+    95th Percentile: 0.908
