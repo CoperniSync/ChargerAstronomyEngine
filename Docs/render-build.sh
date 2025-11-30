@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 wget https://github.com/dotnet/docfx/releases/download/v2.77.0/docfx-linux-x64-v2.77.0.zip
-unzip docfx-linux-x64-v2.77.0.zip -d docfx
+unzip -o docfx-linux-x64-v2.77.0.zip -d docfx
 
-docfx build docfx.json
+# Build from repo root
+./docfx/docfx build /opt/render/project/src/Docs/docfx.json
