@@ -4,4 +4,5 @@ wget https://github.com/dotnet/docfx/releases/download/v2.77.0/docfx-linux-x64-v
 unzip -o docfx-linux-x64-v2.77.0.zip -d docfx
 
 # Build from repo root
-./docfx/docfx build /opt/render/project/src/Docs/docfx.json
+cd Docs
+../docfx/docfx build docfx.json
