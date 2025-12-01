@@ -1,0 +1,19 @@
+CubeMap Summary:
+  Total Tiles: 294
+  Tile Lookup Time: 0.000071 ms (avg per lookup)
+  Memory Footprint: 2.75 MB
+  Stars Updated:
+    Avg: 1748.2
+    Min: 1450
+    Max: 1988
+    StdDev: 97.5
+  Active Tiles:
+    Avg: 100.8
+    Min: 93
+    Max: 113
+    StdDev: 4.4
+  Frame Time (ms):
+    Avg: 0.130
+    Min: 0.050
+    Max: 3.995
+    95th Percentile: 0.381

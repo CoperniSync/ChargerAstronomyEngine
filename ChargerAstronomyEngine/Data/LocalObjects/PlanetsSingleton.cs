@@ -31,8 +31,8 @@ namespace ChargerAstronomyEngine.Data.LocalObjects
         public DateTime CurrentTime => currentTime;
         private PlanetsSingleton() : base(BodyType.Earth)
         {
-            observer = new Observer(0, 0, 150);
-            currentTime = new AstroTime(2000, 1, 1, 12, 0, 0).ToUtcDateTime();
+            observer = new Observer(0, 0, 0);
+            currentTime = new AstroTime(2000, 1, 1, 0, 0, 0).ToUtcDateTime();
             astroTime = new AstroTime(currentTime);
 
             planets = new Dictionary<string, BodyType>

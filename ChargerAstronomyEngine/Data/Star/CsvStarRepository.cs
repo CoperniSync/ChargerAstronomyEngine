@@ -172,6 +172,9 @@ namespace ChargerAstronomyEngine.Data.Star
 
             // Leaving this here just incase if we use another data set and it has weird null values
             dn.NullValues.AddRange(new[] { "NULL", "N/A" });
+
+            var inn = csv.Context.TypeConverterOptionsCache.GetOptions<int?>();
+            inn.NullValues.AddRange(new[] { "NULL", "N/A", "-" });
         }
 
         /// <summary>

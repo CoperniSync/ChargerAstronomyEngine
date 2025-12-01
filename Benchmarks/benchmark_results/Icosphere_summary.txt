@@ -1,0 +1,19 @@
+Icosphere Summary:
+  Total Tiles: 320
+  Tile Lookup Time: 0.014806 ms (avg per lookup)
+  Memory Footprint: 2.72 MB
+  Stars Updated:
+    Avg: 1726.6
+    Min: 1442
+    Max: 1970
+    StdDev: 97.0
+  Active Tiles:
+    Avg: 108.3
+    Min: 104
+    Max: 119
+    StdDev: 2.1
+  Frame Time (ms):
+    Avg: 0.094
+    Min: 0.038
+    Max: 3.341
+    95th Percentile: 0.125
