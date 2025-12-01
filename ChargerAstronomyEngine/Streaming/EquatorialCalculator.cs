@@ -32,9 +32,9 @@ namespace ChargerAstronomyEngine.Streaming
             this.starIndex = starIndex ?? throw new ArgumentNullException(nameof(starIndex));
             this.astro = new Astronomy();
 
-            location = new Observer(0, 0, 150);
+            location = new Observer(0, 0, 0);
 
-            var J200 = new CalendarDateTime(2000, 1, 1, 12, 0, 0);
+            var J200 = new CalendarDateTime(2000, 1, 1, 0, 0, 0);
             astroTime = new AstroTime(J200);
 
             planets = new Dictionary<string, BodyType>
