@@ -16,6 +16,11 @@ using System.Collections.Concurrent;
 
 namespace ChargerAstronomyEngine.Streaming
 {
+
+    /// <summary>
+    /// Equatorial calculator. Calculates new coordinates for horizontal stars and solar system bodies based on their equatorial coordinates.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class EquatorialCalculator<T> : ITimeAndPlaceProvider, IEquatorialCalculator where T : IHorizontal
     {
         SpatialStarIndex<T> starIndex;
