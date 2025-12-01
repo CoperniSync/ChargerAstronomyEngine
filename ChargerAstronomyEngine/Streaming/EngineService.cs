@@ -255,6 +255,12 @@ namespace ChargerAstronomyEngine.Streaming
             });
         }
 
+        public void ForceStarUpdate(T star)
+        {
+            equatorialCalculator.UpdateStar(star);
+            updateTransformQueue.TryAdd(star);
+        }
+
         public void PlaceStars()
         {
             Parallel.ForEach(tileIndex.Tiles, tileId =>
