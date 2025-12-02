@@ -103,12 +103,14 @@ Assembly: Assembly-CSharp.dll</p>
 <a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
 <a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
 <h2 id="methods">Methods</h2>
-<h3 id="Assets_Scripts_Core_ConstellationRetrieval_GetConstellations_System_Collections_Generic_List_UnityConstellation___System_Collections_Generic_List_Assets_Scripts_CelestialBodies_Star__System_String_"> GetConstellations(ref List&lt;UnityConstellation&gt;, List&lt;Star&gt;, string)</h3>
-<pre><code class="lang-csharp">public static void GetConstellations(ref List&lt;UnityConstellation&gt; constellationList, List&lt;Star&gt; starList, string path = &quot;constellations.json&quot;)
+<h3 id="Assets_Scripts_Core_ConstellationRetrieval_GetConstellations_System_Collections_Generic_List_UnityConstellation___System_Collections_Generic_List_Assets_Scripts_CelestialBodies_Star__ChargerAstronomyShared_Contracts_Repositories_IEngineService_ChargerAstronomyShared_Contracts_Models_IHorizontal__System_Boolean_System_String_"> GetConstellations(ref List&lt;UnityConstellation&gt;, List&lt;Star&gt;, IEngineService&lt;IHorizontal&gt;, bool, string)</h3>
+<pre><code class="lang-csharp">public static void GetConstellations(ref List&lt;UnityConstellation&gt; constellationList, List&lt;Star&gt; starList, IEngineService&lt;IHorizontal&gt; engineIn, bool initalState = true, string path = &quot;constellations.json&quot;)
 </code></pre>
 <h4 id="parameters">Parameters</h4>
 <p><code>constellationList</code> <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a href="UnityConstellation.html">UnityConstellation</a>&gt;</p>
 <p><code>starList</code> <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a href="Assets.Scripts.CelestialBodies.Star.html">Star</a>&gt;</p>
+<p><code>engineIn</code> IEngineService&lt;IHorizontal&gt;</p>
+<p><code>initalState</code> <a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
 <p><code>path</code> <a href="https://learn.microsoft.com/dotnet/api/system.string">string</a></p>
 
 </article>

@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/Users/jojot/source/repos/ChargerAstronomyProject/ChargerAstronomyEngine/Docs",
+  "source_base_path": "C:/Users/jojot/source/repos/ChargerAstronomyLab/ChargerAstronomyEngine/Docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -1592,6 +1592,16 @@
       "output": {
         ".html": {
           "relative_path": "stargazer/GameLoop.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/HeatMapVisualizer.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/HeatMapVisualizer.html"
         }
       },
       "version": ""
