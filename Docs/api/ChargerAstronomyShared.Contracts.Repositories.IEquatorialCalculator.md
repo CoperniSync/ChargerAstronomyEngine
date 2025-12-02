@@ -43,6 +43,8 @@ The new location for the <xref href="ChargerAstronomyShared.Domain.Observer" dat
 
 ### <a id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalPlanet_"></a> UpdatePositionOf\(HorizontalPlanet\)
 
+Updates the position of a planet based on the current time and <xref href="ChargerAstronomyShared.Domain.Observer" data-throw-if-not-resolved="false"></xref>.
+
 ```csharp
 void UpdatePositionOf(HorizontalPlanet planet)
 ```
@@ -51,7 +53,15 @@ void UpdatePositionOf(HorizontalPlanet planet)
 
 `planet` [HorizontalPlanet](ChargerAstronomyShared.Domain.Horizontal.HorizontalPlanet.md)
 
+#### Exceptions
+
+ [ArgumentException](https://learn.microsoft.com/dotnet/api/system.argumentexception)
+
+Thrown if the <code class="paramref">planet</code> name is not recognized in the internal collection of known planets.
+
 ### <a id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalMoon_"></a> UpdatePositionOf\(HorizontalMoon\)
+
+Updates the position of the moon based on the current time and <xref href="ChargerAstronomyShared.Domain.Observer" data-throw-if-not-resolved="false"></xref>.
 
 ```csharp
 void UpdatePositionOf(HorizontalMoon moon)
@@ -61,7 +71,11 @@ void UpdatePositionOf(HorizontalMoon moon)
 
 `moon` [HorizontalMoon](ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon.md)
 
+The Moon.
+
 ### <a id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalSun_"></a> UpdatePositionOf\(HorizontalSun\)
+
+Updates the position of the Sun based on the current time and <xref href="ChargerAstronomyShared.Domain.Observer" data-throw-if-not-resolved="false"></xref>.
 
 ```csharp
 void UpdatePositionOf(HorizontalSun sun)

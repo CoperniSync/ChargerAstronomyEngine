@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Domain.Index](ChargerAstronomyShared.Domain.Index.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+A tile index used for spatial queries.
+
 ```csharp
 public interface ITileIndex
 ```

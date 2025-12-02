@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Domain.Equatorial](ChargerAstronomyShared.Domain.Equatorial.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+Interface for the <xref href="ChargerAstronomyShared.Domain.Equatorial.IBodyType.BodyType" data-throw-if-not-resolved="false"></xref> class.
+
 ```csharp
 public interface IBodyType
 ```

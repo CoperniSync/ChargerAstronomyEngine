@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Domain.Index](ChargerAstronomyShared.Domain.Index.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+A tile index that partitions tiles into an icosphere.
+
 ```csharp
 public sealed class IcosphereTileIndex : ITileIndex
 ```

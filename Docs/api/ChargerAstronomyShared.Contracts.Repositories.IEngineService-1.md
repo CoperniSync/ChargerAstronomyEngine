@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Contracts.Repositories](ChargerAstronomyShared.Contracts.Repositories.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+Service interface for the engine.
+
 ```csharp
 public interface IEngineService<T> where T : IHorizontal
 ```
@@ -11,9 +13,13 @@ public interface IEngineService<T> where T : IHorizontal
 
 `T` 
 
+<xref href="ChargerAstronomyShared.Domain.Index.ITileIndex" data-throw-if-not-resolved="false"></xref> used in the current engine service.
+
 ## Properties
 
 ### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_ActivationQueue"></a> ActivationQueue
+
+Queue for stars that need to be activated (made visible).
 
 ```csharp
 BlockingCollection<T> ActivationQueue { get; }
@@ -25,6 +31,8 @@ BlockingCollection<T> ActivationQueue { get; }
 
 ### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_DeactivationQueue"></a> DeactivationQueue
 
+Queue for stars that need to be deactivated (made invisible).
+
 ```csharp
 BlockingCollection<T> DeactivationQueue { get; }
 ```
@@ -33,17 +41,9 @@ BlockingCollection<T> DeactivationQueue { get; }
 
  [BlockingCollection](https://learn.microsoft.com/dotnet/api/system.collections.concurrent.blockingcollection\-1)<T\>
 
-### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_HeatService"></a> HeatService
-
-```csharp
-HeatService HeatService { get; }
-```
-
-#### Property Value
-
- [HeatService](ChargerAstronomyShared.Domain.Heat.HeatService.md)
-
 ### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_SpatialStarIndex"></a> SpatialStarIndex
+
+The spatial index containing all stars organized by tile.
 
 ```csharp
 SpatialStarIndex<T> SpatialStarIndex { get; }
@@ -55,6 +55,8 @@ SpatialStarIndex<T> SpatialStarIndex { get; }
 
 ### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_UpdateTransformQueue"></a> UpdateTransformQueue
 
+Queue for stars that need their transforms updated.
+
 ```csharp
 BlockingCollection<T> UpdateTransformQueue { get; }
 ```
@@ -65,9 +67,43 @@ BlockingCollection<T> UpdateTransformQueue { get; }
 
 ## Methods
 
-### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_StartServices"></a> StartServices\(\)
+### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_ForceStarUpdate__0_"></a> ForceStarUpdate\(T\)
 
-Starts and initializes the engine services for the application.
+Updates a star's horiziontal position
+
+```csharp
+void ForceStarUpdate(T star)
+```
+
+#### Parameters
+
+`star` T
+
+The star to be updated
+
+### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_GetStats"></a> GetStats\(\)
+
+Gets current engine statistics.
+
+```csharp
+EngineStats GetStats()
+```
+
+#### Returns
+
+ [EngineStats](ChargerAstronomyShared.Contracts.Streaming.EngineStats.md)
+
+An <xref href="ChargerAstronomyShared.Contracts.Streaming.EngineStats" data-throw-if-not-resolved="false"></xref> object.
+
+### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_PlaceStars"></a> PlaceStars\(\)
+
+Places stars in their initial positions.
+
+```csharp
+void PlaceStars()
+```
+
+### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_StartServices"></a> StartServices\(\)
 
 ```csharp
 IEquatorialCalculator StartServices()
@@ -77,33 +113,41 @@ IEquatorialCalculator StartServices()
 
  [IEquatorialCalculator](ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator.md)
 
-An instance of <xref href="ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator" data-throw-if-not-resolved="false"></xref> representing the initialized service.
+### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_Step_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_"></a> Step\(float, float, float, float, float, float, float\)
 
-### <a id="ChargerAstronomyShared_Contracts_Repositories_IEngineService_1_Step_System_Single_System_Numerics_Vector3_System_Single_"></a> Step\(float, Vector3, float\)
-
-Advances the simulation by a single step, updating the state based on the elapsed time and camera direction.
+Steps the engine simulation forward by the specified delta time.
 
 ```csharp
-Task Step(float deltaTime, Vector3 cameraDirection, float horizontalFOV)
+void Step(float deltaTime, float camX, float camY, float camZ, float horizontalFOV, float magnitudeThreshold, float speedMult)
 ```
 
 #### Parameters
 
 `deltaTime` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-The time, in seconds, that has elapsed since the last step. Must be greater than zero.
+The amount of time passed during the step.
 
-`cameraDirection` [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+`camX` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-The direction the camera is facing, represented as a 3D vector.
+X value of the camera.
+
+`camY` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+Y value of the camera.
+
+`camZ` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+Z value of the camera.
 
 `horizontalFOV` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-The horizontal field of view, in degrees, used to determine the visible area. Must be a positive value.
+The FOV (zoom) of the camera.
 
-#### Returns
+`magnitudeThreshold` [float](https://learn.microsoft.com/dotnet/api/system.single)
 
- [Task](https://learn.microsoft.com/dotnet/api/system.threading.tasks.task)
+Maximum threshold for star visibility.
 
-A task that represents the asynchronous operation of stepping the simulation.
+`speedMult` [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+The current speed of the simulation.
 

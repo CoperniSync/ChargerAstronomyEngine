@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> Class EngineStateUI | Stargazer Data API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" Class EngineStateUI | Stargazer Data API ">
+      
+      
+      <link rel="icon" href="../images/copernisync_planet_only.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/stargazer/EngineStateUI.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/copernisync_logo_small.svg" alt="Stargazer Data API">
+            Stargazer Data API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="EngineStateUI"> Class EngineStateUI</h1>
+
+<p>Namespace:<br>
+Assembly: Assembly-CSharp.dll</p>
+<pre><code class="lang-csharp">public class EngineStateUI : MonoBehaviour
+</code></pre>
+<h4 id="inheritance">Inheritance</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.object">object</a> ←
+Object ←
+Component ←
+Behaviour ←
+MonoBehaviour ←
+<a href="EngineStateUI.html">EngineStateUI</a></p>
+<h4 id="inherited-members">Inherited Members</h4>
+<p>MonoBehaviour.IsInvoking(),
+MonoBehaviour.CancelInvoke(),
+MonoBehaviour.Invoke(string, float),
+MonoBehaviour.InvokeRepeating(string, float, float),
+MonoBehaviour.CancelInvoke(string),
+MonoBehaviour.IsInvoking(string),
+MonoBehaviour.StartCoroutine(string),
+MonoBehaviour.StartCoroutine(string, object),
+MonoBehaviour.StartCoroutine(IEnumerator),
+MonoBehaviour.StartCoroutine_Auto(IEnumerator),
+MonoBehaviour.StopCoroutine(IEnumerator),
+MonoBehaviour.StopCoroutine(Coroutine),
+MonoBehaviour.StopCoroutine(string),
+MonoBehaviour.StopAllCoroutines(),
+MonoBehaviour.print(object),
+MonoBehaviour.destroyCancellationToken,
+MonoBehaviour.useGUILayout,
+MonoBehaviour.didStart,
+MonoBehaviour.didAwake,
+MonoBehaviour.runInEditMode,
+Behaviour.enabled,
+Behaviour.isActiveAndEnabled,
+Component.GetComponent(Type),
+Component.GetComponent&lt;T&gt;(),
+Component.TryGetComponent(Type, out Component),
+Component.TryGetComponent&lt;T&gt;(out T),
+Component.GetComponent(string),
+Component.GetComponentInChildren(Type, bool),
+Component.GetComponentInChildren(Type),
+Component.GetComponentInChildren&lt;T&gt;(bool),
+Component.GetComponentInChildren&lt;T&gt;(),
+Component.GetComponentsInChildren(Type, bool),
+Component.GetComponentsInChildren(Type),
+Component.GetComponentsInChildren&lt;T&gt;(bool),
+Component.GetComponentsInChildren&lt;T&gt;(bool, List&lt;T&gt;),
+Component.GetComponentsInChildren&lt;T&gt;(),
+Component.GetComponentsInChildren&lt;T&gt;(List&lt;T&gt;),
+Component.GetComponentInParent(Type, bool),
+Component.GetComponentInParent(Type),
+Component.GetComponentInParent&lt;T&gt;(bool),
+Component.GetComponentInParent&lt;T&gt;(),
+Component.GetComponentsInParent(Type, bool),
+Component.GetComponentsInParent(Type),
+Component.GetComponentsInParent&lt;T&gt;(bool),
+Component.GetComponentsInParent&lt;T&gt;(bool, List&lt;T&gt;),
+Component.GetComponentsInParent&lt;T&gt;(),
+Component.GetComponents(Type),
+Component.GetComponents(Type, List&lt;Component&gt;),
+Component.GetComponents&lt;T&gt;(List&lt;T&gt;),
+Component.GetComponents&lt;T&gt;(),
+Component.GetComponentIndex(),
+Component.CompareTag(string),
+Component.CompareTag(TagHandle),
+Component.SendMessageUpwards(string, object, SendMessageOptions),
+Component.SendMessageUpwards(string, object),
+Component.SendMessageUpwards(string),
+Component.SendMessageUpwards(string, SendMessageOptions),
+Component.SendMessage(string, object),
+Component.SendMessage(string),
+Component.SendMessage(string, object, SendMessageOptions),
+Component.SendMessage(string, SendMessageOptions),
+Component.BroadcastMessage(string, object, SendMessageOptions),
+Component.BroadcastMessage(string, object),
+Component.BroadcastMessage(string),
+Component.BroadcastMessage(string, SendMessageOptions),
+Component.transform,
+Component.gameObject,
+Component.tag,
+Object.GetEntityId(),
+Object.GetInstanceID(),
+Object.GetHashCode(),
+Object.Equals(object),
+Object.InstantiateAsync&lt;T&gt;(T),
+Object.InstantiateAsync&lt;T&gt;(T, Transform),
+Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion),
+Object.InstantiateAsync&lt;T&gt;(T, Transform, Vector3, Quaternion),
+Object.InstantiateAsync&lt;T&gt;(T, int),
+Object.InstantiateAsync&lt;T&gt;(T, int, Transform),
+Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion),
+Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;),
+Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion),
+Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion, CancellationToken),
+Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;),
+Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, CancellationToken),
+Object.InstantiateAsync&lt;T&gt;(T, InstantiateParameters, CancellationToken),
+Object.InstantiateAsync&lt;T&gt;(T, int, InstantiateParameters, CancellationToken),
+Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters, CancellationToken),
+Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion, InstantiateParameters, CancellationToken),
+Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, InstantiateParameters, CancellationToken),
+Object.Instantiate(Object, Vector3, Quaternion),
+Object.Instantiate(Object, Vector3, Quaternion, Transform),
+Object.Instantiate(Object),
+Object.Instantiate(Object, Scene),
+Object.Instantiate&lt;T&gt;(T, InstantiateParameters),
+Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters),
+Object.Instantiate(Object, Transform),
+Object.Instantiate(Object, Transform, bool),
+Object.Instantiate&lt;T&gt;(T),
+Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion),
+Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, Transform),
+Object.Instantiate&lt;T&gt;(T, Transform),
+Object.Instantiate&lt;T&gt;(T, Transform, bool),
+Object.Destroy(Object, float),
+Object.Destroy(Object),
+Object.DestroyImmediate(Object, bool),
+Object.DestroyImmediate(Object),
+Object.FindObjectsOfType(Type),
+Object.FindObjectsOfType(Type, bool),
+Object.FindObjectsByType(Type, FindObjectsSortMode),
+Object.FindObjectsByType(Type, FindObjectsInactive, FindObjectsSortMode),
+Object.DontDestroyOnLoad(Object),
+Object.DestroyObject(Object, float),
+Object.DestroyObject(Object),
+Object.FindSceneObjectsOfType(Type),
+Object.FindObjectsOfTypeIncludingAssets(Type),
+Object.FindObjectsOfType&lt;T&gt;(),
+Object.FindObjectsByType&lt;T&gt;(FindObjectsSortMode),
+Object.FindObjectsOfType&lt;T&gt;(bool),
+Object.FindObjectsByType&lt;T&gt;(FindObjectsInactive, FindObjectsSortMode),
+Object.FindObjectOfType&lt;T&gt;(),
+Object.FindObjectOfType&lt;T&gt;(bool),
+Object.FindFirstObjectByType&lt;T&gt;(),
+Object.FindAnyObjectByType&lt;T&gt;(),
+Object.FindFirstObjectByType&lt;T&gt;(FindObjectsInactive),
+Object.FindAnyObjectByType&lt;T&gt;(FindObjectsInactive),
+Object.FindObjectsOfTypeAll(Type),
+Object.FindObjectOfType(Type),
+Object.FindFirstObjectByType(Type),
+Object.FindAnyObjectByType(Type),
+Object.FindObjectOfType(Type, bool),
+Object.FindFirstObjectByType(Type, FindObjectsInactive),
+Object.FindAnyObjectByType(Type, FindObjectsInactive),
+Object.ToString(),
+Object.name,
+Object.hideFlags,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
+<a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/stargazer/EngineStateUI.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

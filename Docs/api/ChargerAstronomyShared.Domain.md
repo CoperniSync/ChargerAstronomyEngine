@@ -2,6 +2,8 @@
 
 ### Namespaces
 
+ [ChargerAstronomyShared.Domain.Coordinate](ChargerAstronomyShared.Domain.Coordinate.md)
+
  [ChargerAstronomyShared.Domain.Equatorial](ChargerAstronomyShared.Domain.Equatorial.md)
 
  [ChargerAstronomyShared.Domain.Geometry](ChargerAstronomyShared.Domain.Geometry.md)

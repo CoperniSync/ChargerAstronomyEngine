@@ -18,15 +18,25 @@ public struct InputData
 
 ## Fields
 
-### <a id="InputData_camDir"></a> camDir
+### <a id="InputData_camDirHorizontal"></a> camDirHorizontal
 
 ```csharp
-public Vector3 camDir
+public Vector3 camDirHorizontal
 ```
 
 #### Field Value
 
  [Vector3](https://learn.microsoft.com/dotnet/api/system.numerics.vector3)
+
+### <a id="InputData_constellationOn"></a> constellationOn
+
+```csharp
+public bool constellationOn
+```
+
+#### Field Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
 ### <a id="InputData_fov"></a> fov
 
@@ -37,6 +47,16 @@ public float fov
 #### Field Value
 
  [float](https://learn.microsoft.com/dotnet/api/system.single)
+
+### <a id="InputData_labelsOn"></a> labelsOn
+
+```csharp
+public bool labelsOn
+```
+
+#### Field Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
 ### <a id="InputData_messierOn"></a> messierOn
 

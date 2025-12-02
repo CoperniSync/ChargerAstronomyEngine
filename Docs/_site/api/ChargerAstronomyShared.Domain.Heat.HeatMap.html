@@ -89,6 +89,7 @@
 
 <p>Namespace: <a href="ChargerAstronomyShared.Domain.Heat.html">ChargerAstronomyShared.Domain.Heat</a><br>
 Assembly: ChargerAstronomyShared.dll</p>
+<p>A map of heat values within a tile index.</p>
 <pre><code class="lang-csharp">public sealed class HeatMap
 </code></pre>
 <h4 id="inheritance">Inheritance</h4>
@@ -109,128 +110,108 @@ Assembly: ChargerAstronomyShared.dll</p>
 <p><code>cfg</code> <a href="ChargerAstronomyShared.Domain.Heat.HeatConfig.html">HeatConfig</a></p>
 <h2 id="methods">Methods</h2>
 <h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_ActiveTileAtZero"> ActiveTileAtZero()</h3>
-<p>Retrieves a list of active tiles that have a heat value of zero.</p>
 <pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; ActiveTileAtZero()
 </code></pre>
 <h4 id="returns">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
-<p>A list of <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> objects representing the tiles that have heat values within the specified
-range. The list will be empty if no tiles match the criteria.</p>
 <h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_Apply_ChargerAstronomyShared_Contracts_Models_TileId__System_Single_"> Apply(in TileId, float)</h3>
-<p>Applies a delta value onto the current value associated with the specified tile.</p>
+<p>Applies a delta to the heat value of a specific tile to increment or decrement it.</p>
 <pre><code class="lang-csharp">public void Apply(in TileId id, float delta)
 </code></pre>
 <h4 id="parameters-1">Parameters</h4>
 <p><code>id</code> <a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a></p>
-<p>A <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> object.</p>
+<p>The ID of the desired tile</p>
 <p><code>delta</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The value to add to the current value of the specified tile.</p>
-<h4 id="remarks">Remarks</h4>
-<p>Retrieves the current value associated with the specified <code class="paramref">TileId</code>, adds the provided <code class="paramref">delta</code> to it, and updates the value.</p>
+<p>The value to increase/decrease heat by.</p>
 <h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_Apply_System_Collections_Generic_IEnumerable_System_ValueTuple_ChargerAstronomyShared_Contracts_Models_TileId_System_Single___"> Apply(IEnumerable&lt;(TileId id, float delta)&gt;)</h3>
-<p>Applies a delta value to a collection of updates to tiles.</p>
+<p>Applies deltas to multiple tiles.</p>
 <pre><code class="lang-csharp">public void Apply(IEnumerable&lt;(TileId id, float delta)&gt; deltas)
 </code></pre>
 <h4 id="parameters-2">Parameters</h4>
 <p><code>deltas</code> <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;(<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a> <a href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chargerastronomyshared.contracts.models.tileid,system.single-.id">id</a>, <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a href="https://learn.microsoft.com/dotnet/api/system.valuetuple-chargerastronomyshared.contracts.models.tileid,system.single-.delta">delta</a>)&gt;</p>
-<p>A collection of tuples, each containing a <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> representing the tile to update and a <span class="xref">System.Single</span> representing the delta value to apply to the tile.</p>
-<h4 id="remarks-1">Remarks</h4>
-<p>This method iterates through the provided collection and applies each delta to the
-corresponding tile. Ensure that the collection is not null and contains valid tile identifiers and delta
-values.</p>
+<p>The value to increase/decrease heat by.</p>
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_Clear"> Clear()</h3>
+<pre><code class="lang-csharp">public void Clear()
+</code></pre>
 <h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_Get_ChargerAstronomyShared_Contracts_Models_TileId__"> Get(in TileId)</h3>
-<p>Retrieves the heat map value for the given tile.</p>
+<p>Gets the heat value for a specific tile.</p>
 <pre><code class="lang-csharp">public float Get(in TileId id)
 </code></pre>
 <h4 id="parameters-3">Parameters</h4>
 <p><code>id</code> <a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a></p>
-<p>The tile for which to retrieve the heat map value.</p>
+<p>The ID of the specific tile.</p>
 <h4 id="returns-1">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The heat map value associated with the specified <code class="paramref">id</code> if it exists; otherwise, <code>0f</code>.</p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_InactiveTilesAboveZero"> InactiveTilesAboveZero()</h3>
-<p>Retrieves a list of inactive tiles that have heat values above zero.</p>
-<pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; InactiveTilesAboveZero()
+<p>A float value representing heat.</p>
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_GetAllTrackedTiles"> GetAllTrackedTiles()</h3>
+<pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; GetAllTrackedTiles()
 </code></pre>
 <h4 id="returns-2">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
-<p>A list of <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> objects representing the tiles that have heat values within the specified
-range. The list will be empty if no tiles match the criteria.</p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_Set_ChargerAstronomyShared_Contracts_Models_TileId__System_Single_"> Set(in TileId, float)</h3>
-<p>Sets the heat value for the given tile, or list of tiles.</p>
-<pre><code class="lang-csharp">public void Set(in TileId id, float value)
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_GetMany_System_Collections_Generic_IEnumerable_ChargerAstronomyShared_Contracts_Models_TileId__"> GetMany(IEnumerable&lt;TileId&gt;)</h3>
+<p>Gets the heat values for multiple tiles.</p>
+<pre><code class="lang-csharp">public Dictionary&lt;TileId, float&gt; GetMany(IEnumerable&lt;TileId&gt; ids)
 </code></pre>
 <h4 id="parameters-4">Parameters</h4>
-<p><code>id</code> <a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a></p>
-<p>A <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> object to set the heat value of.</p>
-<p><code>value</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The heat value assigned to the tile.</p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_Set_System_Collections_Generic_IEnumerable_ChargerAstronomyShared_Contracts_Models_TileId__System_Single_"> Set(IEnumerable&lt;TileId&gt;, float)</h3>
-<p>Sets the heat value for a collection of tiles.</p>
-<pre><code class="lang-csharp">public void Set(IEnumerable&lt;TileId&gt; ids, float value)
+<p><code>ids</code> <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
+<p>The list of tile IDs.</p>
+<h4 id="returns-3">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>, <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</p>
+<p>A list of floating values represeting heat.</p>
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_InactiveTilesAboveZero"> InactiveTilesAboveZero()</h3>
+<pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; InactiveTilesAboveZero()
+</code></pre>
+<h4 id="returns-4">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_Set_ChargerAstronomyShared_Contracts_Models_TileId__System_Single_"> Set(in TileId, float)</h3>
+<p>Sets the heat value for a specific tile.</p>
+<pre><code class="lang-csharp">public void Set(in TileId id, float value)
 </code></pre>
 <h4 id="parameters-5">Parameters</h4>
-<p><code>ids</code> <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
-<p>A collection of <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span>s.</p>
+<p><code>id</code> <a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a></p>
+<p>The ID of the desired tile.</p>
 <p><code>value</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The heat value assigned to each tile in the list.</p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_StepDecay_System_Single_"> StepDecay(float)</h3>
-<p>Applies an exponential decay to the heat values in the heat map over a specified time interval.</p>
-<pre><code class="lang-csharp">public void StepDecay(float dtSeconds)
+<p>The desired heat value.</p>
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_Set_System_Collections_Generic_IEnumerable_ChargerAstronomyShared_Contracts_Models_TileId__System_Single_"> Set(IEnumerable&lt;TileId&gt;, float)</h3>
+<p>Sets the heat value for multiple tiles.</p>
+<pre><code class="lang-csharp">public void Set(IEnumerable&lt;TileId&gt; ids, float value)
 </code></pre>
 <h4 id="parameters-6">Parameters</h4>
-<p><code>dtSeconds</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The time interval, in seconds, over which the decay is applied. Must be greater than 0.</p>
-<h4 id="remarks-2">Remarks</h4>
-<p>This method updates the heat values in the heat map by applying an exponential decay
-formula: <code>Heat(t + dt) = Heat(t) * exp(-decayPerSecond * dt)</code>. The decay rate is determined by the
-<code>DecayPerSecond</code> configuration value.</p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_TilesAbove_System_Single_System_Boolean_"> TilesAbove(float, bool)</h3>
-<p>Retrieves a list of tiles that have a heat value above the specified threshold.</p>
-<pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; TilesAbove(float value, bool inclusive = true)
+<p><code>ids</code> <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
+<p>The IDs of the desired tiles.</p>
+<p><code>value</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_StepDecay_System_Single_"> StepDecay(float)</h3>
+<p>Applies decay to the heat values.
+Can use exponential decay OR instant decay based on config.</p>
+<pre><code class="lang-csharp">public void StepDecay(float dtSeconds)
 </code></pre>
 <h4 id="parameters-7">Parameters</h4>
-<p><code>value</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The threshold value to compare against the heat values of the tiles.</p>
-<p><code>inclusive</code> <a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
-<p>A boolean indicating whether the comparison should include tiles with heat values equal to the threshold. If
-<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, tiles with heat values equal to <code class="paramref">value</code> are included;  otherwise,
-only tiles with heat values strictly greater than <code class="paramref">value</code> are included.</p>
-<h4 id="returns-3">Returns</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
-<p>A list of <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> objects representing the tiles that meet the specified heat value condition.
-The list will be empty if no tiles satisfy the condition.</p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_TilesBelow_System_Single_System_Boolean_"> TilesBelow(float, bool)</h3>
-<p>Retrieves a list of tiles that have a heat value below a specified threshold.</p>
-<pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; TilesBelow(float value, bool inclusive = true)
+<p><code>dtSeconds</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_TilesAbove_System_Single_System_Boolean_"> TilesAbove(float, bool)</h3>
+<pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; TilesAbove(float value, bool inclusive = true)
 </code></pre>
 <h4 id="parameters-8">Parameters</h4>
 <p><code>value</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The threshold value to compare against the heat values of the tiles.</p>
 <p><code>inclusive</code> <a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
-<p>A boolean indicating whether tiles with heat values equal to the threshold should be included. If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, tiles with heat values less than or equal to <code class="paramref">value</code> are included;
-otherwise, only tiles with heat values strictly less than <code class="paramref">value</code> are included.</p>
-<h4 id="returns-4">Returns</h4>
+<h4 id="returns-5">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
-<p>A list of <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> objects representing the tiles that meet the specified condition. The list
-will be empty if no tiles satisfy the condition.</p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_TilesInRange_System_Single_System_Single_System_Boolean_"> TilesInRange(float, float, bool)</h3>
-<p>Retrieves a list of tiles that have heat values that fall within the specified range.</p>
-<pre><code class="lang-csharp">public List&lt;TileId&gt; TilesInRange(float lower, float upper, bool inclusive = true)
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_TilesBelow_System_Single_System_Boolean_"> TilesBelow(float, bool)</h3>
+<pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; TilesBelow(float value, bool inclusive = true)
 </code></pre>
 <h4 id="parameters-9">Parameters</h4>
-<p><code>lower</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The lower bound of the heat value range.</p>
-<p><code>upper</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The upper bound of the heat value range.</p>
+<p><code>value</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
 <p><code>inclusive</code> <a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
-<p>A boolean value indicating whether the range is inclusive.  If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, tiles with heat
-values equal to the lower or upper bounds are included;  otherwise, only tiles with heat values strictly
-between the bounds are included.</p>
-<h4 id="returns-5">Returns</h4>
+<h4 id="returns-6">Returns</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
+<h3 id="ChargerAstronomyShared_Domain_Heat_HeatMap_TilesInRange_System_Single_System_Single_System_Boolean_"> TilesInRange(float, float, bool)</h3>
+<pre><code class="lang-csharp">public List&lt;TileId&gt; TilesInRange(float lower, float upper, bool inclusive = true)
+</code></pre>
+<h4 id="parameters-10">Parameters</h4>
+<p><code>lower</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p><code>upper</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p><code>inclusive</code> <a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
+<h4 id="returns-7">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
-<p>A list of <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> objects representing the tiles that have heat values within the specified
-range. The list will be empty if no tiles match the criteria.</p>
 
 </article>
 

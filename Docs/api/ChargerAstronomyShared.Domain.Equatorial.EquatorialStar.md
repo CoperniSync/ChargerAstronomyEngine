@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Domain.Equatorial](ChargerAstronomyShared.Domain.Equatorial.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+A star represented in equatorial coordinates.
+
 ```csharp
 public sealed class EquatorialStar : EquatorialCelestialBody
 ```

@@ -64,16 +64,6 @@ public static InputContainer Container { get; }
 
  [InputContainer](Assets.Scripts.UI.InputContainer.md)
 
-### <a id="Assets_Scripts_UI_InputContainer_DaysPerSec"></a> DaysPerSec
-
-```csharp
-public uint DaysPerSec { get; set; }
-```
-
-#### Property Value
-
- [uint](https://learn.microsoft.com/dotnet/api/system.uint32)
-
 ### <a id="Assets_Scripts_UI_InputContainer_EquatorialLines"></a> EquatorialLines
 
 ```csharp
@@ -144,16 +134,6 @@ public bool MessierToggle { get; set; }
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="Assets_Scripts_UI_InputContainer_MinPerSec"></a> MinPerSec
-
-```csharp
-public uint MinPerSec { get; set; }
-```
-
-#### Property Value
-
- [uint](https://learn.microsoft.com/dotnet/api/system.uint32)
-
 ### <a id="Assets_Scripts_UI_InputContainer_RotationVector"></a> RotationVector
 
 ```csharp
@@ -167,12 +147,12 @@ public Vector3 RotationVector { get; set; }
 ### <a id="Assets_Scripts_UI_InputContainer_SecPerSec"></a> SecPerSec
 
 ```csharp
-public uint SecPerSec { get; set; }
+public float SecPerSec { get; set; }
 ```
 
 #### Property Value
 
- [uint](https://learn.microsoft.com/dotnet/api/system.uint32)
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
 
 ### <a id="Assets_Scripts_UI_InputContainer_Time"></a> Time
 
