@@ -161,12 +161,67 @@ Object.hideFlags,
 [object.ReferenceEquals\(object, object\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
 
-## Methods
+## Fields
 
-### <a id="StarTooltipText_updateData_System_String_System_Int32_System_Single_System_Single_System_Single_"></a> updateData\(string, int, float, float, float\)
+### <a id="StarTooltipText_panel"></a> panel
 
 ```csharp
-public void updateData(string name, int id, float altitude, float azimuth, float distance)
+[Header("UI References")]
+public RectTransform panel
+```
+
+#### Field Value
+
+ RectTransform
+
+### <a id="StarTooltipText_textObject"></a> textObject
+
+```csharp
+public Text textObject
+```
+
+#### Field Value
+
+ Text
+
+## Properties
+
+### <a id="StarTooltipText_Instance"></a> Instance
+
+```csharp
+public static StarTooltipText Instance { get; }
+```
+
+#### Property Value
+
+ [StarTooltipText](StarTooltipText.md)
+
+## Methods
+
+### <a id="StarTooltipText_Hide"></a> Hide\(\)
+
+```csharp
+public void Hide()
+```
+
+### <a id="StarTooltipText_ShowAtMouse_Assets_Scripts_CelestialBodies_Star_"></a> ShowAtMouse\(Star\)
+
+update from a Star object and position at the mouse.
+
+```csharp
+public void ShowAtMouse(Star star)
+```
+
+#### Parameters
+
+`star` [Star](Assets.Scripts.CelestialBodies.Star.md)
+
+### <a id="StarTooltipText_UpdateData_System_String_System_Int32_System_Single_System_Single_System_Single_"></a> UpdateData\(string, int, float, float, float\)
+
+Update tooltip using raw values.
+
+```csharp
+public void UpdateData(string name, int id, float altitude, float azimuth, float distance)
 ```
 
 #### Parameters
