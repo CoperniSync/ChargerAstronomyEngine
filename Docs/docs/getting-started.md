@@ -46,3 +46,5 @@ git switch release
 Select 'import project', and select the "ChargerAstronomyProject" directory.
 
 Unity will begin compiling the project. Once complete, you will be able to access the development page in Unity.
+
+To set up the scene view, drag the "SkyView" scene from `scenes/SkyView` into the heirarchy on the top left and delete the unnamed default. This will allow you to run the project locally.
