@@ -216,6 +216,12 @@ public void ShowAtMouse(Star star)
 
 `star` [Star](Assets.Scripts.CelestialBodies.Star.md)
 
+### <a id="StarTooltipText_ShowAtMouse"></a> ShowAtMouse\(\)
+
+```csharp
+public void ShowAtMouse()
+```
+
 ### <a id="StarTooltipText_UpdateData_System_String_System_Int32_System_Single_System_Single_System_Single_"></a> UpdateData\(string, int, float, float, float\)
 
 Update tooltip using raw values.

@@ -80,6 +80,16 @@ public string Constellation { get; }
 
  [string](https://learn.microsoft.com/dotnet/api/system.string)
 
+### <a id="Assets_Scripts_CelestialBodies_MessierObject_Go"></a> Go
+
+```csharp
+public GameObject Go { get; }
+```
+
+#### Property Value
+
+ GameObject
+
 ### <a id="Assets_Scripts_CelestialBodies_MessierObject_HorizontalBody"></a> HorizontalBody
 
 ```csharp

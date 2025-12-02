@@ -99,6 +99,7 @@
 <p>Create the 'ChargerAstronomyProject' directory:</p>
 <pre><code class="lang-bash">cd ~/source/repos
 mkdir ChargerAstronomyProject
+cd ChargerAstronomyProject
 </code></pre>
 <p>Clone into the three repositories:</p>
 <pre><code class="lang-bash">git clone https://github.com/CoperniSync/Stargazer.git
@@ -108,7 +109,16 @@ git clone https://github.com/CoperniSync/ChargerAstronomyEngine.git
 <h2 id="initializing-stargazer-in-unity">Initializing Stargazer in Unity</h2>
 <p>To set up Stargazer in Unity, you will first need to install Unity Hub.</p>
 <p>After installing Unity hub, install editor <code>6000.2.0f1</code>. The project will not work with any other editor.</p>
+<p>(Optional) Switch to a stable release branch within the repos:</p>
+<pre><code>cd ~/source/repos/ChargerAstronomyProject/Stargazer
+git switch release
+cd ../ChargerAstronomyShared
+git switch release
+cd ../ChargerAstronomyEngine
+git switch release
+</code></pre>
 <p>Select 'import project', and select the &quot;ChargerAstronomyProject&quot; directory.</p>
+<p>Unity will begin compiling the project. Once complete, you will be able to access the development page in Unity.</p>
 
 </article>
 

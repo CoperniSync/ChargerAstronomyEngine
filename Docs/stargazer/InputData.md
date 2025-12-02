@@ -68,3 +68,33 @@ public bool messierOn
 
  [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
+### <a id="InputData_observer"></a> observer
+
+```csharp
+public Observer observer
+```
+
+#### Field Value
+
+ Observer
+
+### <a id="InputData_time"></a> time
+
+```csharp
+public DateTime time
+```
+
+#### Field Value
+
+ [DateTime](https://learn.microsoft.com/dotnet/api/system.datetime)
+
+### <a id="InputData_year"></a> year
+
+```csharp
+public int year
+```
+
+#### Field Value
+
+ [int](https://learn.microsoft.com/dotnet/api/system.int32)
+

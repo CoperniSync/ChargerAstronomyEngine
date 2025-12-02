@@ -53,6 +53,16 @@ public Moon(HorizontalMoon hMoon, float drawnDistance = 95)
 
 ## Properties
 
+### <a id="Assets_Scripts_CelestialBodies_Moon_Go"></a> Go
+
+```csharp
+public GameObject Go { get; }
+```
+
+#### Property Value
+
+ GameObject
+
 ### <a id="Assets_Scripts_CelestialBodies_Moon_HorizontalMoon"></a> HorizontalMoon
 
 ```csharp

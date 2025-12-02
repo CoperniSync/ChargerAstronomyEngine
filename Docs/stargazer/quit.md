@@ -1,13 +1,10 @@
-# <a id="GameLoop"></a> Class GameLoop
+# <a id="quit"></a> Class quit
 
 Namespace:   
 Assembly: Assembly\-CSharp.dll  
 
-Main game loop controller. Updated to properly handle coordinate transformations
-and efficient star culling via the heat map system.
-
 ```csharp
-public class GameLoop : MonoBehaviour
+public class quit : MonoBehaviour
 ```
 
 #### Inheritance
@@ -17,7 +14,7 @@ Object ←
 Component ← 
 Behaviour ← 
 MonoBehaviour ← 
-[GameLoop](GameLoop.md)
+[quit](quit.md)
 
 #### Inherited Members
 
@@ -163,144 +160,4 @@ Object.hideFlags,
 [object.MemberwiseClone\(\)](https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone), 
 [object.ReferenceEquals\(object, object\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
-
-## Fields
-
-### <a id="GameLoop_speedMult"></a> speedMult
-
-```csharp
-public float speedMult
-```
-
-#### Field Value
-
- [float](https://learn.microsoft.com/dotnet/api/system.single)
-
-## Methods
-
-### <a id="GameLoop_GetEngineState_UnityEngine_Vector3__System_Int32__System_DateTime__ChargerAstronomyShared_Domain_Observer__"></a> GetEngineState\(out Vector3, out int, out DateTime, out Observer\)
-
-```csharp
-public void GetEngineState(out Vector3 camDirection, out int engineYear, out DateTime engineTime, out Observer engineObserver)
-```
-
-#### Parameters
-
-`camDirection` Vector3
-
-`engineYear` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-`engineTime` [DateTime](https://learn.microsoft.com/dotnet/api/system.datetime)
-
-`engineObserver` Observer
-
-### <a id="GameLoop_GetMessierList"></a> GetMessierList\(\)
-
-```csharp
-public List<MessierObject> GetMessierList()
-```
-
-#### Returns
-
- [List](https://learn.microsoft.com/dotnet/api/system.collections.generic.list\-1)<[MessierObject](Assets.Scripts.CelestialBodies.MessierObject.md)\>
-
-### <a id="GameLoop_GetMoon"></a> GetMoon\(\)
-
-```csharp
-public Moon GetMoon()
-```
-
-#### Returns
-
- [Moon](Assets.Scripts.CelestialBodies.Moon.md)
-
-### <a id="GameLoop_GetPlanetList"></a> GetPlanetList\(\)
-
-```csharp
-public List<Planet> GetPlanetList()
-```
-
-#### Returns
-
- [List](https://learn.microsoft.com/dotnet/api/system.collections.generic.list\-1)<[Planet](Assets.Scripts.CelestialBodies.Planet.md)\>
-
-### <a id="GameLoop_GetProjectPath"></a> GetProjectPath\(\)
-
-```csharp
-public static string GetProjectPath()
-```
-
-#### Returns
-
- [string](https://learn.microsoft.com/dotnet/api/system.string)
-
-### <a id="GameLoop_GetSun"></a> GetSun\(\)
-
-```csharp
-public Sun GetSun()
-```
-
-#### Returns
-
- [Sun](Assets.Scripts.CelestialBodies.Sun.md)
-
-### <a id="GameLoop_SetCameraPosition"></a> SetCameraPosition\(\)
-
-Updates the engine's camera position based on the Input Container
-
-```csharp
-public void SetCameraPosition()
-```
-
-### <a id="GameLoop_SetConstellationVisibility_System_Boolean_"></a> SetConstellationVisibility\(bool\)
-
-sets the visibilty of constelations
-
-```csharp
-public void SetConstellationVisibility(bool visible)
-```
-
-#### Parameters
-
-`visible` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
-
-### <a id="GameLoop_SetLabelVisibility_System_Boolean_"></a> SetLabelVisibility\(bool\)
-
-sets the visibilty of conste;lations labels
-
-```csharp
-public void SetLabelVisibility(bool visible)
-```
-
-#### Parameters
-
-`visible` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
-
-### <a id="GameLoop_SetLocationAndTime"></a> SetLocationAndTime\(\)
-
-```csharp
-public void SetLocationAndTime()
-```
-
-### <a id="GameLoop_SetMessierVisibility_System_Boolean_"></a> SetMessierVisibility\(bool\)
-
-set if the messier Objects are being forced from displaying
-
-```csharp
-public void SetMessierVisibility(bool visible)
-```
-
-#### Parameters
-
-`visible` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
-
-### <a id="GameLoop_SetSpeedMultiplier_System_Single_"></a> SetSpeedMultiplier\(float\)
-
-```csharp
-public void SetSpeedMultiplier(float speed)
-```
-
-#### Parameters
-
-`speed` [float](https://learn.microsoft.com/dotnet/api/system.single)
 

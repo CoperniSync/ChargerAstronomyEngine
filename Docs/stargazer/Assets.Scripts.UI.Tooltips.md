@@ -2,5 +2,7 @@
 
 ### Classes
 
+ [LocalHoverDetector](Assets.Scripts.UI.Tooltips.LocalHoverDetector.md)
+
  [StarHoverDetector](Assets.Scripts.UI.Tooltips.StarHoverDetector.md)
 

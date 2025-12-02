@@ -53,6 +53,16 @@ public Planet(HorizontalPlanet hPlanet, float drawnDistance = 74)
 
 ## Properties
 
+### <a id="Assets_Scripts_CelestialBodies_Planet_Go"></a> Go
+
+```csharp
+public GameObject Go { get; }
+```
+
+#### Property Value
+
+ GameObject
+
 ### <a id="Assets_Scripts_CelestialBodies_Planet_HorizontalPlanet"></a> HorizontalPlanet
 
 ```csharp

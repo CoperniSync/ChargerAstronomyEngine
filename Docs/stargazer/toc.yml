@@ -40,6 +40,8 @@
         href: Assets.Scripts.UI.Tooltips.md
         items:
         - name: Classes
+        - name: LocalHoverDetector
+          href: Assets.Scripts.UI.Tooltips.LocalHoverDetector.md
         - name: StarHoverDetector
           href: Assets.Scripts.UI.Tooltips.StarHoverDetector.md
       - name: Visual
@@ -99,12 +101,16 @@
   href: StarTooltipText.md
 - name: TEMP
   href: TEMP.md
+- name: TextureRotator
+  href: TextureRotator.md
 - name: TimeChange
   href: TimeChange.md
 - name: TooltipGenerator
   href: TooltipGenerator.md
 - name: UnityConstellation
   href: UnityConstellation.md
+- name: quit
+  href: quit.md
 - name: InputData
   href: InputData.md
 - name: IUserContextObserver
