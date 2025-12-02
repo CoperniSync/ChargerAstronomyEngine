@@ -8,6 +8,7 @@ using ChargerAstronomyShared.Domain.Coordinate;
 using ChargerAstronomyEngine.CosineKittyAstronomy;
 using ChargerAstronomyShared.Domain.Heat;
 using ChargerAstronomyShared.Domain;
+using ChargerAstronomyShared.Domain.Prediction;
 
 namespace ChargerAstronomyEngine.Domain.Heat
 {
