@@ -4,9 +4,21 @@ using ChargerAstronomyEngine.CosineKittyAstronomy;
 namespace ChargerAstronomyShared.Domain.Coordinate
 {
 
+    /// <summary>
+    /// Provides methods for transforming Equatorial and Horizontal coordinates to one another.
+    /// </summary>
+
     public static class CoordinateTransform
     {
 
+        /// <summary>
+        /// Transforms a direction vector from Horizontal coordinates to Equatorial coordinates.
+        /// </summary>
+        /// <param name="horizontalDirection">The horizontal vector.</param>
+        /// <param name="time">The current time.</param>
+        /// <param name="observer">The current <see cref="Observer"/>.</param>
+        /// <param name="astronomy">The CosineKitty Astronomy library./></param>
+        /// <returns>An Equatorial vector.</returns>
         public static Vector3 HorizontalToEquatorial(
             Vector3 horizontalDirection,
             AstroTime time,
@@ -33,6 +45,14 @@ namespace ChargerAstronomyShared.Domain.Coordinate
             );
         }
 
+        /// <summary>
+        /// Transforms a direction vector from Equatorial coordinates to Horizontal coordinates.
+        /// </summary>
+        /// <param name="equatorialDirection">The equatorial vector.</param>
+        /// <param name="time">The current time.</param>
+        /// <param name="observer">The current <see cref="Observer"/>.</param>
+        /// <param name="astronomy">The CosineKittyAstronomy library.</param>
+        /// <returns>A Horizontal vector.</returns>
 
         public static Vector3 EquatorialToHorizontal(
             Vector3 equatorialDirection,

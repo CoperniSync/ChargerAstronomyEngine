@@ -18,6 +18,11 @@ using ChargerAstronomyShared.Contracts.Streaming;
 
 namespace ChargerAstronomyEngine.Streaming
 {
+
+    /// <summary>
+    /// Engine service. Manages star calculation, heat service, and spatial indexing.
+    /// </summary>
+    /// <typeparam name="T">The <see cref="ITileIndex"/> used in the current spatial index.</typeparam>
     public class EngineService<T> : IEngineService<T> where T : IHorizontal
     {
         private readonly HeatMap heatMap;
@@ -76,11 +81,25 @@ namespace ChargerAstronomyEngine.Streaming
             updateTransformQueue = new BlockingCollection<T>(new ConcurrentQueue<T>());
         }
 
+        /// <summary>
+        /// Starts the engine calculator services.
+        /// </summary>
+        /// <returns>An <see cref="EquatorialCalculator{T}"/> instance.</returns>
         public IEquatorialCalculator StartServices()
         {
             return equatorialCalculator;
         }
 
+        /// <summary>
+        /// Steps the engine simulation forward by the specified delta time.
+        /// </summary>
+        /// <param name="deltaTime">The amount of time passed during the step.</param>
+        /// <param name="camX">X value of the camera.</param>
+        /// <param name="camY">Y value of the camera.</param>
+        /// <param name="camZ">Z value of the camera.</param>
+        /// <param name="horizontalFOV">The FOV (zoom) of the camera.</param>
+        /// <param name="magnitudeThreshold">Maximum threshold for star visibility.</param>
+        /// <param name="speedMult">The current speed of the simulation.</param>
         public void Step(float deltaTime, float camX, float camY, float camZ, float horizontalFOV, float magnitudeThreshold, float speedMult)
         {
             // Update magnitude cutoff
@@ -124,6 +143,7 @@ namespace ChargerAstronomyEngine.Streaming
         }
 
         // re-evaluate active stars based on new magnitude cutoff
+
         private void ReEvaluateActiveTileMagnitudes()
         {
             float oldCutoff = lastMagnitudeCutoff;
