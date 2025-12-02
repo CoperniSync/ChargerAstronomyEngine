@@ -2,6 +2,8 @@
 
 ### Namespaces
 
+ [Assets.Scripts.UI.Tooltips](Assets.Scripts.UI.Tooltips.md)
+
  [Assets.Scripts.UI.Visual](Assets.Scripts.UI.Visual.md)
 
 ### Classes

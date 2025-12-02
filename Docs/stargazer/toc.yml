@@ -36,6 +36,12 @@
     - name: UI
       href: Assets.Scripts.UI.md
       items:
+      - name: Tooltips
+        href: Assets.Scripts.UI.Tooltips.md
+        items:
+        - name: Classes
+        - name: StarHoverDetector
+          href: Assets.Scripts.UI.Tooltips.StarHoverDetector.md
       - name: Visual
         href: Assets.Scripts.UI.Visual.md
         items:
@@ -53,6 +59,8 @@
       - name: Classes
       - name: InputContainer
         href: Assets.Scripts.UI.InputContainer.md
+- name: BillboardToCamera
+  href: BillboardToCamera.md
 - name: Calendar
   href: Calendar.md
 - name: CalendarButton
@@ -61,6 +69,8 @@
   href: CameraControls.md
 - name: ConstellationSegment
   href: ConstellationSegment.md
+- name: EngineStateUI
+  href: EngineStateUI.md
 - name: GPUInstanceTest
   href: GPUInstanceTest.md
 - name: GameLoop
@@ -79,6 +89,8 @@
   href: MessierRetrieval.md
 - name: SidePanel
   href: SidePanel.md
+- name: SpeedController
+  href: SpeedController.md
 - name: StarQueue
   href: StarQueue.md
 - name: StarTooltip
