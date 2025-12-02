@@ -111,11 +111,7 @@ namespace ChargerAstronomyEngine.Streaming
             horizontal.Azimuth = topocentric.azimuth;
         }
 
-        /// <summary>
-        /// Updates the position and related properties of the specified planet based on the current astronomical time
-        /// and location.
-        /// </summary>
-        /// <exception cref="ArgumentException">Thrown if the <paramref name="planet"/> name is not recognized in the internal collection of known planets.</exception>
+        /// <inheritdoc />
         public void UpdatePositionOf(HorizontalPlanet planet)
         {
             if (planets.TryGetValue(planet.Name, out BodyType bodyType))
@@ -142,11 +138,7 @@ namespace ChargerAstronomyEngine.Streaming
             }
         }
 
-        /// <summary>
-        /// Updates the position, phase, and distance of the specified moon object based on the current astronomical
-        /// time and location.
-        /// </summary>
-        /// <param name="moon">The <see cref="HorizontalMoon"/> object whose properties will be updated. Cannot be <see langword="null"/>.</param>
+        /// <inheritdoc />
         public void UpdatePositionOf(HorizontalMoon moon)
         {
             var currentTime = this.astroTime;
@@ -167,11 +159,7 @@ namespace ChargerAstronomyEngine.Streaming
             moon.Distance = equatorial.dist;
         }
 
-        /// <summary>
-        /// Updates the position of the specified <see cref="HorizontalSun"/> object based on the current astronomical
-        /// time and location.
-        /// </summary>
-        /// <param name="sun">The <see cref="HorizontalSun"/> object whose altitude, azimuth, and distance will be updated.</param>
+        /// <inheritdoc />
         public void UpdatePositionOf(HorizontalSun sun)
         {
             var currentTime = this.astroTime;
