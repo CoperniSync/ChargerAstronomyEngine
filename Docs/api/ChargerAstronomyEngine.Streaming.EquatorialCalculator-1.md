@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyEngine.Streaming](ChargerAstronomyEngine.Streaming.md)  
 Assembly: ChargerAstronomyEngine.dll  
 
+Equatorial calculator. Calculates new coordinates for horizontal stars and solar system bodies based on their equatorial coordinates.
+
 ```csharp
 public class EquatorialCalculator<T> : IEquatorialCalculator where T : IHorizontal
 ```
@@ -32,7 +34,7 @@ public class EquatorialCalculator<T> : IEquatorialCalculator where T : IHorizont
 
 ## Constructors
 
-### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1__ctor_ChargerAstronomyShared_Domain_Heat_HeatService_ChargerAstronomyShared_Domain_SpatialIndex_SpatialStarIndex__0__"></a> EquatorialCalculator\(HeatService, SpatialStarIndex<T\>\)
+### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1__ctor_ChargerAstronomyEngine_Domain_Heat_HeatService_ChargerAstronomyShared_Domain_SpatialIndex_SpatialStarIndex__0__"></a> EquatorialCalculator\(HeatService, SpatialStarIndex<T\>\)
 
 ```csharp
 public EquatorialCalculator(HeatService heatService, SpatialStarIndex<T> starIndex)
@@ -40,13 +42,15 @@ public EquatorialCalculator(HeatService heatService, SpatialStarIndex<T> starInd
 
 #### Parameters
 
-`heatService` [HeatService](ChargerAstronomyShared.Domain.Heat.HeatService.md)
+`heatService` [HeatService](ChargerAstronomyEngine.Domain.Heat.HeatService.md)
 
 `starIndex` [SpatialStarIndex](ChargerAstronomyShared.Domain.SpatialIndex.SpatialStarIndex\-1.md)<T\>
 
 ## Methods
 
 ### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_GetTimeAndPlace_ChargerAstronomyEngine_CosineKittyAstronomy_AstroTime__ChargerAstronomyShared_Domain_Observer__"></a> GetTimeAndPlace\(out AstroTime, out Observer\)
+
+The current time and location.
 
 ```csharp
 public void GetTimeAndPlace(out AstroTime time, out Observer location)
@@ -88,8 +92,7 @@ The new location for the <xref href="ChargerAstronomyShared.Domain.Observer" dat
 
 ### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalPlanet_"></a> UpdatePositionOf\(HorizontalPlanet\)
 
-Updates the position and related properties of the specified planet based on the current astronomical time
-and location.
+Updates the position of a planet based on the current time and <xref href="ChargerAstronomyShared.Domain.Observer" data-throw-if-not-resolved="false"></xref>.
 
 ```csharp
 public void UpdatePositionOf(HorizontalPlanet planet)
@@ -107,8 +110,7 @@ Thrown if the <code class="paramref">planet</code> name is not recognized in the
 
 ### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalMoon_"></a> UpdatePositionOf\(HorizontalMoon\)
 
-Updates the position, phase, and distance of the specified moon object based on the current astronomical
-time and location.
+Updates the position of the moon based on the current time and <xref href="ChargerAstronomyShared.Domain.Observer" data-throw-if-not-resolved="false"></xref>.
 
 ```csharp
 public void UpdatePositionOf(HorizontalMoon moon)
@@ -118,12 +120,11 @@ public void UpdatePositionOf(HorizontalMoon moon)
 
 `moon` [HorizontalMoon](ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon.md)
 
-The <xref href="ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon" data-throw-if-not-resolved="false"></xref> object whose properties will be updated. Cannot be <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+The Moon.
 
 ### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalSun_"></a> UpdatePositionOf\(HorizontalSun\)
 
-Updates the position of the specified <xref href="ChargerAstronomyShared.Domain.Horizontal.HorizontalSun" data-throw-if-not-resolved="false"></xref> object based on the current astronomical
-time and location.
+Updates the position of the Sun based on the current time and <xref href="ChargerAstronomyShared.Domain.Observer" data-throw-if-not-resolved="false"></xref>.
 
 ```csharp
 public void UpdatePositionOf(HorizontalSun sun)
@@ -132,8 +133,6 @@ public void UpdatePositionOf(HorizontalSun sun)
 #### Parameters
 
 `sun` [HorizontalSun](ChargerAstronomyShared.Domain.Horizontal.HorizontalSun.md)
-
-The <xref href="ChargerAstronomyShared.Domain.Horizontal.HorizontalSun" data-throw-if-not-resolved="false"></xref> object whose altitude, azimuth, and distance will be updated.
 
 ### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_UpdateStar__0_"></a> UpdateStar\(T\)
 

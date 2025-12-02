@@ -2,13 +2,21 @@
 
 ### Classes
 
+ [CubeMapTileIndex](ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.md)
+
+A tile index that partitions tiles into a cube.
+
  [IcosphereTileIndex](ChargerAstronomyShared.Domain.Index.IcosphereTileIndex.md)
+
+A tile index that partitions tiles into an icosphere.
 
  [UVSphereTileIndex](ChargerAstronomyShared.Domain.Index.UVSphereTileIndex.md)
 
- [UVTileIndex](ChargerAstronomyShared.Domain.Index.UVTileIndex.md)
+A tile index that partitions tiles into a UV sphere.
 
 ### Interfaces
 
  [ITileIndex](ChargerAstronomyShared.Domain.Index.ITileIndex.md)
+
+A tile index used for spatial queries.
 

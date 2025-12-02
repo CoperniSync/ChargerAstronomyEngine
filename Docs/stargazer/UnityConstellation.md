@@ -24,12 +24,12 @@ public class UnityConstellation
 
 ## Constructors
 
-### <a id="UnityConstellation__ctor_ChargerAstronomyShared_Domain_Equatorial_Constellation_System_Collections_Generic_List_Assets_Scripts_CelestialBodies_Star__"></a> UnityConstellation\(Constellation, List<Star\>\)
+### <a id="UnityConstellation__ctor_ChargerAstronomyShared_Domain_Equatorial_Constellation_System_Collections_Generic_List_Assets_Scripts_CelestialBodies_Star__ChargerAstronomyShared_Contracts_Repositories_IEngineService_ChargerAstronomyShared_Contracts_Models_IHorizontal__System_Boolean_"></a> UnityConstellation\(Constellation, List<Star\>, IEngineService<IHorizontal\>, bool\)
 
 Creates a constellation in the sky between already defined stars.
 
 ```csharp
-public UnityConstellation(Constellation constellation, List<Star> starList)
+public UnityConstellation(Constellation constellation, List<Star> starList, IEngineService<IHorizontal> engineService, bool initalState = true)
 ```
 
 #### Parameters
@@ -42,18 +42,35 @@ Information that the constellation will be created from
 
 The list of stars that the star data will be pulled from
 
+`engineService` IEngineService<IHorizontal\>
+
+`initalState` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+Whether the constellation should start visible
+
 #### Remarks
 
-Ensure starList has been populated prior to calling this constructor.
+SetState(lineActive);
+    Ensure starList has been populated prior to calling this constructor.
 
 ## Methods
 
-### <a id="UnityConstellation_SetState_System_Boolean_"></a> SetState\(bool\)
+### <a id="UnityConstellation_SetLabelVisible_System_Boolean_"></a> SetLabelVisible\(bool\)
+
+```csharp
+public void SetLabelVisible(bool state)
+```
+
+#### Parameters
+
+`state` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="UnityConstellation_SetVisible_System_Boolean_"></a> SetVisible\(bool\)
 
 Toggles the visibility of the Constellation
 
 ```csharp
-public void SetState(bool state)
+public void SetVisible(bool state)
 ```
 
 #### Parameters

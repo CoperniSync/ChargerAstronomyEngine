@@ -8,9 +8,14 @@ using ChargerAstronomyShared.Domain.Coordinate;
 using ChargerAstronomyEngine.CosineKittyAstronomy;
 using ChargerAstronomyShared.Domain.Heat;
 using ChargerAstronomyShared.Domain;
+using ChargerAstronomyShared.Domain.Prediction;
 
 namespace ChargerAstronomyEngine.Domain.Heat
 {
+
+    /// <summary>
+    /// Service for managing heat mapping based on camera angle and <see cref="Observer"/>.
+    /// </summary>
     public sealed class HeatService
     {
         public readonly HeatMap heatMap;
@@ -29,15 +34,33 @@ namespace ChargerAstronomyEngine.Domain.Heat
             this.astronomy = astronomy ?? throw new ArgumentNullException(nameof(astronomy));
         }
 
+        /// <summary>
+        /// Updates the current time and observer location.
+        /// </summary>
+        /// <param name="time">The new time.</param>
+        /// <param name="observer">The new <see cref="Observer"/>.</param>
         public void UpdateTimeAndLocation(AstroTime time, Observer observer)
         {
             currentTime = time;
             currentObserver = observer;
         }
 
+        /// <summary>
+        /// The current heat map.
+        /// </summary>
         public HeatMap GetHeatMap() => heatMap;
+
+        /// <summary>
+        /// The current tile index.
+        /// </summary>
         public ITileIndex GetTileIndex() => index;
 
+        /// <summary>
+        /// Steps the heat service, updating heat values based on camera direction and FOV.
+        /// </summary>
+        /// <param name="deltaTime">The amount of time that has passed during the step.</param>
+        /// <param name="cameraDirectionHorizontal">The horizontal direction of the camera.</param>
+        /// <param name="horizontalFOV">The FOV (zoom) of the camera.</param>
         public async Task Step(float deltaTime, Vector3 cameraDirectionHorizontal, float horizontalFOV)
         {
             // apply decay to all tiles
@@ -66,12 +89,19 @@ namespace ChargerAstronomyEngine.Domain.Heat
             }
         }
 
-
+        /// <summary>
+        /// Gets all active tiles.
+        /// </summary>
+        /// <returns>An <see cref="IEnumerable{T}"/> list of <see cref="TileId"/>s.</returns>
         public IEnumerable<TileId> GetActiveTiles()
         {
             return heatMap.TilesAbove(0f, inclusive: false);
         }
 
+        /// <summary>
+        /// Gets all inactive tiles.
+        /// </summary>
+        /// <returns>An <see cref="IEnumerable{T}"/> list of <see cref="TileId"/>s.</returns>
         public IEnumerable<TileId> GetInactiveTiles()
         {
             return heatMap.TilesBelow(float.Epsilon, inclusive: true);

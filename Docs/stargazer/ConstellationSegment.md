@@ -26,12 +26,12 @@ public class ConstellationSegment
 
 ## Constructors
 
-### <a id="ConstellationSegment__ctor_Assets_Scripts_CelestialBodies_Star_Assets_Scripts_CelestialBodies_Star_"></a> ConstellationSegment\(Star, Star\)
+### <a id="ConstellationSegment__ctor_Assets_Scripts_CelestialBodies_Star_Assets_Scripts_CelestialBodies_Star_ChargerAstronomyShared_Contracts_Repositories_IEngineService_ChargerAstronomyShared_Contracts_Models_IHorizontal__"></a> ConstellationSegment\(Star, Star, IEngineService<IHorizontal\>\)
 
 Constructs a line segment based upon two stars
 
 ```csharp
-public ConstellationSegment(Star starA, Star starB)
+public ConstellationSegment(Star starA, Star starB, IEngineService<IHorizontal> engineIn)
 ```
 
 #### Parameters
@@ -44,12 +44,14 @@ The star at the first endpoint of the segemnt
 
 The star at the second endpoint of the segemnt
 
-### <a id="ConstellationSegment__ctor_Assets_Scripts_CelestialBodies_Star_Assets_Scripts_CelestialBodies_Star_System_String_"></a> ConstellationSegment\(Star, Star, string\)
+`engineIn` IEngineService<IHorizontal\>
+
+### <a id="ConstellationSegment__ctor_Assets_Scripts_CelestialBodies_Star_Assets_Scripts_CelestialBodies_Star_ChargerAstronomyShared_Contracts_Repositories_IEngineService_ChargerAstronomyShared_Contracts_Models_IHorizontal__System_String_"></a> ConstellationSegment\(Star, Star, IEngineService<IHorizontal\>, string\)
 
 Constructs a line segment based upon two stars
 
 ```csharp
-public ConstellationSegment(Star starA, Star starB, string name)
+public ConstellationSegment(Star starA, Star starB, IEngineService<IHorizontal> engineIn, string name)
 ```
 
 #### Parameters
@@ -61,6 +63,8 @@ The star at the first endpoint of the segemnt
 `starB` [Star](Assets.Scripts.CelestialBodies.Star.md)
 
 The star at the second endpoint of the segemnt
+
+`engineIn` IEngineService<IHorizontal\>
 
 `name` [string](https://learn.microsoft.com/dotnet/api/system.string)
 
@@ -90,6 +94,26 @@ public Star endpoint2
 
 ## Methods
 
+### <a id="ConstellationSegment_GetMidpoint"></a> GetMidpoint\(\)
+
+```csharp
+public Vector3 GetMidpoint()
+```
+
+#### Returns
+
+ Vector3
+
+### <a id="ConstellationSegment_IsOnScreen"></a> IsOnScreen\(\)
+
+```csharp
+public bool IsOnScreen()
+```
+
+#### Returns
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
 ### <a id="ConstellationSegment_SetState_System_Boolean_"></a> SetState\(bool\)
 
 ```csharp
@@ -107,4 +131,14 @@ Update the position and orientation of the segment
 ```csharp
 public void UpdatePosition()
 ```
+
+### <a id="ConstellationSegment_addParent_UnityEngine_GameObject_"></a> addParent\(GameObject\)
+
+```csharp
+public void addParent(GameObject parent)
+```
+
+#### Parameters
+
+`parent` GameObject
 

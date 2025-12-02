@@ -3,6 +3,9 @@
 Namespace:   
 Assembly: Assembly\-CSharp.dll  
 
+Main game loop controller. Updated to properly handle coordinate transformations
+and efficient star culling via the heat map system.
+
 ```csharp
 public class GameLoop : MonoBehaviour
 ```
@@ -177,8 +180,6 @@ public float speedMult
 
 ### <a id="GameLoop_GetProjectPath"></a> GetProjectPath\(\)
 
-method for accessing the folder that contains all the github repos
-
 ```csharp
 public static string GetProjectPath()
 ```
@@ -195,9 +196,31 @@ Updates the engine's camera position based on the Input Container
 public void SetCameraPosition()
 ```
 
-### <a id="GameLoop_SetLocationAndTime"></a> SetLocationAndTime\(\)
+### <a id="GameLoop_SetConstellationVisibility_System_Boolean_"></a> SetConstellationVisibility\(bool\)
 
-Set
+sets the visibilty of constelations
+
+```csharp
+public void SetConstellationVisibility(bool visible)
+```
+
+#### Parameters
+
+`visible` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="GameLoop_SetLabelVisibility_System_Boolean_"></a> SetLabelVisibility\(bool\)
+
+sets the visibilty of conste;lations labels
+
+```csharp
+public void SetLabelVisibility(bool visible)
+```
+
+#### Parameters
+
+`visible` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="GameLoop_SetLocationAndTime"></a> SetLocationAndTime\(\)
 
 ```csharp
 public void SetLocationAndTime()
@@ -214,4 +237,14 @@ public void SetMessierVisibility(bool visible)
 #### Parameters
 
 `visible` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="GameLoop_SetSpeedMultiplier_System_Single_"></a> SetSpeedMultiplier\(float\)
+
+```csharp
+public void SetSpeedMultiplier(float speed)
+```
+
+#### Parameters
+
+`speed` [float](https://learn.microsoft.com/dotnet/api/system.single)
 

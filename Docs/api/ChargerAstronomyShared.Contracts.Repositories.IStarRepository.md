@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Contracts.Repositories](ChargerAstronomyShared.Contracts.Repositories.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+Repository for accessing <xref href="ChargerAstronomyShared.Domain.Equatorial.EquatorialStar" data-throw-if-not-resolved="false"></xref> data.
+
 ```csharp
 public interface IStarRepository
 ```

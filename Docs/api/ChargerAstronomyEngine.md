@@ -6,6 +6,8 @@
 
  [ChargerAstronomyEngine.Data](ChargerAstronomyEngine.Data.md)
 
+ [ChargerAstronomyEngine.Domain](ChargerAstronomyEngine.Domain.md)
+
  [ChargerAstronomyEngine.Streaming](ChargerAstronomyEngine.Streaming.md)
 
 ### Classes

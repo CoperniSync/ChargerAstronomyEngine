@@ -26,6 +26,8 @@ Represents a unique identifier for a tile.
 
  [IHorizontal](ChargerAstronomyShared.Contracts.Models.IHorizontal.md)
 
+Interface for horizontal celestial bodies.
+
  [LocalBodyRequest](ChargerAstronomyShared.Contracts.Models.LocalBodyRequest.md)
 
 A request to update local body positions.

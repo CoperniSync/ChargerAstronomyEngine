@@ -9,5 +9,5 @@ precision thresholds.
 
  [HeatMap](ChargerAstronomyShared.Domain.Heat.HeatMap.md)
 
- [HeatService](ChargerAstronomyShared.Domain.Heat.HeatService.md)
+A map of heat values within a tile index.
 

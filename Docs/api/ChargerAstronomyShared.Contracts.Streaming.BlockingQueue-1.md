@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Contracts.Streaming](ChargerAstronomyShared.Contracts.Streaming.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+A thread-safe blocking queue interface for managing a collection of items with blocking enqueue and dequeue operations.
+
 ```csharp
 public interface BlockingQueue<T>
 ```
@@ -10,6 +12,8 @@ public interface BlockingQueue<T>
 #### Type Parameters
 
 `T` 
+
+The objects to be passed through the queue.
 
 ## Properties
 

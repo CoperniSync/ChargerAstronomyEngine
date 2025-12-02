@@ -168,3 +168,9 @@ public TileId GetTileForStar(T star)
 
  [TileId](ChargerAstronomyShared.Contracts.Models.TileId.md)
 
+### <a id="ChargerAstronomyShared_Domain_SpatialIndex_SpatialStarIndex_1_SortAllTilesByMagnitude"></a> SortAllTilesByMagnitude\(\)
+
+```csharp
+public void SortAllTilesByMagnitude()
+```
+

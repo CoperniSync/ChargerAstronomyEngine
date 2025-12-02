@@ -592,6 +592,36 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Domain.Heat.HeatService.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Domain.Heat.HeatService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Domain.Heat.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Domain.Heat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Domain.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Domain.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.md",
       "output": {
         ".html": {
@@ -802,6 +832,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.EngineStats.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.EngineStats.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.md",
       "output": {
         ".html": {
@@ -826,6 +866,26 @@
       "output": {
         ".html": {
           "relative_path": "api/ChargerAstronomyShared.Domain.CalendarDateTime.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Coordinate.CoordinateTransform.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Coordinate.CoordinateTransform.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Coordinate.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Coordinate.html"
         }
       },
       "version": ""
@@ -1026,6 +1086,16 @@
       "output": {
         ".html": {
           "relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.html"
         }
       },
       "version": ""
@@ -1258,16 +1328,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "local-testing-instructions.md",
-      "output": {
-        ".html": {
-          "relative_path": "local-testing-instructions.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.CelestialBodyBase.md",
       "output": {
         ".html": {
@@ -1388,6 +1448,26 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Tooltips.StarHoverDetector.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Tooltips.StarHoverDetector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Tooltips.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Tooltips.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "stargazer/Assets.Scripts.UI.Visual.ButtonToggleGroup.Item.md",
       "output": {
         ".html": {
@@ -1478,6 +1558,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "stargazer/BillboardToCamera.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/BillboardToCamera.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "stargazer/Calendar.md",
       "output": {
         ".html": {
@@ -1518,6 +1608,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "stargazer/EngineStateUI.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/EngineStateUI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "stargazer/GPUInstanceTest.md",
       "output": {
         ".html": {
@@ -1532,6 +1632,16 @@
       "output": {
         ".html": {
           "relative_path": "stargazer/GameLoop.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/HeatMapVisualizer.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/HeatMapVisualizer.html"
         }
       },
       "version": ""
@@ -1622,6 +1732,16 @@
       "output": {
         ".html": {
           "relative_path": "stargazer/SidePanel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/SpeedController.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/SpeedController.html"
         }
       },
       "version": ""

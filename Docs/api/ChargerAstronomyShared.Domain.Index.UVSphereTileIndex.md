@@ -3,8 +3,10 @@
 Namespace: [ChargerAstronomyShared.Domain.Index](ChargerAstronomyShared.Domain.Index.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+A tile index that partitions tiles into a UV sphere.
+
 ```csharp
-public class UVSphereTileIndex : ITileIndex
+public sealed class UVSphereTileIndex : ITileIndex
 ```
 
 #### Inheritance
@@ -22,9 +24,34 @@ public class UVSphereTileIndex : ITileIndex
 [object.Equals\(object, object\)](https://learn.microsoft.com/dotnet/api/system.object.equals\#system\-object\-equals\(system\-object\-system\-object\)), 
 [object.GetHashCode\(\)](https://learn.microsoft.com/dotnet/api/system.object.gethashcode), 
 [object.GetType\(\)](https://learn.microsoft.com/dotnet/api/system.object.gettype), 
-[object.MemberwiseClone\(\)](https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone), 
 [object.ReferenceEquals\(object, object\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
+
+## Constructors
+
+### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex__ctor_System_Int32_System_Int32_"></a> UVSphereTileIndex\(int, int\)
+
+Creates a new UVSphereTileIndex with specified RA and Dec steps.
+
+```csharp
+public UVSphereTileIndex(int raSteps = 24, int decSteps = 18)
+```
+
+#### Parameters
+
+`raSteps` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+The amount of right ascension (in degrees) per tile.
+
+`decSteps` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+
+The amount of declination (in degrees) per tile.
+
+#### Exceptions
+
+ [ArgumentOutOfRangeException](https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception)
+
+Thrown if there are less than 2 RA or Dec steps
 
 ## Properties
 

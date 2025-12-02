@@ -89,10 +89,12 @@
 
 <p>Namespace: <a href="ChargerAstronomyEngine.Streaming.html">ChargerAstronomyEngine.Streaming</a><br>
 Assembly: ChargerAstronomyEngine.dll</p>
+<p>Engine service. Manages star calculation, heat service, and spatial indexing.</p>
 <pre><code class="lang-csharp">public class EngineService&lt;T&gt; : IEngineService&lt;T&gt; where T : IHorizontal
 </code></pre>
 <h4 id="type-parameters">Type Parameters</h4>
 <p><code>T</code></p>
+<p>The <span class="xref">ChargerAstronomyShared.Domain.Index.ITileIndex</span> used in the current spatial index.</p>
 <h4 id="inheritance">Inheritance</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.object">object</a> ←
 <a href="ChargerAstronomyEngine.Streaming.EngineService-1.html">EngineService&lt;T&gt;</a></p>
@@ -114,11 +116,13 @@ Assembly: ChargerAstronomyEngine.dll</p>
 <p><code>tileIndex</code> <a href="ChargerAstronomyShared.Domain.Index.ITileIndex.html">ITileIndex</a></p>
 <h2 id="properties">Properties</h2>
 <h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_ActivationQueue"> ActivationQueue</h3>
+<p>Queue for stars that need to be activated (made visible).</p>
 <pre><code class="lang-csharp">public BlockingCollection&lt;T&gt; ActivationQueue { get; }
 </code></pre>
 <h4 id="property-value">Property Value</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.concurrent.blockingcollection-1">BlockingCollection</a>&lt;T&gt;</p>
 <h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_DeactivationQueue"> DeactivationQueue</h3>
+<p>Queue for stars that need to be deactivated (made invisible).</p>
 <pre><code class="lang-csharp">public BlockingCollection&lt;T&gt; DeactivationQueue { get; }
 </code></pre>
 <h4 id="property-value-1">Property Value</h4>
@@ -127,39 +131,64 @@ Assembly: ChargerAstronomyEngine.dll</p>
 <pre><code class="lang-csharp">public HeatService HeatService { get; }
 </code></pre>
 <h4 id="property-value-2">Property Value</h4>
-<p><a href="ChargerAstronomyShared.Domain.Heat.HeatService.html">HeatService</a></p>
+<p><a href="ChargerAstronomyEngine.Domain.Heat.HeatService.html">HeatService</a></p>
 <h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_SpatialStarIndex"> SpatialStarIndex</h3>
+<p>The spatial index containing all stars organized by tile.</p>
 <pre><code class="lang-csharp">public SpatialStarIndex&lt;T&gt; SpatialStarIndex { get; }
 </code></pre>
 <h4 id="property-value-3">Property Value</h4>
 <p><a href="ChargerAstronomyShared.Domain.SpatialIndex.SpatialStarIndex-1.html">SpatialStarIndex</a>&lt;T&gt;</p>
 <h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_UpdateTransformQueue"> UpdateTransformQueue</h3>
+<p>Queue for stars that need their transforms updated.</p>
 <pre><code class="lang-csharp">public BlockingCollection&lt;T&gt; UpdateTransformQueue { get; }
 </code></pre>
 <h4 id="property-value-4">Property Value</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.concurrent.blockingcollection-1">BlockingCollection</a>&lt;T&gt;</p>
 <h2 id="methods">Methods</h2>
-<h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_StartServices"> StartServices()</h3>
-<p>Starts and initializes the engine services for the application.</p>
-<pre><code class="lang-csharp">public IEquatorialCalculator StartServices()
-</code></pre>
-<h4 id="returns">Returns</h4>
-<p><a href="ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator.html">IEquatorialCalculator</a></p>
-<p>An instance of <span class="xref">ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator</span> representing the initialized service.</p>
-<h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_Step_System_Single_System_Numerics_Vector3_System_Single_"> Step(float, Vector3, float)</h3>
-<p>Advances the simulation by a single step, updating the state based on the elapsed time and camera direction.</p>
-<pre><code class="lang-csharp">public Task Step(float deltaTime, Vector3 cameraDirection, float horizontalFOV)
+<h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_ForceStarUpdate__0_"> ForceStarUpdate(T)</h3>
+<p>Updates a star's horiziontal position</p>
+<pre><code class="lang-csharp">public void ForceStarUpdate(T star)
 </code></pre>
 <h4 id="parameters-1">Parameters</h4>
-<p><code>deltaTime</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The time, in seconds, that has elapsed since the last step. Must be greater than zero.</p>
-<p><code>cameraDirection</code> <a href="https://learn.microsoft.com/dotnet/api/system.numerics.vector3">Vector3</a></p>
-<p>The direction the camera is facing, represented as a 3D vector.</p>
-<p><code>horizontalFOV</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<p>The horizontal field of view, in degrees, used to determine the visible area. Must be a positive value.</p>
+<p><code>star</code> T</p>
+<p>The star to be updated</p>
+<h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_GetStats"> GetStats()</h3>
+<p>Gets current engine statistics.</p>
+<pre><code class="lang-csharp">public EngineStats GetStats()
+</code></pre>
+<h4 id="returns">Returns</h4>
+<p><a href="ChargerAstronomyShared.Contracts.Streaming.EngineStats.html">EngineStats</a></p>
+<p>An <span class="xref">ChargerAstronomyShared.Contracts.Streaming.EngineStats</span> object.</p>
+<h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_PlaceStars"> PlaceStars()</h3>
+<p>Places stars in their initial positions.</p>
+<pre><code class="lang-csharp">public void PlaceStars()
+</code></pre>
+<h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_StartServices"> StartServices()</h3>
+<p>Starts the engine calculator services.</p>
+<pre><code class="lang-csharp">public IEquatorialCalculator StartServices()
+</code></pre>
 <h4 id="returns-1">Returns</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></p>
-<p>A task that represents the asynchronous operation of stepping the simulation.</p>
+<p><a href="ChargerAstronomyShared.Contracts.Repositories.IEquatorialCalculator.html">IEquatorialCalculator</a></p>
+<p>An <span class="xref">ChargerAstronomyEngine.Streaming.EquatorialCalculator`1</span> instance.</p>
+<h3 id="ChargerAstronomyEngine_Streaming_EngineService_1_Step_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_"> Step(float, float, float, float, float, float, float)</h3>
+<p>Steps the engine simulation forward by the specified delta time.</p>
+<pre><code class="lang-csharp">public void Step(float deltaTime, float camX, float camY, float camZ, float horizontalFOV, float magnitudeThreshold, float speedMult)
+</code></pre>
+<h4 id="parameters-2">Parameters</h4>
+<p><code>deltaTime</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p>The amount of time passed during the step.</p>
+<p><code>camX</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p>X value of the camera.</p>
+<p><code>camY</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p>Y value of the camera.</p>
+<p><code>camZ</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p>Z value of the camera.</p>
+<p><code>horizontalFOV</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p>The FOV (zoom) of the camera.</p>
+<p><code>magnitudeThreshold</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p>Maximum threshold for star visibility.</p>
+<p><code>speedMult</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
+<p>The current speed of the simulation.</p>
 
 </article>
 

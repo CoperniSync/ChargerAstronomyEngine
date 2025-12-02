@@ -24,10 +24,10 @@ public class ConstellationRetrieval
 
 ## Methods
 
-### <a id="Assets_Scripts_Core_ConstellationRetrieval_GetConstellations_System_Collections_Generic_List_UnityConstellation___System_Collections_Generic_List_Assets_Scripts_CelestialBodies_Star__System_String_"></a> GetConstellations\(ref List<UnityConstellation\>, List<Star\>, string\)
+### <a id="Assets_Scripts_Core_ConstellationRetrieval_GetConstellations_System_Collections_Generic_List_UnityConstellation___System_Collections_Generic_List_Assets_Scripts_CelestialBodies_Star__ChargerAstronomyShared_Contracts_Repositories_IEngineService_ChargerAstronomyShared_Contracts_Models_IHorizontal__System_Boolean_System_String_"></a> GetConstellations\(ref List<UnityConstellation\>, List<Star\>, IEngineService<IHorizontal\>, bool, string\)
 
 ```csharp
-public static void GetConstellations(ref List<UnityConstellation> constellationList, List<Star> starList, string path = "constellations.json")
+public static void GetConstellations(ref List<UnityConstellation> constellationList, List<Star> starList, IEngineService<IHorizontal> engineIn, bool initalState = true, string path = "constellations.json")
 ```
 
 #### Parameters
@@ -35,6 +35,10 @@ public static void GetConstellations(ref List<UnityConstellation> constellationL
 `constellationList` [List](https://learn.microsoft.com/dotnet/api/system.collections.generic.list\-1)<[UnityConstellation](UnityConstellation.md)\>
 
 `starList` [List](https://learn.microsoft.com/dotnet/api/system.collections.generic.list\-1)<[Star](Assets.Scripts.CelestialBodies.Star.md)\>
+
+`engineIn` IEngineService<IHorizontal\>
+
+`initalState` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
 `path` [string](https://learn.microsoft.com/dotnet/api/system.string)
 
