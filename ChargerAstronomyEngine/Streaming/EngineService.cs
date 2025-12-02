@@ -18,6 +18,11 @@ using ChargerAstronomyShared.Contracts.Streaming;
 
 namespace ChargerAstronomyEngine.Streaming
 {
+
+    /// <summary>
+    /// Engine service. Manages star calculation, heat service, and spatial indexing.
+    /// </summary>
+    /// <typeparam name="T">The <see cref="ITileIndex"/> used in the current spatial index.</typeparam>
     public class EngineService<T> : IEngineService<T> where T : IHorizontal
     {
         private readonly HeatMap heatMap;
@@ -76,11 +81,17 @@ namespace ChargerAstronomyEngine.Streaming
             updateTransformQueue = new BlockingCollection<T>(new ConcurrentQueue<T>());
         }
 
+        /// <summary>
+        /// Starts the engine calculator services.
+        /// </summary>
+        /// <returns>An <see cref="EquatorialCalculator{T}"/> instance.</returns>
         public IEquatorialCalculator StartServices()
         {
             return equatorialCalculator;
         }
 
+
+        /// <inheritdoc />
         public void Step(float deltaTime, float camX, float camY, float camZ, float horizontalFOV, float magnitudeThreshold, float speedMult)
         {
             // Update magnitude cutoff
@@ -124,6 +135,10 @@ namespace ChargerAstronomyEngine.Streaming
         }
 
         // re-evaluate active stars based on new magnitude cutoff
+
+        /// <summary>
+        /// Re-evaluates active tiles based on the current magnitude cutoff.
+        /// </summary>
         private void ReEvaluateActiveTileMagnitudes()
         {
             float oldCutoff = lastMagnitudeCutoff;
@@ -180,6 +195,9 @@ namespace ChargerAstronomyEngine.Streaming
             }
         }
 
+        /// <summary>
+        /// Processes tile activations and deactivations based on the heat map.
+        /// </summary>
         private void ProcessTileActivations()
         {
             lock (activeTilesLock)
@@ -243,7 +261,9 @@ namespace ChargerAstronomyEngine.Streaming
             }
         }
 
-
+        /// <summary>
+        /// Updates the positions of all active stars.
+        /// </summary>
         private void UpdateActiveStars()
         {
             var starsToUpdate = activeStarsWithMagnitude.Keys.ToList();
@@ -255,12 +275,14 @@ namespace ChargerAstronomyEngine.Streaming
             });
         }
 
+        /// <inheritdoc />
         public void ForceStarUpdate(T star)
         {
             equatorialCalculator.UpdateStar(star);
             updateTransformQueue.TryAdd(star);
         }
 
+        /// <inheritdoc />
         public void PlaceStars()
         {
             Parallel.ForEach(tileIndex.Tiles, tileId =>
@@ -280,6 +302,7 @@ namespace ChargerAstronomyEngine.Streaming
             });
         }
 
+        /// <inheritdoc />
         public EngineStats GetStats()
         {
             lock (activeTilesLock)
