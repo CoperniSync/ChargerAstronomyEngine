@@ -1,13 +1,10 @@
-# <a id="GameLoop"></a> Class GameLoop
+# <a id="HeatMapVisualizer"></a> Class HeatMapVisualizer
 
 Namespace:   
 Assembly: Assembly\-CSharp.dll  
 
-Main game loop controller. Updated to properly handle coordinate transformations
-and efficient star culling via the heat map system.
-
 ```csharp
-public class GameLoop : MonoBehaviour
+public class HeatMapVisualizer : MonoBehaviour
 ```
 
 #### Inheritance
@@ -17,7 +14,7 @@ Object ←
 Component ← 
 Behaviour ← 
 MonoBehaviour ← 
-[GameLoop](GameLoop.md)
+[HeatMapVisualizer](HeatMapVisualizer.md)
 
 #### Inherited Members
 
@@ -166,85 +163,117 @@ Object.hideFlags,
 
 ## Fields
 
-### <a id="GameLoop_speedMult"></a> speedMult
+### <a id="HeatMapVisualizer_activeTileColor"></a> activeTileColor
 
 ```csharp
-public float speedMult
+public Color activeTileColor
+```
+
+#### Field Value
+
+ Color
+
+### <a id="HeatMapVisualizer_cameraRayColor"></a> cameraRayColor
+
+```csharp
+public Color cameraRayColor
+```
+
+#### Field Value
+
+ Color
+
+### <a id="HeatMapVisualizer_cameraRayLength"></a> cameraRayLength
+
+```csharp
+public float cameraRayLength
 ```
 
 #### Field Value
 
  [float](https://learn.microsoft.com/dotnet/api/system.single)
 
-## Methods
-
-### <a id="GameLoop_GetProjectPath"></a> GetProjectPath\(\)
+### <a id="HeatMapVisualizer_coldColor"></a> coldColor
 
 ```csharp
-public static string GetProjectPath()
+public Color coldColor
 ```
 
-#### Returns
+#### Field Value
 
- [string](https://learn.microsoft.com/dotnet/api/system.string)
+ Color
 
-### <a id="GameLoop_SetCameraPosition"></a> SetCameraPosition\(\)
-
-Updates the engine's camera position based on the Input Container
+### <a id="HeatMapVisualizer_gameLoop"></a> gameLoop
 
 ```csharp
-public void SetCameraPosition()
+[Header("References")]
+public GameLoop gameLoop
 ```
 
-### <a id="GameLoop_SetConstellationVisibility_System_Boolean_"></a> SetConstellationVisibility\(bool\)
+#### Field Value
 
-sets the visibilty of constelations
+ [GameLoop](GameLoop.md)
+
+### <a id="HeatMapVisualizer_hotColor"></a> hotColor
 
 ```csharp
-public void SetConstellationVisibility(bool visible)
+public Color hotColor
 ```
 
-#### Parameters
+#### Field Value
 
-`visible` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+ Color
 
-### <a id="GameLoop_SetLabelVisibility_System_Boolean_"></a> SetLabelVisibility\(bool\)
-
-sets the visibilty of conste;lations labels
+### <a id="HeatMapVisualizer_showCameraDirection"></a> showCameraDirection
 
 ```csharp
-public void SetLabelVisibility(bool visible)
+[Header("Camera Debug")]
+public bool showCameraDirection
 ```
 
-#### Parameters
+#### Field Value
 
-`visible` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="GameLoop_SetLocationAndTime"></a> SetLocationAndTime\(\)
+### <a id="HeatMapVisualizer_showLabels"></a> showLabels
 
 ```csharp
-public void SetLocationAndTime()
+public bool showLabels
 ```
 
-### <a id="GameLoop_SetMessierVisibility_System_Boolean_"></a> SetMessierVisibility\(bool\)
+#### Field Value
 
-set if the messier Objects are being forced from displaying
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="HeatMapVisualizer_showStats"></a> showStats
 
 ```csharp
-public void SetMessierVisibility(bool visible)
+[Header("Performance")]
+public bool showStats
 ```
 
-#### Parameters
+#### Field Value
 
-`visible` [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
 
-### <a id="GameLoop_SetSpeedMultiplier_System_Single_"></a> SetSpeedMultiplier\(float\)
+### <a id="HeatMapVisualizer_showTiles"></a> showTiles
 
 ```csharp
-public void SetSpeedMultiplier(float speed)
+[Header("Visualization Settings")]
+public bool showTiles
 ```
 
-#### Parameters
+#### Field Value
 
-`speed` [float](https://learn.microsoft.com/dotnet/api/system.single)
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+
+### <a id="HeatMapVisualizer_tileScale"></a> tileScale
+
+```csharp
+public float tileScale
+```
+
+#### Field Value
+
+ [float](https://learn.microsoft.com/dotnet/api/system.single)
 

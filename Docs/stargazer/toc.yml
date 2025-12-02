@@ -1,2 +1,101 @@
 ### YamlMime:TableOfContent
-[]
+- name: Assets
+  href: Assets.md
+  items:
+  - name: Scripts
+    href: Assets.Scripts.md
+    items:
+    - name: CelestialBodies
+      href: Assets.Scripts.CelestialBodies.md
+      items:
+      - name: Classes
+      - name: CelestialBodyBase
+        href: Assets.Scripts.CelestialBodies.CelestialBodyBase.md
+      - name: MessierObject
+        href: Assets.Scripts.CelestialBodies.MessierObject.md
+      - name: Moon
+        href: Assets.Scripts.CelestialBodies.Moon.md
+      - name: Planet
+        href: Assets.Scripts.CelestialBodies.Planet.md
+      - name: Star
+        href: Assets.Scripts.CelestialBodies.Star.md
+      - name: Sun
+        href: Assets.Scripts.CelestialBodies.Sun.md
+    - name: Core
+      href: Assets.Scripts.Core.md
+      items:
+      - name: Classes
+      - name: ConstellationRetrieval
+        href: Assets.Scripts.Core.ConstellationRetrieval.md
+    - name: Rendering
+      href: Assets.Scripts.Rendering.md
+      items:
+      - name: Classes
+      - name: StarGpuRenderer
+        href: Assets.Scripts.Rendering.StarGpuRenderer.md
+    - name: UI
+      href: Assets.Scripts.UI.md
+      items:
+      - name: Visual
+        href: Assets.Scripts.UI.Visual.md
+        items:
+        - name: Classes
+        - name: ButtonToggleGroup
+          href: Assets.Scripts.UI.Visual.ButtonToggleGroup.md
+        - name: ButtonToggleGroup.Item
+          href: Assets.Scripts.UI.Visual.ButtonToggleGroup.Item.md
+        - name: ToggleButtonSprite
+          href: Assets.Scripts.UI.Visual.ToggleButtonSprite.md
+        - name: ToggleSwitch
+          href: Assets.Scripts.UI.Visual.ToggleSwitch.md
+        - name: ToggleSwitchGroupManager
+          href: Assets.Scripts.UI.Visual.ToggleSwitchGroupManager.md
+      - name: Classes
+      - name: InputContainer
+        href: Assets.Scripts.UI.InputContainer.md
+- name: Calendar
+  href: Calendar.md
+- name: CalendarButton
+  href: CalendarButton.md
+- name: CameraControls
+  href: CameraControls.md
+- name: ConstellationSegment
+  href: ConstellationSegment.md
+- name: GPUInstanceTest
+  href: GPUInstanceTest.md
+- name: GameLoop
+  href: GameLoop.md
+- name: HeatMapVisualizer
+  href: HeatMapVisualizer.md
+- name: HorizonFader
+  href: HorizonFader.md
+- name: LatChange
+  href: LatChange.md
+- name: LocalObjectRetrieval
+  href: LocalObjectRetrieval.md
+- name: LongChange
+  href: LongChange.md
+- name: MessierRetrieval
+  href: MessierRetrieval.md
+- name: SidePanel
+  href: SidePanel.md
+- name: StarQueue
+  href: StarQueue.md
+- name: StarTooltip
+  href: StarTooltip.md
+- name: StarTooltipText
+  href: StarTooltipText.md
+- name: TEMP
+  href: TEMP.md
+- name: TimeChange
+  href: TimeChange.md
+- name: TooltipGenerator
+  href: TooltipGenerator.md
+- name: UnityConstellation
+  href: UnityConstellation.md
+- name: InputData
+  href: InputData.md
+- name: IUserContextObserver
+  href: IUserContextObserver.md
+- name: IUserContextSubject
+  href: IUserContextSubject.md
