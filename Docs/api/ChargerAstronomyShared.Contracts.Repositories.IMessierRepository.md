@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Contracts.Repositories](ChargerAstronomyShared.Contracts.Repositories.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+Repository for accessing Messier Objects.
+
 ```csharp
 public interface IMessierRepository
 ```

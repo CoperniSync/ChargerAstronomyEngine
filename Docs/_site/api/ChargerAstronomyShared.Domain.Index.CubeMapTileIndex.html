@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> Class IcosphereTileIndex | Stargazer Data API </title>
+      <title> Class CubeMapTileIndex | Stargazer Data API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" Class IcosphereTileIndex | Stargazer Data API ">
+      <meta name="title" content=" Class CubeMapTileIndex | Stargazer Data API ">
       
       
       <link rel="icon" href="../images/copernisync_planet_only.svg">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyShared.Domain.Index.IcosphereTileIndex.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,16 +85,16 @@
         </div>
 
         <article data-uid="">
-<h1 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex"> Class IcosphereTileIndex</h1>
+<h1 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex"> Class CubeMapTileIndex</h1>
 
 <p>Namespace: <a href="ChargerAstronomyShared.Domain.Index.html">ChargerAstronomyShared.Domain.Index</a><br>
 Assembly: ChargerAstronomyShared.dll</p>
-<p>A tile index that partitions tiles into an icosphere.</p>
-<pre><code class="lang-csharp">public sealed class IcosphereTileIndex : ITileIndex
+<p>A tile index that partitions tiles into a cube.</p>
+<pre><code class="lang-csharp">public sealed class CubeMapTileIndex : ITileIndex
 </code></pre>
 <h4 id="inheritance">Inheritance</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.object">object</a> ←
-<a href="ChargerAstronomyShared.Domain.Index.IcosphereTileIndex.html">IcosphereTileIndex</a></p>
+<a href="ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.html">CubeMapTileIndex</a></p>
 <h4 id="implements">Implements</h4>
 <p><a href="ChargerAstronomyShared.Domain.Index.ITileIndex.html">ITileIndex</a></p>
 <h4 id="inherited-members">Inherited Members</h4>
@@ -105,38 +105,31 @@ Assembly: ChargerAstronomyShared.dll</p>
 <a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
 <a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
 <h2 id="constructors">Constructors</h2>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex__ctor_System_Int32_"> IcosphereTileIndex(int)</h3>
-<p>Initializes a new instance of the <span class="xref">ChargerAstronomyShared.Domain.Index.IcosphereTileIndex</span> class with a specified number of
-subdivisions.</p>
-<pre><code class="lang-csharp">public IcosphereTileIndex(int subdivisions = 0)
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex__ctor_System_Int32_"> CubeMapTileIndex(int)</h3>
+<p>Creates a new CubeMapTileIndex with a specified number of subdivisions per face.</p>
+<pre><code class="lang-csharp">public CubeMapTileIndex(int subdivisionsPerFace = 4)
 </code></pre>
 <h4 id="parameters">Parameters</h4>
-<p><code>subdivisions</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
-<p>The number of times the base icosahedron is subdivided to create the icosphere.  Must be between 0 and 5,
-inclusive. Higher values result in a finer-grained icosphere.</p>
-<h4 id="remarks">Remarks</h4>
-<p>This constructor generates an icosphere by subdividing a base icosahedron the
-specified number of times.  Each vertex of the resulting icosphere is normalized to lie on the unit sphere.
-The icosphere is then used to initialize a spatial index, where each triangular face of the icosphere  is
-associated with a unique tile identifier and its corresponding geometry.</p>
+<p><code>subdivisionsPerFace</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
+<p>the amount of subdivisions per face.</p>
 <h4 id="exceptions">Exceptions</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></p>
-<p>Thrown if <code class="paramref">subdivisions</code> is less than 0 or greater than 5.</p>
+<p>Must have at least 1 subdivision per face.</p>
 <h2 id="properties">Properties</h2>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex_TileCount"> TileCount</h3>
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_TileCount"> TileCount</h3>
 <p>The total number of tiles.</p>
 <pre><code class="lang-csharp">public int TileCount { get; }
 </code></pre>
 <h4 id="property-value">Property Value</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex_Tiles"> Tiles</h3>
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_Tiles"> Tiles</h3>
 <p>Iterable list of tiles in this index.</p>
 <pre><code class="lang-csharp">public IReadOnlyList&lt;TileId&gt; Tiles { get; }
 </code></pre>
 <h4 id="property-value-1">Property Value</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
 <h2 id="methods">Methods</h2>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex_DirectionToTileId_System_Numerics_Vector3_"> DirectionToTileId(Vector3)</h3>
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_DirectionToTileId_System_Numerics_Vector3_"> DirectionToTileId(Vector3)</h3>
 <p>Converts a direction vector to the corresponding TileId on the icosphere.</p>
 <pre><code class="lang-csharp">public TileId DirectionToTileId(Vector3 direction)
 </code></pre>
@@ -147,7 +140,7 @@ associated with a unique tile identifier and its corresponding geometry.</p>
 <p>The <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> in the specified direction.</p>
 <h4 id="exceptions-1">Exceptions</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></p>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex_Enumerate"> Enumerate()</h3>
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_Enumerate"> Enumerate()</h3>
 <p>Enumerates the geometry data for all tiles in the collection.</p>
 <pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; Enumerate()
 </code></pre>
@@ -155,11 +148,11 @@ associated with a unique tile identifier and its corresponding geometry.</p>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Contracts.Models.TileId.html">TileId</a>&gt;</p>
 <p>An <span class="xref">System.Collections.Generic.IEnumerable`1</span> of <span class="xref">System.Tuple`2</span> objects, where each tuple consists of a <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span> representing the tile identifier and a <span class="xref">ChargerAstronomyShared.Domain.Geometry.TileGeometry</span> representing the
 associated geometry data.</p>
-<h4 id="remarks-1">Remarks</h4>
+<h4 id="remarks">Remarks</h4>
 <p>This method returns a sequence of tuples, where each tuple contains a tile identifier
 and its associated geometry data. The enumeration is deferred, meaning the tiles are retrieved lazily as the
 sequence is iterated.</p>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex_EnumerateGeometry"> EnumerateGeometry()</h3>
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_EnumerateGeometry"> EnumerateGeometry()</h3>
 <p>Retrieves the geometry associated with the specified <span class="xref">ChargerAstronomyShared.Contracts.Models.TileId</span>.</p>
 <pre><code class="lang-csharp">public IEnumerable&lt;Tuple&lt;TileId, TileGeometry&gt;&gt; EnumerateGeometry()
 </code></pre>
@@ -169,7 +162,7 @@ sequence is iterated.</p>
 <h4 id="exceptions-2">Exceptions</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></p>
 <p>Thrown if the geometry for the specified <code class="paramref">id</code> is not found.</p>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex_GetGeometry_ChargerAstronomyShared_Contracts_Models_TileId_"> GetGeometry(TileId)</h3>
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_GetGeometry_ChargerAstronomyShared_Contracts_Models_TileId_"> GetGeometry(TileId)</h3>
 <p>Retrieves the geometry data associated with the specified tile.</p>
 <pre><code class="lang-csharp">public TileGeometry GetGeometry(TileId id)
 </code></pre>
@@ -179,7 +172,7 @@ sequence is iterated.</p>
 <h4 id="returns-3">Returns</h4>
 <p><a href="ChargerAstronomyShared.Domain.Geometry.TileGeometry.html">TileGeometry</a></p>
 <p>A <span class="xref">ChargerAstronomyShared.Domain.Geometry.TileGeometry</span> object representing the geometry of the specified tile. Returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the tile does not exist or has no associated geometry.</p>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex_GetTileAlpha_ChargerAstronomyShared_Contracts_Models_TileId_"> GetTileAlpha(TileId)</h3>
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_GetTileAlpha_ChargerAstronomyShared_Contracts_Models_TileId_"> GetTileAlpha(TileId)</h3>
 <p>Retrieves the alpha angle for the specified tile.</p>
 <pre><code class="lang-csharp">public double GetTileAlpha(TileId id)
 </code></pre>
@@ -192,7 +185,7 @@ sequence is iterated.</p>
 <h4 id="exceptions-3">Exceptions</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></p>
 <p>Thrown if the specified tile is not found in the tile geometry map.</p>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex_GetTileCenter_ChargerAstronomyShared_Contracts_Models_TileId_"> GetTileCenter(TileId)</h3>
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_GetTileCenter_ChargerAstronomyShared_Contracts_Models_TileId_"> GetTileCenter(TileId)</h3>
 <p>Calculates the center point of the specified tile.</p>
 <pre><code class="lang-csharp">public Vector3 GetTileCenter(TileId id)
 </code></pre>
@@ -205,7 +198,7 @@ sequence is iterated.</p>
 <h4 id="exceptions-4">Exceptions</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></p>
 <p>Thrown if the specified tile identifier does not exist in the tile geometry map.</p>
-<h3 id="ChargerAstronomyShared_Domain_Index_IcosphereTileIndex_Neigbors_ChargerAstronomyShared_Contracts_Models_TileId_"> Neigbors(TileId)</h3>
+<h3 id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_Neigbors_ChargerAstronomyShared_Contracts_Models_TileId_"> Neigbors(TileId)</h3>
 <p>Retrieves the neighboring tiles of the specified tile.</p>
 <pre><code class="lang-csharp">public IEnumerable&lt;TileId&gt; Neigbors(TileId id)
 </code></pre>
@@ -222,7 +215,7 @@ sequence is iterated.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyShared.Domain.Index.IcosphereTileIndex.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

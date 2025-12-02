@@ -1,5 +1,5 @@
 {
-  "source_base_path": "C:/Users/jojot/source/repos/ChargerAstronomyLab/ChargerAstronomyEngine/Docs",
+  "source_base_path": "C:/Users/jojot/source/repos/ChargerAstronomyProject/ChargerAstronomyEngine/Docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -592,6 +592,36 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Domain.Heat.HeatService.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Domain.Heat.HeatService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Domain.Heat.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Domain.Heat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Domain.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Domain.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.md",
       "output": {
         ".html": {
@@ -802,6 +832,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.EngineStats.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.EngineStats.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyShared.Contracts.Streaming.md",
       "output": {
         ".html": {
@@ -826,6 +866,26 @@
       "output": {
         ".html": {
           "relative_path": "api/ChargerAstronomyShared.Domain.CalendarDateTime.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Coordinate.CoordinateTransform.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Coordinate.CoordinateTransform.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Coordinate.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Coordinate.html"
         }
       },
       "version": ""
@@ -1026,6 +1086,16 @@
       "output": {
         ".html": {
           "relative_path": "api/ChargerAstronomyShared.Domain.Horizontal.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.html"
         }
       },
       "version": ""
@@ -1252,16 +1322,6 @@
       "output": {
         ".html": {
           "relative_path": "index.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "local-testing-instructions.md",
-      "output": {
-        ".html": {
-          "relative_path": "local-testing-instructions.html"
         }
       },
       "version": ""

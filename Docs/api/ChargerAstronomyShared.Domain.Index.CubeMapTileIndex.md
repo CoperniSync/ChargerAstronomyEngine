@@ -1,18 +1,18 @@
-# <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex"></a> Class UVSphereTileIndex
+# <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex"></a> Class CubeMapTileIndex
 
 Namespace: [ChargerAstronomyShared.Domain.Index](ChargerAstronomyShared.Domain.Index.md)  
 Assembly: ChargerAstronomyShared.dll  
 
-A tile index that partitions tiles into a UV sphere.
+A tile index that partitions tiles into a cube.
 
 ```csharp
-public sealed class UVSphereTileIndex : ITileIndex
+public sealed class CubeMapTileIndex : ITileIndex
 ```
 
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
-[UVSphereTileIndex](ChargerAstronomyShared.Domain.Index.UVSphereTileIndex.md)
+[CubeMapTileIndex](ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.md)
 
 #### Implements
 
@@ -29,33 +29,29 @@ public sealed class UVSphereTileIndex : ITileIndex
 
 ## Constructors
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex__ctor_System_Int32_System_Int32_"></a> UVSphereTileIndex\(int, int\)
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex__ctor_System_Int32_"></a> CubeMapTileIndex\(int\)
 
-Creates a new UVSphereTileIndex with specified RA and Dec steps.
+Creates a new CubeMapTileIndex with a specified number of subdivisions per face.
 
 ```csharp
-public UVSphereTileIndex(int raSteps = 24, int decSteps = 18)
+public CubeMapTileIndex(int subdivisionsPerFace = 4)
 ```
 
 #### Parameters
 
-`raSteps` [int](https://learn.microsoft.com/dotnet/api/system.int32)
+`subdivisionsPerFace` [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-The amount of right ascension (in degrees) per tile.
-
-`decSteps` [int](https://learn.microsoft.com/dotnet/api/system.int32)
-
-The amount of declination (in degrees) per tile.
+the amount of subdivisions per face.
 
 #### Exceptions
 
  [ArgumentOutOfRangeException](https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception)
 
-Thrown if there are less than 2 RA or Dec steps
+Must have at least 1 subdivision per face.
 
 ## Properties
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex_TileCount"></a> TileCount
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_TileCount"></a> TileCount
 
 The total number of tiles.
 
@@ -67,7 +63,7 @@ public int TileCount { get; }
 
  [int](https://learn.microsoft.com/dotnet/api/system.int32)
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex_Tiles"></a> Tiles
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_Tiles"></a> Tiles
 
 Iterable list of tiles in this index.
 
@@ -81,7 +77,7 @@ public IReadOnlyList<TileId> Tiles { get; }
 
 ## Methods
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex_DirectionToTileId_System_Numerics_Vector3_"></a> DirectionToTileId\(Vector3\)
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_DirectionToTileId_System_Numerics_Vector3_"></a> DirectionToTileId\(Vector3\)
 
 Converts a direction vector to the corresponding TileId on the icosphere.
 
@@ -103,7 +99,7 @@ The <xref href="ChargerAstronomyShared.Contracts.Models.TileId" data-throw-if-no
 
  [InvalidOperationException](https://learn.microsoft.com/dotnet/api/system.invalidoperationexception)
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex_Enumerate"></a> Enumerate\(\)
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_Enumerate"></a> Enumerate\(\)
 
 Enumerates the geometry data for all tiles in the collection.
 
@@ -124,7 +120,7 @@ This method returns a sequence of tuples, where each tuple contains a tile ident
     and its associated geometry data. The enumeration is deferred, meaning the tiles are retrieved lazily as the
     sequence is iterated.
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex_EnumerateGeometry"></a> EnumerateGeometry\(\)
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_EnumerateGeometry"></a> EnumerateGeometry\(\)
 
 Retrieves the geometry associated with the specified <xref href="ChargerAstronomyShared.Contracts.Models.TileId" data-throw-if-not-resolved="false"></xref>.
 
@@ -144,7 +140,7 @@ The <xref href="ChargerAstronomyShared.Domain.Geometry.TileGeometry" data-throw-
 
 Thrown if the geometry for the specified <code class="paramref">id</code> is not found.
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex_GetGeometry_ChargerAstronomyShared_Contracts_Models_TileId_"></a> GetGeometry\(TileId\)
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_GetGeometry_ChargerAstronomyShared_Contracts_Models_TileId_"></a> GetGeometry\(TileId\)
 
 Retrieves the geometry data associated with the specified tile.
 
@@ -164,7 +160,7 @@ The unique identifier of the tile whose geometry data is to be retrieved.
 
 A <xref href="ChargerAstronomyShared.Domain.Geometry.TileGeometry" data-throw-if-not-resolved="false"></xref> object representing the geometry of the specified tile. Returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if the tile does not exist or has no associated geometry.
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex_GetTileAlpha_ChargerAstronomyShared_Contracts_Models_TileId_"></a> GetTileAlpha\(TileId\)
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_GetTileAlpha_ChargerAstronomyShared_Contracts_Models_TileId_"></a> GetTileAlpha\(TileId\)
 
 Retrieves the alpha angle for the specified tile.
 
@@ -190,7 +186,7 @@ Returns the alpha angle from the center of the specified TileId in radians.
 
 Thrown if the specified tile is not found in the tile geometry map.
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex_GetTileCenter_ChargerAstronomyShared_Contracts_Models_TileId_"></a> GetTileCenter\(TileId\)
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_GetTileCenter_ChargerAstronomyShared_Contracts_Models_TileId_"></a> GetTileCenter\(TileId\)
 
 Calculates the center point of the specified tile.
 
@@ -216,7 +212,7 @@ The center point of the tile as a <xref href="System.Numerics.Vector3" data-thro
 
 Thrown if the specified tile identifier does not exist in the tile geometry map.
 
-### <a id="ChargerAstronomyShared_Domain_Index_UVSphereTileIndex_Neigbors_ChargerAstronomyShared_Contracts_Models_TileId_"></a> Neigbors\(TileId\)
+### <a id="ChargerAstronomyShared_Domain_Index_CubeMapTileIndex_Neigbors_ChargerAstronomyShared_Contracts_Models_TileId_"></a> Neigbors\(TileId\)
 
 Retrieves the neighboring tiles of the specified tile.
 

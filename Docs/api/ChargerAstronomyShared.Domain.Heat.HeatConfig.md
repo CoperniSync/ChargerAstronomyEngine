@@ -90,3 +90,15 @@ public float Epsilon { get; }
 
 No need for setters, this is a constant.
 
+### <a id="ChargerAstronomyShared_Domain_Heat_HeatConfig_UseInstantDecay"></a> UseInstantDecay
+
+Indicates whether instant decay is applied.
+
+```csharp
+public bool UseInstantDecay { get; set; }
+```
+
+#### Property Value
+
+ [bool](https://learn.microsoft.com/dotnet/api/system.boolean)
+

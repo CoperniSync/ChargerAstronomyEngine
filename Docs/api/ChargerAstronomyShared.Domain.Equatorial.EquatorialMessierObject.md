@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Domain.Equatorial](ChargerAstronomyShared.Domain.Equatorial.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+A Messier Object represented in equatorial coordinates.
+
 ```csharp
 public sealed class EquatorialMessierObject : EquatorialCelestialBody
 ```

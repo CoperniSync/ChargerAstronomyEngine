@@ -110,16 +110,23 @@ Created: SPR 2025</p>
 <p><code>newLocation</code> <a href="ChargerAstronomyShared.Domain.Observer.html">Observer</a></p>
 <p>The new location for the <span class="xref">ChargerAstronomyShared.Domain.Observer</span> to update to.</p>
 <h3 id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalPlanet_"> UpdatePositionOf(HorizontalPlanet)</h3>
+<p>Updates the position of a planet based on the current time and <span class="xref">ChargerAstronomyShared.Domain.Observer</span>.</p>
 <pre><code class="lang-csharp">void UpdatePositionOf(HorizontalPlanet planet)
 </code></pre>
 <h4 id="parameters-2">Parameters</h4>
 <p><code>planet</code> <a href="ChargerAstronomyShared.Domain.Horizontal.HorizontalPlanet.html">HorizontalPlanet</a></p>
+<h4 id="exceptions">Exceptions</h4>
+<p><a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></p>
+<p>Thrown if the <code class="paramref">planet</code> name is not recognized in the internal collection of known planets.</p>
 <h3 id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalMoon_"> UpdatePositionOf(HorizontalMoon)</h3>
+<p>Updates the position of the moon based on the current time and <span class="xref">ChargerAstronomyShared.Domain.Observer</span>.</p>
 <pre><code class="lang-csharp">void UpdatePositionOf(HorizontalMoon moon)
 </code></pre>
 <h4 id="parameters-3">Parameters</h4>
 <p><code>moon</code> <a href="ChargerAstronomyShared.Domain.Horizontal.HorizontalMoon.html">HorizontalMoon</a></p>
+<p>The Moon.</p>
 <h3 id="ChargerAstronomyShared_Contracts_Repositories_IEquatorialCalculator_UpdatePositionOf_ChargerAstronomyShared_Domain_Horizontal_HorizontalSun_"> UpdatePositionOf(HorizontalSun)</h3>
+<p>Updates the position of the Sun based on the current time and <span class="xref">ChargerAstronomyShared.Domain.Observer</span>.</p>
 <pre><code class="lang-csharp">void UpdatePositionOf(HorizontalSun sun)
 </code></pre>
 <h4 id="parameters-4">Parameters</h4>

@@ -136,6 +136,15 @@
         href: ChargerAstronomyEngine.Data.Star.CsvStarRepository.md
       - name: EquatorialStarMap
         href: ChargerAstronomyEngine.Data.Star.EquatorialStarMap.md
+  - name: Domain
+    href: ChargerAstronomyEngine.Domain.md
+    items:
+    - name: Heat
+      href: ChargerAstronomyEngine.Domain.Heat.md
+      items:
+      - name: Classes
+      - name: HeatService
+        href: ChargerAstronomyEngine.Domain.Heat.HeatService.md
   - name: Streaming
     href: ChargerAstronomyEngine.Streaming.md
     items:
@@ -177,9 +186,6 @@
     - name: Repositories
       href: ChargerAstronomyShared.Contracts.Repositories.md
       items:
-      - name: Classes
-      - name: StarSpatialIndex
-        href: ChargerAstronomyShared.Contracts.Repositories.StarSpatialIndex.md
       - name: Interfaces
       - name: IConstellationRepository
         href: ChargerAstronomyShared.Contracts.Repositories.IConstellationRepository.md
@@ -194,12 +200,21 @@
     - name: Streaming
       href: ChargerAstronomyShared.Contracts.Streaming.md
       items:
+      - name: Classes
+      - name: EngineStats
+        href: ChargerAstronomyShared.Contracts.Streaming.EngineStats.md
       - name: Interfaces
       - name: BlockingQueue<T>
         href: ChargerAstronomyShared.Contracts.Streaming.BlockingQueue-1.md
   - name: Domain
     href: ChargerAstronomyShared.Domain.md
     items:
+    - name: Coordinate
+      href: ChargerAstronomyShared.Domain.Coordinate.md
+      items:
+      - name: Classes
+      - name: CoordinateTransform
+        href: ChargerAstronomyShared.Domain.Coordinate.CoordinateTransform.md
     - name: Equatorial
       href: ChargerAstronomyShared.Domain.Equatorial.md
       items:
@@ -232,8 +247,6 @@
         href: ChargerAstronomyShared.Domain.Heat.HeatConfig.md
       - name: HeatMap
         href: ChargerAstronomyShared.Domain.Heat.HeatMap.md
-      - name: HeatService
-        href: ChargerAstronomyShared.Domain.Heat.HeatService.md
     - name: Horizontal
       href: ChargerAstronomyShared.Domain.Horizontal.md
       items:
@@ -254,12 +267,12 @@
       href: ChargerAstronomyShared.Domain.Index.md
       items:
       - name: Classes
+      - name: CubeMapTileIndex
+        href: ChargerAstronomyShared.Domain.Index.CubeMapTileIndex.md
       - name: IcosphereTileIndex
         href: ChargerAstronomyShared.Domain.Index.IcosphereTileIndex.md
       - name: UVSphereTileIndex
         href: ChargerAstronomyShared.Domain.Index.UVSphereTileIndex.md
-      - name: UVTileIndex
-        href: ChargerAstronomyShared.Domain.Index.UVTileIndex.md
       - name: Interfaces
       - name: ITileIndex
         href: ChargerAstronomyShared.Domain.Index.ITileIndex.md

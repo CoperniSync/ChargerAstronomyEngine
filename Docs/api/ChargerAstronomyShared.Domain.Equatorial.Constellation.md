@@ -3,6 +3,8 @@
 Namespace: [ChargerAstronomyShared.Domain.Equatorial](ChargerAstronomyShared.Domain.Equatorial.md)  
 Assembly: ChargerAstronomyShared.dll  
 
+A graph representation of a constellation.
+
 ```csharp
 public sealed class Constellation
 ```
