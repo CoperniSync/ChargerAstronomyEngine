@@ -31,7 +31,7 @@ namespace ChargerAstronomyEngine.Data.Constellations
         /// <param name="repositoryPath">The path to the directory containing the Json file.</param>
         public CsvConstellationRepository(string repositoryPath)
         {
-            this.filePath = Path.Combine(repositoryPath, "constellations.json");
+            this.filePath = repositoryPath;
             if (!File.Exists(filePath)) throw new FileNotFoundException($"{filePath} does not exist");
 
         }
