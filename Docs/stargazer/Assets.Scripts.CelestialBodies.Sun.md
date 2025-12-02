@@ -53,6 +53,16 @@ public Sun(HorizontalSun hsun, float drawnDistance = 74)
 
 ## Properties
 
+### <a id="Assets_Scripts_CelestialBodies_Sun_Go"></a> Go
+
+```csharp
+public GameObject Go { get; }
+```
+
+#### Property Value
+
+ GameObject
+
 ### <a id="Assets_Scripts_CelestialBodies_Sun_HorizontalSun"></a> HorizontalSun
 
 ```csharp

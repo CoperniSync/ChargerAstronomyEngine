@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> Class GameLoop | Stargazer Data API </title>
+      <title> Class TextureRotator | Stargazer Data API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" Class GameLoop | Stargazer Data API ">
+      <meta name="title" content=" Class TextureRotator | Stargazer Data API ">
       
       
       <link rel="icon" href="../images/copernisync_planet_only.svg">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/stargazer/GameLoop.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/stargazer/TextureRotator.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,90 +85,96 @@
         </div>
 
         <article data-uid="">
-<h1 id="GameLoop"> Class GameLoop</h1>
+<h1 id="TextureRotator"> Class TextureRotator</h1>
 
 <p>Namespace:<br>
 Assembly: Assembly-CSharp.dll</p>
-<p>Main game loop controller. Updated to properly handle coordinate transformations
-and efficient star culling via the heat map system.</p>
-<pre><code class="lang-csharp">public class GameLoop : MonoBehaviour
+<p>Rotates texture files - creates new rotated versions
+Put this in Assets/Editor/ folder</p>
+<pre><code class="lang-csharp">public class TextureRotator : EditorWindow
 </code></pre>
 <h4 id="inheritance">Inheritance</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.object">object</a> ←
 Object ←
-Component ←
-Behaviour ←
-MonoBehaviour ←
-<a href="GameLoop.html">GameLoop</a></p>
+ScriptableObject ←
+EditorWindow ←
+<a href="TextureRotator.html">TextureRotator</a></p>
 <h4 id="inherited-members">Inherited Members</h4>
-<p>MonoBehaviour.IsInvoking(),
-MonoBehaviour.CancelInvoke(),
-MonoBehaviour.Invoke(string, float),
-MonoBehaviour.InvokeRepeating(string, float, float),
-MonoBehaviour.CancelInvoke(string),
-MonoBehaviour.IsInvoking(string),
-MonoBehaviour.StartCoroutine(string),
-MonoBehaviour.StartCoroutine(string, object),
-MonoBehaviour.StartCoroutine(IEnumerator),
-MonoBehaviour.StartCoroutine_Auto(IEnumerator),
-MonoBehaviour.StopCoroutine(IEnumerator),
-MonoBehaviour.StopCoroutine(Coroutine),
-MonoBehaviour.StopCoroutine(string),
-MonoBehaviour.StopAllCoroutines(),
-MonoBehaviour.print(object),
-MonoBehaviour.destroyCancellationToken,
-MonoBehaviour.useGUILayout,
-MonoBehaviour.didStart,
-MonoBehaviour.didAwake,
-MonoBehaviour.runInEditMode,
-Behaviour.enabled,
-Behaviour.isActiveAndEnabled,
-Component.GetComponent(Type),
-Component.GetComponent&lt;T&gt;(),
-Component.TryGetComponent(Type, out Component),
-Component.TryGetComponent&lt;T&gt;(out T),
-Component.GetComponent(string),
-Component.GetComponentInChildren(Type, bool),
-Component.GetComponentInChildren(Type),
-Component.GetComponentInChildren&lt;T&gt;(bool),
-Component.GetComponentInChildren&lt;T&gt;(),
-Component.GetComponentsInChildren(Type, bool),
-Component.GetComponentsInChildren(Type),
-Component.GetComponentsInChildren&lt;T&gt;(bool),
-Component.GetComponentsInChildren&lt;T&gt;(bool, List&lt;T&gt;),
-Component.GetComponentsInChildren&lt;T&gt;(),
-Component.GetComponentsInChildren&lt;T&gt;(List&lt;T&gt;),
-Component.GetComponentInParent(Type, bool),
-Component.GetComponentInParent(Type),
-Component.GetComponentInParent&lt;T&gt;(bool),
-Component.GetComponentInParent&lt;T&gt;(),
-Component.GetComponentsInParent(Type, bool),
-Component.GetComponentsInParent(Type),
-Component.GetComponentsInParent&lt;T&gt;(bool),
-Component.GetComponentsInParent&lt;T&gt;(bool, List&lt;T&gt;),
-Component.GetComponentsInParent&lt;T&gt;(),
-Component.GetComponents(Type),
-Component.GetComponents(Type, List&lt;Component&gt;),
-Component.GetComponents&lt;T&gt;(List&lt;T&gt;),
-Component.GetComponents&lt;T&gt;(),
-Component.GetComponentIndex(),
-Component.CompareTag(string),
-Component.CompareTag(TagHandle),
-Component.SendMessageUpwards(string, object, SendMessageOptions),
-Component.SendMessageUpwards(string, object),
-Component.SendMessageUpwards(string),
-Component.SendMessageUpwards(string, SendMessageOptions),
-Component.SendMessage(string, object),
-Component.SendMessage(string),
-Component.SendMessage(string, object, SendMessageOptions),
-Component.SendMessage(string, SendMessageOptions),
-Component.BroadcastMessage(string, object, SendMessageOptions),
-Component.BroadcastMessage(string, object),
-Component.BroadcastMessage(string),
-Component.BroadcastMessage(string, SendMessageOptions),
-Component.transform,
-Component.gameObject,
-Component.tag,
+<p>EditorWindow.focusedWindowChanged,
+EditorWindow.BeginWindows(),
+EditorWindow.EndWindows(),
+EditorWindow.ShowNotification(GUIContent),
+EditorWindow.ShowNotification(GUIContent, double),
+EditorWindow.RemoveNotification(),
+EditorWindow.ShowTab(),
+EditorWindow.Focus(),
+EditorWindow.ShowUtility(),
+EditorWindow.ShowPopup(),
+EditorWindow.ShowModalUtility(),
+EditorWindow.ShowAsDropDown(Rect, Vector2),
+EditorWindow.Show(),
+EditorWindow.Show(bool),
+EditorWindow.ShowAuxWindow(),
+EditorWindow.ShowModal(),
+EditorWindow.GetWindow(Type, bool, string, bool),
+EditorWindow.GetWindow(Type, bool, string),
+EditorWindow.GetWindow(Type, bool),
+EditorWindow.GetWindow(Type),
+EditorWindow.GetWindowWithRect(Type, Rect, bool, string),
+EditorWindow.GetWindowWithRect(Type, Rect, bool),
+EditorWindow.GetWindowWithRect(Type, Rect),
+EditorWindow.GetWindow&lt;T&gt;(),
+EditorWindow.GetWindow&lt;T&gt;(bool),
+EditorWindow.GetWindow&lt;T&gt;(bool, string),
+EditorWindow.GetWindow&lt;T&gt;(string),
+EditorWindow.GetWindow&lt;T&gt;(string, bool),
+EditorWindow.GetWindow&lt;T&gt;(bool, string, bool),
+EditorWindow.GetWindow&lt;T&gt;(params Type[]),
+EditorWindow.GetWindow&lt;T&gt;(string, params Type[]),
+EditorWindow.GetWindow&lt;T&gt;(string, bool, params Type[]),
+EditorWindow.CreateWindow&lt;T&gt;(params Type[]),
+EditorWindow.CreateWindow&lt;T&gt;(string, params Type[]),
+EditorWindow.HasOpenInstances&lt;T&gt;(),
+EditorWindow.FocusWindowIfItsOpen(Type),
+EditorWindow.FocusWindowIfItsOpen&lt;T&gt;(),
+EditorWindow.GetWindowWithRect&lt;T&gt;(Rect),
+EditorWindow.GetWindowWithRect&lt;T&gt;(Rect, bool),
+EditorWindow.GetWindowWithRect&lt;T&gt;(Rect, bool, string),
+EditorWindow.GetWindowWithRect&lt;T&gt;(Rect, bool, string, bool),
+EditorWindow.SaveChanges(),
+EditorWindow.DiscardChanges(),
+EditorWindow.Close(),
+EditorWindow.Repaint(),
+EditorWindow.SendEvent(Event),
+EditorWindow.GetExtraPaneTypes(),
+EditorWindow.TryGetOverlay(string, out Overlay),
+EditorWindow.OnBackingScaleFactorChanged(),
+EditorWindow.dataModeController,
+EditorWindow.rootVisualElement,
+EditorWindow.overlayCanvas,
+EditorWindow.wantsMouseMove,
+EditorWindow.wantsMouseEnterLeaveWindow,
+EditorWindow.wantsLessLayoutEvents,
+EditorWindow.autoRepaintOnSceneChange,
+EditorWindow.maximized,
+EditorWindow.hasFocus,
+EditorWindow.docked,
+EditorWindow.focusedWindow,
+EditorWindow.mouseOverWindow,
+EditorWindow.hasUnsavedChanges,
+EditorWindow.saveChangesMessage,
+EditorWindow.minSize,
+EditorWindow.maxSize,
+EditorWindow.title,
+EditorWindow.titleContent,
+EditorWindow.depthBufferBits,
+EditorWindow.antiAlias,
+EditorWindow.position,
+EditorWindow.windowFocusChanged,
+ScriptableObject.SetDirty(),
+ScriptableObject.CreateInstance(string),
+ScriptableObject.CreateInstance(Type),
+ScriptableObject.CreateInstance&lt;T&gt;(),
 Object.GetEntityId(),
 Object.GetInstanceID(),
 Object.GetHashCode(),
@@ -243,81 +249,11 @@ Object.hideFlags,
 <a href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>,
 <a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
 <a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
-<h2 id="fields">Fields</h2>
-<h3 id="GameLoop_speedMult"> speedMult</h3>
-<pre><code class="lang-csharp">public float speedMult
-</code></pre>
-<h4 id="field-value">Field Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<h2 id="methods">Methods</h2>
-<h3 id="GameLoop_GetEngineState_UnityEngine_Vector3__System_Int32__System_DateTime__ChargerAstronomyShared_Domain_Observer__"> GetEngineState(out Vector3, out int, out DateTime, out Observer)</h3>
-<pre><code class="lang-csharp">public void GetEngineState(out Vector3 camDirection, out int engineYear, out DateTime engineTime, out Observer engineObserver)
-</code></pre>
-<h4 id="parameters">Parameters</h4>
-<p><code>camDirection</code> Vector3</p>
-<p><code>engineYear</code> <a href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></p>
-<p><code>engineTime</code> <a href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></p>
-<p><code>engineObserver</code> Observer</p>
-<h3 id="GameLoop_GetMessierList"> GetMessierList()</h3>
-<pre><code class="lang-csharp">public List&lt;MessierObject&gt; GetMessierList()
-</code></pre>
-<h4 id="returns">Returns</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a href="Assets.Scripts.CelestialBodies.MessierObject.html">MessierObject</a>&gt;</p>
-<h3 id="GameLoop_GetMoon"> GetMoon()</h3>
-<pre><code class="lang-csharp">public Moon GetMoon()
-</code></pre>
-<h4 id="returns-1">Returns</h4>
-<p><a href="Assets.Scripts.CelestialBodies.Moon.html">Moon</a></p>
-<h3 id="GameLoop_GetPlanetList"> GetPlanetList()</h3>
-<pre><code class="lang-csharp">public List&lt;Planet&gt; GetPlanetList()
-</code></pre>
-<h4 id="returns-2">Returns</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a href="Assets.Scripts.CelestialBodies.Planet.html">Planet</a>&gt;</p>
-<h3 id="GameLoop_GetProjectPath"> GetProjectPath()</h3>
-<pre><code class="lang-csharp">public static string GetProjectPath()
-</code></pre>
-<h4 id="returns-3">Returns</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.string">string</a></p>
-<h3 id="GameLoop_GetSun"> GetSun()</h3>
-<pre><code class="lang-csharp">public Sun GetSun()
-</code></pre>
-<h4 id="returns-4">Returns</h4>
-<p><a href="Assets.Scripts.CelestialBodies.Sun.html">Sun</a></p>
-<h3 id="GameLoop_SetCameraPosition"> SetCameraPosition()</h3>
-<p>Updates the engine's camera position based on the Input Container</p>
-<pre><code class="lang-csharp">public void SetCameraPosition()
-</code></pre>
-<h3 id="GameLoop_SetConstellationVisibility_System_Boolean_"> SetConstellationVisibility(bool)</h3>
-<p>sets the visibilty of constelations</p>
-<pre><code class="lang-csharp">public void SetConstellationVisibility(bool visible)
-</code></pre>
-<h4 id="parameters-1">Parameters</h4>
-<p><code>visible</code> <a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
-<h3 id="GameLoop_SetLabelVisibility_System_Boolean_"> SetLabelVisibility(bool)</h3>
-<p>sets the visibilty of conste;lations labels</p>
-<pre><code class="lang-csharp">public void SetLabelVisibility(bool visible)
-</code></pre>
-<h4 id="parameters-2">Parameters</h4>
-<p><code>visible</code> <a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
-<h3 id="GameLoop_SetLocationAndTime"> SetLocationAndTime()</h3>
-<pre><code class="lang-csharp">public void SetLocationAndTime()
-</code></pre>
-<h3 id="GameLoop_SetMessierVisibility_System_Boolean_"> SetMessierVisibility(bool)</h3>
-<p>set if the messier Objects are being forced from displaying</p>
-<pre><code class="lang-csharp">public void SetMessierVisibility(bool visible)
-</code></pre>
-<h4 id="parameters-3">Parameters</h4>
-<p><code>visible</code> <a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
-<h3 id="GameLoop_SetSpeedMultiplier_System_Single_"> SetSpeedMultiplier(float)</h3>
-<pre><code class="lang-csharp">public void SetSpeedMultiplier(float speed)
-</code></pre>
-<h4 id="parameters-4">Parameters</h4>
-<p><code>speed</code> <a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/stargazer/GameLoop.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/stargazer/TextureRotator.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

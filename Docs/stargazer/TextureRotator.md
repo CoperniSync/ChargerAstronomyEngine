@@ -1,94 +1,100 @@
-# <a id="EngineStateUI"></a> Class EngineStateUI
+# <a id="TextureRotator"></a> Class TextureRotator
 
 Namespace:   
 Assembly: Assembly\-CSharp.dll  
 
-MonoBehaviour for updating the engine data displayed to the user
-Must be placed on the text object that it will be updating.
+Rotates texture files - creates new rotated versions
+Put this in Assets/Editor/ folder
 
 ```csharp
-public class EngineStateUI : MonoBehaviour
+public class TextureRotator : EditorWindow
 ```
 
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
 Object ← 
-Component ← 
-Behaviour ← 
-MonoBehaviour ← 
-[EngineStateUI](EngineStateUI.md)
+ScriptableObject ← 
+EditorWindow ← 
+[TextureRotator](TextureRotator.md)
 
 #### Inherited Members
 
-MonoBehaviour.IsInvoking\(\), 
-MonoBehaviour.CancelInvoke\(\), 
-MonoBehaviour.Invoke\(string, float\), 
-MonoBehaviour.InvokeRepeating\(string, float, float\), 
-MonoBehaviour.CancelInvoke\(string\), 
-MonoBehaviour.IsInvoking\(string\), 
-MonoBehaviour.StartCoroutine\(string\), 
-MonoBehaviour.StartCoroutine\(string, object\), 
-MonoBehaviour.StartCoroutine\(IEnumerator\), 
-MonoBehaviour.StartCoroutine\_Auto\(IEnumerator\), 
-MonoBehaviour.StopCoroutine\(IEnumerator\), 
-MonoBehaviour.StopCoroutine\(Coroutine\), 
-MonoBehaviour.StopCoroutine\(string\), 
-MonoBehaviour.StopAllCoroutines\(\), 
-MonoBehaviour.print\(object\), 
-MonoBehaviour.destroyCancellationToken, 
-MonoBehaviour.useGUILayout, 
-MonoBehaviour.didStart, 
-MonoBehaviour.didAwake, 
-MonoBehaviour.runInEditMode, 
-Behaviour.enabled, 
-Behaviour.isActiveAndEnabled, 
-Component.GetComponent\(Type\), 
-Component.GetComponent<T\>\(\), 
-Component.TryGetComponent\(Type, out Component\), 
-Component.TryGetComponent<T\>\(out T\), 
-Component.GetComponent\(string\), 
-Component.GetComponentInChildren\(Type, bool\), 
-Component.GetComponentInChildren\(Type\), 
-Component.GetComponentInChildren<T\>\(bool\), 
-Component.GetComponentInChildren<T\>\(\), 
-Component.GetComponentsInChildren\(Type, bool\), 
-Component.GetComponentsInChildren\(Type\), 
-Component.GetComponentsInChildren<T\>\(bool\), 
-Component.GetComponentsInChildren<T\>\(bool, List<T\>\), 
-Component.GetComponentsInChildren<T\>\(\), 
-Component.GetComponentsInChildren<T\>\(List<T\>\), 
-Component.GetComponentInParent\(Type, bool\), 
-Component.GetComponentInParent\(Type\), 
-Component.GetComponentInParent<T\>\(bool\), 
-Component.GetComponentInParent<T\>\(\), 
-Component.GetComponentsInParent\(Type, bool\), 
-Component.GetComponentsInParent\(Type\), 
-Component.GetComponentsInParent<T\>\(bool\), 
-Component.GetComponentsInParent<T\>\(bool, List<T\>\), 
-Component.GetComponentsInParent<T\>\(\), 
-Component.GetComponents\(Type\), 
-Component.GetComponents\(Type, List<Component\>\), 
-Component.GetComponents<T\>\(List<T\>\), 
-Component.GetComponents<T\>\(\), 
-Component.GetComponentIndex\(\), 
-Component.CompareTag\(string\), 
-Component.CompareTag\(TagHandle\), 
-Component.SendMessageUpwards\(string, object, SendMessageOptions\), 
-Component.SendMessageUpwards\(string, object\), 
-Component.SendMessageUpwards\(string\), 
-Component.SendMessageUpwards\(string, SendMessageOptions\), 
-Component.SendMessage\(string, object\), 
-Component.SendMessage\(string\), 
-Component.SendMessage\(string, object, SendMessageOptions\), 
-Component.SendMessage\(string, SendMessageOptions\), 
-Component.BroadcastMessage\(string, object, SendMessageOptions\), 
-Component.BroadcastMessage\(string, object\), 
-Component.BroadcastMessage\(string\), 
-Component.BroadcastMessage\(string, SendMessageOptions\), 
-Component.transform, 
-Component.gameObject, 
-Component.tag, 
+EditorWindow.focusedWindowChanged, 
+EditorWindow.BeginWindows\(\), 
+EditorWindow.EndWindows\(\), 
+EditorWindow.ShowNotification\(GUIContent\), 
+EditorWindow.ShowNotification\(GUIContent, double\), 
+EditorWindow.RemoveNotification\(\), 
+EditorWindow.ShowTab\(\), 
+EditorWindow.Focus\(\), 
+EditorWindow.ShowUtility\(\), 
+EditorWindow.ShowPopup\(\), 
+EditorWindow.ShowModalUtility\(\), 
+EditorWindow.ShowAsDropDown\(Rect, Vector2\), 
+EditorWindow.Show\(\), 
+EditorWindow.Show\(bool\), 
+EditorWindow.ShowAuxWindow\(\), 
+EditorWindow.ShowModal\(\), 
+EditorWindow.GetWindow\(Type, bool, string, bool\), 
+EditorWindow.GetWindow\(Type, bool, string\), 
+EditorWindow.GetWindow\(Type, bool\), 
+EditorWindow.GetWindow\(Type\), 
+EditorWindow.GetWindowWithRect\(Type, Rect, bool, string\), 
+EditorWindow.GetWindowWithRect\(Type, Rect, bool\), 
+EditorWindow.GetWindowWithRect\(Type, Rect\), 
+EditorWindow.GetWindow<T\>\(\), 
+EditorWindow.GetWindow<T\>\(bool\), 
+EditorWindow.GetWindow<T\>\(bool, string\), 
+EditorWindow.GetWindow<T\>\(string\), 
+EditorWindow.GetWindow<T\>\(string, bool\), 
+EditorWindow.GetWindow<T\>\(bool, string, bool\), 
+EditorWindow.GetWindow<T\>\(params Type\[\]\), 
+EditorWindow.GetWindow<T\>\(string, params Type\[\]\), 
+EditorWindow.GetWindow<T\>\(string, bool, params Type\[\]\), 
+EditorWindow.CreateWindow<T\>\(params Type\[\]\), 
+EditorWindow.CreateWindow<T\>\(string, params Type\[\]\), 
+EditorWindow.HasOpenInstances<T\>\(\), 
+EditorWindow.FocusWindowIfItsOpen\(Type\), 
+EditorWindow.FocusWindowIfItsOpen<T\>\(\), 
+EditorWindow.GetWindowWithRect<T\>\(Rect\), 
+EditorWindow.GetWindowWithRect<T\>\(Rect, bool\), 
+EditorWindow.GetWindowWithRect<T\>\(Rect, bool, string\), 
+EditorWindow.GetWindowWithRect<T\>\(Rect, bool, string, bool\), 
+EditorWindow.SaveChanges\(\), 
+EditorWindow.DiscardChanges\(\), 
+EditorWindow.Close\(\), 
+EditorWindow.Repaint\(\), 
+EditorWindow.SendEvent\(Event\), 
+EditorWindow.GetExtraPaneTypes\(\), 
+EditorWindow.TryGetOverlay\(string, out Overlay\), 
+EditorWindow.OnBackingScaleFactorChanged\(\), 
+EditorWindow.dataModeController, 
+EditorWindow.rootVisualElement, 
+EditorWindow.overlayCanvas, 
+EditorWindow.wantsMouseMove, 
+EditorWindow.wantsMouseEnterLeaveWindow, 
+EditorWindow.wantsLessLayoutEvents, 
+EditorWindow.autoRepaintOnSceneChange, 
+EditorWindow.maximized, 
+EditorWindow.hasFocus, 
+EditorWindow.docked, 
+EditorWindow.focusedWindow, 
+EditorWindow.mouseOverWindow, 
+EditorWindow.hasUnsavedChanges, 
+EditorWindow.saveChangesMessage, 
+EditorWindow.minSize, 
+EditorWindow.maxSize, 
+EditorWindow.title, 
+EditorWindow.titleContent, 
+EditorWindow.depthBufferBits, 
+EditorWindow.antiAlias, 
+EditorWindow.position, 
+EditorWindow.windowFocusChanged, 
+ScriptableObject.SetDirty\(\), 
+ScriptableObject.CreateInstance\(string\), 
+ScriptableObject.CreateInstance\(Type\), 
+ScriptableObject.CreateInstance<T\>\(\), 
 Object.GetEntityId\(\), 
 Object.GetInstanceID\(\), 
 Object.GetHashCode\(\), 
@@ -163,16 +169,4 @@ Object.hideFlags,
 [object.MemberwiseClone\(\)](https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone), 
 [object.ReferenceEquals\(object, object\)](https://learn.microsoft.com/dotnet/api/system.object.referenceequals), 
 [object.ToString\(\)](https://learn.microsoft.com/dotnet/api/system.object.tostring)
-
-## Fields
-
-### <a id="EngineStateUI_gameLoopObject"></a> gameLoopObject
-
-```csharp
-public GameObject gameLoopObject
-```
-
-#### Field Value
-
- GameObject
 
