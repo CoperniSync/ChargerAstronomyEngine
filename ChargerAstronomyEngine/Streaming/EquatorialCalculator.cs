@@ -121,7 +121,7 @@ namespace ChargerAstronomyEngine.Streaming
                     planet,
                     currentTime,
                     location,
-                    EquatorEpoch.J2000,
+                    EquatorEpoch.OfDate,
                     Aberration.Corrected
                 );
 
@@ -146,7 +146,7 @@ namespace ChargerAstronomyEngine.Streaming
                 moon,
                 currentTime,
                 location,
-                EquatorEpoch.J2000,
+                EquatorEpoch.OfDate,
                 Aberration.Corrected
             );
 
@@ -167,7 +167,7 @@ namespace ChargerAstronomyEngine.Streaming
                 sun,
                 currentTime,
                 location,
-                EquatorEpoch.J2000,
+                EquatorEpoch.OfDate,
                 Aberration.Corrected
             );
             var topocentric = astro.Horizon(currentTime, location, equatorial, Refraction.Normal);
