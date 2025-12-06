@@ -14,3 +14,7 @@ Engine service. Manages star calculation, heat service, and spatial indexing.
 
 Equatorial calculator. Calculates new coordinates for horizontal stars and solar system bodies based on their equatorial coordinates.
 
+ [HeatService](ChargerAstronomyEngine.Streaming.HeatService.md)
+
+Service for managing heat mapping based on camera angle and <xref href="ChargerAstronomyShared.Domain.Observer" data-throw-if-not-resolved="false"></xref>.
+

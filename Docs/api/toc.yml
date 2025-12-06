@@ -136,15 +136,6 @@
         href: ChargerAstronomyEngine.Data.Star.CsvStarRepository.md
       - name: EquatorialStarMap
         href: ChargerAstronomyEngine.Data.Star.EquatorialStarMap.md
-  - name: Domain
-    href: ChargerAstronomyEngine.Domain.md
-    items:
-    - name: Heat
-      href: ChargerAstronomyEngine.Domain.Heat.md
-      items:
-      - name: Classes
-      - name: HeatService
-        href: ChargerAstronomyEngine.Domain.Heat.HeatService.md
   - name: Streaming
     href: ChargerAstronomyEngine.Streaming.md
     items:
@@ -155,9 +146,8 @@
       href: ChargerAstronomyEngine.Streaming.EngineService-1.md
     - name: EquatorialCalculator<T>
       href: ChargerAstronomyEngine.Streaming.EquatorialCalculator-1.md
-  - name: Classes
-  - name: Class1
-    href: ChargerAstronomyEngine.Class1.md
+    - name: HeatService
+      href: ChargerAstronomyEngine.Streaming.HeatService.md
 - name: ChargerAstronomyShared
   href: ChargerAstronomyShared.md
   items:

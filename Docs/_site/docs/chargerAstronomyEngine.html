@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Getting Started | Stargazer Data API </title>
+      <title>ChargerAstronomyEngine | Stargazer Data API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Getting Started | Stargazer Data API ">
+      <meta name="title" content="ChargerAstronomyEngine | Stargazer Data API ">
       
       
       <link rel="icon" href="../images/copernisync_planet_only.svg">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/docs/getting-started.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/docs/chargerAstronomyEngine.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,46 +85,27 @@
         </div>
 
         <article data-uid="">
-<h1 id="getting-started">Getting Started</h1>
+<h1 id="chargerastronomyengine">ChargerAstronomyEngine</h1>
 
-<p>This document provides instructions on how to set up a Developer environment for Stargazer.</p>
-<p>It includes setting up the 3 individual repositories, as well as installing Unity and connecting it to the project.</p>
-<h2 id="requirements">Requirements</h2>
+<p>This repository serves as the &quot;backend&quot; of the Stargazer project. It contains the classes used for celestial calculations, spatial indexing, heat indexing, and creating object queues. It also contains the classes used to parse celestial object data from files to insantiate them as equatorial and horizontal objects.</p>
+<p>The engine also contains project benchmarks, documentation, and tests.</p>
+<h2 id="data">Data</h2>
+<p>The Data directory contains all of the classes used to instantiate celestial objects from files. They are seperated based on type of object.</p>
+<h2 id="streaming">Streaming</h2>
+<p>The Streaming directory contains the main services of the engine.</p>
 <ul>
-<li><a href="https://visualstudio.microsoft.com/downloads/">Visual Studio</a></li>
-<li><a href="https://unity.com/download">Unity</a></li>
-<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/2.1">.NET Core 2.1.x</a></li>
+<li><p>The equatorial calculator provides new coordinates for horizontal stars and solar system bodies based on their current equatorial coordinates.</p>
+</li>
+<li><p>The heat service adjusts the heat values of tiles in the current spatial index based on camera position and observer location.</p>
+</li>
+<li><p>The engine service is the main class of the backend. It manages all of the backend services, primarily the afformentioned two.</p>
+</li>
 </ul>
-<h2 id="cloning-the-repositories">Cloning the repositories:</h2>
-<p>Create the 'ChargerAstronomyProject' directory:</p>
-<pre><code class="lang-bash">cd ~/source/repos
-mkdir ChargerAstronomyProject
-cd ChargerAstronomyProject
-</code></pre>
-<p>Clone into the three repositories:</p>
-<pre><code class="lang-bash">git clone https://github.com/CoperniSync/Stargazer.git
-git clone https://github.com/CoperniSync/ChargerAstronomyShared.git
-git clone https://github.com/CoperniSync/ChargerAstronomyEngine.git
-</code></pre>
-<h2 id="initializing-stargazer-in-unity">Initializing Stargazer in Unity</h2>
-<p>To set up Stargazer in Unity, you will first need to install Unity Hub.</p>
-<p>After installing Unity hub, install editor <code>6000.2.0f1</code>. The project will not work with any other editor.</p>
-<p>(Optional) Switch to a stable release branch within the repos:</p>
-<pre><code>cd ~/source/repos/ChargerAstronomyProject/Stargazer
-git switch release
-cd ../ChargerAstronomyShared
-git switch release
-cd ../ChargerAstronomyEngine
-git switch release
-</code></pre>
-<p>Select 'import project', and select the &quot;ChargerAstronomyProject&quot; directory.</p>
-<p>Unity will begin compiling the project. Once complete, you will be able to access the development page in Unity.</p>
-<p>To set up the scene view, drag the &quot;SkyView&quot; scene from <code>scenes/SkyView</code> into the heirarchy on the top left and delete the unnamed default. This will allow you to run the project locally.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/docs/getting-started.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/docs/chargerAstronomyEngine.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

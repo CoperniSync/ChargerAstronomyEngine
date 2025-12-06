@@ -1,15 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using CsvHelper;
-using CsvHelper.Configuration;
-using CsvHelper.TypeConversion;
 using ChargerAstronomyShared.Contracts.Repositories;
 using ChargerAstronomyShared.Domain.Equatorial;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-
 
 namespace ChargerAstronomyEngine.Data.Constellations
 {

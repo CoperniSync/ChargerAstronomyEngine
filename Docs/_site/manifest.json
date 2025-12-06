@@ -652,6 +652,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "api/ChargerAstronomyEngine.Streaming.HeatService.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/ChargerAstronomyEngine.Streaming.HeatService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyEngine.Streaming.md",
       "output": {
         ".html": {
@@ -1229,6 +1239,16 @@
         },
         ".json": {
           "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/chargerAstronomyEngine.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/chargerAstronomyEngine.html"
         }
       },
       "version": ""

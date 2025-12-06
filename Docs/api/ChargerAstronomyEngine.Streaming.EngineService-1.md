@@ -80,7 +80,7 @@ public HeatService HeatService { get; }
 
 #### Property Value
 
- [HeatService](ChargerAstronomyEngine.Domain.Heat.HeatService.md)
+ [HeatService](ChargerAstronomyEngine.Streaming.HeatService.md)
 
 ### <a id="ChargerAstronomyEngine_Streaming_EngineService_1_SpatialStarIndex"></a> SpatialStarIndex
 
