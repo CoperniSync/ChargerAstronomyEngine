@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> Class HeatConfig | Stargazer Data API </title>
+      <title>ChargerAstronomyEngine | Stargazer Data API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" Class HeatConfig | Stargazer Data API ">
+      <meta name="title" content="ChargerAstronomyEngine | Stargazer Data API ">
       
       
       <link rel="icon" href="../images/copernisync_planet_only.svg">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyShared.Domain.Heat.HeatConfig.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/docs/chargerAstronomyEngine.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,67 +85,27 @@
         </div>
 
         <article data-uid="">
-<h1 id="ChargerAstronomyShared_Domain_Heat_HeatConfig"> Class HeatConfig</h1>
+<h1 id="chargerastronomyengine">ChargerAstronomyEngine</h1>
 
-<p>Namespace: <a href="ChargerAstronomyShared.Domain.Heat.html">ChargerAstronomyShared.Domain.Heat</a><br>
-Assembly: ChargerAstronomyShared.dll</p>
-<p>Represents the configuration settings for heat-related calculations, including decay rate, clamping limits, and
-precision thresholds.</p>
-<pre><code class="lang-csharp">public sealed class HeatConfig
-</code></pre>
-<h4 id="inheritance">Inheritance</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.object">object</a> ←
-<a href="ChargerAstronomyShared.Domain.Heat.HeatConfig.html">HeatConfig</a></p>
-<h4 id="inherited-members">Inherited Members</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
-<h2 id="properties">Properties</h2>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatConfig_AreaWeighted"> AreaWeighted</h3>
-<p>Indicates whether area weighting is applied in calculations.</p>
-<pre><code class="lang-csharp">public bool AreaWeighted { get; set; }
-</code></pre>
-<h4 id="property-value">Property Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatConfig_ClampMax"> ClampMax</h3>
-<p>The maximum heat value.</p>
-<pre><code class="lang-csharp">public float ClampMax { get; set; }
-</code></pre>
-<h4 id="property-value-1">Property Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatConfig_ClampMin"> ClampMin</h3>
-<p>The minimum heat value.</p>
-<pre><code class="lang-csharp">public float ClampMin { get; set; }
-</code></pre>
-<h4 id="property-value-2">Property Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatConfig_DecayPerSecond"> DecayPerSecond</h3>
-<p>The rate at which heat decays per second.</p>
-<pre><code class="lang-csharp">public float DecayPerSecond { get; set; }
-</code></pre>
-<h4 id="property-value-3">Property Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatConfig_Epsilon"> Epsilon</h3>
-<p>Gets the small positive value used as a tolerance for floating-point comparisons.</p>
-<pre><code class="lang-csharp">public float Epsilon { get; }
-</code></pre>
-<h4 id="property-value-4">Property Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.single">float</a></p>
-<h4 id="remarks">Remarks</h4>
-<p>No need for setters, this is a constant.</p>
-<h3 id="ChargerAstronomyShared_Domain_Heat_HeatConfig_UseInstantDecay"> UseInstantDecay</h3>
-<pre><code class="lang-csharp">public bool UseInstantDecay { get; set; }
-</code></pre>
-<h4 id="property-value-5">Property Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></p>
+<p>This repository serves as the &quot;backend&quot; of the Stargazer project. It contains the classes used for celestial calculations, spatial indexing, heat indexing, and creating object queues. It also contains the classes used to parse celestial object data from files to insantiate them as equatorial and horizontal objects.</p>
+<p>The engine also contains project benchmarks, documentation, and tests.</p>
+<h2 id="data">Data</h2>
+<p>The Data directory contains all of the classes used to instantiate celestial objects from files. They are seperated based on type of object.</p>
+<h2 id="streaming">Streaming</h2>
+<p>The Streaming directory contains the main services of the engine.</p>
+<ul>
+<li><p>The equatorial calculator provides new coordinates for horizontal stars and solar system bodies based on their current equatorial coordinates.</p>
+</li>
+<li><p>The heat service adjusts the heat values of tiles in the current spatial index based on camera position and observer location.</p>
+</li>
+<li><p>The engine service is the main class of the backend. It manages all of the backend services, primarily the afformentioned two.</p>
+</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/api/ChargerAstronomyShared.Domain.Heat.HeatConfig.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/documentation/Docs/docs/chargerAstronomyEngine.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

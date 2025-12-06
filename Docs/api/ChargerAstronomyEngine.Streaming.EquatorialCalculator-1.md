@@ -34,7 +34,7 @@ public class EquatorialCalculator<T> : IEquatorialCalculator where T : IHorizont
 
 ## Constructors
 
-### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1__ctor_ChargerAstronomyEngine_Domain_Heat_HeatService_ChargerAstronomyShared_Domain_SpatialIndex_SpatialStarIndex__0__"></a> EquatorialCalculator\(HeatService, SpatialStarIndex<T\>\)
+### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1__ctor_ChargerAstronomyEngine_Streaming_HeatService_ChargerAstronomyShared_Domain_SpatialIndex_SpatialStarIndex__0__"></a> EquatorialCalculator\(HeatService, SpatialStarIndex<T\>\)
 
 ```csharp
 public EquatorialCalculator(HeatService heatService, SpatialStarIndex<T> starIndex)
@@ -42,7 +42,7 @@ public EquatorialCalculator(HeatService heatService, SpatialStarIndex<T> starInd
 
 #### Parameters
 
-`heatService` [HeatService](ChargerAstronomyEngine.Domain.Heat.HeatService.md)
+`heatService` [HeatService](ChargerAstronomyEngine.Streaming.HeatService.md)
 
 `starIndex` [SpatialStarIndex](ChargerAstronomyShared.Domain.SpatialIndex.SpatialStarIndex\-1.md)<T\>
 
