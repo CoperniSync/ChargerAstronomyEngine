@@ -2,3 +2,9 @@
   href: introduction.md
 - name: Getting Started
   href: getting-started.md
+- name: ChargerAstronomyEngine
+  href: engine-readme.md
+- name: ChargerAstronomyShared
+  href: shared-readme.md
+- name: Stargazer
+  href: stargazer-readme.md
