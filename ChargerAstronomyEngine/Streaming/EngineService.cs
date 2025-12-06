@@ -2,17 +2,13 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using ChargerAstronomyShared.Contracts.Models;
 using ChargerAstronomyShared.Contracts.Repositories;
-using ChargerAstronomyShared.Domain.Equatorial;
 using ChargerAstronomyShared.Domain.Heat;
-using ChargerAstronomyShared.Domain.Horizontal;
 using ChargerAstronomyShared.Domain.Index;
 using ChargerAstronomyShared.Domain.SpatialIndex;
 using ChargerAstronomyEngine.CosineKittyAstronomy;
-using ChargerAstronomyEngine.Domain.Heat;
 using ChargerAstronomyShared.Domain;
 using ChargerAstronomyShared.Contracts.Streaming;
 
