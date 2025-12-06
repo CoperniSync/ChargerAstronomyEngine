@@ -10,7 +10,7 @@ using ChargerAstronomyShared.Domain.Heat;
 using ChargerAstronomyShared.Domain;
 using ChargerAstronomyShared.Domain.Prediction;
 
-namespace ChargerAstronomyEngine.Heat
+namespace ChargerAstronomyEngine.Streaming
 {
 
     /// <summary>
