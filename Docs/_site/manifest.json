@@ -1245,10 +1245,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "docs/chargerAstronomyEngine.md",
+      "source_relative_path": "docs/engine-readme.md",
       "output": {
         ".html": {
-          "relative_path": "docs/chargerAstronomyEngine.html"
+          "relative_path": "docs/engine-readme.html"
         }
       },
       "version": ""
@@ -1269,6 +1269,26 @@
       "output": {
         ".html": {
           "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/shared-readme.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/shared-readme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/stargazer-readme.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/stargazer-readme.html"
         }
       },
       "version": ""
