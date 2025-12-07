@@ -6,3 +6,9 @@
 
  [StarHoverDetector](Assets.Scripts.UI.Tooltips.StarHoverDetector.md)
 
+ [StarTooltip](Assets.Scripts.UI.Tooltips.StarTooltip.md)
+
+ [StarTooltipText](Assets.Scripts.UI.Tooltips.StarTooltipText.md)
+
+ [TooltipGenerator](Assets.Scripts.UI.Tooltips.TooltipGenerator.md)
+

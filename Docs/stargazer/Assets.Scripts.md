@@ -10,3 +10,7 @@
 
  [Assets.Scripts.UI](Assets.Scripts.UI.md)
 
+### Classes
+
+ [quit](Assets.Scripts.quit.md)
+

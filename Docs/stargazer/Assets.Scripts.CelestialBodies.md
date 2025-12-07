@@ -1,5 +1,9 @@
 # <a id="Assets_Scripts_CelestialBodies"></a> Namespace Assets.Scripts.CelestialBodies
 
+### Namespaces
+
+ [Assets.Scripts.CelestialBodies.Constellations](Assets.Scripts.CelestialBodies.Constellations.md)
+
 ### Classes
 
  [CelestialBodyBase](Assets.Scripts.CelestialBodies.CelestialBodyBase.md)

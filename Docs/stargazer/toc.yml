@@ -8,6 +8,14 @@
     - name: CelestialBodies
       href: Assets.Scripts.CelestialBodies.md
       items:
+      - name: Constellations
+        href: Assets.Scripts.CelestialBodies.Constellations.md
+        items:
+        - name: Classes
+        - name: ConstellationSegment
+          href: Assets.Scripts.CelestialBodies.Constellations.ConstellationSegment.md
+        - name: UnityConstellation
+          href: Assets.Scripts.CelestialBodies.Constellations.UnityConstellation.md
       - name: Classes
       - name: CelestialBodyBase
         href: Assets.Scripts.CelestialBodies.CelestialBodyBase.md
@@ -25,8 +33,22 @@
       href: Assets.Scripts.Core.md
       items:
       - name: Classes
+      - name: BillboardToCamera
+        href: Assets.Scripts.Core.BillboardToCamera.md
       - name: ConstellationRetrieval
         href: Assets.Scripts.Core.ConstellationRetrieval.md
+      - name: GPUInstanceTest
+        href: Assets.Scripts.Core.GPUInstanceTest.md
+      - name: GameLoop
+        href: Assets.Scripts.Core.GameLoop.md
+      - name: HeatMapVisualizer
+        href: Assets.Scripts.Core.HeatMapVisualizer.md
+      - name: LocalObjectRetrieval
+        href: Assets.Scripts.Core.LocalObjectRetrieval.md
+      - name: MessierRetrieval
+        href: Assets.Scripts.Core.MessierRetrieval.md
+      - name: StarQueue
+        href: Assets.Scripts.Core.StarQueue.md
     - name: Rendering
       href: Assets.Scripts.Rendering.md
       items:
@@ -36,6 +58,16 @@
     - name: UI
       href: Assets.Scripts.UI.md
       items:
+      - name: LatLongTime
+        href: Assets.Scripts.UI.LatLongTime.md
+        items:
+        - name: Classes
+        - name: LatChange
+          href: Assets.Scripts.UI.LatLongTime.LatChange.md
+        - name: LongChange
+          href: Assets.Scripts.UI.LatLongTime.LongChange.md
+        - name: TimeChange
+          href: Assets.Scripts.UI.LatLongTime.TimeChange.md
       - name: Tooltips
         href: Assets.Scripts.UI.Tooltips.md
         items:
@@ -44,6 +76,12 @@
           href: Assets.Scripts.UI.Tooltips.LocalHoverDetector.md
         - name: StarHoverDetector
           href: Assets.Scripts.UI.Tooltips.StarHoverDetector.md
+        - name: StarTooltip
+          href: Assets.Scripts.UI.Tooltips.StarTooltip.md
+        - name: StarTooltipText
+          href: Assets.Scripts.UI.Tooltips.StarTooltipText.md
+        - name: TooltipGenerator
+          href: Assets.Scripts.UI.Tooltips.TooltipGenerator.md
       - name: Visual
         href: Assets.Scripts.UI.Visual.md
         items:
@@ -59,58 +97,29 @@
         - name: ToggleSwitchGroupManager
           href: Assets.Scripts.UI.Visual.ToggleSwitchGroupManager.md
       - name: Classes
+      - name: Calendar
+        href: Assets.Scripts.UI.Calendar.md
+      - name: CalendarButton
+        href: Assets.Scripts.UI.CalendarButton.md
+      - name: CameraControls
+        href: Assets.Scripts.UI.CameraControls.md
+      - name: EngineStateUI
+        href: Assets.Scripts.UI.EngineStateUI.md
+      - name: HorizonFader
+        href: Assets.Scripts.UI.HorizonFader.md
       - name: InputContainer
         href: Assets.Scripts.UI.InputContainer.md
-- name: BillboardToCamera
-  href: BillboardToCamera.md
-- name: Calendar
-  href: Calendar.md
-- name: CalendarButton
-  href: CalendarButton.md
-- name: CameraControls
-  href: CameraControls.md
-- name: ConstellationSegment
-  href: ConstellationSegment.md
-- name: EngineStateUI
-  href: EngineStateUI.md
-- name: GPUInstanceTest
-  href: GPUInstanceTest.md
-- name: GameLoop
-  href: GameLoop.md
-- name: HeatMapVisualizer
-  href: HeatMapVisualizer.md
-- name: HorizonFader
-  href: HorizonFader.md
-- name: LatChange
-  href: LatChange.md
-- name: LocalObjectRetrieval
-  href: LocalObjectRetrieval.md
-- name: LongChange
-  href: LongChange.md
-- name: MessierRetrieval
-  href: MessierRetrieval.md
-- name: SidePanel
-  href: SidePanel.md
-- name: SpeedController
-  href: SpeedController.md
-- name: StarQueue
-  href: StarQueue.md
-- name: StarTooltip
-  href: StarTooltip.md
-- name: StarTooltipText
-  href: StarTooltipText.md
+      - name: SidePanel
+        href: Assets.Scripts.UI.SidePanel.md
+      - name: SpeedController
+        href: Assets.Scripts.UI.SpeedController.md
+    - name: Classes
+    - name: quit
+      href: Assets.Scripts.quit.md
 - name: TEMP
   href: TEMP.md
 - name: TextureRotator
   href: TextureRotator.md
-- name: TimeChange
-  href: TimeChange.md
-- name: TooltipGenerator
-  href: TooltipGenerator.md
-- name: UnityConstellation
-  href: UnityConstellation.md
-- name: quit
-  href: quit.md
 - name: InputData
   href: InputData.md
 - name: IUserContextObserver
