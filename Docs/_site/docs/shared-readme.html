@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> Struct LibrationInfo | Stargazer Data API </title>
+      <title>ChargerAstronomyShared | Stargazer Data API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" Struct LibrationInfo | Stargazer Data API ">
+      <meta name="title" content="ChargerAstronomyShared | Stargazer Data API ">
       
       
       <link rel="icon" href="../images/copernisync_planet_only.svg">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/dev/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.LibrationInfo.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/dev/Docs/docs/shared-readme.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,62 +85,26 @@
         </div>
 
         <article data-uid="">
-<h1 id="ChargerAstronomyEngine_CosineKittyAstronomy_LibrationInfo"> Struct LibrationInfo</h1>
+<h1 id="chargerastronomyshared">ChargerAstronomyShared</h1>
 
-<p>Namespace: <a href="ChargerAstronomyEngine.CosineKittyAstronomy.html">ChargerAstronomyEngine.CosineKittyAstronomy</a><br>
-Assembly: ChargerAstronomyEngine.dll</p>
-<p>Lunar libration angles, returned by #Astronomy.Libration.</p>
-<pre><code class="lang-csharp">public struct LibrationInfo
-</code></pre>
-<h4 id="inherited-members">Inherited Members</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>,
-<a href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></p>
-<h2 id="fields">Fields</h2>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_LibrationInfo_diam_deg"> diam_deg</h3>
-<p>The apparent angular diameter of the Moon, in degrees, as seen from the center of the Earth.</p>
-<pre><code class="lang-csharp">public double diam_deg
-</code></pre>
-<h4 id="field-value">Field Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_LibrationInfo_dist_km"> dist_km</h3>
-<p>Distance between the centers of the Earth and Moon in kilometers.</p>
-<pre><code class="lang-csharp">public double dist_km
-</code></pre>
-<h4 id="field-value-1">Field Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_LibrationInfo_elat"> elat</h3>
-<p>Sub-Earth libration ecliptic latitude angle, in degrees.</p>
-<pre><code class="lang-csharp">public double elat
-</code></pre>
-<h4 id="field-value-2">Field Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_LibrationInfo_elon"> elon</h3>
-<p>Sub-Earth libration ecliptic longitude angle, in degrees.</p>
-<pre><code class="lang-csharp">public double elon
-</code></pre>
-<h4 id="field-value-3">Field Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_LibrationInfo_mlat"> mlat</h3>
-<p>Moon's geocentric ecliptic latitude in degrees.</p>
-<pre><code class="lang-csharp">public double mlat
-</code></pre>
-<h4 id="field-value-4">Field Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
-<h3 id="ChargerAstronomyEngine_CosineKittyAstronomy_LibrationInfo_mlon"> mlon</h3>
-<p>Moon's geocentric ecliptic longitude in degrees.</p>
-<pre><code class="lang-csharp">public double mlon
-</code></pre>
-<h4 id="field-value-5">Field Value</h4>
-<p><a href="https://learn.microsoft.com/dotnet/api/system.double">double</a></p>
+<p>This repository acts as an intermediate repository between the &quot;frontend&quot; and &quot;backend&quot; of Stargazer. It contains structures, interfaces, and sealed objects that are used in both repositories to organize development, establish common definitions, and seperate the engine from its Unity implementation.</p>
+<h2 id="contracts">Contracts</h2>
+<p>This directory contains models for &quot;contractual&quot; data, essenentially objects that are instantiated/utilized on specific conditions (typically program startup).</p>
+<h2 id="domain">Domain</h2>
+<p>This directory contains a majority of the classes that are frequently passed from front to back end. Each directory contains classes related to its purpose.</p>
+<ul>
+<li><strong>Equatorial</strong> contains definitions related to equatorial objects. This includes BodyTypes, which are used for planets.</li>
+<li><strong>Geometry</strong> contains tile geometry, which contains useful methodes for obtaining tile information for spatial indexing calculations.</li>
+<li><strong>Heat</strong> contains definitions related to the heat indexing system, including the HeatConfig and HeatMap classes.</li>
+<li><strong>Horizontal</strong> contains definitions related to horizontal objects.</li>
+<li><strong>Index</strong> contains definitions and classes for the spatial indexing system. This includes the spatial index itself as well as different tile indexes (icospheric, UV spheric, cubic).</li>
+<li><strong>Prediction</strong> contains the tile selector method used for the heat index logic. Currently it only contains one method of selection, which relies on the users' camera direction and FOV.</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/dev/Docs/api/ChargerAstronomyEngine.CosineKittyAstronomy.LibrationInfo.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/CoperniSync/ChargerAstronomyEngine/blob/dev/Docs/docs/shared-readme.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

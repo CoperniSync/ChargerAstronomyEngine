@@ -609,8 +609,8 @@
     "title": "Namespace ChargerAstronomyShared | Stargazer Data API",
     "summary": "Namespace ChargerAstronomyShared Namespaces ChargerAstronomyShared.Contracts ChargerAstronomyShared.Domain"
   },
-  "docs/chargerAstronomyEngine.html": {
-    "href": "docs/chargerAstronomyEngine.html",
+  "docs/engine-readme.html": {
+    "href": "docs/engine-readme.html",
     "title": "ChargerAstronomyEngine | Stargazer Data API",
     "summary": "ChargerAstronomyEngine This repository serves as the \"backend\" of the Stargazer project. It contains the classes used for celestial calculations, spatial indexing, heat indexing, and creating object queues. It also contains the classes used to parse celestial object data from files to insantiate them as equatorial and horizontal objects. The engine also contains project benchmarks, documentation, and tests. Data The Data directory contains all of the classes used to instantiate celestial objects from files. They are seperated based on type of object. Streaming The Streaming directory contains the main services of the engine. The equatorial calculator provides new coordinates for horizontal stars and solar system bodies based on their current equatorial coordinates. The heat service adjusts the heat values of tiles in the current spatial index based on camera position and observer location. The engine service is the main class of the backend. It manages all of the backend services, primarily the afformentioned two."
   },
@@ -623,6 +623,16 @@
     "href": "docs/introduction.html",
     "title": "Introduction | Stargazer Data API",
     "summary": "Introduction This API serves as the official documentation of the Stagazer project. It's purpose is to describe the internal logic of the project. The project is separated into 3 repositories. ChargerAstronomyEngine - This is the \"backend\" of the project. It contains the data of astrological entities and the engine service that hosts astronomical position calculations. ChargerAstronomyShared - This intermerdiate repository contains interfaces and class definitions for objects that are created or utilized by both ChargerAstronomyEngine and Stargazer. Stargazer - This is the \"frontend\" of the project. It contains the Unity implementation of the Stargazer engine, including all Assets and Scripts inherited from the other repositories. All data is loaded into the ChargerAstronomyEngine asynchronously on startup. The front end requests incremental pages of all objects through a queue to prevent overload."
+  },
+  "docs/shared-readme.html": {
+    "href": "docs/shared-readme.html",
+    "title": "ChargerAstronomyShared | Stargazer Data API",
+    "summary": "ChargerAstronomyShared This repository acts as an intermediate repository between the \"frontend\" and \"backend\" of Stargazer. It contains structures, interfaces, and sealed objects that are used in both repositories to organize development, establish common definitions, and seperate the engine from its Unity implementation. Contracts This directory contains models for \"contractual\" data, essenentially objects that are instantiated/utilized on specific conditions (typically program startup). Domain This directory contains a majority of the classes that are frequently passed from front to back end. Each directory contains classes related to its purpose. Equatorial contains definitions related to equatorial objects. This includes BodyTypes, which are used for planets. Geometry contains tile geometry, which contains useful methodes for obtaining tile information for spatial indexing calculations. Heat contains definitions related to the heat indexing system, including the HeatConfig and HeatMap classes. Horizontal contains definitions related to horizontal objects. Index contains definitions and classes for the spatial indexing system. This includes the spatial index itself as well as different tile indexes (icospheric, UV spheric, cubic). Prediction contains the tile selector method used for the heat index logic. Currently it only contains one method of selection, which relies on the users' camera direction and FOV."
+  },
+  "docs/stargazer-readme.html": {
+    "href": "docs/stargazer-readme.html",
+    "title": "Stargazer | Stargazer Data API",
+    "summary": "Stargazer This repository contains the Unity implementation of the Stargazer project. For all purposes, this repository is a Unity project that uses the ChargerAstronomyEngine and ChargerAstronoymShared repositories as Unity based libraries. This repository does not contain any logic regarding star, spatial indexing, or heat indexing calculations on its own. For information on how to set up the dev environment, view visit the Getting Started page."
   },
   "index.html": {
     "href": "index.html",
