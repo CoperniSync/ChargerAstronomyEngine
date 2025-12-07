@@ -31,8 +31,8 @@ namespace ChargerAstronomyEngine.Data.Star
         /// <summary>
         /// A repository of stars loaded from a CSV file.
         /// </summary>
-        /// <param name="csvPath"></param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <param name="csvPath">The file path of the CSV file.</param>
+        /// <exception cref="ArgumentException">Thrown if no CVS path is provided.</exception>
         public CsvStarRepository(string csvPath)
         {
             if (string.IsNullOrWhiteSpace(csvPath))
@@ -47,8 +47,7 @@ namespace ChargerAstronomyEngine.Data.Star
         /// Provides a synchronous way to get all stars from the CSV file.
         /// Used for testing only.
         /// </summary>
-        /// <param name="csvFilePath"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">The CancellationToken object used to cancel the operation.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="FileNotFoundException"></exception>

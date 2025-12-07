@@ -16,8 +16,8 @@ namespace ChargerAstronomyShared.Contracts.Models
         /// <summary>
         /// The current time and location.
         /// </summary>
-        /// <param name="time"></param>
-        /// <param name="location"></param>
+        /// <param name="time">The current time within the engine.</param>
+        /// <param name="location">The current Observer location within the engine.</param>
         public void GetTimeAndPlace(out AstroTime time, out Observer location);
 
     }
