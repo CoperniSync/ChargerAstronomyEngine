@@ -1378,6 +1378,36 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.Constellations.ConstellationSegment.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.Constellations.ConstellationSegment.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.Constellations.UnityConstellation.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.Constellations.UnityConstellation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.Constellations.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.CelestialBodies.Constellations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "stargazer/Assets.Scripts.CelestialBodies.MessierObject.md",
       "output": {
         ".html": {
@@ -1438,10 +1468,80 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Core.BillboardToCamera.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Core.BillboardToCamera.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "stargazer/Assets.Scripts.Core.ConstellationRetrieval.md",
       "output": {
         ".html": {
           "relative_path": "stargazer/Assets.Scripts.Core.ConstellationRetrieval.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Core.GPUInstanceTest.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Core.GPUInstanceTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Core.GameLoop.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Core.GameLoop.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Core.HeatMapVisualizer.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Core.HeatMapVisualizer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Core.LocalObjectRetrieval.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Core.LocalObjectRetrieval.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Core.MessierRetrieval.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Core.MessierRetrieval.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.Core.StarQueue.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.Core.StarQueue.html"
         }
       },
       "version": ""
@@ -1478,10 +1578,120 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Calendar.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Calendar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.CalendarButton.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.CalendarButton.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.CameraControls.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.CameraControls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.EngineStateUI.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.EngineStateUI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.HorizonFader.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.HorizonFader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "stargazer/Assets.Scripts.UI.InputContainer.md",
       "output": {
         ".html": {
           "relative_path": "stargazer/Assets.Scripts.UI.InputContainer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.LatLongTime.LatChange.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.LatLongTime.LatChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.LatLongTime.LongChange.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.LatLongTime.LongChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.LatLongTime.TimeChange.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.LatLongTime.TimeChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.LatLongTime.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.LatLongTime.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.SidePanel.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.SidePanel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.SpeedController.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.SpeedController.html"
         }
       },
       "version": ""
@@ -1502,6 +1712,36 @@
       "output": {
         ".html": {
           "relative_path": "stargazer/Assets.Scripts.UI.Tooltips.StarHoverDetector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Tooltips.StarTooltip.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Tooltips.StarTooltip.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Tooltips.StarTooltipText.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Tooltips.StarTooltipText.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.UI.Tooltips.TooltipGenerator.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.UI.Tooltips.TooltipGenerator.html"
         }
       },
       "version": ""
@@ -1592,6 +1832,16 @@
       "output": {
         ".html": {
           "relative_path": "stargazer/Assets.Scripts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "stargazer/Assets.Scripts.quit.md",
+      "output": {
+        ".html": {
+          "relative_path": "stargazer/Assets.Scripts.quit.html"
         }
       },
       "version": ""
