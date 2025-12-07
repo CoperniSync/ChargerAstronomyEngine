@@ -1,0 +1,29 @@
+/* Hide the Inherited Members section */
+.inheritedMembers {
+  display: none;
+}
+
+/* This rule hides the display of inherited types */
+.typelist.inheritance {
+    display: contents;
+}
+
+/* This rule hides the display of implemented types */
+.typelist.implements {
+    display: contents;
+}
+
+/* This rule hides the display of derived types */
+.typelist.derived {
+    display: none;
+}
+
+/* this doesn't seem to work unfortunately */
+.typelist.inheritedMembers {
+    display: none;
+}
+
+/* but this does! */
+.typelist.extensionMethods {
+    display: none;
+} 

@@ -12,16 +12,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "api/ChargerAstronomyEngine.Class1.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/ChargerAstronomyEngine.Class1.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyEngine.CosineKittyAstronomy.ApsisInfo.md",
       "output": {
         ".html": {
@@ -592,36 +582,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "api/ChargerAstronomyEngine.Domain.Heat.HeatService.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/ChargerAstronomyEngine.Domain.Heat.HeatService.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "api/ChargerAstronomyEngine.Domain.Heat.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/ChargerAstronomyEngine.Domain.Heat.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "api/ChargerAstronomyEngine.Domain.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/ChargerAstronomyEngine.Domain.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyEngine.Streaming.BoundedInitializationQueue-1.md",
       "output": {
         ".html": {
@@ -806,16 +766,6 @@
       "output": {
         ".html": {
           "relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.IStarRepository.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.StarSpatialIndex.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/ChargerAstronomyShared.Contracts.Repositories.StarSpatialIndex.html"
         }
       },
       "version": ""
@@ -1012,16 +962,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "api/ChargerAstronomyShared.Domain.Heat.HeatService.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/ChargerAstronomyShared.Domain.Heat.HeatService.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "api/ChargerAstronomyShared.Domain.Heat.md",
       "output": {
         ".html": {
@@ -1136,16 +1076,6 @@
       "output": {
         ".html": {
           "relative_path": "api/ChargerAstronomyShared.Domain.Index.UVSphereTileIndex.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "api/ChargerAstronomyShared.Domain.Index.UVTileIndex.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/ChargerAstronomyShared.Domain.Index.UVTileIndex.html"
         }
       },
       "version": ""
@@ -1858,106 +1788,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "stargazer/BillboardToCamera.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/BillboardToCamera.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/Calendar.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/Calendar.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/CalendarButton.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/CalendarButton.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/CameraControls.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/CameraControls.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/ConstellationSegment.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/ConstellationSegment.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/EngineStateUI.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/EngineStateUI.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/GPUInstanceTest.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/GPUInstanceTest.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/GameLoop.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/GameLoop.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/HeatMapVisualizer.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/HeatMapVisualizer.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/HorizonFader.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/HorizonFader.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "stargazer/IUserContextObserver.md",
       "output": {
         ".html": {
@@ -1988,96 +1818,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "stargazer/LatChange.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/LatChange.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/LocalObjectRetrieval.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/LocalObjectRetrieval.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/LongChange.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/LongChange.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/MessierRetrieval.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/MessierRetrieval.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/SidePanel.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/SidePanel.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/SpeedController.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/SpeedController.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/StarQueue.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/StarQueue.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/StarTooltip.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/StarTooltip.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/StarTooltipText.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/StarTooltipText.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "stargazer/TEMP.md",
       "output": {
         ".html": {
@@ -2092,46 +1832,6 @@
       "output": {
         ".html": {
           "relative_path": "stargazer/TextureRotator.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/TimeChange.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/TimeChange.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/TooltipGenerator.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/TooltipGenerator.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/UnityConstellation.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/UnityConstellation.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "stargazer/quit.md",
-      "output": {
-        ".html": {
-          "relative_path": "stargazer/quit.html"
         }
       },
       "version": ""

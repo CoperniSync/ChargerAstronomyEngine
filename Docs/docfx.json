@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",  
   "metadata": [
     {
       "src": [
@@ -13,20 +12,22 @@
       ],
       "dest": "api",
       "namespaceLayout": "nested",
-	  "outputFormat": "markdown"
+	  "outputFormat": "markdown",
+	  "filter": "filterConfig.yml"
     },
-	{
+    {
       "src": [
         {
           "src": "../../",
           "files": [
-            "Stargazer/Assembly-CSharp.csproj",
+            "Stargazer/Assembly-CSharp.csproj"
           ]
         }
       ],
       "dest": "stargazer",
       "namespaceLayout": "nested",
-	  "outputFormat": "markdown"
+	  "outputFormat": "markdown",
+	  "filter": "filterConfig.yml"
     }
   ],
   "build": {
@@ -49,15 +50,16 @@
     ],
     "output": "_site",
     "template": [
-      "default",
-      "modern"
+	  "default",
+      "modern",
+      "templates/stargazer"
     ],
     "globalMetadata": {
       "_appName": "Stargazer Data API",
       "_appTitle": "Stargazer Data API",
-	  "_appLogoPath": "images/copernisync_logo_small.svg",
-	  "_appFaviconPath": "images/copernisync_planet_only.svg",
-	  "_disableContribution": false,
+      "_appLogoPath": "images/copernisync_logo_small.svg",
+      "_appFaviconPath": "images/copernisync_planet_only.svg",
+      "_disableContribution": false,
       "_enableSearch": true,
       "pdf": false
     }
