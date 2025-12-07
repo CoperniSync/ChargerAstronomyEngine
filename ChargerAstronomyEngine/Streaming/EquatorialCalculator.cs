@@ -1,18 +1,13 @@
-﻿using ChargerAstronomyEngine.CosineKittyAstronomy;
+﻿using System;
+using System.Collections.Generic;
+using ChargerAstronomyEngine.CosineKittyAstronomy;
 using ChargerAstronomyEngine.CosineKittyAstronomy.Enums;
 using ChargerAstronomyShared.Domain;
-using ChargerAstronomyShared.Domain.Heat;
 using ChargerAstronomyShared.Domain.Horizontal;
 using ChargerAstronomyShared.Domain.Equatorial;
 using ChargerAstronomyShared.Domain.SpatialIndex;
 using ChargerAstronomyShared.Contracts.Models;
 using ChargerAstronomyShared.Contracts.Repositories;
-
-using System;
-using System.Text;
-using System.Numerics;
-using System.Collections.Generic;
-using System.Collections.Concurrent;
 
 namespace ChargerAstronomyEngine.Streaming
 {
@@ -20,7 +15,7 @@ namespace ChargerAstronomyEngine.Streaming
     /// <summary>
     /// Equatorial calculator. Calculates new coordinates for horizontal stars and solar system bodies based on their equatorial coordinates.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">A tile index.</typeparam>
     public class EquatorialCalculator<T> : ITimeAndPlaceProvider, IEquatorialCalculator where T : IHorizontal
     {
         SpatialStarIndex<T> starIndex;
