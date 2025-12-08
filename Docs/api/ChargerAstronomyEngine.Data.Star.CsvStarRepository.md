@@ -41,9 +41,13 @@ public CsvStarRepository(string csvPath)
 
 `csvPath` [string](https://learn.microsoft.com/dotnet/api/system.string)
 
+The file path of the CSV file.
+
 #### Exceptions
 
  [ArgumentException](https://learn.microsoft.com/dotnet/api/system.argumentexception)
+
+Thrown if no CVS path is provided.
 
 ## Methods
 
@@ -75,6 +79,8 @@ public IEnumerable<EquatorialStar> GetAllSync(CancellationToken cancellationToke
 #### Parameters
 
 `cancellationToken` [CancellationToken](https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken)
+
+The CancellationToken object used to cancel the operation.
 
 #### Returns
 

@@ -13,6 +13,8 @@ public class EquatorialCalculator<T> : IEquatorialCalculator where T : IHorizont
 
 `T` 
 
+A tile index.
+
 #### Inheritance
 
 [object](https://learn.microsoft.com/dotnet/api/system.object) ← 
@@ -60,7 +62,11 @@ public void GetTimeAndPlace(out AstroTime time, out Observer location)
 
 `time` [AstroTime](ChargerAstronomyEngine.CosineKittyAstronomy.AstroTime.md)
 
+The current time within the engine.
+
 `location` [Observer](ChargerAstronomyShared.Domain.Observer.md)
+
+The current Observer location within the engine.
 
 ### <a id="ChargerAstronomyEngine_Streaming_EquatorialCalculator_1_IncrementTime_System_Single_"></a> IncrementTime\(float\)
 

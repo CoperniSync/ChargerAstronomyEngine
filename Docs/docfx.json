@@ -59,6 +59,7 @@
       "_appTitle": "Stargazer Data API",
       "_appLogoPath": "images/copernisync_logo_small.svg",
       "_appFaviconPath": "images/copernisync_planet_only.svg",
+	  "_appFooter": "<span>Credits: Joseph Thallas, Joshua Johner, Mason Carr, Morgan Hendon, Tommy Rodriguez. Made with <a href=\"https://dotnet.github.io/docfx/\">docfx</a></span>",
       "_disableContribution": false,
       "_enableSearch": true,
       "pdf": false
