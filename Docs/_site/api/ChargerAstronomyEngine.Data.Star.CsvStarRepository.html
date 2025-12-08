@@ -111,8 +111,10 @@ Assembly: ChargerAstronomyEngine.dll</p>
 </code></pre>
 <h4 id="parameters">Parameters</h4>
 <p><code>csvPath</code> <a href="https://learn.microsoft.com/dotnet/api/system.string">string</a></p>
+<p>The file path of the CSV file.</p>
 <h4 id="exceptions">Exceptions</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></p>
+<p>Thrown if no CVS path is provided.</p>
 <h2 id="methods">Methods</h2>
 <h3 id="ChargerAstronomyEngine_Data_Star_CsvStarRepository_GetAllAsync_ChargerAstronomyShared_Contracts_Models_PageRequest_"> GetAllAsync(PageRequest)</h3>
 <p>Not implemented.</p>
@@ -129,6 +131,7 @@ Used for testing only.</p>
 </code></pre>
 <h4 id="parameters-2">Parameters</h4>
 <p><code>cancellationToken</code> <a href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></p>
+<p>The CancellationToken object used to cancel the operation.</p>
 <h4 id="returns-1">Returns</h4>
 <p><a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a href="ChargerAstronomyShared.Domain.Equatorial.EquatorialStar.html">EquatorialStar</a>&gt;</p>
 <h4 id="exceptions-1">Exceptions</h4>
@@ -188,7 +191,7 @@ producing subsequent pages  based on the page's configuration. Pages are enqueue
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+          <span>Credits: Joseph Thallas, Joshua Johner, Mason Carr, Morgan Hendon, Tommy Rodriguez. Made with <a href="https://dotnet.github.io/docfx/">docfx</a></span>
         </div>
       </div>
     </footer>
